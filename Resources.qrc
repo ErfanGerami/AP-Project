@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/back.jpg</file>
+        <file>images/border.png</file>
+        <file>images/flag.png</file>
+        <file>images/gameground.png</file>
+        <file>images/logo.png</file>
+        <file>images/map.png</file>
+        <file>images/name.png</file>
+        <file>images/parot.png</file>
+        <file>images/pirate.png</file>
+        <file>images/queen.png</file>
+        <file>images/scullking.png</file>
+        <file>images/ship.jpg</file>
+        <file>images/skullsign.png</file>
+        <file>images/treasure.png</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file>sounds/laugh.wav</file>
+    </qresource>
+</RCC>
