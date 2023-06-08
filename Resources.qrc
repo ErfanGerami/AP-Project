@@ -17,5 +17,6 @@
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/laugh.wav</file>
+        <file>sounds/UiBackSound.mp3</file>
     </qresource>
 </RCC>

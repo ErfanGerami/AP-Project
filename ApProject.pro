@@ -9,11 +9,19 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    errors.cpp \
+    filehandeling.cpp \
+    game.cpp \
     main.cpp \
-    login.cpp
+    login.cpp \
+    player.cpp
 
 HEADERS += \
-    login.h
+    errors.h \
+    filehandeling.h \
+    game.h \
+    login.h \
+    player.h
 
 FORMS += \
     login.ui
