@@ -13,7 +13,7 @@ public:
     static void write(QString path,QString content);
     static QString Encrypt(QString string);
     static QString Decrypt(QString string);
-
+    static bool IsAPlayer(QString path);
 private:
     static int key(int index);
 

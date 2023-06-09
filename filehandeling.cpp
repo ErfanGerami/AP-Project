@@ -7,6 +7,14 @@ int FileHandeling::key(int index){
     //key:x^2+2x+2
     return (index*index+2*index+2)%26;
 }
+bool FileHandeling::IsAPlayer(QString path){
+    std::ifstream file(path.toStdString(),std::ios::in);
+    bool is_there= file.is_open();
+    if(is_there)
+        file.close();
+    return is_there;
+
+}
 
 QString FileHandeling::Encrypt(QString str){
     std::string str_temp=str.toStdString();
@@ -50,7 +58,7 @@ QString FileHandeling::Decrypt(QString str){
     return QString(decrypted_string.c_str());
 
 }
-static void write(QString path,QString content){
+void FileHandeling::write(QString path,QString content){
     std::ofstream file(path.toStdString());
     if(!file.is_open())throw Errors(Errors::file_openning_error);
     file<<content.toStdString();

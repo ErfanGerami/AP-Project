@@ -14,17 +14,20 @@ SOURCES += \
     game.cpp \
     main.cpp \
     login.cpp \
-    player.cpp
+    player.cpp \
+    signup.cpp
 
 HEADERS += \
     errors.h \
     filehandeling.h \
     game.h \
     login.h \
-    player.h
+    player.h \
+    signup.h
 
 FORMS += \
-    login.ui
+    login.ui \
+    signup.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

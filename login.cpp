@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include "player.h"
 #include "game.h"
+#include "signup.h"
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 extern Player* MainPlayer;
@@ -50,7 +51,8 @@ Login::~Login()
 
 void Login::on_start_clicked()
 {
-
+    SignUp* sign=new SignUp();
+    sign->show();
 }
 
 
@@ -58,8 +60,13 @@ void Login::on_login_clicked()
 {
     try{
         auto vec=FileHandeling::read(ui->user->text()+".txt");
-        Game* prev=new Game(vec[5],vec[6]);
-        MainPlayer=new Player(vec[0],vec[1],vec[2].toInt(),vec[3].toInt(),vec[4].toInt(),prev);
+        Game* prev;
+        if(vec[7]!="null")
+            prev=new Game(vec[8],vec[9]);
+        else
+
+            prev=nullptr;
+        MainPlayer=new Player(vec[0],vec[1],vec[2].toInt(),vec[3].toInt(),vec[4].toInt(),vec[5],vec[6],vec[7],prev);
 
     }catch(Errors err){
         ui->statusbar->setStyleSheet("#statusbar{color:red;}");
