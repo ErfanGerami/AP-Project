@@ -12,6 +12,5 @@ int main(int argc, char *argv[])
     Login w;
     w.show();
 
-   FileHandeling::read("salam.txt")[0];
     return a.exec();
 }

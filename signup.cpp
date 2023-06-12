@@ -12,6 +12,7 @@ SignUp::~SignUp()
     delete ui;
 }
 
+
 void SignUp::on_agree_stateChanged(int arg1)
 {
     if(this->ui->agree->isChecked()){
@@ -26,8 +27,8 @@ void SignUp::on_agree_stateChanged(int arg1)
 
 void SignUp::on_start_clicked()
 {
-    QString pass=ui->PassL->text();
-    QString user=ui->UseL->text();
+    QString pass=ui->passL->text();
+    QString user=ui->userL->text();
     QString adr=ui->adrL->text();
     QString phone_number=ui->phoneL->text();
     QString confirm=ui->ConfirmL->text();

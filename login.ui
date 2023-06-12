@@ -22,21 +22,27 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>260</y>
-      <width>211</width>
-      <height>91</height>
+      <y>230</y>
+      <width>141</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">#start{border-image:url(:/images/images/ship.jpg);border-radius:10px;}</string>
+     <string notr="true">#start{background:transparent;color:red;font-size:13px;}</string>
     </property>
     <property name="text">
-     <string>Start</string>
+     <string>Dont have an account?</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -45,7 +51,7 @@
       <x>70</x>
       <y>110</y>
       <width>213</width>
-      <height>101</height>
+      <height>111</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -151,25 +157,33 @@ padding-left:10px;
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QPushButton" name="forgot">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>64</x>
       <y>260</y>
-      <width>171</width>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
     <property name="styleSheet">
-     <string notr="true">#label_2{color:red;}</string>
+     <string notr="true">#forgot{background:transparent;color:red;font-size:13px;}</string>
     </property>
     <property name="text">
-     <string>Dont have an account?</string>
+     <string>forgot my password</string>
     </property>
    </widget>
    <zorder>start</zorder>
    <zorder>layoutWidget</zorder>
-   <zorder>label_2</zorder>
+   <zorder>forgot</zorder>
    <zorder>label</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -8,6 +8,7 @@
 #include "signup.h"
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
+#include "forgotmypassword.h"
 extern Player* MainPlayer;
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
@@ -75,5 +76,12 @@ void Login::on_login_clicked()
 
 
     }
+}
+
+
+void Login::on_forgot_clicked()
+{
+    ForgotMyPassword* forgot_password=new ForgotMyPassword();
+    forgot_password->show();
 }
 

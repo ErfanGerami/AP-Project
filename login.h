@@ -22,6 +22,8 @@ private slots:
 
     void on_login_clicked();
 
+    void on_forgot_clicked();
+
 private:
     std::thread * th;
     Ui::Login *ui;

@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     errors.cpp \
     filehandeling.cpp \
+    forgotmypassword.cpp \
     game.cpp \
     main.cpp \
     login.cpp \
@@ -20,12 +21,14 @@ SOURCES += \
 HEADERS += \
     errors.h \
     filehandeling.h \
+    forgotmypassword.h \
     game.h \
     login.h \
     player.h \
     signup.h
 
 FORMS += \
+    forgotmypassword.ui \
     login.ui \
     signup.ui
 
