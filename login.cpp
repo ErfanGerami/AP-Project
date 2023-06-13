@@ -9,6 +9,8 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include "forgotmypassword.h"
+#include "test.h"
+
 extern Player* MainPlayer;
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
@@ -27,7 +29,8 @@ Login::Login(QWidget *parent)
     media->setPlaylist(playlist);
     media->setVolume(30);
     media->play();
-
+    test* tst=new test;
+    tst->show();
 
 
 

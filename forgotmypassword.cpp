@@ -1,6 +1,9 @@
 #include "forgotmypassword.h"
 #include "ui_forgotmypassword.h"
-
+#include <QTime>
+#include <QThread>
+#include <thread>
+#include <QDebug>
 ForgotMyPassword::ForgotMyPassword(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ForgotMyPassword)
@@ -24,6 +27,7 @@ void ForgotMyPassword::on_check_clicked()
 
     ui->check->setEnabled(false);
 
+
     QPropertyAnimation* fade_out =new QPropertyAnimation(ui->check,"geometry");
     fade_out->setDuration(500);
 
@@ -33,8 +37,8 @@ void ForgotMyPassword::on_check_clicked()
     connect(fade_out,&QPropertyAnimation::finished,this,&ForgotMyPassword::EndOfFadingOut);
 
 
-
 }
+
 
 
 void ForgotMyPassword::EndOfFadingOut(){
@@ -54,4 +58,46 @@ void ForgotMyPassword::EndOfFadingOut(){
     fade_in->setStartValue( QRect(ui->confirm->x()+width/2,ui->confirm->y()+height/2,0,0) );
     fade_in->setEndValue(QRect(ui->confirm->x(),ui->confirm->y(),width,height) );
     fade_in->start();
+    connect(fade_in,&QPropertyAnimation::finished,this,&ForgotMyPassword::AnimationAfterFadingIn);
 }
+
+void ForgotMyPassword::AnimationAfterFadingIn(){
+    int size=5;
+    QWidget** widgets=new QWidget*[size];
+
+    widgets[0]=ui->pass;
+    widgets[1]=ui->passL;
+    widgets[2]=ui->confirm;
+    widgets[3]=ui->confirm_pass;
+    widgets[4]=ui->confirm_passL;
+    for(int i=0;i<size;i++){
+        QPropertyAnimation* animation=new QPropertyAnimation(widgets[i],"geometry");
+        animation->setDuration(500);
+        animation->setStartValue(QRect(widgets[i]->x(),widgets[i]->y(),widgets[i]->width(),widgets[i]->height()));
+        animation->setEndValue(QRect(widgets[i]->x(),widgets[i]->y()-110,widgets[i]->width(),widgets[i]->height()));
+        animation->start();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
