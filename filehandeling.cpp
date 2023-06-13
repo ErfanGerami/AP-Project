@@ -139,7 +139,7 @@ void FileHandeling::file_write(Player *new_player) {
 }
 
 //
-Player *FileHandeling::file_read(QString username, QString password) {
+Player *FileHandeling::file_read(QString username, unsigned long password) {
 	fseek(players, 0, SEEK_SET);
 
 	FiledPlayer *temp_fplayer = new FiledPlayer();

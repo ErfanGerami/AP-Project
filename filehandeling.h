@@ -11,7 +11,7 @@ class FileHandeling {
 public:
 	FileHandeling() = default;
 
-	static Player *file_read(QString username, QString password);
+	static Player *file_read(QString username, unsigned long password);
 
 	static void file_write(Player *player);
 

@@ -1,5 +1,7 @@
 #include "signup.h"
 #include "ui_signup.h"
+
+
 SignUp::SignUp(QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::SignUp) {
@@ -62,7 +64,7 @@ void SignUp::on_start_clicked() {
 	//FileHandeling::write(user, MainPlayer->Parse());
 
 
-	Player *new_player = new Player(user, pass, 0, 0, 0, phone_number, adr, email, nullptr);
+	Player *new_player = new Player(user, Player::hash(pass, user), 0, 0, 0, phone_number, adr, email, nullptr);
 	FileHandeling::file_write(new_player);
 
 

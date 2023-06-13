@@ -11,6 +11,8 @@
 #include "forgotmypassword.h"
 #include "test.h"
 
+
+
 extern Player *MainPlayer;
 Login::Login(QWidget *parent)
 	: QMainWindow(parent)
@@ -60,7 +62,7 @@ void Login::on_start_clicked() {
 void Login::on_login_clicked() {
 	try {
 
-		MainPlayer = FileHandeling::file_read(ui->user->text(), ui->pass->text());
+		MainPlayer = FileHandeling::file_read(ui->user->text(), Player::hash(ui->pass->text(), ui->user->text()));
 
 	}
 	catch ( Errors err ) {
