@@ -2,15 +2,21 @@
 #define GAME_H
 #include <QString>
 
-class Game
-{
+class Game {
 public:
-    Game();
-    Game(QString winner,QString time);
-    QString Parse();
+	Game() = default;
+	Game(const QString &winner, const QString &time, int rounds_won, int coins_achieved, int predicted_rounds);
+	Game(const Game &that);
+	//QString Parse();
+
+	bool valid = false;
 private:
-    QString winner;
-    QString time;
+	QString winner;
+	QString time;
+	int rounds_won;
+	int coins_achieved;
+	int predicted_rounds;
+
 
 };
 
