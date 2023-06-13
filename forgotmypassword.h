@@ -15,6 +15,7 @@ public:
     explicit ForgotMyPassword(QWidget *parent = nullptr);
     ~ForgotMyPassword();
     void EndOfFadingOut();
+    void AnimationAfterFadingIn();
 
 private slots:
     void on_check_clicked();
