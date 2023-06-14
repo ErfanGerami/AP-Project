@@ -116,7 +116,7 @@ bool FileHandeling::is_user_unique(QString username) {
 	while ( fgetc(players) != EOF ) {
 		fseek(players, -1, SEEK_CUR);
 		fread(temp, sizeof(Player), 1, players);
-		if ( temp->get_username() == username ) {
+		if ( temp->get_username() == username.toStdString() ) {
 			return false;
 		}
 	}
@@ -142,7 +142,7 @@ void FileHandeling::file_write(Player *new_player) {
 //
 Player *FileHandeling::file_read(QString username, QString password) {
 	fclose(players);
-	players = fopen("players.bin", "rb");
+	players = fopen("players.bin", "ab+");
 	fseek(players, 0, SEEK_SET);
 
 	Player *temp_player = new Player();
@@ -151,7 +151,7 @@ Player *FileHandeling::file_read(QString username, QString password) {
 	while ( fgetc(players) != EOF ) {//try to find a player with the given username
 		fseek(players, -1, SEEK_CUR);
 		fread(temp_player, sizeof(Player), 1, players);
-		if ( temp_player->get_username() == username ) {
+		if ( temp_player->get_username() == username.toStdString() ) {
 			not_found = false;
 			break;
 		}
@@ -161,7 +161,7 @@ Player *FileHandeling::file_read(QString username, QString password) {
 	players = fopen("players.bin", "rb+");
 
 	if ( not_found ) throw Errors(Errors::player_not_found);
-	if ( !temp_player->is_password_correct(password) ) throw Errors(Errors::incorrect_password);
+	if ( !temp_player->is_password_correct(password.toStdString()) ) throw Errors(Errors::incorrect_password);
 
 	return new Player(*temp_player);
 

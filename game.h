@@ -9,7 +9,7 @@ public:
 	Game(const Game &that);
 	//QString Parse();
 
-	bool valid = false;
+
 private:
 	QString winner;
 	QString time;
