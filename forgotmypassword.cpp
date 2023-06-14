@@ -16,6 +16,8 @@ ForgotMyPassword::ForgotMyPassword(QWidget *parent):
 	ui->confirm->hide();
 	ui->confirm_pass->hide();
 	ui->confirm_passL->hide();
+
+	connect(this, SIGNAL(show_parent()), parent, SLOT(show_me()));
 }
 
 ForgotMyPassword::~ForgotMyPassword() {
@@ -43,21 +45,6 @@ void ForgotMyPassword::on_check_clicked() {
 		return;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	ui->check->setEnabled(false);
 
 
@@ -68,11 +55,6 @@ void ForgotMyPassword::on_check_clicked() {
 	fade_out->setEndValue(QRect(ui->check->x() + ui->check->width() / 2, ui->check->y() + ui->check->height() / 2, 0, 0));
 	fade_out->start();
 	connect(fade_out, &QPropertyAnimation::finished, this, &ForgotMyPassword::EndOfFadingOut);
-
-
-
-
-
 
 
 }
@@ -99,6 +81,9 @@ void ForgotMyPassword::on_confirm_clicked() {
 	}
 
 	FileHandeling::change_password(username, pass);
+
+	this->close();
+	emit show_parent();
 
 }
 
@@ -142,23 +127,15 @@ void ForgotMyPassword::AnimationAfterFadingIn() {
 
 
 
+void ForgotMyPassword::closeEvent(QCloseEvent *event) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	if ( event->spontaneous() ) {
+		emit show_parent();
+	}
+	else {
+		QWidget::closeEvent(event);
+	}
+}
 
 
 

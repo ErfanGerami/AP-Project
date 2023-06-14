@@ -1,15 +1,6 @@
 #include "login.h"
 #include "ui_login.h"
-#include <QAbstractAnimation>
-#include <QPropertyAnimation>
-#include <QVBoxLayout>
-#include "player.h"
-#include "game.h"
-#include "signup.h"
-#include <QMediaPlayer>
-#include <QMediaPlaylist>
-#include "forgotmypassword.h"
-#include "test.h"
+
 
 
 
@@ -48,14 +39,14 @@ Login::~Login() {
 }
 
 
-
-
+void Login::show_me() { this->show(); }
 
 
 
 void Login::on_start_clicked() {
-	SignUp *sign = new SignUp();
+	sign = new SignUp(this);
 	sign->show();
+	this->hide();
 }
 
 
@@ -77,7 +68,8 @@ void Login::on_login_clicked() {
 
 
 void Login::on_forgot_clicked() {
-	ForgotMyPassword *forgot_password = new ForgotMyPassword();
+	forgot_password = new ForgotMyPassword(this);
 	forgot_password->show();
+	this->hide();
 }
 

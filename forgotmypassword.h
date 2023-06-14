@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QPropertyAnimation>
 #include "filehandeling.h"
+#include <QCloseEvent>
 
 namespace Ui {
 	class ForgotMyPassword;
@@ -23,6 +24,9 @@ private slots:
 	void on_confirm_clicked();
 private:
 	Ui::ForgotMyPassword *ui;
+	void closeEvent(QCloseEvent *event) override;
+signals:
+	void show_parent();
 };
 
 #endif // FORGOTMYPASSWORD_H

@@ -6,6 +6,9 @@ SignUp::SignUp(QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::SignUp) {
 	ui->setupUi(this);
+
+	connect(this, SIGNAL(show_parent()), parent, SLOT(show_me()));
+
 }
 
 SignUp::~SignUp() {
@@ -59,6 +62,7 @@ void SignUp::on_start_clicked() {
 	}
 	catch ( Errors err ) {
 		QMessageBox::critical(this, "ERROR", err.what());
+		return;
 	}
 
 	//MainPlayer = new Player(user, pass, 0, 0, 0, phone_number, adr, email, nullptr);// now player should login
@@ -68,6 +72,20 @@ void SignUp::on_start_clicked() {
 	Player *new_player = new Player(user.toStdString(), pass.toStdString(), 0, 0, 0, phone_number.toStdString(), adr.toStdString(), email.toStdString());
 	FileHandeling::file_write(new_player);
 
-
+	this->close();
+	emit show_parent();
 }
 
+void SignUp::do_show_parent() {
+	emit show_parent();
+}
+
+void SignUp::closeEvent(QCloseEvent *event) {
+
+	if ( event->spontaneous() ) {
+		emit show_parent();
+	}
+	else {
+		QWidget::closeEvent(event);
+	}
+}
