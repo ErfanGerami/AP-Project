@@ -14,10 +14,15 @@
         <file>images/ship.jpg</file>
         <file>images/skullsign.png</file>
         <file>images/treasure.png</file>
+        <file>images/WhiteSkull.jpg</file>
+        <file>images/coin.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/laugh.wav</file>
         <file>sounds/UiBackSound.mp3</file>
         <file>sounds/card_push.wav</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>fonts/bloody.otf</file>
     </qresource>
 </RCC>

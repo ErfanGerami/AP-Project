@@ -15,6 +15,7 @@ private:
 	int rank;
 	int games_won;
 	int games_loose;
+    int coins;
 	string phone_number;
 	string address;
 	string email;
@@ -26,7 +27,7 @@ public:
 	Player() = default;
 
 
-	Player(const string &username, const string &password, int rank, int games_won, int games_loose, const string &phone_number, const string &address, const string &email, const Game &prev_game = Game());
+    Player(const string &username, const string &password, int rank, int games_won, int games_loose, const string &phone_number, const string &address, const string &email,const int coins, const Game &prev_game = Game());
 
 
 
@@ -41,6 +42,17 @@ public:
 	string get_username() const;
 
 	bool is_password_correct(string password);
+
+
+
+    int GetRank();
+    int GettCoins();
+    int GetGamesWon();
+    int GetGamesLoose();
+    string GetPhonNnumber();
+    string GetAddress();
+    string GetEmail();
+    Game GetPrevGame();
 
 	//string Parse();
 

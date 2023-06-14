@@ -16,6 +16,7 @@ SOURCES += \
     game.cpp \
     main.cpp \
     login.cpp \
+    mainmenu.cpp \
     player.cpp \
     signup.cpp \
     test.cpp
@@ -27,6 +28,7 @@ HEADERS += \
     forgotmypassword.h \
     game.h \
     login.h \
+    mainmenu.h \
     player.h \
     signup.h \
     test.h
@@ -34,6 +36,7 @@ HEADERS += \
 FORMS += \
     forgotmypassword.ui \
     login.ui \
+    mainmenu.ui \
     signup.ui \
     test.ui
 

@@ -4,14 +4,14 @@
 
 
 
-Player::Player(const string &username, const string &password, int rank, int games_won, int games_loose, const string &phone_number, const string &address, const string &email, const Game &prev_game)
-	:username(username), password_hash(hash(password, username)), rank(rank), games_won(games_won), games_loose(games_loose), phone_number(phone_number), address(address), email(email), prev_game(prev_game) {}
+Player::Player(const string &username, const string &password, int rank, int games_won, int games_loose, const string &phone_number, const string &address, const string &email,int coins, const Game &prev_game)
+    :username(username), password_hash(hash(password, username)), rank(rank), games_won(games_won), games_loose(games_loose), phone_number(phone_number), address(address), email(email), coins(coins),prev_game(prev_game) {}
 
 
 
 
 
-Player::Player(const Player &that): username(that.username), password_hash(that.password_hash), rank(that.rank), games_won(that.games_won), games_loose(that.games_loose), phone_number(that.phone_number), address(that.address), email(that.email), prev_game(that.prev_game) {}
+Player::Player(const Player &that): username(that.username), password_hash(that.password_hash), rank(that.rank), games_won(that.games_won), games_loose(that.games_loose), phone_number(that.phone_number), address(that.address), email(that.email), coins(that.coins),prev_game(that.prev_game) {}
 
 
 
@@ -45,6 +45,14 @@ bool Player::is_password_correct(string password) {
 	return hash(password, this->username) == password_hash;
 }
 
+int Player::GetRank(){return rank;}
+int Player::GetGamesWon(){return games_won;}
+int Player::GetGamesLoose(){return games_loose;}
+string Player::GetPhonNnumber(){return phone_number;};
+string Player::GetAddress(){return address;}
+string Player::GetEmail(){return email;}
+int Player::GettCoins(){return coins;}
+Game Player::GetPrevGame(){return prev_game;};
 
 //string Player::Parse() {
 //	if ( prev_game == nullptr ) {

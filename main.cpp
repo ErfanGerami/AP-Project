@@ -6,6 +6,7 @@
 #include "player.h"
 #include <QPushButton>
 #include <QTimer>
+#include <mainmenu.h>
 
 
 Player *MainPlayer = nullptr;
@@ -17,7 +18,9 @@ int main(int argc, char *argv[]) {
 	fclose(temp);
 
 	QApplication a(argc, argv);
-	Login *w = new Login;
+    Login *w = new Login;
+    MainMenu* m=new MainMenu;
+    m->show();
 	w->show();
 
 	return a.exec();

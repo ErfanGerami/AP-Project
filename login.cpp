@@ -30,8 +30,8 @@ Login::Login(QWidget *parent)
 	media->setPlaylist(playlist);
 	media->setVolume(30);
 	media->play();
-	test *tst = new test;
-	tst->show();
+    //test *tst = new test;
+    //tst->show();
 
 
 
