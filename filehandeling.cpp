@@ -1,5 +1,6 @@
 #include "filehandeling.h"
 
+
 FILE *FileHandeling::players = fopen("players.bin", "rb+");//open file for read and write without deleting it's content
 
 
@@ -109,12 +110,12 @@ void FileHandeling::write(QString path, QString content) {
 */
 
 bool FileHandeling::is_user_unique(QString username) {
-
+	players = fopen("players.bin", "rb+");
 	fseek(players, 0, SEEK_SET);
-	FiledPlayer *temp = new FiledPlayer();
+	Player *temp = new Player();
 	while ( fgetc(players) != EOF ) {
 		fseek(players, -1, SEEK_CUR);
-		fread(temp, sizeof(FiledPlayer), 1, players);
+		fread(temp, sizeof(Player), 1, players);
 		if ( temp->get_username() == username ) {
 			return false;
 		}
@@ -133,31 +134,36 @@ bool FileHandeling::is_players_file_open() {
 void FileHandeling::file_write(Player *new_player) {
 
 	fseek(players, 0, SEEK_END);
-	FiledPlayer *filedplayer = new FiledPlayer(*new_player);
-	fwrite(filedplayer, sizeof(FiledPlayer), 1, players);
+
+	fwrite(new_player, sizeof(Player), 1, players);
 
 }
 
 //
-Player *FileHandeling::file_read(QString username, unsigned long password) {
+Player *FileHandeling::file_read(QString username, QString password) {
+	fclose(players);
+	players = fopen("players.bin", "rb");
 	fseek(players, 0, SEEK_SET);
 
-	FiledPlayer *temp_fplayer = new FiledPlayer();
+	Player *temp_player = new Player();
 	bool not_found = true;
 
 	while ( fgetc(players) != EOF ) {//try to find a player with the given username
 		fseek(players, -1, SEEK_CUR);
-		fread(temp_fplayer, sizeof(FiledPlayer), 1, players);
-		if ( temp_fplayer->get_username() == username ) {
+		fread(temp_player, sizeof(Player), 1, players);
+		if ( temp_player->get_username() == username ) {
 			not_found = false;
 			break;
 		}
 	}
 
-	if ( not_found ) throw Errors(Errors::player_not_found);
-	if ( !temp_fplayer->is_password_correct(password) ) throw Errors(Errors::incorrect_password);
+	fclose(players);
+	players = fopen("players.bin", "rb+");
 
-	return new Player(*temp_fplayer);
+	if ( not_found ) throw Errors(Errors::player_not_found);
+	if ( !temp_player->is_password_correct(password) ) throw Errors(Errors::incorrect_password);
+
+	return new Player(*temp_player);
 
 
 }

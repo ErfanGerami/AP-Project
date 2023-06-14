@@ -62,7 +62,7 @@ void Login::on_start_clicked() {
 void Login::on_login_clicked() {
 	try {
 
-		MainPlayer = FileHandeling::file_read(ui->user->text(), Player::hash(ui->pass->text(), ui->user->text()));
+		MainPlayer = FileHandeling::file_read(ui->user->text(), ui->pass->text());
 
 	}
 	catch ( Errors err ) {

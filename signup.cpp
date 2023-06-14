@@ -35,8 +35,8 @@ void SignUp::on_start_clicked() {
 	bool agreed = ui->agree->isChecked();
 
 
-	if ( !FileHandeling::is_players_file_open() )
-		throw Errors(Errors::file_openning_error);
+	//if ( !FileHandeling::is_players_file_open() )
+	//	throw Errors(Errors::file_openning_error);
 
 	if ( !agreed ) {
 		QMessageBox::critical(this, "ERROR", "You should agree to the terms first");
@@ -64,7 +64,7 @@ void SignUp::on_start_clicked() {
 	//FileHandeling::write(user, MainPlayer->Parse());
 
 
-	Player *new_player = new Player(user, Player::hash(pass, user), 0, 0, 0, phone_number, adr, email, nullptr);
+	Player *new_player = new Player(user, pass, 0, 0, 0, phone_number, adr, email);
 	FileHandeling::file_write(new_player);
 
 
