@@ -14,6 +14,9 @@ Player::Player(const string &username, const string &password, int rank, int gam
 Player::Player(const Player &that): username(that.username), password_hash(that.password_hash), rank(that.rank), games_won(that.games_won), games_loose(that.games_loose), phone_number(that.phone_number), address(that.address), email(that.email), prev_game(that.prev_game) {}
 
 
+void Player::change_password(string password) { this->password_hash = hash(password, this->username); }
+
+
 
 
 unsigned long Player::hash(const string &password, const string &username) {
@@ -40,6 +43,10 @@ Player::Player(const string &username, const string &password):username(username
 
 
 string Player::get_username() const { return username; }
+
+
+
+string Player::get_phone_number() const { return phone_number; }
 
 bool Player::is_password_correct(string password) {
 	return hash(password, this->username) == password_hash;

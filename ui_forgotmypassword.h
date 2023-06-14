@@ -30,8 +30,8 @@ public:
     QLabel *user;
     QLineEdit *userL;
     QHBoxLayout *horizontalLayout;
-    QLabel *email;
-    QLineEdit *emailL;
+    QLabel *phone;
+    QLineEdit *phoneL;
     QPushButton *check;
     QPushButton *confirm;
     QLineEdit *passL;
@@ -76,23 +76,23 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        email = new QLabel(layoutWidget_2);
-        email->setObjectName(QString::fromUtf8("email"));
-        email->setStyleSheet(QString::fromUtf8("#email{color:white;}"));
+        phone = new QLabel(layoutWidget_2);
+        phone->setObjectName(QString::fromUtf8("phone"));
+        phone->setAutoFillBackground(false);
 
-        horizontalLayout->addWidget(email);
+        horizontalLayout->addWidget(phone);
 
-        emailL = new QLineEdit(layoutWidget_2);
-        emailL->setObjectName(QString::fromUtf8("emailL"));
-        emailL->setFont(font);
-        emailL->setStyleSheet(QString::fromUtf8("#emailL{border-image:\n"
+        phoneL = new QLineEdit(layoutWidget_2);
+        phoneL->setObjectName(QString::fromUtf8("phoneL"));
+        phoneL->setFont(font);
+        phoneL->setStyleSheet(QString::fromUtf8("#confirm_passL{border-image:\n"
 "url(:/images/images/gameground.png);\n"
 "padding-left:10px;\n"
 "\n"
 "}"));
-        emailL->setCursorPosition(0);
+        phoneL->setCursorPosition(0);
 
-        horizontalLayout->addWidget(emailL);
+        horizontalLayout->addWidget(phoneL);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -144,8 +144,8 @@ public:
     void retranslateUi(QDialog *ForgotMyPassword)
     {
         ForgotMyPassword->setWindowTitle(QApplication::translate("ForgotMyPassword", "Dialog", nullptr));
-        user->setText(QApplication::translate("ForgotMyPassword", "Password", nullptr));
-        email->setText(QApplication::translate("ForgotMyPassword", "email address", nullptr));
+        user->setText(QApplication::translate("ForgotMyPassword", "username", nullptr));
+        phone->setText(QApplication::translate("ForgotMyPassword", "phone number", nullptr));
         check->setText(QApplication::translate("ForgotMyPassword", "check", nullptr));
         confirm->setText(QApplication::translate("ForgotMyPassword", "confirm", nullptr));
         pass->setText(QApplication::translate("ForgotMyPassword", "new password", nullptr));

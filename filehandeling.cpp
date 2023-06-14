@@ -110,15 +110,15 @@ void FileHandeling::write(QString path, QString content) {
 */
 
 bool FileHandeling::is_user_unique(QString username) {
-	players = fopen("players.bin", "rb+");
+
 	fseek(players, 0, SEEK_SET);
 	Player *temp = new Player();
 	while ( fgetc(players) != EOF ) {
 		fseek(players, -1, SEEK_CUR);
 		fread(temp, sizeof(Player), 1, players);
-		if ( temp->get_username() == username.toStdString() ) {
+		if ( temp->get_username() == username.toStdString() )
 			return false;
-		}
+
 	}
 
 	return true;
@@ -128,6 +128,48 @@ bool FileHandeling::is_user_unique(QString username) {
 
 bool FileHandeling::is_players_file_open() {
 	return players != NULL;
+}
+
+void FileHandeling::check_player_validity_forgotpass(QString username, QString phone_number) {
+
+	fseek(players, 0, SEEK_SET);
+
+	Player *temp = new Player();
+
+	while ( fgetc(players) != EOF ) {
+		fseek(players, -1, SEEK_CUR);
+		fread(temp, sizeof(Player), 1, players);
+		if ( temp->get_username() == username.toStdString() && temp->get_phone_number() == phone_number.toStdString() )
+			return;
+
+	}
+
+	throw Errors(Errors::no_user_found_via_user_and_phone);
+}
+
+void FileHandeling::change_password(QString username, QString password) {
+
+	fseek(players, 0, SEEK_SET);
+
+	Player *temp_player = new Player();
+
+
+	while ( fgetc(players) != EOF ) {//try to find a player with the given username
+		fseek(players, -1, SEEK_CUR);
+		fread(temp_player, sizeof(Player), 1, players);
+		if ( temp_player->get_username() == username.toStdString() )
+			break;
+	}
+
+	temp_player->change_password(password.toStdString());
+
+	fseek(players, -sizeof(Player), SEEK_CUR);
+
+	fwrite(temp_player, sizeof(Player), 1, players);
+
+
+
+
 }
 
 
@@ -141,8 +183,7 @@ void FileHandeling::file_write(Player *new_player) {
 
 //
 Player *FileHandeling::file_read(QString username, QString password) {
-	fclose(players);
-	players = fopen("players.bin", "ab+");
+
 	fseek(players, 0, SEEK_SET);
 
 	Player *temp_player = new Player();
@@ -157,8 +198,7 @@ Player *FileHandeling::file_read(QString username, QString password) {
 		}
 	}
 
-	fclose(players);
-	players = fopen("players.bin", "rb+");
+
 
 	if ( not_found ) throw Errors(Errors::player_not_found);
 	if ( !temp_player->is_password_correct(password.toStdString()) ) throw Errors(Errors::incorrect_password);

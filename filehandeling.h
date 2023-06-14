@@ -19,6 +19,10 @@ public:
 
 	static bool is_players_file_open();
 
+	static void check_player_validity_forgotpass(QString username, QString phone_number);
+
+	static void change_password(QString username, QString password);
+
 	//static std::vector<QString> read(QString path);
 	//static void write(QString path, QString content);
 	//static QString Encrypt(QString string);
