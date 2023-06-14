@@ -6,6 +6,16 @@
 #include <thread>
 #include "filehandeling.h"
 #include "errors.h"
+#include <QAbstractAnimation>
+#include <QPropertyAnimation>
+#include <QVBoxLayout>
+#include "player.h"
+#include "game.h"
+#include "signup.h"
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+#include "forgotmypassword.h"
+#include "test.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -28,5 +38,10 @@ private slots:
 private:
 	std::thread *th;
 	Ui::Login *ui;
+	ForgotMyPassword *forgot_password;
+	SignUp *sign;
+
+public slots:
+	void show_me();
 };
 #endif // LOGIN_H

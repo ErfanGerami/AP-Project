@@ -13,8 +13,8 @@ MainMenu::MainMenu(QWidget *parent) :
          ui->no_games1->hide();
          ui->no_games2->hide();
          ui->score_show->setText(QString::number(MainPlayer->GetPrevGame().GetScore()));
-         ui->winner_show->setText(MainPlayer->GetPrevGame().GetWinner());
-         ui->time_show->setText(MainPlayer->GetPrevGame().GetTime());
+         ui->winner_show->setText(QString(MainPlayer->GetPrevGame().GetWinner().c_str()));
+         ui->time_show->setText(QString(MainPlayer->GetPrevGame().GetTime().c_str()));
          ui->won->setText(QString::number(MainPlayer->GetGamesWon()));
          ui->lost->setText(QString::number(MainPlayer->GetGamesLoose()));
          ui->coin->setText(QString::number(MainPlayer->GettCoins()));
