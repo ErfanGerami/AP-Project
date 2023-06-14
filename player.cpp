@@ -4,45 +4,46 @@
 
 
 
-Player::Player(const QString &name, const unsigned long &password, int rank, int games_won, int games_loose, const QString &phone_number, const QString &address, const QString &email, Game *prev_game)
-	: User(name, password, rank, games_won, games_loose, phone_number, address, email), prev_game(prev_game) {}
+Player::Player(const QString &username, const QString &password, int rank, int games_won, int games_loose, const QString &phone_number, const QString &address, const QString &email, const Game &prev_game)
+	:username(username), password_hash(hash(password, username)), rank(rank), games_won(games_won), games_loose(games_loose), phone_number(phone_number), address(address), email(email), prev_game(prev_game) {}
 
 
 
-Player::Player(const Player &that): User(that.name, that.password_hash, that.rank, that.games_won, that.games_loose, that.phone_number, that.address, that.email), prev_game(that.prev_game) {}
+
+
+Player::Player(const Player &that): username(that.username), password_hash(that.password_hash), rank(that.rank), games_won(that.games_won), games_loose(that.games_loose), phone_number(that.phone_number), address(that.address), email(that.email), prev_game(that.prev_game) {}
 
 
 
-Player::Player(const FiledPlayer &filed_player): User(filed_player.name, filed_player.password_hash, filed_player.rank, filed_player.games_won, filed_player.games_loose, filed_player.phone_number, filed_player.address, filed_player.email) {
-	if ( filed_player.prev_game.valid == true )
-		this->prev_game = new Game(filed_player.prev_game);
-	else
-		this->prev_game = nullptr;
-}
 
-unsigned long Player::hash(QString password, QString username) {
+unsigned long Player::hash(const QString &password, const QString &username) {
 	QString s = password + username;
 
-
+	std::string str = s.toStdString();
 	unsigned long h;
-	unsigned const char *us;
+
 	int MULTIPLIER = 37;
-	us = (unsigned const char *)s.toStdString().c_str();
+	int c = 0;
 	int i = 255;
 	h = 0;
-	while ( *us != '\0' ) {
-		h = h * MULTIPLIER + *us * i;
-		us++;
-		i = i * *us - i;
+	while ( str.size() != c ) {
+		h = h * MULTIPLIER + str[c] * i;
+		c++;
+		i = i * str[c] - i;
 	}
 
 	return h;
 }
 
 
-Player::Player(QString name, unsigned long password_hash):User(name, password_hash, 0, 0, 0, "", "", ""), prev_game(nullptr) {}
+Player::Player(const QString &username, const QString &password):username(username), password_hash(hash(password, username)), rank(0), games_won(0), games_loose(0), phone_number(""), address(""), email(""), prev_game() {}
 
-Player::~Player() { delete prev_game; }
+
+QString Player::get_username() const { return username; }
+
+bool Player::is_password_correct(QString password) {
+	return hash(password, this->username) == password_hash;
+}
 
 
 //QString Player::Parse() {
