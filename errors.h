@@ -13,7 +13,9 @@ public:
 	static int incorrect_password;
 	static int no_user_found_via_user_and_phone;
 	static int inputed_passwords_dont_match;
-
+	static int not_agreed_with_terms;
+	static int username_not_unique;
+	static int invalid_email;
 private:
 	int stat;
 

@@ -35,29 +35,30 @@ void SignUp::on_start_clicked() {
 	bool agreed = ui->agree->isChecked();
 
 
-	//if ( !FileHandeling::is_players_file_open() )
-	//	throw Errors(Errors::file_openning_error);
-
-	if ( !agreed ) {
-		QMessageBox::critical(this, "ERROR", "You should agree to the terms first");
-		return;
-	}
 	/*if ( pass.indexOf('/') != -1 || user.indexOf('/') != -1 || adr.indexOf('/') != -1 || phone_number.indexOf('/') != -1 ) {
 		QMessageBox::critical(this, "ERROR", "The queries should not contain the character '/'");
 		return;
 	}*/
-	if ( !FileHandeling::is_user_unique(user) ) {
-		QMessageBox::critical(this, "ERROR", "A player with that name already exists(or the name is restricted or access to files is denied)");
-		return;
-	}
-	if ( confirm != pass ) {
-		QMessageBox::critical(this, "ERROR", "Confirmed password and password doesnt match");
-		return;
-	}
-	if ( email.indexOf('@') == -1 ) {
-		QMessageBox::critical(this, "ERROR", "email address is not valid");
-		return;
 
+	try {
+		if ( !FileHandeling::is_players_file_open() )
+			throw Errors(Errors::file_openning_error);
+
+		if ( !agreed )
+			throw Errors(Errors::not_agreed_with_terms);
+
+		if ( !FileHandeling::is_user_unique(user) )
+			throw Errors(Errors::username_not_unique);
+
+		if ( confirm != pass )
+			throw Errors(Errors::inputed_passwords_dont_match);
+
+		if ( email.indexOf('@') == -1 )
+			throw Errors(Errors::invalid_email);
+
+	}
+	catch ( Errors err ) {
+		QMessageBox::critical(this, "ERROR", err.what());
 	}
 
 	//MainPlayer = new Player(user, pass, 0, 0, 0, phone_number, adr, email, nullptr);// now player should login
