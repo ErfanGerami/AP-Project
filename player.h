@@ -34,11 +34,15 @@ public:
 
 	Player(const Player &that);
 
+	void change_password(string password);
+
 
 	static unsigned long hash(const string &password, const string &username);
 
 
 	string get_username() const;
+
+	string get_phone_number() const;
 
 	bool is_password_correct(string password);
 
