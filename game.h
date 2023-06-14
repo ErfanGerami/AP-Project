@@ -1,18 +1,18 @@
 #ifndef GAME_H
 #define GAME_H
-#include <QString>
-
+#include <iostream>
+using namespace std;
 class Game {
 public:
 	Game() = default;
-	Game(const QString &winner, const QString &time, int rounds_won, int coins_achieved, int predicted_rounds);
+	Game(const string &winner, const string &time, int rounds_won, int coins_achieved, int predicted_rounds);
 	Game(const Game &that);
-	//QString Parse();
+	//string Parse();
 
-	bool valid = false;
+
 private:
-	QString winner;
-	QString time;
+	string winner;
+	string time;
 	int rounds_won;
 	int coins_achieved;
 	int predicted_rounds;

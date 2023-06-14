@@ -4,7 +4,7 @@
 
 
 
-Player::Player(const QString &username, const QString &password, int rank, int games_won, int games_loose, const QString &phone_number, const QString &address, const QString &email, const Game &prev_game)
+Player::Player(const string &username, const string &password, int rank, int games_won, int games_loose, const string &phone_number, const string &address, const string &email, const Game &prev_game)
 	:username(username), password_hash(hash(password, username)), rank(rank), games_won(games_won), games_loose(games_loose), phone_number(phone_number), address(address), email(email), prev_game(prev_game) {}
 
 
@@ -16,10 +16,10 @@ Player::Player(const Player &that): username(that.username), password_hash(that.
 
 
 
-unsigned long Player::hash(const QString &password, const QString &username) {
-	QString s = password + username;
+unsigned long Player::hash(const string &password, const string &username) {
+	string s = password + username;
 
-	std::string str = s.toStdString();
+	std::string str = s/*.toStdString()*/;
 	unsigned long h;
 
 	int MULTIPLIER = 37;
@@ -36,23 +36,23 @@ unsigned long Player::hash(const QString &password, const QString &username) {
 }
 
 
-Player::Player(const QString &username, const QString &password):username(username), password_hash(hash(password, username)), rank(0), games_won(0), games_loose(0), phone_number(""), address(""), email(""), prev_game() {}
+Player::Player(const string &username, const string &password):username(username), password_hash(hash(password, username)), rank(0), games_won(0), games_loose(0), phone_number(""), address(""), email(""), prev_game() {}
 
 
-QString Player::get_username() const { return username; }
+string Player::get_username() const { return username; }
 
-bool Player::is_password_correct(QString password) {
+bool Player::is_password_correct(string password) {
 	return hash(password, this->username) == password_hash;
 }
 
 
-//QString Player::Parse() {
+//string Player::Parse() {
 //	if ( prev_game == nullptr ) {
-//		return name + '/' + password + '/' + QString(rank) + '/' + QString(games_won) + '/' + QString(games_loose) + '/' + this->phone_number + '/' +
+//		return name + '/' + password + '/' + string(rank) + '/' + string(games_won) + '/' + string(games_loose) + '/' + this->phone_number + '/' +
 //			this->address + "null";
 //	}
 //	else {
-//		return name + '/' + password + '/' + QString(rank) + '/' + QString(games_won) + '/' + QString(games_loose) + '/' + this->phone_number + '/' +
+//		return name + '/' + password + '/' + string(rank) + '/' + string(games_won) + '/' + string(games_loose) + '/' + this->phone_number + '/' +
 //			this->address + '/' + prev_game->Parse();
 //
 //	}
