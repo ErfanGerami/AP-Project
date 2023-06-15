@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChangeInfo</class>
+ <widget class="QDialog" name="ChangeInfo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>749</width>
+    <height>343</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#ChangeInfo{border-image:url(:/images/images/WhiteSkull.jpg); }</string>
+  </property>
+  <widget class="QCheckBox" name="user_check">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>191</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ravie</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(72, 3, 3,100); color:white
+;font-size:17px;</string>
+   </property>
+   <property name="text">
+    <string>UserName</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="pass_check">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>191</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ravie</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(72, 3, 3,100); color:white
+;font-size:17px;</string>
+   </property>
+   <property name="text">
+    <string>Password</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="email_check">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>140</y>
+     <width>191</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ravie</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(72, 3, 3,100); color:white
+;font-size:17px;</string>
+   </property>
+   <property name="text">
+    <string>Email Address</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="phone_check">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>200</y>
+     <width>191</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ravie</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(72, 3, 3,100); color:white
+;font-size:17px;</string>
+   </property>
+   <property name="text">
+    <string>Phone Number</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="userL">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>35</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(0, 0, 0,200); color:red
+;font-size:15px;border-radius:10px;</string>
+   </property>
+   <property name="text">
+    <string>new user name:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="passL">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>80</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(0, 0, 0,200); color:red
+;font-size:15px;border-radius:10px;</string>
+   </property>
+   <property name="text">
+    <string>new password and confirm:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="emailL">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>140</y>
+     <width>91</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(0, 0, 0,200); color:red
+;font-size:15px;border-radius:10px;</string>
+   </property>
+   <property name="text">
+    <string>new Email:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="phoneL">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>195</y>
+     <width>151</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(0, 0, 0,200); color:red
+;font-size:15px;border-radius:10px;</string>
+   </property>
+   <property name="text">
+    <string>new Phone Bumber:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="user">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>50</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Rockwell Condensed</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#user{border-color:white;background-color:rgba(0,0,0,150);color:white;font-size:15px;border-radius:10px;border-style:solid;border-width:3px;}
+#user:hover{background-color:black;}
+
+</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="pass">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>100</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Rockwell Condensed</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pass{border-color:white;background-color:rgba(0,0,0,150);color:white;font-size:15px;border-radius:10px;border-style:solid;border-width:3px;}
+#pass:hover{background-color:black;}
+
+</string>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="confirm">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>100</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Rockwell Condensed</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#confirm{border-color:white;background-color:rgba(0,0,0,150);color:white;font-size:15px;border-radius:10px;border-style:solid;border-width:3px;}
+#confirm:hover{background-color:black;}</string>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="email">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>150</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Rockwell Condensed</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#email{border-color:white;background-color:rgba(0,0,0,150);color:white;font-size:15px;border-radius:10px;border-style:solid;border-width:3px;}
+#email:hover{background-color:black;}
+
+</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="phone">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>210</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Rockwell Condensed</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#phone{border-color:white;background-color:rgba(0,0,0,150);color:white;font-size:15px;border-radius:10px;border-style:solid;border-width:3px;}
+#phone:hover{background-color:black;}
+
+</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="submit">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>270</y>
+     <width>731</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Mistral</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#submit{font-size:40px; border-color:white;border-radius:35px;;background-color:rgba(0,0,0,225);color:white;border-style: solid;
+  border-width: 10px;}
+#submit:hover{background-color:rgba(255,255,255,225);color:black;}</string>
+   </property>
+   <property name="text">
+    <string>Submit</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>user_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>userL</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>134</x>
+     <y>46</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>264</x>
+     <y>58</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pass_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>passL</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>122</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>282</x>
+     <y>105</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pass_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pass</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>509</x>
+     <y>122</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pass_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>confirm</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>65</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>632</x>
+     <y>120</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>email_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>emailL</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>130</x>
+     <y>166</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>245</x>
+     <y>173</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>email_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>email</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>384</x>
+     <y>168</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>phone_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>phoneL</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>132</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>256</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>phone_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>phone</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>467</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>user_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>user</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

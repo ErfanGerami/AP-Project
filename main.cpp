@@ -7,7 +7,7 @@
 #include <QPushButton>
 #include <QTimer>
 #include <mainmenu.h>
-
+#include <changeinfo.h>
 
 Player *MainPlayer = nullptr;
 
@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 
 	QApplication a(argc, argv);
     Login *w = new Login;
-    MainMenu* m=new MainMenu;
+    ChangeInfo* m=new ChangeInfo;
     m->show();
 	w->show();
 

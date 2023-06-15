@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     card.cpp \
+    changeinfo.cpp \
     errors.cpp \
     filehandeling.cpp \
     forgotmypassword.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     card.h \
+    changeinfo.h \
     errors.h \
     filehandeling.h \
     forgotmypassword.h \
@@ -36,6 +38,7 @@ HEADERS += \
     mainmenu.h
 
 FORMS += \
+    changeinfo.ui \
     forgotmypassword.ui \
     login.ui \
     mainmenu.ui \

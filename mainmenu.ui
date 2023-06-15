@@ -43,7 +43,7 @@
     <string>Welcome</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="name">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -310,6 +310,7 @@
    </property>
    <property name="font">
     <font>
+     <family>MS Shell Dlg 2</family>
      <pointsize>12</pointsize>
     </font>
    </property>
