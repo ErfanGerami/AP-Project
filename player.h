@@ -58,6 +58,15 @@ public:
     string GetEmail();
     Game GetPrevGame();
 
+    void SetRank(int rank);
+    void SettCoins(int coins);
+    void SetGamesWon(int game_won);
+    void SetGamesLoose(int games_loose);
+    void SetPhonNnumber(string phone_numer);
+    void SetAddress(string address);
+    void SetEmail(string email);
+    void SetPrevGame(Game prev_game);
+
 	//string Parse();
 
 

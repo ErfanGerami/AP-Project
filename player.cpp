@@ -61,6 +61,15 @@ string Player::GetEmail(){return email;}
 int Player::GettCoins(){return coins;}
 Game Player::GetPrevGame(){return prev_game;};
 
+void Player::SetRank(int rank){this->rank=rank;}
+void Player::SettCoins(int coins){this->coins=coins;}
+void Player::SetGamesWon(int games_won){this->games_won=games_won}
+void Player::SetGamesLoose(int games_loose){this->games_loose=games_loose}
+void Player::SetPhonNnumber(string phone_numer){this->phone_number=phone_number}
+void Player::SetAddress(string address){this->address=address;}
+void Player::SetEmail(string email){this->email=email;}
+void Player::SetPrevGame(Game prev_game){this->prev_game=prev_game;}
+
 //string Player::Parse() {
 //	if ( prev_game == nullptr ) {
 //		return name + '/' + password + '/' + string(rank) + '/' + string(games_won) + '/' + string(games_loose) + '/' + this->phone_number + '/' +
