@@ -42,34 +42,30 @@ unsigned long Player::hash(const string &password, const string &username) {
 Player::Player(const string &username, const string &password):username(username), password_hash(hash(password, username)), rank(0), games_won(0), games_loose(0), phone_number(""), address(""), email(""), prev_game() {}
 
 
-string Player::get_username() const { return username; }
-
-
-
-string Player::get_phone_number() const { return phone_number; }
 
 bool Player::is_password_correct(string password) {
 	return hash(password, this->username) == password_hash;
 }
-
-int Player::GetRank(){return rank;}
-int Player::GetGamesWon(){return games_won;}
-int Player::GetGamesLoose(){return games_loose;}
-string Player::GetPhonNnumber(){return phone_number;};
-string Player::GetAddress(){return address;}
-string Player::GetEmail(){return email;}
-int Player::GettCoins(){return coins;}
-Game Player::GetPrevGame(){return prev_game;};
+unsigned long Player::GetPassWord()const{return this->password_hash;};
+string Player::GetUserName()const{return this->username;};
+int Player::GetRank()const{return rank;}
+int Player::GetGamesWon()const{return games_won;}
+int Player::GetGamesLoose()const{return games_loose;}
+string Player::GetPhonNnumber()const{return phone_number;};
+string Player::GetAddress()const{return address;}
+string Player::GetEmail()const{return email;}
+int Player::GettCoins()const{return coins;}
+Game Player::GetPrevGame()const{return prev_game;};
 
 void Player::SetRank(int rank){this->rank=rank;}
 void Player::SettCoins(int coins){this->coins=coins;}
-void Player::SetGamesWon(int games_won){this->games_won=games_won}
-void Player::SetGamesLoose(int games_loose){this->games_loose=games_loose}
-void Player::SetPhonNnumber(string phone_numer){this->phone_number=phone_number}
+void Player::SetGamesWon(int games_won){this->games_won=games_won;}
+void Player::SetGamesLoose(int games_loose){this->games_loose=games_loose;}
+void Player::SetPhonNnumber(string phone_numer){this->phone_number=phone_number;}
 void Player::SetAddress(string address){this->address=address;}
 void Player::SetEmail(string email){this->email=email;}
 void Player::SetPrevGame(Game prev_game){this->prev_game=prev_game;}
-
+void Player::SetPassword(string password){this->password_hash = hash(password, this->username);}
 //string Player::Parse() {
 //	if ( prev_game == nullptr ) {
 //		return name + '/' + password + '/' + string(rank) + '/' + string(games_won) + '/' + string(games_loose) + '/' + this->phone_number + '/' +

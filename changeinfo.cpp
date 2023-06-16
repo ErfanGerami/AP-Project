@@ -70,3 +70,52 @@ void ChangeInfo::on_phone_check_toggled(bool checked)
 
 }
 
+
+void ChangeInfo::on_submit_clicked()
+{
+    string username=MainPlayer->GetUserName();
+    string phone_number=MainPlayer->GetPhonNnumber();
+    string email=MainPlayer->GetEmail();
+    unsigned long confirm=MainPlayer->GetPassWord();
+    unsigned long password=MainPlayer->GetPassWord();
+
+
+    if(ui->user_check->isChecked()){
+        username=ui->user->text().toStdString();
+    }
+    //notice that if username is changed the hashed password must be changed too so the password is hashed using
+    //the new username a
+    if(ui->pass_check->isChecked()){
+        password=Player::hash(ui->pass->text().toStdString(),username);
+         password=Player::hash(ui->confirm->text().toStdString(),username);
+    }
+    if(ui->email_check->isChecked()){
+        email=ui->email->text().toStdString();
+    }
+    if(ui->phone_check->isChecked()){
+        phone_number=ui->phone->text().toStdString();
+
+    }
+
+    try {
+        if ( !FileHandeling::is_players_file_open() )
+            throw Errors(Errors::file_openning_error);
+
+
+        if ( !FileHandeling::is_user_unique(QString(username.c_str()) ))
+            throw Errors(Errors::username_not_unique);
+
+        if ( confirm != password )
+            throw Errors(Errors::inputed_passwords_dont_match);
+
+        if ( QString(email.c_str()).indexOf('@') == -1 )
+            throw Errors(Errors::invalid_email);
+
+    }
+
+    catch ( Errors err ) {
+        QMessageBox::critical(this, "ERROR", err.what());
+        return;
+    }
+}
+

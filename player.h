@@ -41,23 +41,23 @@ public:
 	static unsigned long hash(const string &password, const string &username);
 
 
-	string get_username() const;
-
-	string get_phone_number() const;
 
 	bool is_password_correct(string password);
 
 
 
-    int GetRank();
-    int GettCoins();
-    int GetGamesWon();
-    int GetGamesLoose();
-    string GetPhonNnumber();
-    string GetAddress();
-    string GetEmail();
-    Game GetPrevGame();
+    int GetRank()const;
+    int GettCoins()const ;
+    int GetGamesWon()const;
+    int GetGamesLoose()const;
+    string GetPhonNnumber()const;
+    string GetAddress()const;
+    string GetEmail()const;
+    string GetUserName()const;
+    Game GetPrevGame()const;
+    unsigned long GetPassWord()const;
 
+    void SetPassword(string password);
     void SetRank(int rank);
     void SettCoins(int coins);
     void SetGamesWon(int game_won);

@@ -22,7 +22,7 @@ public:
 	static void check_player_validity_forgotpass(QString username, QString phone_number);
 
 	static void change_password(QString username, QString password);
-
+    static void ChangePlayerEntirely(QString old_username, Player* new_player);
 	//static std::vector<QString> read(QString path);
 	//static void write(QString path, QString content);
 	//static QString Encrypt(QString string);

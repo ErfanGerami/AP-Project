@@ -2,7 +2,11 @@
 #define CHANGEINFO_H
 
 #include <QDialog>
-
+#include   "player.h"
+#include "filehandeling.h"
+#include "errors.h"
+#include <QMessageBox>
+extern Player* MainPlayer;
 namespace Ui {
 class ChangeInfo;
 }
@@ -25,6 +29,8 @@ private slots:
 
 
     void on_phone_check_toggled(bool checked);
+
+    void on_submit_clicked();
 
 private:
     Ui::ChangeInfo *ui;

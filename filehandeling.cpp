@@ -116,7 +116,7 @@ bool FileHandeling::is_user_unique(QString username) {
 	while ( fgetc(players) != EOF ) {
 		fseek(players, -1, SEEK_CUR);
 		fread(temp, sizeof(Player), 1, players);
-		if ( temp->get_username() == username.toStdString() )
+        if ( temp->GetUserName() == username.toStdString() )
 			return false;
 
 	}
@@ -139,7 +139,7 @@ void FileHandeling::check_player_validity_forgotpass(QString username, QString p
 	while ( fgetc(players) != EOF ) {
 		fseek(players, -1, SEEK_CUR);
 		fread(temp, sizeof(Player), 1, players);
-		if ( temp->get_username() == username.toStdString() && temp->get_phone_number() == phone_number.toStdString() )
+        if ( temp->GetUserName() == username.toStdString() && temp->GetUserName() == phone_number.toStdString() )
 			return;
 
 	}
@@ -157,7 +157,7 @@ void FileHandeling::change_password(QString username, QString password) {
 	while ( fgetc(players) != EOF ) {//try to find a player with the given username
 		fseek(players, -1, SEEK_CUR);
 		fread(temp_player, sizeof(Player), 1, players);
-		if ( temp_player->get_username() == username.toStdString() )
+        if ( temp_player->GetUserName() == username.toStdString() )
 			break;
 	}
 
@@ -171,6 +171,30 @@ void FileHandeling::change_password(QString username, QString password) {
 
 
 }
+void FileHandeling::ChangePlayerEntirely(QString old_username, Player* new_player) {
+
+    fseek(players, 0, SEEK_SET);
+
+    Player *temp_player = new Player();
+
+
+    while ( fgetc(players) != EOF ) {//try to find a player with the given username
+        fseek(players, -1, SEEK_CUR);
+        fread(temp_player, sizeof(Player), 1, players);
+        if ( temp_player->GetUserName() == old_username.toStdString() )
+            break;
+    }
+
+
+    fseek(players, -sizeof(Player), SEEK_CUR);
+
+    fwrite(new_player, sizeof(Player), 1, players);
+
+
+
+
+}
+
 
 
 void FileHandeling::file_write(Player *new_player) {
@@ -192,7 +216,7 @@ Player *FileHandeling::file_read(QString username, QString password) {
 	while ( fgetc(players) != EOF ) {//try to find a player with the given username
 		fseek(players, -1, SEEK_CUR);
 		fread(temp_player, sizeof(Player), 1, players);
-		if ( temp_player->get_username() == username.toStdString() ) {
+        if ( temp_player->GetUserName() == username.toStdString() ) {
 			not_found = false;
 			break;
 		}

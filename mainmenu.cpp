@@ -9,7 +9,7 @@ MainMenu::MainMenu(QWidget *parent) :
     ui->setupUi(this);
     Game game("s","121",1,1,1,1,1);
      MainPlayer=new Player("1","2",2,2,2,"1","1","1",100000,game);
-     ui->name->setText(QString(MainPlayer->get_username().c_str()));
+     ui->name->setText(QString(MainPlayer->GetUserName().c_str()));
      if(MainPlayer->GetPrevGame().GetIsPlayed()){
          ui->no_games1->hide();
          ui->no_games2->hide();
