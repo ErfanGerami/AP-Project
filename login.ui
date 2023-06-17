@@ -33,7 +33,11 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">#start{background:transparent;color:red;font-size:13px;}</string>
+     <string notr="true">#start{border-radius:1px;color:red;font-size:13px;background:transparent;}
+#start:hover{
+border-radius:6px;color:black;font-size:13px;background-color:red;
+color:black;
+}</string>
     </property>
     <property name="text">
      <string>Dont have an account?</string>
@@ -175,15 +179,17 @@ padding-left:10px;
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">#forgot{background:transparent;color:red;font-size:13px;}</string>
+     <string notr="true">#forgot{border-radius:1px;background:transparent;color:red;font-size:13px;background:transparent;}
+#forgot:hover{border-radius:6px;color:black;font-size:13px;background-color:red;
+color:black}</string>
     </property>
     <property name="text">
      <string>forgot my password</string>
     </property>
    </widget>
-   <zorder>start</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>forgot</zorder>
+   <zorder>start</zorder>
    <zorder>label</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">

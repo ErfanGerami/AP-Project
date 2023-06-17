@@ -16,7 +16,10 @@
 #include <QMediaPlaylist>
 #include "forgotmypassword.h"
 #include "test.h"
+#include "mainmenu.h"
 
+extern QString SavedPassword;
+extern Player *MainPlayer;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Login; }

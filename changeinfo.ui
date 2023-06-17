@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>749</width>
-    <height>343</height>
+    <height>427</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -328,7 +328,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>270</y>
+     <y>350</y>
      <width>731</width>
      <height>71</height>
     </rect>
@@ -346,6 +346,75 @@
    </property>
    <property name="text">
     <string>Submit</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="adr">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>260</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Rockwell Condensed</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#adr{border-color:white;background-color:rgba(0,0,0,150);color:white;font-size:15px;border-radius:10px;border-style:solid;border-width:3px;}
+#adr:hover{background-color:black;}
+
+</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="adr_check">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>250</y>
+     <width>191</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ravie</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(72, 3, 3,100); color:white
+;font-size:17px;</string>
+   </property>
+   <property name="text">
+    <string>Address</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="adrL">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>245</y>
+     <width>151</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(0, 0, 0,200); color:red
+;font-size:15px;border-radius:10px;</string>
+   </property>
+   <property name="text">
+    <string>new Address:</string>
    </property>
   </widget>
  </widget>
@@ -492,6 +561,38 @@
     <hint type="destinationlabel">
      <x>411</x>
      <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>adr_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>adrL</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>141</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>273</x>
+     <y>292</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>adr_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>adr</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>141</x>
+     <y>280</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>280</y>
     </hint>
    </hints>
   </connection>

@@ -6,7 +6,6 @@
 #include "errors.h"
 #include <vector>
 #include "player.h"
-
 class FileHandeling {
 public:
 	FileHandeling() = default;

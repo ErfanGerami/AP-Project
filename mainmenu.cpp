@@ -8,7 +8,6 @@ MainMenu::MainMenu(QWidget *parent) :
 {
     ui->setupUi(this);
     Game game("s","121",1,1,1,1,1);
-     MainPlayer=new Player("1","2",2,2,2,"1","1","1",100000,game);
      ui->name->setText(QString(MainPlayer->GetUserName().c_str()));
      if(MainPlayer->GetPrevGame().GetIsPlayed()){
          ui->no_games1->hide();
@@ -48,3 +47,14 @@ MainMenu::~MainMenu()
 {
     delete ui;
 }
+
+
+
+
+void MainMenu::on_change_info_clicked()
+{
+    ChangeInfo* change_win = new ChangeInfo(this);
+    change_win->show();
+
+}
+

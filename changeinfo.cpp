@@ -15,6 +15,8 @@ ChangeInfo::ChangeInfo(QWidget *parent) :
     ui->emailL->hide();
     ui->phone->hide();
     ui->phoneL->hide();
+    ui->adr->hide();
+    ui->adrL->hide();
 }
 
 ChangeInfo::~ChangeInfo()
@@ -69,25 +71,37 @@ void ChangeInfo::on_phone_check_toggled(bool checked)
          ui->phone_check->setStyleSheet("border-style:solid; background-color: rgba(72, 3, 3,100); color:white;font-size:17px;");
 
 }
+void ChangeInfo::on_adr_check_toggled(bool checked)
+{
+    if(checked)
+         ui->adr_check->setStyleSheet("border-style:solid; background-color: rgba(3, 72, 3,100); color:white;font-size:17px;");
+     else
+         ui->adr_check->setStyleSheet("border-style:solid; background-color: rgba(72, 3, 3,100); color:white;font-size:17px;");
+
+
+}
 
 
 void ChangeInfo::on_submit_clicked()
 {
+    string old_username=MainPlayer->GetUserName();
     string username=MainPlayer->GetUserName();
     string phone_number=MainPlayer->GetPhonNnumber();
     string email=MainPlayer->GetEmail();
+    string address=MainPlayer->GetAddress();
     unsigned long confirm=MainPlayer->GetPassWord();
     unsigned long password=MainPlayer->GetPassWord();
 
-
+    //for the sake of simplicity it could do hashing two time
     if(ui->user_check->isChecked()){
         username=ui->user->text().toStdString();
+        password=Player::hash(SavedPassword.toStdString(),username);
     }
     //notice that if username is changed the hashed password must be changed too so the password is hashed using
-    //the new username a
+    //the new username
     if(ui->pass_check->isChecked()){
         password=Player::hash(ui->pass->text().toStdString(),username);
-         password=Player::hash(ui->confirm->text().toStdString(),username);
+        confirm=Player::hash(ui->confirm->text().toStdString(),username);
     }
     if(ui->email_check->isChecked()){
         email=ui->email->text().toStdString();
@@ -95,6 +109,9 @@ void ChangeInfo::on_submit_clicked()
     if(ui->phone_check->isChecked()){
         phone_number=ui->phone->text().toStdString();
 
+    }
+    if(ui->adr_check->isChecked()){
+        address=ui->adr->text().toStdString();
     }
 
     try {
@@ -111,6 +128,12 @@ void ChangeInfo::on_submit_clicked()
         if ( QString(email.c_str()).indexOf('@') == -1 )
             throw Errors(Errors::invalid_email);
 
+        MainPlayer->SetEmail(email);
+        MainPlayer->SetPasswordAlreadyHashed(password);
+        MainPlayer->SetAddress(address);
+        MainPlayer->SetPhonNnumber(phone_number);
+        FileHandeling::ChangePlayerEntirely(QString(old_username.c_str()),MainPlayer);
+
     }
 
     catch ( Errors err ) {
@@ -118,4 +141,7 @@ void ChangeInfo::on_submit_clicked()
         return;
     }
 }
+
+
+
 

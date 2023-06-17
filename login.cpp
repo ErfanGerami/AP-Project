@@ -4,7 +4,6 @@
 
 
 
-extern Player *MainPlayer;
 Login::Login(QWidget *parent)
 	: QMainWindow(parent)
 	, ui(new Ui::Login) {
@@ -54,6 +53,10 @@ void Login::on_login_clicked() {
 	try {
 
 		MainPlayer = FileHandeling::file_read(ui->user->text(), ui->pass->text());
+        SavedPassword= ui->pass->text();
+        MainMenu* main_menu=new MainMenu;
+        main_menu->show();
+        this->hide();
 
 	}
 	catch ( Errors err ) {

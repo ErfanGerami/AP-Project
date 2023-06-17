@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QFontDatabase>
 #include "player.h"
+#include "changeinfo.h"
 extern Player MainPLayer;
 namespace Ui {
 class MainMenu;
@@ -16,6 +17,10 @@ class MainMenu : public QDialog
 public:
     explicit MainMenu(QWidget *parent = nullptr);
     ~MainMenu();
+
+private slots:
+
+    void on_change_info_clicked();
 
 private:
     Ui::MainMenu *ui;

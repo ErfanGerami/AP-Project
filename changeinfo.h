@@ -6,7 +6,10 @@
 #include "filehandeling.h"
 #include "errors.h"
 #include <QMessageBox>
+
 extern Player* MainPlayer;
+extern QString SavedPassword;
+
 namespace Ui {
 class ChangeInfo;
 }
@@ -31,6 +34,8 @@ private slots:
     void on_phone_check_toggled(bool checked);
 
     void on_submit_clicked();
+
+    void on_adr_check_toggled(bool checked);
 
 private:
     Ui::ChangeInfo *ui;

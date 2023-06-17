@@ -8,7 +8,7 @@
 #include <QTimer>
 #include <mainmenu.h>
 #include <changeinfo.h>
-
+QString SavedPassword;
 Player *MainPlayer = nullptr;
 
 int main(int argc, char *argv[]) {
@@ -19,8 +19,6 @@ int main(int argc, char *argv[]) {
 
 	QApplication a(argc, argv);
     Login *w = new Login;
-    ChangeInfo* m=new ChangeInfo;
-    m->show();
 	w->show();
 
 	return a.exec();

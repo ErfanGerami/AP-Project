@@ -57,11 +57,12 @@ string Player::GetEmail()const{return email;}
 int Player::GettCoins()const{return coins;}
 Game Player::GetPrevGame()const{return prev_game;};
 
+void Player::SetPasswordAlreadyHashed(unsigned long password_hash){this->password_hash=password_hash;}
 void Player::SetRank(int rank){this->rank=rank;}
 void Player::SettCoins(int coins){this->coins=coins;}
 void Player::SetGamesWon(int games_won){this->games_won=games_won;}
 void Player::SetGamesLoose(int games_loose){this->games_loose=games_loose;}
-void Player::SetPhonNnumber(string phone_numer){this->phone_number=phone_number;}
+void Player::SetPhonNnumber(string phone_number){this->phone_number=phone_number;}
 void Player::SetAddress(string address){this->address=address;}
 void Player::SetEmail(string email){this->email=email;}
 void Player::SetPrevGame(Game prev_game){this->prev_game=prev_game;}

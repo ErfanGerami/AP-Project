@@ -58,11 +58,12 @@ public:
     unsigned long GetPassWord()const;
 
     void SetPassword(string password);
+    void SetPasswordAlreadyHashed(unsigned long password_hash);
     void SetRank(int rank);
     void SettCoins(int coins);
     void SetGamesWon(int game_won);
     void SetGamesLoose(int games_loose);
-    void SetPhonNnumber(string phone_numer);
+    void SetPhonNnumber(string phone_number);
     void SetAddress(string address);
     void SetEmail(string email);
     void SetPrevGame(Game prev_game);
