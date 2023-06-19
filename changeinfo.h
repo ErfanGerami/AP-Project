@@ -37,8 +37,12 @@ private slots:
 
     void on_adr_check_toggled(bool checked);
 
+
 private:
     Ui::ChangeInfo *ui;
+signals:
+    void show_parent();
+
 };
 
 #endif // CHANGEINFO_H

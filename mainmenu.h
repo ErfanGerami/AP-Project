@@ -21,7 +21,8 @@ public:
 private slots:
 
     void on_change_info_clicked();
-
+public slots:
+    void show_me();
 private:
     Ui::MainMenu *ui;
 };

@@ -17,6 +17,7 @@ ChangeInfo::ChangeInfo(QWidget *parent) :
     ui->phoneL->hide();
     ui->adr->hide();
     ui->adrL->hide();
+    connect(this,SIGNAL(show_parent()),parent,SLOT(show_me()));
 }
 
 ChangeInfo::~ChangeInfo()
@@ -139,6 +140,8 @@ void ChangeInfo::on_submit_clicked()
         MainPlayer->SetPhonNnumber(phone_number);
         FileHandeling::ChangePlayerEntirely(QString(old_username.c_str()),MainPlayer);
         QMessageBox::information(this,"change status","Your iformation is changed successfuly.");
+        this->close();
+        emit show_parent();
 
 
     }
