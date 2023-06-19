@@ -120,9 +120,10 @@ void ChangeInfo::on_submit_clicked()
     try {
         if ( !FileHandeling::is_players_file_open() )
             throw Errors(Errors::file_openning_error);
-
-
-        if ( !FileHandeling::is_user_unique(QString(username.c_str()) ))
+        if(ui->user_check->isChecked()&&old_username==username){
+            throw Errors(Errors::invalid_input);
+        }
+        if ( ui->user_check->isChecked()&&!FileHandeling::is_user_unique(QString(username.c_str()) ))
             throw Errors(Errors::username_not_unique);
 
         if ( confirm != password )

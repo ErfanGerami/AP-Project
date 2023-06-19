@@ -8,14 +8,15 @@ public:
 	Errors(int stat);
 	int GetError();
 	QString what();
-	static int file_openning_error;
-	static int player_not_found;
-	static int incorrect_password;
-	static int no_user_found_via_user_and_phone;
-	static int inputed_passwords_dont_match;
-	static int not_agreed_with_terms;
-	static int username_not_unique;
-	static int invalid_email;
+    const static int file_openning_error;
+    const static int player_not_found;
+    const static int incorrect_password;
+    const static int no_user_found_via_user_and_phone;
+    const static int inputed_passwords_dont_match;
+    const static int not_agreed_with_terms;
+    const static int username_not_unique;
+    const static int invalid_email;
+    const static int invalid_input;
 private:
 	int stat;
 
