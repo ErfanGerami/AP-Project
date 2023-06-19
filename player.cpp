@@ -57,6 +57,7 @@ string Player::GetEmail()const{return email;}
 int Player::GettCoins()const{return coins;}
 Game Player::GetPrevGame()const{return prev_game;};
 
+void Player::SetUsername(string username){this->username=username;}
 void Player::SetPasswordAlreadyHashed(unsigned long password_hash){this->password_hash=password_hash;}
 void Player::SetRank(int rank){this->rank=rank;}
 void Player::SettCoins(int coins){this->coins=coins;}

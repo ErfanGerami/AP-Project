@@ -96,6 +96,8 @@ void ChangeInfo::on_submit_clicked()
     if(ui->user_check->isChecked()){
         username=ui->user->text().toStdString();
         password=Player::hash(SavedPassword.toStdString(),username);
+        confirm=Player::hash(SavedPassword.toStdString(),username);
+
     }
     //notice that if username is changed the hashed password must be changed too so the password is hashed using
     //the new username
@@ -128,11 +130,16 @@ void ChangeInfo::on_submit_clicked()
         if ( QString(email.c_str()).indexOf('@') == -1 )
             throw Errors(Errors::invalid_email);
 
+        MainPlayer->SetUsername(username
+                                );
+
         MainPlayer->SetEmail(email);
         MainPlayer->SetPasswordAlreadyHashed(password);
         MainPlayer->SetAddress(address);
         MainPlayer->SetPhonNnumber(phone_number);
         FileHandeling::ChangePlayerEntirely(QString(old_username.c_str()),MainPlayer);
+        QMessageBox::information(this,"change status","Your iformation is changed successfuly.");
+
 
     }
 

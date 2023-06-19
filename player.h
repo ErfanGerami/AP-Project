@@ -57,6 +57,8 @@ public:
     Game GetPrevGame()const;
     unsigned long GetPassWord()const;
 
+    void SetUsername(string username);
+
     void SetPassword(string password);
     void SetPasswordAlreadyHashed(unsigned long password_hash);
     void SetRank(int rank);
