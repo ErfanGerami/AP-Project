@@ -15,6 +15,7 @@ SOURCES += \
     filehandeling.cpp \
     forgotmypassword.cpp \
     game.cpp \
+    getserversinformation.cpp \
     main.cpp \
     login.cpp \
     mainmenu.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     filehandeling.h \
     forgotmypassword.h \
     game.h \
+    getserversinformation.h \
     login.h \
     mainmenu.h \
     player.h \
@@ -40,6 +42,7 @@ HEADERS += \
 FORMS += \
     changeinfo.ui \
     forgotmypassword.ui \
+    getserversinformation.ui \
     login.ui \
     mainmenu.ui \
     signup.ui \

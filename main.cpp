@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <mainmenu.h>
 #include <changeinfo.h>
+#include "getserversinformation.h"
 QString SavedPassword;
 Player *MainPlayer = nullptr;
 
@@ -18,8 +19,10 @@ int main(int argc, char *argv[]) {
 	fclose(temp);
 
 	QApplication a(argc, argv);
-    Login *w = new Login;
-	w->show();
+    //Login *w = new Login;
+    GetServersInformation* g=new GetServersInformation;
+    g->show();
+    //w->show();
 
 	return a.exec();
 }
