@@ -56,7 +56,11 @@ public:
         start->setGeometry(QRect(36, 230, 141, 20));
         QFont font;
         start->setFont(font);
-        start->setStyleSheet(QString::fromUtf8("#start{background:transparent;color:red;font-size:13px;}"));
+        start->setStyleSheet(QString::fromUtf8("#start{border-radius:1px;color:red;font-size:13px;background:transparent;}\n"
+"#start:hover{\n"
+"border-radius:6px;color:black;font-size:13px;background-color:red;\n"
+"color:black;\n"
+"}"));
         start->setFlat(false);
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
@@ -131,11 +135,13 @@ public:
         forgot->setGeometry(QRect(30, 260, 141, 20));
         forgot->setFont(font);
         forgot->setLayoutDirection(Qt::LeftToRight);
-        forgot->setStyleSheet(QString::fromUtf8("#forgot{background:transparent;color:red;font-size:13px;}"));
+        forgot->setStyleSheet(QString::fromUtf8("#forgot{border-radius:1px;background:transparent;color:red;font-size:13px;background:transparent;}\n"
+"#forgot:hover{border-radius:6px;color:black;font-size:13px;background-color:red;\n"
+"color:black}"));
         Login->setCentralWidget(centralwidget);
-        start->raise();
         layoutWidget->raise();
         forgot->raise();
+        start->raise();
         label->raise();
         menubar = new QMenuBar(Login);
         menubar->setObjectName(QString::fromUtf8("menubar"));

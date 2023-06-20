@@ -69,10 +69,10 @@ void SignUp::on_start_clicked() {
 	//FileHandeling::write(user, MainPlayer->Parse());
 
 
-    Player *new_player = new Player(user.toStdString(), pass.toStdString(), 0, 0, 0, phone_number.toStdString(), adr.toStdString(), email.toStdString(),1000);
+	Player *new_player = new Player(user.toStdString(), pass.toStdString(), 0, 0, 0, phone_number.toStdString(), adr.toStdString(), email.toStdString(), 1000);
 	FileHandeling::file_write(new_player);
 
-    this->close();
+	this->close();
 	emit show_parent();
 }
 

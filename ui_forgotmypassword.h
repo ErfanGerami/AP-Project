@@ -79,17 +79,14 @@ public:
         phone = new QLabel(layoutWidget_2);
         phone->setObjectName(QString::fromUtf8("phone"));
         phone->setAutoFillBackground(false);
+        phone->setStyleSheet(QString::fromUtf8("color:white;"));
 
         horizontalLayout->addWidget(phone);
 
         phoneL = new QLineEdit(layoutWidget_2);
         phoneL->setObjectName(QString::fromUtf8("phoneL"));
         phoneL->setFont(font);
-        phoneL->setStyleSheet(QString::fromUtf8("#confirm_passL{border-image:\n"
-"url(:/images/images/gameground.png);\n"
-"padding-left:10px;\n"
-"\n"
-"}"));
+        phoneL->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/gameground.png);padding-left:10px;"));
         phoneL->setCursorPosition(0);
 
         horizontalLayout->addWidget(phoneL);
