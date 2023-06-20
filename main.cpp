@@ -11,6 +11,7 @@
 #include "getserversinformation.h"
 QString SavedPassword;
 Player *MainPlayer = nullptr;
+QTcpSocket* MainSocket;
 
 int main(int argc, char *argv[]) {
 

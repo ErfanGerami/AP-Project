@@ -6,35 +6,274 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>411</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <property name="styleSheet">
+   <string notr="true">#GetServersInformation{border-image:url(:/images/images/WhiteSkull.jpg); }</string>
+  </property>
+  <widget class="QPushButton" name="reload">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>250</y>
-     <width>271</width>
-     <height>41</height>
+     <x>10</x>
+     <y>10</y>
+     <width>261</width>
+     <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#reload{font-size:20px; border-color:white;border-radius:35px;;background-color:rgba(0,0,0,225);color:white;border-style: solid;
+  border-width: 4px;}
+#reload:hover{background-color:rgba(255,255,255,225);color:black;}</string>
+   </property>
    <property name="text">
-    <string>Reaload</string>
+    <string>Load</string>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
-     <width>256</width>
+     <y>90</y>
+     <width>381</width>
      <height>192</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI Black</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgba(0,0,0,100);color:white;font-size:15px;
+</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>310</y>
+     <width>151</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-style:solid; background-color: rgba(0, 0, 0,200); color:red
+;font-size:15px;border-radius:10px;</string>
+   </property>
+   <property name="text">
+    <string>Custum Server</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="connect">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>340</y>
+     <width>411</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#connect{font-size:30px; border-color:white;border-radius:35px;;background-color:rgba(0,0,0,225);color:white;border-style: solid;
+  border-width: 4px;}
+#connect:hover{background-color:rgba(255,255,255,225);color:black;}</string>
+   </property>
+   <property name="text">
+    <string>Connect</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>350</y>
+     <width>358</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="IP_l">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="font">
+       <font>
+        <family>MV Boli</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style:solid; background-color: rgba(0, 0, 0,200); color:white
+
+;font-size:15px;border-radius:5px;</string>
+      </property>
+      <property name="text">
+       <string>IP</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="IP">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#IP{border-color:white;background-color:rgba(0,0,0,150);color:white;font-size:15px;border-radius:1px;border-style:solid;border-width:3px;}
+#IP:hover{background-color:black;}
+
+</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="port_l">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="font">
+       <font>
+        <family>MV Boli</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style:solid; background-color: rgba(0, 0, 0,200); color:white
+
+;font-size:15px;border-radius:10px;</string>
+      </property>
+      <property name="text">
+       <string>PORT</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="port">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#port{border-color:white;background-color:rgba(0,0,0,150);color:white;font-size:15px;border-radius:1px;border-style:solid;border-width:3px;}
+#port:hover{background-color:black;}
+
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>301</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QLabel" name="IP_l_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="font">
+       <font>
+        <family>MV Boli</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style:solid; background-color: rgba(0, 0, 0,200); color:white
+
+;font-size:13px;border-radius:10px;</string>
+      </property>
+      <property name="text">
+       <string>IP</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="mai_servers_ip">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#mai_servers_ip{border-color:white;background-color:rgba(0,0,0,150);color:white;font-size:15px;border-radius:1px;border-style:solid;border-width:1px;}
+#mai_servers_ip:hover{background-color:black;}
+
+</string>
+      </property>
+      <property name="text">
+       <string>127.0.0.1</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="port_l_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="font">
+       <font>
+        <family>MV Boli</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style:solid; background-color: rgba(0, 0, 0,200); color:white
+
+;font-size:13px;border-radius:10px;</string>
+      </property>
+      <property name="text">
+       <string>PORT</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="mai_servers_port">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#mai_servers_port{border-color:white;background-color:rgba(0,0,0,150);color:white;font-size:15px;border-radius:1px;border-style:solid;border-width:1px;}
+#mai_servers_port:hover{background-color:black;}
+
+</string>
+      </property>
+      <property name="text">
+       <string>1025</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

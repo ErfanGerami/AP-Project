@@ -17,6 +17,9 @@ public:
     const static int username_not_unique;
     const static int invalid_email;
     const static int invalid_input;
+    const static int connection_lost;
+    const static int cant_connect;
+    const static int cant_communicate;
 private:
 	int stat;
 

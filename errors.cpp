@@ -10,6 +10,9 @@ const int Errors::not_agreed_with_terms = 5;
 const int Errors::username_not_unique = 6;
 const int Errors::invalid_email = 7;
 const int Errors::invalid_input=8;
+const int Errors::connection_lost=9;
+const int Errors::cant_connect=10;
+const int Errors::cant_communicate=11;
 
 
 Errors::Errors(int stat) {
@@ -31,6 +34,9 @@ QString Errors::what() {
         case username_not_unique: return "A player with that username already exists";
         case invalid_email: return "email address is not valid";
         case invalid_input:return "invalid input has been given";
+        case connection_lost: return "connection is lost";
+        case cant_connect:return "cant connect to the server";
+        case cant_communicate:return "cant communicate to server";
 
 		default: return "error";
 
