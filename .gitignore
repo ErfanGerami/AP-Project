@@ -8,3 +8,8 @@
 /debug
 /release
 /ApProject.pro.user
+/MainServer/debug
+/MainServer/MainServer.vcxproj
+/MainServer/MainServer.vcxproj.filters
+/MainServer/MainServer.vcxproj.user
+/MainServer/release

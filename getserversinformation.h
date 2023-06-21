@@ -9,37 +9,35 @@
 #include <QTcpSocket>
 #include "errors.h"
 
-extern QTcpSocket* MainSocket;
+extern QTcpSocket *MainSocket;
 
 namespace Ui {
 
-class GetServersInformation;
+	class GetServersInformation;
 }
-class GetServersInformation : public QDialog
-{
-    Q_OBJECT
+class GetServersInformation: public QDialog {
+	Q_OBJECT
 
 public:
-    explicit GetServersInformation(QWidget *parent = nullptr);
-    ~GetServersInformation();
+	explicit GetServersInformation(QWidget *parent = nullptr);
+	~GetServersInformation();
 
 
 private slots:
 
-    void on_GetServersInformation_finished(int result);
+	void on_GetServersInformation_finished(int result);
 
+	void on_reload_clicked();
 
-    void on_reload_clicked();
+	void on_checkBox_toggled(bool checked);
 
-    void on_checkBox_toggled(bool checked);
-
-    void on_connect_clicked();
+	void on_connect_clicked();
 
 private:
-    Ui::GetServersInformation *ui;
-    std::vector<std::pair<QString,std::pair<QString,int>>> name_ip_port;
-    void GetInfo();
-    void UpdateList();
+	Ui::GetServersInformation *ui;
+	std::vector<std::pair<QString, std::pair<QString, int>>> name_ip_port;
+	void GetInfo();
+	void UpdateList();
 };
 
 #endif // GETSERVERSINFORMATION_H

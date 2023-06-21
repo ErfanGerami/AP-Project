@@ -46,7 +46,7 @@
   <widget class="QLabel" name="name">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>240</x>
      <y>10</y>
      <width>301</width>
      <height>91</height>
@@ -158,7 +158,7 @@
     <rect>
      <x>0</x>
      <y>220</y>
-     <width>271</width>
+     <width>321</width>
      <height>71</height>
     </rect>
    </property>
@@ -183,7 +183,7 @@
     <rect>
      <x>0</x>
      <y>290</y>
-     <width>271</width>
+     <width>321</width>
      <height>51</height>
     </rect>
    </property>
@@ -513,9 +513,9 @@
   <widget class="QLabel" name="prev_3">
    <property name="geometry">
     <rect>
-     <x>700</x>
+     <x>670</x>
      <y>20</y>
-     <width>81</width>
+     <width>101</width>
      <height>41</height>
     </rect>
    </property>
@@ -535,9 +535,9 @@
   <widget class="QLabel" name="prev_4">
    <property name="geometry">
     <rect>
-     <x>700</x>
+     <x>640</x>
      <y>70</y>
-     <width>141</width>
+     <width>211</width>
      <height>51</height>
     </rect>
    </property>
@@ -557,9 +557,9 @@
   <widget class="QLabel" name="prev_5">
    <property name="geometry">
     <rect>
-     <x>700</x>
+     <x>630</x>
      <y>120</y>
-     <width>141</width>
+     <width>231</width>
      <height>51</height>
     </rect>
    </property>

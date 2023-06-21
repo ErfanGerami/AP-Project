@@ -12,19 +12,20 @@
 #include "waitmenu.h"
 QString SavedPassword;
 Player *MainPlayer = nullptr;
-QTcpSocket* MainSocket;
+QTcpSocket *MainSocket;
 
 int main(int argc, char *argv[]) {
-
+    srand(time(NULL));
 	//to create the file if it doesn't already exist
 	FILE *temp = fopen("players.bin", "ab+");
 	fclose(temp);
 
 	QApplication a(argc, argv);
-    //Login *w = new Login;
+
     WaitMenu* g=new WaitMenu;
     g->show();
-    //w->show();
+
+
 
 	return a.exec();
 }

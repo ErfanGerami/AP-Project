@@ -15,7 +15,7 @@ private:
 	int rank;
 	int games_won;
 	int games_loose;
-    int coins;
+	int coins;
 	string phone_number;
 	string address;
 	string email;
@@ -27,7 +27,7 @@ public:
 	Player() = default;
 
 
-    Player(const string &username, const string &password, int rank, int games_won, int games_loose, const string &phone_number, const string &address, const string &email,const int coins, const Game &prev_game = Game());
+	Player(const string &username, const string &password, int rank, int games_won, int games_loose, const string &phone_number, const string &address, const string &email, const int coins, const Game &prev_game = Game());
 
 
 
@@ -46,29 +46,29 @@ public:
 
 
 
-    int GetRank()const;
-    int GettCoins()const ;
-    int GetGamesWon()const;
-    int GetGamesLoose()const;
-    string GetPhonNnumber()const;
-    string GetAddress()const;
-    string GetEmail()const;
-    string GetUserName()const;
-    Game GetPrevGame()const;
-    unsigned long GetPassWord()const;
+	int GetRank()const;
+	int GettCoins()const;
+	int GetGamesWon()const;
+	int GetGamesLoose()const;
+	string GetPhonNnumber()const;
+	string GetAddress()const;
+	string GetEmail()const;
+	string GetUserName()const;
+	Game GetPrevGame()const;
+	unsigned long GetPassWord()const;
 
-    void SetUsername(string username);
+	void SetUsername(string username);
 
-    void SetPassword(string password);
-    void SetPasswordAlreadyHashed(unsigned long password_hash);
-    void SetRank(int rank);
-    void SettCoins(int coins);
-    void SetGamesWon(int game_won);
-    void SetGamesLoose(int games_loose);
-    void SetPhonNnumber(string phone_number);
-    void SetAddress(string address);
-    void SetEmail(string email);
-    void SetPrevGame(Game prev_game);
+	void SetPassword(string password);
+	void SetPasswordAlreadyHashed(unsigned long password_hash);
+	void SetRank(int rank);
+	void SettCoins(int coins);
+	void SetGamesWon(int game_won);
+	void SetGamesLoose(int games_loose);
+	void SetPhonNnumber(string phone_number);
+	void SetAddress(string address);
+	void SetEmail(string email);
+	void SetPrevGame(Game prev_game);
 
 	//string Parse();
 

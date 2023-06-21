@@ -42,7 +42,7 @@ WaitMenu::WaitMenu(QWidget *parent) :
             anim->setEndValue(rand()%360);anim->start();});
         connect(anim2,&QPropertyAnimation::finished,[this,anim3,proxy]{anim3->setDuration(rand()%1500+500);
             anim3->setStartValue(QRect(proxy->x(),proxy->y(),proxy->boundingRect().width(),proxy->boundingRect().height()));
-            int size=(rand()%3+10);anim3->setEndValue(QRect(rand()%(ui->graphicsView->width()-100),rand()%(ui->graphicsView->height()-100),size,size));
+            int size=(rand()%30+10);anim3->setEndValue(QRect(rand()%(ui->graphicsView->width()-100),rand()%(ui->graphicsView->height()-100),size,size));
             anim3->start();});
 
         anim->start();
