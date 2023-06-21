@@ -37,7 +37,7 @@ void MainWindow::comminucate(QTcpSocket *socket) {
 		ui->textEdit->append("a client has arrived to read info\n");
 		QString all = "";
 		for ( const auto &i : name_ip_port ) {
-			all += i.first + ' ' + i.second.first + ' ' + QString::number(i.second.second);
+			all += i.first + '/' + i.second.first + '/' + QString::number(i.second.second);
 
 		}
 

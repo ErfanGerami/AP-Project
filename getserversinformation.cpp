@@ -37,7 +37,7 @@ void GetServersInformation::GetInfo() {
 
 		QString message = socket->readAll();
 
-		QStringList list = message.split(" ");
+		QStringList list = message.split("/");
 
 		if ( list.length() != 1 )
 			for ( int i = 0; i + 1 < list.length(); i += 3 ) {
