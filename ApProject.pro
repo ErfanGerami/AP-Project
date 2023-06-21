@@ -22,7 +22,8 @@ SOURCES += \
     player.cpp \
     signup.cpp \
     test.cpp\
-    mainmenu.cpp
+    mainmenu.cpp \
+    waitmenu.cpp
 
 HEADERS += \
     card.h \
@@ -37,7 +38,8 @@ HEADERS += \
     player.h \
     signup.h \
     test.h\
-    mainmenu.h
+    mainmenu.h \
+    waitmenu.h
 
 FORMS += \
     changeinfo.ui \
@@ -47,7 +49,8 @@ FORMS += \
     mainmenu.ui \
     signup.ui \
     test.ui\
-    mainmenu.ui
+    mainmenu.ui \
+    waitmenu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

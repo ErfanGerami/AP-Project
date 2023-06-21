@@ -13,13 +13,13 @@ Login::Login(QWidget *parent)
 	anim->setStartValue(QRect(-110, -110, 911, 720));
 	anim->setEndValue(QRect(0, 0, 160, 100));
 	anim->start();
-	QSound::play(":/sounds/sounds/laugh.wav");
-	QMediaPlayer *media = new QMediaPlayer();
-	QMediaPlaylist *playlist = new QMediaPlaylist;
-	playlist->addMedia(QUrl("qrc:/sounds/sounds/UiBackSound.mp3"));
-	media->setPlaylist(playlist);
-	media->setVolume(30);
-	media->play();
+    QSound::play(":/sounds/sounds/laugh.wav");
+    QMediaPlayer *media = new QMediaPlayer();
+    QMediaPlaylist *playlist = new QMediaPlaylist;
+    playlist->addMedia(QUrl("qrc:/sounds/sounds/UiBackSound.mp3"));
+    media->setPlaylist(playlist);
+    media->setVolume(30);
+    media->play();
 
 
 
