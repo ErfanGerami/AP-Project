@@ -20,10 +20,11 @@ int main(int argc, char *argv[]) {
 	fclose(temp);
 
 	QApplication a(argc, argv);
-	Login *w = new Login;
-	//GetServersInformation* g=new GetServersInformation;
-	//g->show();
-	w->show();
+	//Login *w = new Login;
+	//w->show();
+
+	GetServersInformation *g = new GetServersInformation;
+	g->show();
 
 	return a.exec();
 }

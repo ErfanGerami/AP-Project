@@ -9,25 +9,27 @@ MainWindow::MainWindow(QWidget *parent):
 
 
 	name_ip_port.push_back({ "sal", { "sala", 1 } });
-	server = new QTcpServer;
-	server->listen(QHostAddress::Any, 1025);
+	server = new QTcpServer();
+	server->listen(QHostAddress::Any, 1500);
 	if ( !server->isListening() ) {
 		ui->textEdit->append("SERVER IS DOWN\n");
 		return;
 	}
 	else {
-		ui->textEdit->append("SERVER IS LISTENNING\n");
+		ui->textEdit->append("SERVER IS LISTENING\n");
 		connect(server, SIGNAL(newConnection()), this, SLOT(connecting()));
 
 
 	}
 }
+
 void MainWindow::connecting() {
 	QTcpSocket *socket = server->nextPendingConnection();
 
 	threads.push_back(std::thread(&MainWindow::comminucate, this, socket));
 
 }
+
 void MainWindow::comminucate(QTcpSocket *socket) {
 	socket->waitForReadyRead(1000);
 	QString message = socket->readAll();
@@ -35,10 +37,11 @@ void MainWindow::comminucate(QTcpSocket *socket) {
 		ui->textEdit->append("a client has arrived to read info\n");
 		QString all = "";
 		for ( const auto &i : name_ip_port ) {
-			all += i.first + '/' + i.second.first + '/' + QString::number(i.second.second);
+			all += i.first + ' ' + i.second.first + ' ' + QString::number(i.second.second);
 
 		}
-		socket->write(all.toStdString().c_str());
+
+		socket->write(all.toUtf8());
 		socket->waitForBytesWritten(1000);
 	}
 
@@ -75,6 +78,7 @@ void MainWindow::comminucate(QTcpSocket *socket) {
 	socket->disconnect();
 
 }
+
 MainWindow::~MainWindow() {
 	for ( auto &i : threads ) {
 		i.join();

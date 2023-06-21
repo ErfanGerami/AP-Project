@@ -190,7 +190,7 @@ public:
         IP_l_2->setText(QApplication::translate("GetServersInformation", "IP", nullptr));
         mai_servers_ip->setText(QApplication::translate("GetServersInformation", "127.0.0.1", nullptr));
         port_l_2->setText(QApplication::translate("GetServersInformation", "PORT", nullptr));
-        mai_servers_port->setText(QApplication::translate("GetServersInformation", "1025", nullptr));
+        mai_servers_port->setText(QApplication::translate("GetServersInformation", "1500", nullptr));
     } // retranslateUi
 
 };

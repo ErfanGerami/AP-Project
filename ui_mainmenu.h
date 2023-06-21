@@ -75,7 +75,7 @@ public:
         label->setStyleSheet(QString::fromUtf8("color:white;font-size:60px"));
         name = new QLabel(MainMenu);
         name->setObjectName(QString::fromUtf8("name"));
-        name->setGeometry(QRect(210, 10, 301, 91));
+        name->setGeometry(QRect(240, 10, 301, 91));
         name->setFont(font1);
         name->setStyleSheet(QString::fromUtf8("color:red;font-size:60px;"));
         prev = new QLabel(MainMenu);
@@ -100,7 +100,7 @@ public:
         score->setStyleSheet(QString::fromUtf8("color:white;font-size:30px"));
         no_games2 = new QLabel(MainMenu);
         no_games2->setObjectName(QString::fromUtf8("no_games2"));
-        no_games2->setGeometry(QRect(0, 220, 271, 71));
+        no_games2->setGeometry(QRect(0, 220, 321, 71));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Bernard MT Condensed"));
         no_games2->setFont(font2);
@@ -108,7 +108,7 @@ public:
         no_games1 = new QLabel(MainMenu);
         no_games1->setObjectName(QString::fromUtf8("no_games1"));
         no_games1->setEnabled(true);
-        no_games1->setGeometry(QRect(0, 290, 271, 51));
+        no_games1->setGeometry(QRect(0, 290, 321, 51));
         no_games1->setFont(font2);
         no_games1->setStyleSheet(QString::fromUtf8("color:rgb(255, 144, 46);font-size:40px;background-color:yellow;"));
         score_show = new QLabel(MainMenu);
@@ -211,17 +211,17 @@ public:
         line_11->setFrameShadow(QFrame::Sunken);
         prev_3 = new QLabel(MainMenu);
         prev_3->setObjectName(QString::fromUtf8("prev_3"));
-        prev_3->setGeometry(QRect(700, 20, 81, 41));
+        prev_3->setGeometry(QRect(670, 20, 101, 41));
         prev_3->setFont(font1);
         prev_3->setStyleSheet(QString::fromUtf8("color:white;font-size:40px"));
         prev_4 = new QLabel(MainMenu);
         prev_4->setObjectName(QString::fromUtf8("prev_4"));
-        prev_4->setGeometry(QRect(700, 70, 141, 51));
+        prev_4->setGeometry(QRect(640, 70, 211, 51));
         prev_4->setFont(font1);
         prev_4->setStyleSheet(QString::fromUtf8("color:white;font-size:40px"));
         prev_5 = new QLabel(MainMenu);
         prev_5->setObjectName(QString::fromUtf8("prev_5"));
-        prev_5->setGeometry(QRect(700, 120, 141, 51));
+        prev_5->setGeometry(QRect(630, 120, 231, 51));
         prev_5->setFont(font1);
         prev_5->setStyleSheet(QString::fromUtf8("color:white;font-size:40px"));
         won = new QLabel(MainMenu);
