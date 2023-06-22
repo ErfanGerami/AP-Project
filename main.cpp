@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 
 	QApplication a(argc, argv);
 
-    WaitMenu* g=new WaitMenu;
+    Login* g=new Login;
     g->show();
 
 
