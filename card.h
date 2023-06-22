@@ -8,7 +8,6 @@
 #include <QGraphicsProxyWidget>
 #include <QGraphicsScene>
 #include <QParallelAnimationGroup>
-#include <QSound>
 
 
 class Card:public QWidget {

@@ -1,4 +1,5 @@
 #include "card.h"
+
 const int Card::unknown = -1;
 const int Card::treasure = 0;
 const int Card::map = 1;
@@ -28,7 +29,6 @@ Card::Card(int type, int number, int x, int y, int rotation, QGraphicsScene *sce
 
 	proxy->setRotation(rotation);
 
-	QPixmap *picture;
 	switch ( type ) {
 		case Card::parrot:
 			button->setStyleSheet("border-image:url(:/images/images/parot.png) strech 0 0 0;background:transparent;");
@@ -76,7 +76,7 @@ void Card::PushCard() {
 	group->addAnimation(tranform_animation);
 	group->addAnimation(rotation_animation);
 	group->start();
-	QSound::play(":/sounds/sounds/card_push.wav");
+	//QSound::play(":/sounds/sounds/card_push.wav");
 
 
 
