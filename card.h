@@ -13,14 +13,14 @@
 
 class Card:public QWidget {
 public:
-	const static int parrot;
-	const static int map;
-	const static int queen;
-	const static int flag;
-	const static int king;
 	const static int treasure;
-	const static int unknown;
+	const static int map;
+	const static int parrot;
+	const static int flag;
 	const static int pirate;
+	const static int queen;
+	const static int king;
+	const static int unknown;
 
 	const int dest_x = -100;
 	const int dest_y = -100;
