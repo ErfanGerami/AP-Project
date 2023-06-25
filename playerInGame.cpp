@@ -36,6 +36,7 @@ void PlayerInGame::SetBasePos(std::pair<int, int> base_pos) { this->base_pos = b
 void PlayerInGame::Deal() {
 	const int space_between_cards = 40;
 	int rotation = 270 - place * 90 - cards.size() * space_between_cards;
+    std::sort(cards.begin(),cards.end(),[](Card c1,Card c2){return (c1.GetType()>c2.GetType());});
 	for (auto& card : cards) {
 		card.show();
 		card.PushTo(base_pos, rotation);

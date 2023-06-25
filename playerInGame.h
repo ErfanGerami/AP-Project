@@ -6,7 +6,7 @@
 
 #include "player.h"
 #include "game.h"
-
+#include <algorithm>
 class PlayerInGame:public Player
 {
 public:

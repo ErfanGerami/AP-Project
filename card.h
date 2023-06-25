@@ -9,7 +9,8 @@
 #include <QGraphicsScene>
 #include <QParallelAnimationGroup>
 #include <utility>
-
+#include <QPixmap>
+#include <QDebug>
 
 class Card:public QWidget {
 public:	
@@ -26,7 +27,7 @@ public:
 
 	const int dest_x = -100;
 	const int dest_y = -100;
-	const int width = 100;
+    const int width = 120;
 	const int height = 200;
 
 
@@ -43,7 +44,7 @@ public:
 	void PushCard();
 	void PushTo(std::pair<int, int> pos);
 	void PushTo(std::pair<int, int> pos, int rotation);
-
+    void SetUpButton();
 
 	void show();
 	void hide();
