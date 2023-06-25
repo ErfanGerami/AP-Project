@@ -23,8 +23,8 @@ int main(int argc, char *argv[]) {
 
 	QApplication a(argc, argv);
 
-    MainGameWindow* g=new MainGameWindow    ;
-    g->show();
+    ///MainGameWindow* g=new MainGameWindow    ;
+    ///g->show();
 
 
 
