@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 	QApplication a(argc, argv);
 
 
-    MainMenu* g=new MainMenu;
+    MainGameWindow* g=new MainGameWindow;
     g->show();
 
 

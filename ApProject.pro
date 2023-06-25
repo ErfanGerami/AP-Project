@@ -9,7 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    card.cpp \
+    card.cpp\
     changeinfo.cpp \
     errors.cpp \
     filehandeling.cpp \
@@ -29,9 +29,8 @@ SOURCES += \
     PlayerInGame.cpp \
     DataPacket.cpp \
     serverselection.cpp
-
 HEADERS += \
-    card.h \
+    card.h\
     changeinfo.h \
     errors.h \
     filehandeling.h \

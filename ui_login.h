@@ -39,7 +39,6 @@ public:
     QPushButton *login;
     QLabel *label;
     QPushButton *forgot;
-    QPushButton *pushButton_3;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -139,15 +138,11 @@ public:
         forgot->setStyleSheet(QString::fromUtf8("#forgot{border-radius:1px;background:transparent;color:red;font-size:13px;background:transparent;}\n"
 "#forgot:hover{border-radius:6px;color:black;font-size:13px;background-color:red;\n"
 "color:black}"));
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(110, 60, 93, 28));
         Login->setCentralWidget(centralwidget);
         layoutWidget->raise();
         forgot->raise();
         start->raise();
         label->raise();
-        pushButton_3->raise();
         menubar = new QMenuBar(Login);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 26));
@@ -173,7 +168,6 @@ public:
         login->setText(QApplication::translate("Login", "Login", nullptr));
         label->setText(QString());
         forgot->setText(QApplication::translate("Login", "forgot my password", nullptr));
-        pushButton_3->setText(QApplication::translate("Login", "PushButton", nullptr));
     } // retranslateUi
 
 };
