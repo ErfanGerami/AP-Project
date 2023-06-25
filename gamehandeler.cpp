@@ -5,10 +5,10 @@ GameHandeler::GameHandeler()
 }
 
 GameHandeler::GameHandeler(int number_of_players,QGraphicsView* view,QGraphicsScene* scene,Player p1,Player p2,Player p3,Player p4){
-    this->players[0] =new PlayerInGame(p1, {});
-    this->players[1]=new PlayerInGame(p2, {});
-    this->players[2]=new PlayerInGame(p3, {});
-    this->players[3]=new PlayerInGame(p4, {});
+    this->players[0] =new PlayerInGame(p1,0, {});
+    this->players[1]=new PlayerInGame(p2,1, {});
+    this->players[2]=new PlayerInGame(p3,2, {});
+    this->players[3]=new PlayerInGame(p4,3, {});
     
     const int max_height = 900;
     const int max_width = 1100;
@@ -117,5 +117,13 @@ void GameHandeler::TellTheFirst(QString username) {
 
    
 
+}
+void GameHandeler::Deal() {
+    players[0]->NewCards({ Card(Card::queen,scene,view,1),Card(Card::parrot,scene,view,1),Card(Card::parrot,scene,view,1) });
+    int rotation;
+    for (int i = 0; i < number_of_players;i++) {
+        players[i]->Deal();
+
+    }
 }
 

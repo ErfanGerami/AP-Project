@@ -42,6 +42,8 @@ public:
 	QPushButton *GetButton();
 	void PushCard();
 	void PushTo(std::pair<int, int> pos);
+	void PushTo(std::pair<int, int> pos, int rotation);
+
 
 	void show();
 	void hide();
