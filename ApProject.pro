@@ -61,7 +61,8 @@ FORMS += \
     signup.ui \
     test.ui\
     mainmenu.ui \
-    waitmenu.ui
+    waitmenu.ui \
+	serverselection.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
