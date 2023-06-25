@@ -14,8 +14,7 @@ Card::Card() {
 	this->type = Card::unknown;
 	this->button = nullptr;
 }
-Card::Card(int type, int number, int x, int y, int rotation, QGraphicsScene *scene, QGraphicsView *view) {
-
+Card::Card(int type,QGraphicsScene *scene, QGraphicsView *view, int number,int x, int y, int rotation){
 	this->scene = scene;
 	this->view = view;
 	this->type = type;
@@ -23,7 +22,7 @@ Card::Card(int type, int number, int x, int y, int rotation, QGraphicsScene *sce
 	button = new QPushButton();
 	button->resize(width, height);
 	proxy = scene->addWidget(button);
-	proxy->setPos(x, y);
+	proxy->setPos(qreal(x),qreal(y));
 
 
 

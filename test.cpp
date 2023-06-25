@@ -20,10 +20,7 @@ test::test(QWidget *parent) :
         view->resize(500,500);
 
 view->setParent(this);
-        Card* card=new Card(Card::parrot,1,10,10,0,scene,view);
-        card->show();
-        card->PushCard();
-        view->show();
+      
 
 
 

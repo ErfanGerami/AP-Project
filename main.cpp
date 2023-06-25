@@ -10,6 +10,7 @@
 #include <changeinfo.h>
 #include "getserversinformation.h"
 #include "waitmenu.h"
+#include <maingamewindow.h>
 QString SavedPassword;
 Player *MainPlayer = nullptr;
 QTcpSocket *MainSocket;
@@ -22,7 +23,7 @@ int main(int argc, char *argv[]) {
 
 	QApplication a(argc, argv);
 
-    Login* g=new Login;
+    MainGameWindow* g=new MainGameWindow    ;
     g->show();
 
 

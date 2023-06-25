@@ -28,8 +28,8 @@ public:
 
 
 	Card();
-	Card(int type, int number, int x, int y, int rotation, QGraphicsScene *scene, QGraphicsView *view);
-	int GetNumber();
+    Card(int type,QGraphicsScene *scene, QGraphicsView *view, int number=-1,int x=0, int y=0, int rotation=0);
+    int GetNumber();
 	int GetType();
 	QPushButton *GetButton();
 	void PushCard();
