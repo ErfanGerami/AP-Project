@@ -25,7 +25,10 @@ SOURCES += \
     signup.cpp \
     test.cpp\
     mainmenu.cpp \
-    waitmenu.cpp
+    waitmenu.cpp \
+    PlayerInGame.cpp \
+    DataPacket.cpp \
+    serverselection.cpp
 
 HEADERS += \
     card.h \
@@ -43,7 +46,10 @@ HEADERS += \
     signup.h \
     test.h\
     mainmenu.h \
-    waitmenu.h
+    waitmenu.h \
+    PlayerInGame.h \
+    DataPacket.h \
+    serverselection.h
 
 FORMS += \
     changeinfo.ui \
