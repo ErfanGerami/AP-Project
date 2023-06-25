@@ -1,15 +1,22 @@
 #include "gamehandeler.h"
-
+#include <thread>
 GameHandeler::GameHandeler()
 {
-
-
 }
-GameHandeler::GameHandeler(int number_of_players,QGraphicsView*view,QGraphicsScene* scene,Player* p1,Player* p2,Player* p3,Player* p4){
-    this->players[0]=p1;
-    this->players[1]=p2;
-    this->players[2]=p3;
-    this->players[3]=p4;
+
+GameHandeler::GameHandeler(int number_of_players,QGraphicsView* view,QGraphicsScene* scene,Player p1,Player p2,Player p3,Player p4){
+    this->players[0] =new PlayerInGame(p1, {});
+    this->players[1]=new PlayerInGame(p2, {});
+    this->players[2]=new PlayerInGame(p3, {});
+    this->players[3]=new PlayerInGame(p4, {});
+    
+    const int max_height = 900;
+    const int max_width = 1100;
+
+    players[0]->SetBasePos({ 0,max_height/2+100 });
+    players[1]->SetBasePos({ 0 ,0 });
+    players[2]->SetBasePos({ -max_width/2 ,max_height /4  + 50 });
+    players[3]->SetBasePos({ max_width / 2 ,max_height / 4 + 50 });
     this->number_of_players=number_of_players;
     this->scene=scene;
     this->view=view;
@@ -54,4 +61,61 @@ GameHandeler::GameHandeler(int number_of_players,QGraphicsView*view,QGraphicsSce
 
 }
 
+void GameHandeler::TellTheFirst(QString username) {
+    //this function just fools the players to think the random player is decided here but all we need is the name of the winner to map the largest number to
+    int* numbers = new int[number_of_players];
+    for (int i = 0; i < number_of_players;i++) {
+        numbers[i] = rand() % 7 + 1;
+    }
+
+    int max_index = 0;
+    for (int i = 0; i < number_of_players; i++) {
+        if (numbers[i] > max_index) {
+            max_index = i;
+        }
+    }
+    int temp = numbers[0];
+    numbers[0] = numbers[max_index];
+    numbers[max_index] = temp;
+    Card** cards = new Card*[number_of_players];
+    for (int i = 0; i < number_of_players; i++) {
+
+        cards[i] = new Card(Card::parrot, scene, view, numbers[i]);
+        cards[i]->show();
+        
+    }
+    int cnt = number_of_players-1;
+    //sorting in order to make the winner the first
+    std::vector<PlayerInGame*> players_temp;
+    int index_of_winner=-1;
+    for (int i = 0; i < number_of_players; i++) {
+        players_temp.push_back( players[i]);
+        if (players[i]->GetUserName().c_str() == username) {
+            index_of_winner = i;
+        }
+    }
+    PlayerInGame* saved_player = players_temp[0];
+    players_temp[0] = players_temp[index_of_winner];
+    players_temp[index_of_winner] = saved_player;
+   
+
+    for (int i = 0; i < number_of_players; i++) {
+        
+        cards[i]->PushTo(players_temp[i]->GetBasePos());
+    }
+   
+   
+
+
+
+
+
+
+
+
+
+
+   
+
+}
 

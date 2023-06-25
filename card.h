@@ -8,18 +8,21 @@
 #include <QGraphicsProxyWidget>
 #include <QGraphicsScene>
 #include <QParallelAnimationGroup>
+#include <utility>
 
 
 class Card:public QWidget {
-public:
-	const static int treasure;
-	const static int map;
-	const static int parrot;
-	const static int flag;
-	const static int pirate;
-	const static int queen;
-	const static int king;
-	const static int unknown;
+public:	
+	typedef int CardType;
+
+	const static CardType treasure;
+	const static CardType map;
+	const static CardType parrot;
+	const static CardType flag;
+	const static CardType pirate;
+	const static CardType queen;
+	const static CardType king;
+	const static CardType unknown;
 
 	const int dest_x = -100;
 	const int dest_y = -100;
@@ -28,11 +31,18 @@ public:
 
 
 	Card();
-    Card(int type,QGraphicsScene *scene, QGraphicsView *view, int number=-1,int x=0, int y=0, int rotation=0);
+    Card(CardType type,QGraphicsScene *scene, QGraphicsView *view, int number=-1,int x=0, int y=0, int rotation=0);
+	Card(const Card& other);
+	void operator=(const Card& other);
+
     int GetNumber();
 	int GetType();
+	void SetNumber(int number);
+	void SetType(CardType type);
 	QPushButton *GetButton();
 	void PushCard();
+	void PushTo(std::pair<int, int> pos);
+
 	void show();
 	void hide();
 
@@ -45,7 +55,7 @@ public:
 
 private:
 	int number;
-	int type;
+	CardType type;
 	QPushButton *button;
 	QGraphicsProxyWidget *proxy;
 	QGraphicsScene *scene;

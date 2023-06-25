@@ -2,7 +2,7 @@
 #define MAINGAMEWINDOW_H
 
 #include <QDialog>
-
+#include "gamehandeler.h"
 namespace Ui {
 class MainGameWindow;
 }
