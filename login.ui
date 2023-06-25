@@ -187,24 +187,10 @@ color:black}</string>
      <string>forgot my password</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>60</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
    <zorder>layoutWidget</zorder>
    <zorder>forgot</zorder>
    <zorder>start</zorder>
    <zorder>label</zorder>
-   <zorder>pushButton_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
