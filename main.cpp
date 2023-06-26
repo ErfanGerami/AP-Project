@@ -26,12 +26,12 @@ int main(int argc, char *argv[]) {
 
 	QApplication a(argc, argv);
 
-	//MainGameWindow *g = new MainGameWindow;
-	//g->show();
 
+	MainGameWindow *g = new MainGameWindow;
+	g->show();
 
-	Login l = new Login();
-	l.show();
+	//Login l = new Login();
+	//l.show();
 
 
 	return a.exec();

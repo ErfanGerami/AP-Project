@@ -9,7 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    card.cpp \
+    card.cpp\
     changeinfo.cpp \
     errors.cpp \
     filehandeling.cpp \
@@ -17,6 +17,7 @@ SOURCES += \
     game.cpp \
     gamehandeler.cpp \
     getserversinformation.cpp \
+    logic.cpp \
     main.cpp \
     login.cpp \
     maingamewindow.cpp \
@@ -33,7 +34,7 @@ SOURCES += \
 	channel.cpp
 
 HEADERS += \
-    card.h \
+    card.h\
     changeinfo.h \
     errors.h \
     filehandeling.h \
@@ -41,6 +42,7 @@ HEADERS += \
     game.h \
     gamehandeler.h \
     getserversinformation.h \
+    logic.h \
     login.h \
     maingamewindow.h \
     mainmenu.h \

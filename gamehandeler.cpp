@@ -5,23 +5,23 @@ GameHandeler::GameHandeler()
 }
 
 GameHandeler::GameHandeler(int number_of_players,QGraphicsView* view,QGraphicsScene* scene,Player p1,Player p2,Player p3,Player p4){
-    this->players[0] =new PlayerInGame(p1,0, {});
-    this->players[1]=new PlayerInGame(p2,1, {});
-    this->players[2]=new PlayerInGame(p3,2, {});
-    this->players[3]=new PlayerInGame(p4,3, {});
+    this->players[0] =new PlayerInGame(p1,0,{},0);
+    this->players[1]=new PlayerInGame(p2,2, {},0);
+    this->players[2]=new PlayerInGame(p3,1, {},0);
+    this->players[3]=new PlayerInGame(p4,3, {},0);
     
     const int max_height = 900;
     const int max_width = 1100;
 
-    players[0]->SetBasePos({ 0,max_height/2+100 });
+    players[0]->SetBasePos({ 0,max_height/2+400 });
     players[1]->SetBasePos({ 0 ,0 });
-    players[2]->SetBasePos({ -max_width/2 ,max_height /4  + 50 });
-    players[3]->SetBasePos({ max_width / 2 ,max_height / 4 + 50 });
+    players[2]->SetBasePos({ max_width / 2+200 ,max_height / 2  });
+    players[3]->SetBasePos({ -max_width/2-100 ,max_height /2  });
     this->number_of_players=number_of_players;
     this->scene=scene;
     this->view=view;
     //just adding the cards
-    for(int i=0;i<number_of_players*4;i++){
+   /* for(int i=0;i<number_of_players*4;i++){
         Card* card1=new Card(Card::treasure,scene,view,i);
         cards.push_back(card1);
         Card* card2=new Card(Card::map,scene,view,i);
@@ -57,7 +57,7 @@ GameHandeler::GameHandeler(int number_of_players,QGraphicsView* view,QGraphicsSc
 
         cards.push_back(card);
 
-    }
+    }*/
 
 }
 
@@ -119,7 +119,13 @@ void GameHandeler::TellTheFirst(QString username) {
 
 }
 void GameHandeler::Deal() {
-    players[0]->NewCards({ Card(Card::queen,scene,view,1),Card(Card::parrot,scene,view,1),Card(Card::parrot,scene,view,1) });
+
+    players[0]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2),Card(Card::queen,scene,view,2),Card(Card::queen,scene,view,2),Card(Card::queen,scene,view,2),Card(Card::queen,scene,view,2) });
+    players[1]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2) });
+    players[2]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2) });
+    players[3]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2) });
+
+
     int rotation;
     for (int i = 0; i < number_of_players;i++) {
         players[i]->Deal();

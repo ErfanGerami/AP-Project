@@ -2,20 +2,47 @@
     <qresource prefix="/images">
         <file>images/back.jpg</file>
         <file>images/border.png</file>
-        <file>images/flag.png</file>
         <file>images/gameground.png</file>
         <file>images/logo.png</file>
-        <file>images/map.png</file>
         <file>images/name.png</file>
-        <file>images/parot.png</file>
         <file>images/pirate.png</file>
         <file>images/queen.png</file>
         <file>images/scullking.png</file>
         <file>images/ship.jpg</file>
         <file>images/skullsign.png</file>
-        <file>images/treasure.png</file>
         <file>images/WhiteSkull.jpg</file>
         <file>images/coin.png</file>
+        <file>images/map1.png</file>
+        <file>images/map2.png</file>
+        <file>images/map3.png</file>
+        <file>images/map4.png</file>
+        <file>images/map5.png</file>
+        <file>images/map6.png</file>
+        <file>images/map7.png</file>
+        <file>images/map8.png</file>
+        <file>images/flag1.png</file>
+        <file>images/flag2.png</file>
+        <file>images/flag3.png</file>
+        <file>images/flag4.png</file>
+        <file>images/flag5.png</file>
+        <file>images/flag6.png</file>
+        <file>images/flag7.png</file>
+        <file>images/flag8.png</file>
+        <file>images/parrot1.png</file>
+        <file>images/parrot2.png</file>
+        <file>images/parrot3.png</file>
+        <file>images/parrot4.png</file>
+        <file>images/parrot5.png</file>
+        <file>images/parrot6.png</file>
+        <file>images/parrot7.png</file>
+        <file>images/parrot8.png</file>
+        <file>images/treasure1.png</file>
+        <file>images/treasure2.png</file>
+        <file>images/treasure3.png</file>
+        <file>images/treasure4.png</file>
+        <file>images/treasure5.png</file>
+        <file>images/treasure6.png</file>
+        <file>images/treasure7.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/laugh.wav</file>
