@@ -17,6 +17,7 @@
 #include "forgotmypassword.h"
 #include "test.h"
 #include "mainmenu.h"
+#include "SocketHandeling.h"
 
 extern QString SavedPassword;
 extern Player *MainPlayer;
@@ -38,13 +39,17 @@ private slots:
 
 	void on_forgot_clicked();
 
+	void on_pushButton_3_clicked();
+	void on_pushButton_clicked();
 private:
 	std::thread *th;
 	Ui::Login *ui;
 	ForgotMyPassword *forgot_password;
 	SignUp *sign;
-
+	SocketHandeling *s;
+	SocketHandeling *t;
 public slots:
 	void show_me();
+
 };
 #endif // LOGIN_H

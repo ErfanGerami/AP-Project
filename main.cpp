@@ -11,6 +11,7 @@
 #include "getserversinformation.h"
 #include "waitmenu.h"
 #include <maingamewindow.h>
+#include "DataPacket.h"
 #include "SocketHandeling.h"
 
 QString SavedPassword;
@@ -29,17 +30,9 @@ int main(int argc, char *argv[]) {
 	//g->show();
 
 
+	Login l = new Login();
+	l.show();
 
-
-
-
-
-	SocketHandeling *s = new SocketHandeling();
-	s->server_run("myserver", "laptop_server");
-
-
-	SocketHandeling *t = new SocketHandeling();
-	t->client_run("laptop_client");
 
 	return a.exec();
 }

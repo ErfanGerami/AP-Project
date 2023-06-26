@@ -35,16 +35,33 @@ void channel::writing_data() {
 void channel::reading_data() {
 	logWriteServer("> reading data\n\n");
 
-	QByteArray data;
+	QByteArray block;
 
-	data = socket->readAll();
+	block = socket->readAll();
 
 	if ( client_name.size() == 0 ) {
-		client_name = data;
+		client_name = block;
 		logWriteServer("> client name recieved: " + client_name.toStdString() + "\n\n");
 	}
+	else {
+
+		
+
+		char *code = new char[4];
+		for ( int i = 0; i < 4; i++ )
+			code[i] = block[i];
+
+		block.remove(0, 4);
 
 
+		QDataStream in(&block, QIODevice::ReadOnly);
+		DataPacket data_packet;
+		in >> data_packet;
+
+
+		//now do things with data packet and code
+
+	}
 
 }
 
@@ -54,9 +71,9 @@ void channel::disconnected_from_server() {
 
 }
 
-void channel::send_data(QByteArray data) {
+void channel::send_data(QByteArray block) {
 
-	socket->write(data);
+	socket->write(block);
 }
 
 void channel::close_socket() {

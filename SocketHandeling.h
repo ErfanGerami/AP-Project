@@ -2,6 +2,7 @@
 #include <QObject>
 #include <iostream>
 #include <QUdpSocket>
+#include <qmap.h>
 #include <QTcpSocket>
 #include <QTcpServer>
 #include <QDataStream>
@@ -10,33 +11,43 @@
 #include <chrono>
 #include "errors.h"
 #include "channel.h"
+#include "DataPacket.h"
 #include <fstream>
 #include <ctime>
 #include <sstream>
 
 class channel;
 
-class SocketHandeling: public QObject {
+class SocketHandeling: protected QObject {
 	Q_OBJECT
 
 public:
 	SocketHandeling(QObject *parent = nullptr);
 	~SocketHandeling();
 
-	void client_run(QString username);
+	void client_run_fast_connect(QString username);
+	void client_run(QHostAddress ip, QString username);
+
+
+
 	void server_run(QString server_name, QString username);
+	void send_data(char *code, DataPacket *data);
 
 	static std::string make_time();
+	QMap<QHostAddress, QPair<QString, QString>> get_servers();
+private:
 	void logWriteServer(std::string str);
 	void logWriteClient(std::string str);
-private:
 	QString name;
 
 	QUdpSocket *udp_socket = nullptr;
 	QTcpSocket *tcp_socket = nullptr;
 	QTcpServer *tcp_server = nullptr;
+
 	std::thread broadcast_ip_thread;
+
 	std::vector<channel *> channels;
+
 
 	std::fstream server_log;
 	std::fstream client_log;

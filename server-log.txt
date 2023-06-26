@@ -1,0 +1,190 @@
+123/5/26|23:18:17
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:18:17
+> server created and listening on port 1500
+
+123/5/26|23:18:22
+> new client connected, client number: 1
+
+123/5/26|23:18:22
+> reading data
+
+123/5/26|23:18:22
+> client name recieved: 
+
+
+123/5/26|23:18:53
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:18:53
+> server created and listening on port 1500
+
+123/5/26|23:18:53
+> new client connected, client number: 1
+
+123/5/26|23:18:53
+> reading data
+
+123/5/26|23:18:53
+> client name recieved: mmd hastam
+
+123/5/26|23:20:28
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:20:28
+> server created and listening on port 1500
+
+123/5/26|23:20:29
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:20:29
+> failed to start server
+
+123/5/26|23:20:59
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:20:59
+> server created and listening on port 1500
+
+123/5/26|23:20:59
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:20:59
+> failed to start server
+
+123/5/26|23:21:50
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:21:53
+> server created and listening on port 1500
+
+123/5/26|23:22:4
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:22:4
+> failed to start server
+
+123/5/26|23:22:44
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:22:44
+> server created and listening on port 1500
+
+123/5/26|23:22:57
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:23:40
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:23:40
+> server created and listening on port 1500
+
+123/5/26|23:23:46
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:23:46
+> failed to start server
+
+123/5/26|23:26:31
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:26:31
+> server created and listening on port 1500
+
+123/5/26|23:26:31
+> new client connected, client number: 1
+
+123/5/26|23:26:31
+> reading data
+
+123/5/26|23:26:31
+> client name recieved: mmd hastam
+
+123/5/26|23:27:27
+> reading data
+
+123/5/26|23:28:57
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:28:57
+> server created and listening on port 1500
+
+123/5/26|23:28:57
+> new client connected, client number: 1
+
+123/5/26|23:29:0
+> reading data
+
+123/5/26|23:29:0
+> client name recieved: mmd hastam
+
+123/5/26|23:29:19
+> reading data
+
+123/5/26|23:31:58
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:31:58
+> server created and listening on port 1500
+
+123/5/26|23:31:58
+> new client connected, client number: 1
+
+123/5/26|23:31:58
+> reading data
+
+123/5/26|23:31:58
+> client name recieved: mmd hastam
+
+123/5/26|23:36:30
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:36:30
+> server created and listening on port 1500
+
+123/5/26|23:36:30
+> new client connected, client number: 1
+
+123/5/26|23:36:30
+> reading data
+
+123/5/26|23:36:30
+> client name recieved: mmd hastam
+
+123/5/26|23:37:8
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:37:8
+> server created and listening on port 1500
+
+123/5/26|23:37:8
+> new client connected, client number: 1
+
+123/5/26|23:37:8
+> reading data
+
+123/5/26|23:37:8
+> client name recieved: mmd hastam
+
+123/5/26|23:38:9
+> reading data
+
+123/5/26|23:38:44
+> trying to create server with name: 'myserver' and created by 'laptop_server'
+
+123/5/26|23:38:44
+> server created and listening on port 1500
+
+123/5/26|23:38:44
+> new client connected, client number: 1
+
+123/5/26|23:38:44
+> reading data
+
+123/5/26|23:38:44
+> client name recieved: mmd hastam
+
+123/5/26|23:39:2
+> reading data
+

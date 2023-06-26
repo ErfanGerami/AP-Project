@@ -7,9 +7,10 @@
 #include <qUdpSocket>
 #include <fstream>
 #include "SocketHandeling.h"
+#include "DataPacket.h"
 
 
-class channel: public QObject {
+class channel: protected QObject {
 	Q_OBJECT
 
 
@@ -32,7 +33,7 @@ public slots:
 	void reading_data();
 	void writing_data();
 	void disconnected_from_server();
-	void send_data(QByteArray data);
+	void send_data(QByteArray block);
 
 };
 

@@ -40,6 +40,7 @@ public:
     QLabel *label;
     QPushButton *forgot;
     QPushButton *pushButton_3;
+    QPushButton *pushButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -142,12 +143,16 @@ public:
         pushButton_3 = new QPushButton(centralwidget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
         pushButton_3->setGeometry(QRect(110, 60, 93, 28));
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(220, 60, 93, 28));
         Login->setCentralWidget(centralwidget);
         layoutWidget->raise();
         forgot->raise();
         start->raise();
         label->raise();
         pushButton_3->raise();
+        pushButton->raise();
         menubar = new QMenuBar(Login);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 26));
@@ -174,6 +179,7 @@ public:
         label->setText(QString());
         forgot->setText(QApplication::translate("Login", "forgot my password", nullptr));
         pushButton_3->setText(QApplication::translate("Login", "PushButton", nullptr));
+        pushButton->setText(QApplication::translate("Login", "PushButton", nullptr));
     } // retranslateUi
 
 };

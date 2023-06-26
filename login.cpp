@@ -13,13 +13,16 @@ Login::Login(QWidget *parent)
 	anim->setStartValue(QRect(-110, -110, 911, 720));
 	anim->setEndValue(QRect(0, 0, 160, 100));
 	anim->start();
-    QSound::play(":/sounds/sounds/laugh.wav");
-    QMediaPlayer *media = new QMediaPlayer();
-    QMediaPlaylist *playlist = new QMediaPlaylist;
-    playlist->addMedia(QUrl("qrc:/sounds/sounds/UiBackSound.mp3"));
-    media->setPlaylist(playlist);
-    media->setVolume(30);
-    media->play();
+	QSound::play(":/sounds/sounds/laugh.wav");
+	QMediaPlayer *media = new QMediaPlayer();
+	QMediaPlaylist *playlist = new QMediaPlaylist;
+	playlist->addMedia(QUrl("qrc:/sounds/sounds/UiBackSound.mp3"));
+	media->setPlaylist(playlist);
+	media->setVolume(30);
+	media->play();
+
+
+
 
 
 
@@ -29,6 +32,23 @@ Login::Login(QWidget *parent)
 
 }
 
+void Login::on_pushButton_3_clicked() {
+	/*s = new SocketHandeling();
+	s->server_run("myserver", "laptop_server");
+	t = new SocketHandeling();
+	t->client_run("mmd hastam");*/
+}
+
+void Login::on_pushButton_clicked() {
+	/*QString names[4] = { "player names", "player names", "player names", "player names" };
+	int num1[4] = { 0 };
+	int num2[4][7] = { 0 };
+	char code[4] = { '1', '2', '3', '4' };
+
+	DataPacket *datap = new DataPacket("shafaghhhhhhserver", 2, names, num1, num2);
+
+	t->send_data(code, datap);*/
+}
 
 
 Login::~Login() {
