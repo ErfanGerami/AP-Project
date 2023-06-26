@@ -28,8 +28,18 @@ int main(int argc, char *argv[]) {
 	//MainGameWindow *g = new MainGameWindow;
 	//g->show();
 
+
+
+
+
+
+
 	SocketHandeling *s = new SocketHandeling();
-	//s->run();
+	s->server_run("myserver", "laptop_server");
+
+
+	SocketHandeling *t = new SocketHandeling();
+	t->client_run("laptop_client");
 
 	return a.exec();
 }

@@ -1,34 +1,48 @@
 #include "channel.h"
+using namespace std;
 
-
-channel::channel(QTcpSocket *_socket, int _client_number, std::fstream *_socket_log, QObject *parent) {
+channel::channel(QTcpSocket *_socket, int _client_number, QObject *parent) {
 	socket = _socket;
-	socket_log = _socket_log;
-
-	socket->waitForReadyRead(-1);
-	client_name = socket->readAll();
-
 
 
 	connect(socket, SIGNAL(bytesWritten(qint64)), this, SLOT(writing_data()));
 	connect(socket, SIGNAL(readyRead()), this, SLOT(reading_data()));
 	connect(socket, SIGNAL(disconnected()), this, SLOT(disconnected_from_server()));
 
-	client_number = _client_number;
+	client_number += _client_number;
 	udp_socket = new QUdpSocket();
 
 }
+
+
+void channel::logWriteServer(std::string str) {
+	fstream server_log;
+	server_log.open("server-log.txt", ios::out | ios::app);
+	server_log << SocketHandeling::make_time() << str;
+	server_log.close();
+}
+
 
 
 
 void channel::writing_data() {
 
 
-	//*socket_log << SocketHandeling::make_time() << "> written seccessfully as server to client number " << client_number << " and name '" << client_name.toStdString() << "'\n\n";
+	logWriteServer("> written seccessfully as server to client number " + client_number + " and name '" + client_name.toStdString() + "'\n\n");
 
 }
 
 void channel::reading_data() {
+	logWriteServer("> reading data\n\n");
+
+	QByteArray data;
+
+	data = socket->readAll();
+
+	if ( client_name.size() == 0 ) {
+		client_name = data;
+		logWriteServer("> client name recieved: " + client_name.toStdString() + "\n\n");
+	}
 
 
 
@@ -36,7 +50,7 @@ void channel::reading_data() {
 
 void channel::disconnected_from_server() {
 
-	//*socket_log << SocketHandeling::make_time() << "> client number " << client_number << " and name '" << client_name.toStdString() << "' disconnectd\n\n";
+	logWriteServer("> client number " + client_number + " and name '" + client_name.toStdString() + "' disconnectd\n\n");
 
 }
 
@@ -49,12 +63,12 @@ void channel::close_socket() {
 
 	socket->disconnect();
 
-	//*socket_log << SocketHandeling::make_time() << "> disconnected client number " << client_number << " and name '" << client_name.toStdString() << "'\n\n";
+	logWriteServer("> disconnected client number " + client_number + " and name '" + client_name.toStdString() + "'\n\n");
 }
 
 channel::~channel() {
 
-	qDebug() << "channel closed";
+
 	if ( socket != nullptr )
 		delete socket;
 }

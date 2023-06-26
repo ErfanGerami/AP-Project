@@ -5,6 +5,7 @@
 #include <QTcpSocket>
 #include <QTextBrowser>
 #include <qUdpSocket>
+#include <fstream>
 #include "SocketHandeling.h"
 
 
@@ -13,7 +14,7 @@ class channel: public QObject {
 
 
 public:
-	channel(QTcpSocket *_socket, int _client_number, std::fstream *_socket_log, QObject *parent = nullptr);
+	channel(QTcpSocket *_socket, int _client_number, QObject *parent = nullptr);
 	~channel();
 
 
@@ -22,8 +23,10 @@ private:
 	QTcpSocket *socket = nullptr;
 	QUdpSocket *udp_socket = nullptr;
 	QString client_name;
-	std::fstream *socket_log;
-	int client_number;
+
+	std::string client_number;
+	static void logWriteServer(std::string str);
+
 
 public slots:
 	void reading_data();
