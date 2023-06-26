@@ -8,6 +8,7 @@ public:
 	Errors(int stat);
 	int GetError();
 	QString what();
+
 	const static int file_openning_error;
 	const static int player_not_found;
 	const static int incorrect_password;
@@ -20,6 +21,8 @@ public:
 	const static int connection_lost;
 	const static int cant_connect;
 	const static int cant_communicate;
+	const static int server_initiation_failed;
+	const static int server_not_found;
 private:
 	int stat;
 

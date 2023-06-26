@@ -28,7 +28,9 @@ SOURCES += \
     waitmenu.cpp \
     PlayerInGame.cpp \
     DataPacket.cpp \
-    serverselection.cpp
+    serverselection.cpp \
+	SocketHandeling.cpp	\
+	channel.cpp
 
 HEADERS += \
     card.h \
@@ -49,7 +51,9 @@ HEADERS += \
     waitmenu.h \
     PlayerInGame.h \
     DataPacket.h \
-    serverselection.h
+    serverselection.h \
+	SocketHandeling.h \
+	channel.h
 
 FORMS += \
     changeinfo.ui \

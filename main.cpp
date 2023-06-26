@@ -11,22 +11,25 @@
 #include "getserversinformation.h"
 #include "waitmenu.h"
 #include <maingamewindow.h>
+#include "SocketHandeling.h"
+
 QString SavedPassword;
 Player *MainPlayer = nullptr;
 QTcpSocket *MainSocket;
 
 int main(int argc, char *argv[]) {
-    srand(time(NULL));
+	srand(time(NULL));
 	//to create the file if it doesn't already exist
 	FILE *temp = fopen("players.bin", "ab+");
 	fclose(temp);
 
 	QApplication a(argc, argv);
 
-    MainGameWindow* g=new MainGameWindow    ;
-    g->show();
+	//MainGameWindow *g = new MainGameWindow;
+	//g->show();
 
-
+	SocketHandeling *s = new SocketHandeling();
+	//s->run();
 
 	return a.exec();
 }
