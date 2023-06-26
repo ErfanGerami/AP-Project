@@ -10,6 +10,8 @@ const CardType Card::pirate = 4;
 const CardType Card::queen = 5;
 const CardType Card::king = 6;
 
+int Card::angle_between_cards=30 ;
+int Card::space_between_cards=50;
 
 Card::Card() {
 	this->number = 0;
@@ -99,6 +101,12 @@ void Card::SetUpButton(){
     case Card::pirate:
         button->setStyleSheet("border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;");
         break;
+    case Card::unknown:
+        //to be fixed;
+        button->setStyleSheet("border-image:url(:/images/images/unknown.png) strech 0 0 0;background:transparent;");
+        break;
+
+
 
 
 
@@ -111,15 +119,15 @@ void Card::PushCard() {
 	rotation_animation->setStartValue(0);
 	rotation_animation->setEndValue(rand() % 360 );
     rotation_animation->setDuration(200);
-	rotation_animation->start();
+    rotation_animation->start();
 	QPropertyAnimation *tranform_animation = new QPropertyAnimation(proxy, "geometry");
 	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
 	tranform_animation->setEndValue(QRect(dest_x, dest_y, width, height));
     tranform_animation->setDuration(200);
-	tranform_animation->start();
+    tranform_animation->start();
 	group->addAnimation(tranform_animation);
 	group->addAnimation(rotation_animation);
-	group->start();
+    //group->start();
 	//QSound::play(":/sounds/sounds/card_push.wav");
 
 }
@@ -129,15 +137,15 @@ void Card::PushTo(std::pair<int, int> pos) {
 	rotation_animation->setStartValue(0);
 	rotation_animation->setEndValue(rand() % 360);
     rotation_animation->setDuration(200);
-	rotation_animation->start();
+    rotation_animation->start();
 	QPropertyAnimation* tranform_animation = new QPropertyAnimation(proxy, "geometry");
 	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
 	tranform_animation->setEndValue(QRect(pos.first, pos.second, width, height));
     tranform_animation->setDuration(200);
-	tranform_animation->start();
+    tranform_animation->start();
 	group->addAnimation(tranform_animation);
 	group->addAnimation(rotation_animation);
-	group->start();
+    //group->start();
 
 }
 void Card::PushTo(std::pair<int, int> pos,int rotation) {
@@ -146,21 +154,21 @@ void Card::PushTo(std::pair<int, int> pos,int rotation) {
 	rotation_animation->setStartValue(0);
 	rotation_animation->setEndValue(rotation);
     rotation_animation->setDuration(200);
-	rotation_animation->start();
+    rotation_animation->start();
 	QPropertyAnimation* tranform_animation = new QPropertyAnimation(proxy, "geometry");
 	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
 	tranform_animation->setEndValue(QRect(pos.first, pos.second, width, height));
     tranform_animation->setDuration(200);
-	tranform_animation->start();
-	group->addAnimation(tranform_animation);
-	group->addAnimation(rotation_animation);
-	group->start();
+    tranform_animation->start();
+    group->addAnimation(tranform_animation);
+    group->addAnimation(rotation_animation);
+    group->start();
 
 }
 
 
-int Card::GetNumber() { return number; }
-int Card::GetType() { return type; }
+int Card::GetNumber() const{ return number; }
+int Card::GetType()const { return type; }
 void Card::SetNumber(int number) { this->number = number; }
 void Card::SetType(CardType type) { this->type = type; }
 QPushButton *Card::GetButton() { return button; }

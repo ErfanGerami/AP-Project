@@ -17,6 +17,7 @@ SOURCES += \
     game.cpp \
     gamehandeler.cpp \
     getserversinformation.cpp \
+    logic.cpp \
     main.cpp \
     login.cpp \
     maingamewindow.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     game.h \
     gamehandeler.h \
     getserversinformation.h \
+    logic.h \
     login.h \
     maingamewindow.h \
     mainmenu.h \

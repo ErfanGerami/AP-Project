@@ -7,8 +7,7 @@ using namespace std;
 class Player {
 
 
-
-private:
+protected:
 
 	string username;
 	unsigned long password_hash;
