@@ -18,7 +18,8 @@ public:
 
 	PlayerInGame(const string& username, const string& password, int rank, int games_won, int games_loose
 		, const string& phone_number, const string& address, const string& email, const int coins
-        , vector<Card> cards, std::pair<int, int> base_pos,int place,  Game prev_game,int round_won );
+        , vector<Card> cards, std::pair<int, int> base_pos,int place,  Game prev_game,int round_won
+                 ,int predicted_rounds,int points);
 
     PlayerInGame(const Player& player,int place, vector<Card> cards,int rounds_won);
 
@@ -30,8 +31,12 @@ public:
     void operator=(const PlayerInGame& other);
     void DeleteCard(Card::CardType card_type, int number);
 
+    void SetRoundsPredicted(int predicted_round);
+    int GetRoundsPredicted();
     int getRoundsWon();
     void setRoundsWon(int rounds_won);
+    void SetPoints(int points);
+    int GetPoints();
 
 public slots:
 
@@ -40,6 +45,9 @@ private:
 	std::vector<Card> cards;
 	std::pair<int, int> base_pos;
     int rounds_won;
+    int predicted_rounds;
+    int points;
+
 
 	
 

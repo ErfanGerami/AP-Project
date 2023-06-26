@@ -18,6 +18,12 @@ Card::Card() {
 	this->type = Card::unknown;
 	this->button = nullptr;
 }
+Card::Card(CardType type,int number=-1){
+    this->number=number;
+    this->type=type;
+
+
+}
 Card::Card(CardType type,QGraphicsScene *scene, QGraphicsView *view, int number,int x, int y, int rotation){
 	this->scene = scene;
 	this->view = view;

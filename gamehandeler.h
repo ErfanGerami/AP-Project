@@ -8,6 +8,7 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QObject>
+#include <random>
 
 class GameHandeler:public QObject
 {
@@ -17,6 +18,7 @@ public:
     GameHandeler(int number_of_players,QGraphicsView*view,QGraphicsScene* scene,Player p1,Player p2,Player p3=Player(),Player p4=Player());
     void TellTheFirst(QString username);
     void Deal();
+    void shuffle();
 private:
     int number_of_players;
     PlayerInGame* players[4];

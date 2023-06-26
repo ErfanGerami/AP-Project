@@ -17,6 +17,8 @@ void PlayerInGame::operator=( const PlayerInGame& that){
     this->base_pos=that.base_pos;
     this->place=that.place;
     this->rounds_won=that.rounds_won;
+    this->predicted_rounds=that.predicted_rounds;
+    this->points=points;
 
 
 
@@ -29,11 +31,13 @@ PlayerInGame::PlayerInGame():Player(){
     this->base_pos = {0,0};
     this->place = -1;
     this->rounds_won=0;
+    this->predicted_rounds=0;
+    this->points=0;
 
 }
 PlayerInGame::PlayerInGame(const string& username, const string& password, int rank, int games_won, int games_loose
 	, const string& phone_number, const string& address, const string& email, const int coins
-    , vector<Card> cards, std::pair<int, int> base_pos,int place , Game prev_game= Game(),int round_won=0)
+    , vector<Card> cards, std::pair<int, int> base_pos,int place , Game prev_game= Game(),int round_won=0,int predicted_rounds=0,int points=0)
 
 	: Player(username, password, rank, games_won, games_loose, phone_number
 		, address, email, coins, prev_game)
@@ -41,11 +45,18 @@ PlayerInGame::PlayerInGame(const string& username, const string& password, int r
 	this->cards = cards;
 	this->base_pos = base_pos;
 	this->place = place;
+    this->predicted_rounds=predicted_rounds;
+    this->points=points;
+
+
 }
 PlayerInGame::PlayerInGame(const Player& player,int place, vector<Card> cards,int rounds_won=0) : Player(player) {
+    //fix thiss later;
 	this->cards = cards;
 	this->place = place;
     this->rounds_won=0;
+    this->points=0;
+
 }
 
 void PlayerInGame::NewCards(std::vector<Card> cards) {
@@ -62,8 +73,11 @@ void PlayerInGame::PushCard(Card::CardType card_type, int number) {
 }
 
 std::pair<int, int> PlayerInGame::GetBasePos() { return base_pos; }
+void PlayerInGame::SetRoundsPredicted(int predicted_round){this->predicted_rounds=predicted_round;}
+int PlayerInGame::GetRoundsPredicted(){return this->predicted_rounds;}
 void PlayerInGame::SetBasePos(std::pair<int, int> base_pos) { this->base_pos = base_pos; }
-
+void PlayerInGame::SetPoints(int points){this->points=points;}
+int PlayerInGame::GetPoints(){return points;}
 
 void PlayerInGame::Deal() {
 

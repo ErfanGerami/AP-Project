@@ -21,7 +21,7 @@ GameHandeler::GameHandeler(int number_of_players,QGraphicsView* view,QGraphicsSc
     this->scene=scene;
     this->view=view;
     //just adding the cards
-   /* for(int i=0;i<number_of_players*4;i++){
+    for(int i=0;i<number_of_players*4;i++){
         Card* card1=new Card(Card::treasure,scene,view,i);
         cards.push_back(card1);
         Card* card2=new Card(Card::map,scene,view,i);
@@ -35,7 +35,7 @@ GameHandeler::GameHandeler(int number_of_players,QGraphicsView* view,QGraphicsSc
     int kings=number_of_players/2*3;
     int queens=number_of_players/2*3;
     if(number_of_players==3){
-        pirates=6;
+        pirates=5;
         kings=4;
         queens=4;
 
@@ -57,7 +57,7 @@ GameHandeler::GameHandeler(int number_of_players,QGraphicsView* view,QGraphicsSc
 
         cards.push_back(card);
 
-    }*/
+    }
 
 }
 
@@ -104,19 +104,6 @@ void GameHandeler::TellTheFirst(QString username) {
         cards[i]->PushTo(players_temp[i]->GetBasePos());
     }
    
-   
-
-
-
-
-
-
-
-
-
-
-   
-
 }
 void GameHandeler::Deal() {
 
@@ -132,4 +119,14 @@ void GameHandeler::Deal() {
 
     }
 }
+
+
+
+
+
+
+
+
+
+
 
