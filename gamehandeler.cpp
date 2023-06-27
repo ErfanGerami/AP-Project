@@ -3,11 +3,14 @@
 GameHandeler::GameHandeler()
 {
 }
-GameHandeler::GameHandeler(QWidget* parent,int number_of_players,QGraphicsView* view,QGraphicsScene* scene,int me,Player p1,Player p2,Player p3,Player p4){
+GameHandeler::GameHandeler(QWidget* parent,int number_of_players,QGraphicsView* view,QGraphicsScene* scene,QGraphicsView* sticker_view,QGraphicsScene* sticker_scene,int me,Player p1,Player p2,Player p3,Player p4){
     this->number_of_players=number_of_players;
+    this->sticker_scene=sticker_scene;
+    this->sticker_view=sticker_view;
     this->scene=scene;
     this->view=view;
     this->parent=parent;
+    this->me=me;
     const int max_height = 1021;
     const int max_width = 1610;
     const const pair<int,int> positions[4]={{ 0,max_height/2-100 },{  0,-view->height()/2+150 },
@@ -129,11 +132,41 @@ void GameHandeler::StartRound(){
 
 
 }
+void GameHandeler::AddStickers(QString name,int player_index){
+    if(player_index==me){
+        remaning_stickers.push_back(name);
+    }
+    static int pos_y=-350;
+    QLabel* label=new QLabel;
+    QLabel* label_name=new QLabel(players[player_index]->GetUserName().c_str());
+    label->setStyleSheet("border-image:url(:/images/images/"+name+".png);background:transparent");
+    label->resize(61,61);
+    label_name->resize(61,20);
+    QGraphicsProxyWidget* proxy2 = sticker_scene->addWidget(label_name);
+    //proxy2->setFlag(QGraphicsItem::ItemIgnoresTransformations);
+    proxy2->setPos(0,pos_y);
+
+    QGraphicsProxyWidget* proxy = sticker_scene->addWidget(label);
+    //proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
+    proxy->setPos(0,pos_y+20);
+
+
+    pos_y+=81;
+    proxy->show();
+    proxy2->show();
+
+
+
+
+
+}
 
 
 
 
 
 
+
+int GameHandeler::GetMe(){return me;};
 
 
