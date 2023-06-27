@@ -45,7 +45,7 @@ void channel::reading_data() {
 	}
 	else {
 
-		
+
 
 		char *code = new char[4];
 		for ( int i = 0; i < 4; i++ )
@@ -60,6 +60,8 @@ void channel::reading_data() {
 
 
 		//now do things with data packet and code
+
+
 
 	}
 

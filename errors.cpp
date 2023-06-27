@@ -15,6 +15,7 @@ const int Errors::cant_connect = 10;
 const int Errors::cant_communicate = 11;
 const int Errors::server_initiation_failed = 12;
 const int Errors::server_not_found = 13;
+const int Errors::invalid_server_number = 14;
 
 
 Errors::Errors(int stat) {
@@ -68,6 +69,9 @@ QString Errors::what() {
 
 		case server_not_found:
 			return "server not found";
+
+		case invalid_server_number:
+			return "invalid server number";
 
 
 		default:

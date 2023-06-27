@@ -1,177 +1,57 @@
-123/5/26|23:18:17
+123/5/27|12:38:30
 > trying to catch server ip through udp socket
 
-123/5/26|23:18:17
-> server found
+123/5/27|12:38:31
+> 1 server found
 
-123/5/26|23:18:17
-> trying to connect to server with name 'myserver' created by 'laptop_server'
+123/5/27|13:10:4
+> trying to catch server ip through udp socket
 
-123/5/26|23:18:22
+123/5/27|13:10:5
+> 1 server found
+
+123/5/27|13:15:33
+> trying to catch server ip through udp socket
+
+123/5/27|13:15:34
+> 1 server found
+
+123/5/27|13:15:48
+> trying to connect to server with ip '192.168.1.102'
+
+123/5/27|13:15:48
 > connected to server
 
-123/5/26|23:18:22
+123/5/27|13:15:48
 > written to socket as client
 
-123/5/26|23:18:53
+123/5/27|13:20:56
 > trying to catch server ip through udp socket
 
-123/5/26|23:18:53
-> server found
+123/5/27|13:20:57
+> 1 server found
 
-123/5/26|23:18:53
-> trying to connect to server with name 'myserver' created by 'laptop_server'
+123/5/27|13:20:58
+> trying to connect to server with ip '192.168.1.102'
 
-123/5/26|23:18:53
+123/5/27|13:20:58
 > connected to server
 
-123/5/26|23:18:53
+123/5/27|13:20:58
 > written to socket as client
 
-123/5/26|23:20:28
+123/5/27|18:42:3
 > trying to catch server ip through udp socket
 
-123/5/26|23:20:28
-> server found
+123/5/27|18:42:4
+> 1 server found
 
-123/5/26|23:20:28
-> trying to connect to server with name 'myserver' created by 'laptop_server'
+123/5/27|18:43:28
+> trying to connect to server with ip '192.168.1.102'
 
-123/5/26|23:20:59
-> trying to catch server ip through udp socket
-
-123/5/26|23:20:59
-> server found
-
-123/5/26|23:20:59
-> trying to connect to server with name 'myserver' created by 'laptop_server'
-
-123/5/26|23:22:1
-> trying to catch server ip through udp socket
-
-123/5/26|23:22:1
-> server found
-
-123/5/26|23:22:1
-> trying to connect to server with name 'myserver' created by 'laptop_server'
-
-123/5/26|23:22:44
-> trying to catch server ip through udp socket
-
-123/5/26|23:22:44
-> server found
-
-123/5/26|23:22:44
-> trying to connect to server with name 'myserver' created by 'laptop_server'
-
-123/5/26|23:23:40
-> trying to catch server ip through udp socket
-
-123/5/26|23:23:40
-> server found
-
-123/5/26|23:23:40
-> trying to connect to server with name 'myserver' created by 'laptop_server'
-
-123/5/26|23:26:31
-> trying to catch server ip through udp socket
-
-123/5/26|23:26:31
-> server found
-
-123/5/26|23:26:31
-> trying to connect to server with name 'myserver' created by 'laptop_server'
-
-123/5/26|23:26:31
+123/5/27|18:43:28
 > connected to server
 
-123/5/26|23:26:31
-> written to socket as client
-
-123/5/26|23:27:23
-> written to socket as client
-
-123/5/26|23:28:57
-> trying to catch server ip through udp socket
-
-123/5/26|23:28:57
-> server found
-
-123/5/26|23:28:57
-> trying to connect to server with name 'myserver' created by 'laptop_server'
-
-123/5/26|23:28:57
-> connected to server
-
-123/5/26|23:28:57
-> written to socket as client
-
-123/5/26|23:29:12
-> written to socket as client
-
-123/5/26|23:31:58
-> trying to catch server ip through udp socket
-
-123/5/26|23:31:58
-> server found
-
-123/5/26|23:31:58
-> trying to connect to server with name 'myserver' created by 'laptop_server'
-
-123/5/26|23:31:58
-> connected to server
-
-123/5/26|23:31:58
-> written to socket as client
-
-123/5/26|23:36:30
-> trying to catch server ip through udp socket
-
-123/5/26|23:36:30
-> server found
-
-123/5/26|23:36:30
-> trying to connect to server with name 'myserver' created by 'laptop_server'
-
-123/5/26|23:36:30
-> connected to server
-
-123/5/26|23:36:30
-> written to socket as client
-
-123/5/26|23:37:8
-> trying to catch server ip through udp socket
-
-123/5/26|23:37:8
-> server found
-
-123/5/26|23:37:8
-> trying to connect to server with name 'myserver' created by 'laptop_server'
-
-123/5/26|23:37:8
-> connected to server
-
-123/5/26|23:37:8
-> written to socket as client
-
-123/5/26|23:38:9
-> written to socket as client
-
-123/5/26|23:38:44
-> trying to catch server ip through udp socket
-
-123/5/26|23:38:44
-> server found
-
-123/5/26|23:38:44
-> trying to connect to server with name 'myserver' created by 'laptop_server'
-
-123/5/26|23:38:44
-> connected to server
-
-123/5/26|23:38:44
-> written to socket as client
-
-123/5/26|23:39:2
+123/5/27|18:43:28
 > written to socket as client
 

@@ -19,8 +19,8 @@ Card::Card() {
 	this->button = nullptr;
 }
 Card::Card(CardType type,int number=-1){
-    this->number=number;
-    this->type=type;
+	this->number=number;
+	this->type=type;
 
 
 }
@@ -32,14 +32,14 @@ Card::Card(CardType type,QGraphicsScene *scene, QGraphicsView *view, int number,
 	button = new QPushButton();
 	button->resize(width, height);
 	proxy = scene->addWidget(button);
-    proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
+	proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
 	proxy->setPos(qreal(x),qreal(y));
 
 	button->hide();
 
 	proxy->setRotation(rotation);
 
-    SetUpButton();
+	SetUpButton();
 
 }
 void Card::operator=( const Card&  other) {
@@ -50,13 +50,13 @@ void Card::operator=( const Card&  other) {
 	button = new QPushButton();
 	button->resize(width, height);
 	proxy = scene->addWidget(button);
-    proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
+	proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
 	proxy->setPos(qreal(other.proxy->x()), qreal(other.proxy->y()));
 
 	button->hide();
 
 	proxy->setRotation(other.proxy->rotation());
-    SetUpButton();
+	SetUpButton();
 
 
 
@@ -71,55 +71,55 @@ Card::Card(const Card& other) {
 	button = new QPushButton();
 	button->resize(width, height);
 	proxy = scene->addWidget(button);
-    proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
+	proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
 	proxy->setPos(qreal(other.proxy->x()), qreal(other.proxy->y()));
 
 
 	button->hide();
 	proxy->setRotation(other.proxy->rotation());
 
-    SetUpButton();
+	SetUpButton();
 
 
 
 }
 void Card::SetUpButton(){
-    //adjusting each cards picture to itself.
-    switch (type) {
-    case Card::parrot:
-        button->setStyleSheet("border-image:url(:/images/images/parrot"+QString::number(number)+".png) strech 0 0 0;background:transparent;");
-        break;
-    case Card::map:
-        button->setStyleSheet("border-image:url(:/images/images/map"+QString::number(number)+".png) strech 0 0 0;background:transparent;");
-        break;
-    case Card::treasure:
-        button->setStyleSheet("border-image:url(:/images/images/treasure"+QString::number(number)+".png) strech 0 0 0;background:transparent;");
-        break;
-    case Card::flag:
-        button->setStyleSheet("border-image:url(:/images/images/flag"+QString::number(number)+".png) strech 0 0 0;background:transparent;");
-        break;
-    case Card::queen:
-        button->setStyleSheet("border-image:url(:/images/images/queen.png) strech 0 0 0;background:transparent;");
-        break;
+	//adjusting each cards picture to itself.
+	switch (type) {
+	case Card::parrot:
+		button->setStyleSheet("border-image:url(:/images/images/parrot"+QString::number(number)+".png) strech 0 0 0;background:transparent;");
+		break;
+	case Card::map:
+		button->setStyleSheet("border-image:url(:/images/images/map"+QString::number(number)+".png) strech 0 0 0;background:transparent;");
+		break;
+	case Card::treasure:
+		button->setStyleSheet("border-image:url(:/images/images/treasure"+QString::number(number)+".png) strech 0 0 0;background:transparent;");
+		break;
+	case Card::flag:
+		button->setStyleSheet("border-image:url(:/images/images/flag"+QString::number(number)+".png) strech 0 0 0;background:transparent;");
+		break;
+	case Card::queen:
+		button->setStyleSheet("border-image:url(:/images/images/queen.png) strech 0 0 0;background:transparent;");
+		break;
 
-    case Card::king:
-        button->setStyleSheet("border-image:url(:/images/images/scullking.png) strech 0 0 0;background:transparent;");
-        break;
-
-
-    case Card::pirate:
-        button->setStyleSheet("border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;");
-        break;
-    case Card::unknown:
-        //to be fixed;
-        button->setStyleSheet("border-image:url(:/images/images/unknown.png) strech 0 0 0;background:transparent;");
-        break;
+	case Card::king:
+		button->setStyleSheet("border-image:url(:/images/images/scullking.png) strech 0 0 0;background:transparent;");
+		break;
 
 
+	case Card::pirate:
+		button->setStyleSheet("border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;");
+		break;
+	case Card::unknown:
+		//to be fixed;
+		button->setStyleSheet("border-image:url(:/images/images/unknown.png) strech 0 0 0;background:transparent;");
+		break;
 
 
 
-    }
+
+
+	}
 
 }
 void Card::PushCard() {
@@ -127,16 +127,16 @@ void Card::PushCard() {
 	QPropertyAnimation *rotation_animation = new QPropertyAnimation(proxy, "rotation");
 	rotation_animation->setStartValue(0);
 	rotation_animation->setEndValue(rand() % 360 );
-    rotation_animation->setDuration(200);
-    rotation_animation->start();
+	rotation_animation->setDuration(200);
+	rotation_animation->start();
 	QPropertyAnimation *tranform_animation = new QPropertyAnimation(proxy, "geometry");
 	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
 	tranform_animation->setEndValue(QRect(dest_x, dest_y, width, height));
-    tranform_animation->setDuration(200);
-    tranform_animation->start();
+	tranform_animation->setDuration(200);
+	tranform_animation->start();
 	group->addAnimation(tranform_animation);
 	group->addAnimation(rotation_animation);
-    //group->start();
+	//group->start();
 	//QSound::play(":/sounds/sounds/card_push.wav");
 
 }
@@ -145,16 +145,16 @@ void Card::PushTo(std::pair<int, int> pos) {
 	QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
 	rotation_animation->setStartValue(0);
 	rotation_animation->setEndValue(rand() % 360);
-    rotation_animation->setDuration(200);
-    rotation_animation->start();
+	rotation_animation->setDuration(200);
+	rotation_animation->start();
 	QPropertyAnimation* tranform_animation = new QPropertyAnimation(proxy, "geometry");
 	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
 	tranform_animation->setEndValue(QRect(pos.first, pos.second, width, height));
-    tranform_animation->setDuration(200);
-    tranform_animation->start();
+	tranform_animation->setDuration(200);
+	tranform_animation->start();
 	group->addAnimation(tranform_animation);
 	group->addAnimation(rotation_animation);
-    //group->start();
+	//group->start();
 
 }
 void Card::PushTo(std::pair<int, int> pos,int rotation) {
@@ -162,35 +162,35 @@ void Card::PushTo(std::pair<int, int> pos,int rotation) {
 	QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
 	rotation_animation->setStartValue(0);
 	rotation_animation->setEndValue(rotation);
-    rotation_animation->setDuration(200);
-    rotation_animation->start();
+	rotation_animation->setDuration(200);
+	rotation_animation->start();
 	QPropertyAnimation* tranform_animation = new QPropertyAnimation(proxy, "geometry");
 	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
 	tranform_animation->setEndValue(QRect(pos.first, pos.second, width, height));
-    tranform_animation->setDuration(200);
-    tranform_animation->start();
-    group->addAnimation(tranform_animation);
-    group->addAnimation(rotation_animation);
-    group->start();
+	tranform_animation->setDuration(200);
+	tranform_animation->start();
+	group->addAnimation(tranform_animation);
+	group->addAnimation(rotation_animation);
+	group->start();
 
 }
 void Card::PushTo(std::pair<int, int> pos,std::pair<int,int> size,int rotation) {
-    QParallelAnimationGroup* group = new QParallelAnimationGroup;
-    QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
-    rotation_animation->setStartValue(0);
-    rotation_animation->setEndValue(rotation);
-    rotation_animation->setDuration(200);
-    rotation_animation->start();
-    QPropertyAnimation* tranform_animation = new QPropertyAnimation(proxy, "geometry");
-    tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
-    tranform_animation->setEndValue(QRect(pos.first, pos.second, size.first, size.second));
-    tranform_animation->setDuration(200);
-    tranform_animation->start();
-    group->addAnimation(tranform_animation);
-    group->addAnimation(rotation_animation);
-    group->start();
-    width=size.first;
-    height=size.second;
+	QParallelAnimationGroup* group = new QParallelAnimationGroup;
+	QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
+	rotation_animation->setStartValue(0);
+	rotation_animation->setEndValue(rotation);
+	rotation_animation->setDuration(200);
+	rotation_animation->start();
+	QPropertyAnimation* tranform_animation = new QPropertyAnimation(proxy, "geometry");
+	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
+	tranform_animation->setEndValue(QRect(pos.first, pos.second, size.first, size.second));
+	tranform_animation->setDuration(200);
+	tranform_animation->start();
+	group->addAnimation(tranform_animation);
+	group->addAnimation(rotation_animation);
+	group->start();
+	width=size.first;
+	height=size.second;
 
 }
 

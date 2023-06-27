@@ -25,11 +25,13 @@ public:
     {
         if (MainGameWindow->objectName().isEmpty())
             MainGameWindow->setObjectName(QString::fromUtf8("MainGameWindow"));
-        MainGameWindow->resize(1500, 900);
+        MainGameWindow->resize(1605, 1020);
         Graphics = new QGraphicsView(MainGameWindow);
         Graphics->setObjectName(QString::fromUtf8("Graphics"));
-        Graphics->setGeometry(QRect(0, 0, 1500, 900));
+        Graphics->setGeometry(QRect(0, 0, 1611, 1021));
         Graphics->setStyleSheet(QString::fromUtf8("#Graphics{border-image:url(:/images/images/gameground.png); }"));
+        Graphics->setInteractive(true);
+        Graphics->setRenderHints(QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing);
 
         retranslateUi(MainGameWindow);
 

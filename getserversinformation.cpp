@@ -1,74 +1,22 @@
 #include "getserversinformation.h"
 #include "ui_getserversinformation.h"
 //for better reusablity and readability UpdateList and GetInfo work separately and totaly independed
-GetServersInformation::GetServersInformation(QWidget *parent):
+GetServersInformation::GetServersInformation(SocketHandeling *connection, QString client_name, bool *is_connected, QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::GetServersInformation) {
 	ui->setupUi(this);
 
-	//name_ip_port.push_back({"salam",{"salam",2}});//test
-	MainSocket = new QTcpSocket();
-	ui->port->hide();
-	ui->port_l->hide();
-	ui->IP->hide();
-	ui->IP_l->hide();
+
+	this->connection = connection;
+	this->is_connected = is_connected;
+	this->client_name = client_name;
+
+
+
 
 }
 
 
-void GetServersInformation::GetInfo() {
-	QTcpSocket *socket = new QTcpSocket;
-	try {
-
-		socket->connectToHost(ui->mai_servers_ip->text(), ui->mai_servers_port->text().toInt());
-
-		if ( !socket->waitForConnected(3000) ) {
-			throw Errors(Errors::cant_connect);
-		}
-
-		socket->write("read");
-
-		socket->waitForBytesWritten(3000);
-
-		if ( !socket->waitForReadyRead(3000) ) {
-			throw Errors(Errors::cant_communicate);
-
-		}
-
-		QString message = socket->readAll();
-
-		QStringList list = message.split("/");
-
-		if ( list.length() != 1 )
-			for ( int i = 0; i + 1 < list.length(); i += 3 ) {
-				name_ip_port.push_back({ list[i], { list[i + 1], list[i + 2].toInt() } });
-			}
-
-		socket->disconnect();
-
-
-
-	}
-	catch ( Errors err ) {
-		QMessageBox::critical(this, "ERROR", err.what());
-		socket->disconnect();
-	}
-
-	if ( socket != nullptr )
-		delete socket;
-
-
-}
-
-void GetServersInformation::UpdateList() {
-
-	ui->listWidget->clear();
-
-	for ( const auto &i : name_ip_port ) {
-		ui->listWidget->addItem(i.first + ' ' + i.second.first + ' ' + QString::number(i.second.second));
-	}
-
-}
 
 
 GetServersInformation::~GetServersInformation() {
@@ -78,86 +26,58 @@ GetServersInformation::~GetServersInformation() {
 }
 
 
-
-void GetServersInformation::on_GetServersInformation_finished(int result) {
-
-
-}
-
-
-
 void GetServersInformation::on_reload_clicked() {
-	GetInfo();
+	connection = new SocketHandeling();
+
+	server_map = connection->get_servers();
+
+
 	UpdateList();
 }
 
+void GetServersInformation::UpdateList() {
 
-void GetServersInformation::on_checkBox_toggled(bool checked) {
-	if ( checked ) {
-		QPropertyAnimation *animation = new QPropertyAnimation(ui->connect, "geometry");
-		animation->setStartValue(QRect(ui->connect->x(), ui->connect->y(), ui->connect->width(), ui->connect->height()));
-		animation->setEndValue(QRect(ui->connect->x(), ui->connect->y() + 70, ui->connect->width(), ui->connect->height()));
-		animation->setDuration(400);
-		animation->start();
-		ui->reload->setEnabled(false);
-		ui->listWidget->setEnabled(false);
-		connect(animation, &QPropertyAnimation::finished, [this] () {ui->port->show();
-		ui->port_l->show();
-		ui->IP->show();
-		ui->IP_l->show(); });
+	ui->listWidget->clear();
 
-
+	int ctr = 1;
+	for ( auto i = server_map.begin(); i != server_map.end(); i++, ctr++ ) {
+		auto a = i.key();
+		ui->listWidget->addItem(QString::number(ctr) + "- name:" + i.value().first + "| creator" + i.value().second + "| ip:" + i.key().toString());
 	}
-	else {
-		QPropertyAnimation *animation = new QPropertyAnimation(ui->connect, "geometry");
-		animation->setStartValue(QRect(ui->connect->x(), ui->connect->y(), ui->connect->width(), ui->connect->height()));
-		animation->setEndValue(QRect(ui->connect->x(), ui->connect->y() - 70, ui->connect->width(), ui->connect->height()));
-		animation->setDuration(400);
-		animation->start();
 
-		ui->reload->setEnabled(true);
-		ui->listWidget->setEnabled(true);
-		ui->port->hide();
-		ui->port_l->hide();
-		ui->IP->hide();
-		ui->IP_l->hide();
-
-	}
 }
 
 
 void GetServersInformation::on_connect_clicked() {
 
 	try {
-		if ( ui->checkBox->isChecked() ) {
-			MainSocket->connectToHost(ui->IP->text(), ui->port->text().toInt());
-			if ( !MainSocket->waitForConnected(3000) ) {
+		if ( server_map.size() < ui->server_number->text().toInt() )
+			throw Errors(Errors::invalid_server_number);
 
-				throw Errors(Errors::cant_connect);
-			}
+		auto it = server_map.begin();
+
+		for ( int i = 1; i < ui->server_number->text().toInt(); i++, it++ );
+
+		QHostAddress ip = it.key();
+
+		connection->client_run(ip, client_name);
 
 
+		if ( connection->is_client_connected() ) {
+			QMessageBox::information(this, "success", "connection successfull");
+			*is_connected = true;
 		}
 		else {
-			MainSocket->connectToHost(ui->listWidget->selectedItems()[0]->text().split(' ')[1]
-				, ui->listWidget->selectedItems()[0]->text().split(' ')[1].toInt());
-			if ( !MainSocket->waitForConnected(3000) ) {
-
-				throw Errors(Errors::cant_connect);
-			}
-
+			QMessageBox::information(this, "failure", "connection failed");
+			*is_connected = false;
 		}
+		this->close();
 
 
 	}
 	catch ( Errors err ) {
 		QMessageBox::critical(this, "ERROR", err.what());
-
-
 	}
-
-
-
 
 }
 

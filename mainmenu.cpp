@@ -48,6 +48,39 @@ MainMenu::~MainMenu() {
 	delete ui;
 }
 
+void MainMenu::on_create_server_clicked() {
+	SocketHandeling *server = new SocketHandeling();
+
+	server->server_run(ui->server_name->text(), "creator_name");
+
+	if ( server->is_server_connected() ) {
+		//show next window
+	}
+	else {
+		QMessageBox::critical(this, "error", "failed to create server");
+	}
+}
+
+void MainMenu::on_join_server_clicked() {
+
+
+
+
+	SocketHandeling *client = new SocketHandeling();
+
+	bool is_connected = false;
+	GetServersInformation *m = new GetServersInformation(client, "client_name", &is_connected);
+	m->show();
+
+
+	//if ( is_connected ) {
+	//	//show next window
+	//}
+	//else {
+	//	QMessageBox::critical(this, "error", "failed to connect to server");
+	//}
+}
+
 
 
 
