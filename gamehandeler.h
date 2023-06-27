@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QVector>
 class GameHandeler:public QObject
 {
     Q_OBJECT
@@ -29,7 +30,7 @@ private:
     int number_of_players;
     int me;
     PlayerInGame* players[4];
-    vector<Card*> cards_on_deck;
+    QVector<Card*> cards_on_deck;
     QGraphicsView*view;
     QGraphicsScene* scene;
     //needed for clients game logic;

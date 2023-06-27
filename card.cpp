@@ -43,45 +43,24 @@ Card::Card(CardType type,QGraphicsScene *scene, QGraphicsView *view, int number,
 
 }
 void Card::operator=( const Card&  other) {
-	this->scene = other.scene;
-	this->view = other.view;
-	this->type = other.type;
-	this->number = other.number;
-	button = new QPushButton();
-	button->resize(width, height);
-	proxy = scene->addWidget(button);
+    this->scene = other.scene;
+    this->view = other.view;
+    this->type = other.type;
+    this->number = other.number;
+    button = new QPushButton();
+    button->resize(width, height);
+    proxy = scene->addWidget(button);
     proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
-	proxy->setPos(qreal(other.proxy->x()), qreal(other.proxy->y()));
+    proxy->setPos(qreal(other.proxy->x()), qreal(other.proxy->y()));
 
-	button->hide();
+    button->hide();
 
-	proxy->setRotation(other.proxy->rotation());
+    proxy->setRotation(other.proxy->rotation());
     SetUpButton();
-
-
-
 
 }
 Card::Card(const Card& other) {
-	this->scene = other.scene;
-	this->view = other.view;
-	this->type = other.type;
-	this->number = other.number;
-
-	button = new QPushButton();
-	button->resize(width, height);
-	proxy = scene->addWidget(button);
-    proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
-	proxy->setPos(qreal(other.proxy->x()), qreal(other.proxy->y()));
-
-
-	button->hide();
-	proxy->setRotation(other.proxy->rotation());
-
-    SetUpButton();
-
-
-
+    (*this)=other;
 }
 void Card::SetUpButton(){
     //adjusting each cards picture to itself.

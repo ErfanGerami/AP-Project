@@ -9,11 +9,11 @@ MainGameWindow::MainGameWindow(QWidget *parent) :
     ui->Graphics->setAlignment(Qt::Alignment(0));
     QGraphicsScene* scene = new QGraphicsScene;
     ui->Graphics->setScene(scene);
-    GameHandeler* game_handeler = new GameHandeler(4, ui->Graphics, scene,0, Player("ss", "s"), Player("s22", "s"), Player("s22", "s"), Player("s22", "s"));
+    GameHandeler* game_handeler = new GameHandeler(this,2, ui->Graphics, scene,0, Player("ss", "s"), Player("s22", "s"), Player("s22", "s"), Player("s22", "s"));
     //game_handeler->TellTheFirst(1);
     game_handeler->Deal();
 
-    game_handeler->collect(nullptr);
+   // game_handeler->collect(nullptr);
 
     
 }
