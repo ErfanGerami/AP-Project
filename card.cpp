@@ -32,6 +32,7 @@ Card::Card(CardType type,QGraphicsScene *scene, QGraphicsView *view, int number,
 	button = new QPushButton();
 	button->resize(width, height);
 	proxy = scene->addWidget(button);
+    proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
 	proxy->setPos(qreal(x),qreal(y));
 
 	button->hide();
@@ -49,6 +50,7 @@ void Card::operator=( const Card&  other) {
 	button = new QPushButton();
 	button->resize(width, height);
 	proxy = scene->addWidget(button);
+    proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
 	proxy->setPos(qreal(other.proxy->x()), qreal(other.proxy->y()));
 
 	button->hide();
@@ -69,6 +71,7 @@ Card::Card(const Card& other) {
 	button = new QPushButton();
 	button->resize(width, height);
 	proxy = scene->addWidget(button);
+    proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
 	proxy->setPos(qreal(other.proxy->x()), qreal(other.proxy->y()));
 
 
@@ -169,6 +172,25 @@ void Card::PushTo(std::pair<int, int> pos,int rotation) {
     group->addAnimation(tranform_animation);
     group->addAnimation(rotation_animation);
     group->start();
+
+}
+void Card::PushTo(std::pair<int, int> pos,std::pair<int,int> size,int rotation) {
+    QParallelAnimationGroup* group = new QParallelAnimationGroup;
+    QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
+    rotation_animation->setStartValue(0);
+    rotation_animation->setEndValue(rotation);
+    rotation_animation->setDuration(200);
+    rotation_animation->start();
+    QPropertyAnimation* tranform_animation = new QPropertyAnimation(proxy, "geometry");
+    tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
+    tranform_animation->setEndValue(QRect(pos.first, pos.second, size.first, size.second));
+    tranform_animation->setDuration(200);
+    tranform_animation->start();
+    group->addAnimation(tranform_animation);
+    group->addAnimation(rotation_animation);
+    group->start();
+    width=size.first;
+    height=size.second;
 
 }
 

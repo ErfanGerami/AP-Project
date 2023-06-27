@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1500</width>
-    <height>900</height>
+    <width>1605</width>
+    <height>1020</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,12 +18,18 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1500</width>
-     <height>900</height>
+     <width>1611</width>
+     <height>1021</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">#Graphics{border-image:url(:/images/images/gameground.png); }</string>
+   </property>
+   <property name="interactive">
+    <bool>true</bool>
+   </property>
+   <property name="renderHints">
+    <set>QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing</set>
    </property>
   </widget>
  </widget>

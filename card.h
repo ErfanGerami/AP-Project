@@ -27,8 +27,7 @@ public:
 
 	const int dest_x = -100;
 	const int dest_y = -100;
-    const int width = 120;
-	const int height = 200;
+
     static int angle_between_cards ;
     static int space_between_cards;
 
@@ -47,6 +46,7 @@ public:
     void PushCard();
     void PushTo(std::pair<int, int> pos);
     void PushTo(std::pair<int, int> pos, int rotation);
+    void PushTo(std::pair<int, int> pos,std::pair<int,int> size,int rotation=0);
     void SetUpButton();
 
 	void show();
@@ -60,6 +60,8 @@ public:
 
 
 private:
+    int width = 120;
+    int height = 200;
 	int number;
 	CardType type;
 	QPushButton *button;

@@ -15,6 +15,7 @@ void PlayerInGame::operator=( const PlayerInGame& that){
 
     this->cards=that.cards;
     this->base_pos=that.base_pos;
+    this->cards_won_pos=that.cards_won_pos;
     this->place=that.place;
     this->rounds_won=that.rounds_won;
     this->predicted_rounds=that.predicted_rounds;
@@ -22,10 +23,12 @@ void PlayerInGame::operator=( const PlayerInGame& that){
 
 
 
+
 }
 PlayerInGame::PlayerInGame(const PlayerInGame& that){
     (*this)=that;
 }
+
 PlayerInGame::PlayerInGame():Player(){
     this->cards = {cards};
     this->base_pos = {0,0};
@@ -47,6 +50,8 @@ PlayerInGame::PlayerInGame(const string& username, const string& password, int r
 	this->place = place;
     this->predicted_rounds=predicted_rounds;
     this->points=points;
+    CalculateWonCardPosition();
+
 
 
 }
@@ -57,32 +62,82 @@ PlayerInGame::PlayerInGame(const Player& player,int place, vector<Card> cards,in
     this->rounds_won=0;
     this->points=0;
 
+
 }
 
 void PlayerInGame::NewCards(std::vector<Card> cards) {
 	this->cards = cards;
 }
 
-void PlayerInGame::PushCard(Card::CardType card_type, int number) {
+Card* PlayerInGame::PushCard(Card::CardType card_type, int number) {
 	for (auto itr = cards.begin(); itr!= cards.end(); itr++) {
-		if (itr->GetNumber() == number && itr->GetType() == card_type) {
+        if (itr->GetNumber() == number && itr->GetType() == card_type) {
+
+            Card* card=new Card(*itr);
+
 			cards.erase(itr);
+            return card;
+
 		}
 
 	}
+    return nullptr;
 }
 
 std::pair<int, int> PlayerInGame::GetBasePos() { return base_pos; }
 void PlayerInGame::SetRoundsPredicted(int predicted_round){this->predicted_rounds=predicted_round;}
 int PlayerInGame::GetRoundsPredicted(){return this->predicted_rounds;}
-void PlayerInGame::SetBasePos(std::pair<int, int> base_pos) { this->base_pos = base_pos; }
+void PlayerInGame::SetBasePos(std::pair<int, int> base_pos) {this->base_pos = base_pos;CalculateWonCardPosition();}
+
 void PlayerInGame::SetPoints(int points){this->points=points;}
 int PlayerInGame::GetPoints(){return points;}
+int PlayerInGame::GetPlace(){return place;}
+std::pair<int, int> PlayerInGame::GetCardsWonPos(){return cards_won_pos;}
+void PlayerInGame::CalculateWonCardPosition(){
+
+    cards_won_pos=base_pos;
+    switch(place){
+    case 0:
+        cards_won_pos={500,350};
+        break;
+    case 1:
+        cards_won_pos={700,-350};
+        break;
+    case 2:
+        cards_won_pos={-500,-350};
+        break;
+    case 3:
+        cards_won_pos={-600,350};
+        break;
+
+    }
+}
+
 
 void PlayerInGame::Deal() {
 
-    int rotation = 270 - (place+1)* 90 - (cards.size()/2-1) * Card::angle_between_cards;
+    int rotation = 270 - (place+1)* 90 - (cards.size()/2-1) * Card::angle_between_cards-10;
     auto position=base_pos;
+    switch(place){
+    case 0:
+        position.first-=Card::space_between_cards*(cards.size()/2-1);
+        break;
+
+    case 1:
+        position.second+=Card::space_between_cards*(cards.size()/2-1);
+        break;
+    case 2:
+         position.first+=Card::space_between_cards*(cards.size()/2-1);
+        break;
+    case 3:
+        position.second-=Card::space_between_cards*(cards.size()/2-1);
+
+        break;
+
+
+
+    }
+
 
     std::sort(cards.begin(),cards.end(),[](Card c1,Card c2){return (c1.GetType()>c2.GetType());});
 	for (auto& card : cards) {

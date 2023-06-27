@@ -25,9 +25,12 @@ public:
 
 	void NewCards(std::vector<Card> cards);
 	std::pair<int, int> GetBasePos();
+    std::pair<int, int> GetCardsWonPos();
 	void SetBasePos(std::pair<int, int> base_pos);
+
+    void CalculateWonCardPosition();
 	void Deal();
-	void PushCard(Card::CardType card_type, int number);
+    Card* PushCard(Card::CardType card_type, int number);
     void operator=(const PlayerInGame& other);
     void DeleteCard(Card::CardType card_type, int number);
 
@@ -37,6 +40,7 @@ public:
     void setRoundsWon(int rounds_won);
     void SetPoints(int points);
     int GetPoints();
+    int GetPlace();
 
 public slots:
 
@@ -44,9 +48,12 @@ private:
 	int place;
 	std::vector<Card> cards;
 	std::pair<int, int> base_pos;
+    std::pair<int, int> cards_won_pos;
+    const int distance_to_cards_won=200;
     int rounds_won;
     int predicted_rounds;
     int points;
+
 
 
 	
