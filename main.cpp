@@ -27,12 +27,24 @@ int main(int argc, char *argv[]) {
 	QApplication a(argc, argv);
 
 
-	MainGameWindow *g = new MainGameWindow;
-	g->show();
+	//MainGameWindow *g = new MainGameWindow;
+	//g->show();
 
-	//Login l = new Login();
-	//l.show();
 
+	SocketHandeling *server = new SocketHandeling();
+	server->server_run("server_name", "creator_name");
+
+
+	SocketHandeling *client = new SocketHandeling();
+
+	Login *l = new Login();
+	l->show();
+
+
+
+
+	//GetServersInformation *m = new GetServersInformation(client, "shafagh");
+	//m->show();
 
 	return a.exec();
 }

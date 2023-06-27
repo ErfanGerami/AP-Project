@@ -13,9 +13,9 @@ class PlayerInGame:public Player
 {
 public:
 
-    bool haveType(Card::CardType type);
-    PlayerInGame();
-    PlayerInGame(const PlayerInGame& that);
+	bool haveType(Card::CardType type);
+	PlayerInGame();
+	PlayerInGame(const PlayerInGame &that);
 
 	PlayerInGame(const string& username, const string& password, int rank, int games_won, int games_loose
 		, const string& phone_number, const string& address, const string& email, const int coins
@@ -26,22 +26,22 @@ public:
 
     void NewCards(QVector<Card*> cards);
 	std::pair<int, int> GetBasePos();
-    std::pair<int, int> GetCardsWonPos();
+	std::pair<int, int> GetCardsWonPos();
 	void SetBasePos(std::pair<int, int> base_pos);
 
-    void CalculateWonCardPosition();
+	void CalculateWonCardPosition();
 	void Deal();
-    Card* PushCard(Card::CardType card_type, int number);
-    void operator=(const PlayerInGame& other);
-    void DeleteCard(Card::CardType card_type, int number);
+	Card *PushCard(Card::CardType card_type, int number);
+	void operator=(const PlayerInGame &other);
+	void DeleteCard(Card::CardType card_type, int number);
 
-    void SetRoundsPredicted(int predicted_round);
-    int GetRoundsPredicted();
-    int getRoundsWon();
-    void setRoundsWon(int rounds_won);
-    void SetPoints(int points);
-    int GetPoints();
-    int GetPlace();
+	void SetRoundsPredicted(int predicted_round);
+	int GetRoundsPredicted();
+	int getRoundsWon();
+	void setRoundsWon(int rounds_won);
+	void SetPoints(int points);
+	int GetPoints();
+	int GetPlace();
 
 public slots:
 
@@ -49,14 +49,14 @@ private:
 	int place;
     QVector<Card*> cards;
 	std::pair<int, int> base_pos;
-    std::pair<int, int> cards_won_pos;
-    const int distance_to_cards_won=200;
-    int rounds_won;
-    int predicted_rounds;
-    int points;
+	std::pair<int, int> cards_won_pos;
+	const int distance_to_cards_won = 200;
+	int rounds_won;
+	int predicted_rounds;
+	int points;
 
 
 
-	
+
 
 };

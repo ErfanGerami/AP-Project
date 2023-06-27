@@ -35,6 +35,9 @@ public:
 
 	static std::string make_time();
 	QMap<QHostAddress, QPair<QString, QString>> get_servers();
+
+	bool is_client_connected();
+	bool is_server_connected();
 private:
 	void logWriteServer(std::string str);
 	void logWriteClient(std::string str);

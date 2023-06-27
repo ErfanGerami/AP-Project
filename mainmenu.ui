@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>926</width>
+    <width>923</width>
     <height>711</height>
    </rect>
   </property>
@@ -266,12 +266,12 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="create_server">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>670</y>
-     <width>211</width>
+     <x>10</x>
+     <y>620</y>
+     <width>221</width>
      <height>28</height>
     </rect>
    </property>
@@ -279,15 +279,15 @@
     <string notr="true">border-radius:0px;background-color:white;</string>
    </property>
    <property name="text">
-    <string>Start A Game As The Server</string>
+    <string>create a new server</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="join_server">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>620</y>
-     <width>211</width>
+     <x>10</x>
+     <y>670</y>
+     <width>221</width>
      <height>31</height>
     </rect>
    </property>
@@ -296,48 +296,7 @@
 ;</string>
    </property>
    <property name="text">
-    <string>Join</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>580</y>
-     <width>171</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="frame">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="score_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>580</y>
-     <width>31</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Bernard MT Condensed</family>
-     <pointsize>-1</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:white;font-size:30px</string>
-   </property>
-   <property name="text">
-    <string>IP</string>
+    <string>join an existing server</string>
    </property>
   </widget>
   <widget class="Line" name="line">
@@ -693,6 +652,32 @@ color:black;
    <property name="flat">
     <bool>false</bool>
    </property>
+  </widget>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>580</y>
+     <width>221</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QLabel" name="label_2">
+    <property name="text">
+     <string>server name:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="server_name">
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

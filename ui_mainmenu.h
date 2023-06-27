@@ -16,6 +16,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSplitter>
 
 QT_BEGIN_NAMESPACE
 
@@ -33,10 +34,8 @@ public:
     QLabel *score_show;
     QLabel *time_show;
     QLabel *winner_show;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QLineEdit *lineEdit;
-    QLabel *score_2;
+    QPushButton *create_server;
+    QPushButton *join_server;
     QFrame *line;
     QFrame *line_2;
     QFrame *line_3;
@@ -56,12 +55,15 @@ public:
     QLabel *lost;
     QLabel *coin_pic;
     QPushButton *change_info;
+    QSplitter *splitter;
+    QLabel *label_2;
+    QLineEdit *server_name;
 
     void setupUi(QDialog *MainMenu)
     {
         if (MainMenu->objectName().isEmpty())
             MainMenu->setObjectName(QString::fromUtf8("MainMenu"));
-        MainMenu->resize(926, 711);
+        MainMenu->resize(923, 711);
         QFont font;
         font.setFamily(QString::fromUtf8("Baskerville Old Face"));
         MainMenu->setFont(font);
@@ -126,28 +128,15 @@ public:
         winner_show->setGeometry(QRect(120, 440, 211, 31));
         winner_show->setFont(font1);
         winner_show->setStyleSheet(QString::fromUtf8("color:red;font-size:30px"));
-        pushButton = new QPushButton(MainMenu);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(20, 670, 211, 28));
-        pushButton->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:white;"));
-        pushButton_2 = new QPushButton(MainMenu);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(20, 620, 211, 31));
-        pushButton_2->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:white\n"
+        create_server = new QPushButton(MainMenu);
+        create_server->setObjectName(QString::fromUtf8("create_server"));
+        create_server->setGeometry(QRect(10, 620, 221, 28));
+        create_server->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:white;"));
+        join_server = new QPushButton(MainMenu);
+        join_server->setObjectName(QString::fromUtf8("join_server"));
+        join_server->setGeometry(QRect(10, 670, 221, 31));
+        join_server->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:white\n"
 ";"));
-        lineEdit = new QLineEdit(MainMenu);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(60, 580, 171, 31));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
-        font3.setPointSize(12);
-        lineEdit->setFont(font3);
-        lineEdit->setFrame(true);
-        score_2 = new QLabel(MainMenu);
-        score_2->setObjectName(QString::fromUtf8("score_2"));
-        score_2->setGeometry(QRect(20, 580, 31, 31));
-        score_2->setFont(font2);
-        score_2->setStyleSheet(QString::fromUtf8("color:white;font-size:30px"));
         line = new QFrame(MainMenu);
         line->setObjectName(QString::fromUtf8("line"));
         line->setGeometry(QRect(-10, 650, 261, 20));
@@ -247,14 +236,29 @@ public:
         change_info = new QPushButton(MainMenu);
         change_info->setObjectName(QString::fromUtf8("change_info"));
         change_info->setGeometry(QRect(20, 90, 181, 20));
-        QFont font4;
-        change_info->setFont(font4);
+        QFont font3;
+        change_info->setFont(font3);
         change_info->setStyleSheet(QString::fromUtf8("#change_info{border-radius:1px;background:transparent;color:red;font-size:13px;background:transparent;}\n"
 "#change_info:hover{\n"
 "border-radius:6px;color:black;font-size:13px;background-color:red;\n"
 "color:black;\n"
 "}"));
         change_info->setFlat(false);
+        splitter = new QSplitter(MainMenu);
+        splitter->setObjectName(QString::fromUtf8("splitter"));
+        splitter->setGeometry(QRect(10, 580, 221, 24));
+        splitter->setOrientation(Qt::Horizontal);
+        label_2 = new QLabel(splitter);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        splitter->addWidget(label_2);
+        server_name = new QLineEdit(splitter);
+        server_name->setObjectName(QString::fromUtf8("server_name"));
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(server_name->sizePolicy().hasHeightForWidth());
+        server_name->setSizePolicy(sizePolicy);
+        splitter->addWidget(server_name);
 
         retranslateUi(MainMenu);
 
@@ -278,9 +282,8 @@ public:
         score_show->setText(QString());
         time_show->setText(QString());
         winner_show->setText(QString());
-        pushButton->setText(QApplication::translate("MainMenu", "Start A Game As The Server", nullptr));
-        pushButton_2->setText(QApplication::translate("MainMenu", "Join", nullptr));
-        score_2->setText(QApplication::translate("MainMenu", "IP", nullptr));
+        create_server->setText(QApplication::translate("MainMenu", "create a new server", nullptr));
+        join_server->setText(QApplication::translate("MainMenu", "join an existing server", nullptr));
         prev_2->setText(QApplication::translate("MainMenu", "New Game:", nullptr));
         prev_3->setText(QApplication::translate("MainMenu", "coins:", nullptr));
         prev_4->setText(QApplication::translate("MainMenu", "lost games:", nullptr));
@@ -290,6 +293,7 @@ public:
         lost->setText(QString());
         coin_pic->setText(QString());
         change_info->setText(QApplication::translate("MainMenu", "Change Your Information Here", nullptr));
+        label_2->setText(QApplication::translate("MainMenu", "server name:", nullptr));
     } // retranslateUi
 
 };

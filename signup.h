@@ -27,7 +27,7 @@ private slots:
 
 private:
 	Ui::SignUp *ui;
-	void do_show_parent();
+	//void do_show_parent();
 protected:
 	void closeEvent(QCloseEvent *event) override;
 

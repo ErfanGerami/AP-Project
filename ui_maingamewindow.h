@@ -33,6 +33,7 @@ public:
     {
         if (MainGameWindow->objectName().isEmpty())
             MainGameWindow->setObjectName(QString::fromUtf8("MainGameWindow"));
+<<<<<<< HEAD
         MainGameWindow->resize(1733, 1020);
         Graphics = new QGraphicsView(MainGameWindow);
         Graphics->setObjectName(QString::fromUtf8("Graphics"));
@@ -70,6 +71,15 @@ public:
         sticker_graphics->setStyleSheet(QString::fromUtf8(""));
         sticker_graphics->setInteractive(true);
         sticker_graphics->setRenderHints(QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing);
+=======
+        MainGameWindow->resize(1605, 1020);
+        Graphics = new QGraphicsView(MainGameWindow);
+        Graphics->setObjectName(QString::fromUtf8("Graphics"));
+        Graphics->setGeometry(QRect(0, 0, 1611, 1021));
+        Graphics->setStyleSheet(QString::fromUtf8("#Graphics{border-image:url(:/images/images/gameground.png); }"));
+        Graphics->setInteractive(true);
+        Graphics->setRenderHints(QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing);
+>>>>>>> f8684f638299eae63efd10b4b480e690837149c7
 
         retranslateUi(MainGameWindow);
 

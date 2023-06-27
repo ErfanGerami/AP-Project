@@ -8,8 +8,11 @@
 #include <QPropertyAnimation>
 #include <QTcpSocket>
 #include "errors.h"
+#include "SocketHandeling.h"
+#include <QMap>
+#include <QCloseEvent>
 
-extern QTcpSocket *MainSocket;
+
 
 namespace Ui {
 
@@ -19,25 +22,37 @@ class GetServersInformation: public QDialog {
 	Q_OBJECT
 
 public:
-	explicit GetServersInformation(QWidget *parent = nullptr);
+	explicit GetServersInformation(SocketHandeling *connection, QString client_name, QWidget *parent = nullptr);
 	~GetServersInformation();
 
 
 private slots:
 
-	void on_GetServersInformation_finished(int result);
+
 
 	void on_reload_clicked();
 
-	void on_checkBox_toggled(bool checked);
+
 
 	void on_connect_clicked();
 
 private:
+	bool is_connected;
+	SocketHandeling *connection;
+	QMap<QHostAddress, QPair<QString, QString>> server_map;
+
+	QString client_name;
+
 	Ui::GetServersInformation *ui;
 	std::vector<std::pair<QString, std::pair<QString, int>>> name_ip_port;
-	void GetInfo();
+
 	void UpdateList();
+
+
+	void closeEvent(QCloseEvent *event) override;
+
+signals:
+	void show_parent(bool);
 };
 
 #endif // GETSERVERSINFORMATION_H

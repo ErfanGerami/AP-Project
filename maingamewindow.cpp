@@ -19,12 +19,11 @@ MainGameWindow::MainGameWindow(QWidget *parent) :
 
    // game_handeler->collect(nullptr);
 
-    
+
 }
 
-MainGameWindow::~MainGameWindow()
-{
-    delete ui;
+MainGameWindow::~MainGameWindow() {
+	delete ui;
 }
 
 void MainGameWindow::on_pushButton_clicked()

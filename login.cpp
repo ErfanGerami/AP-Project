@@ -21,15 +21,6 @@ Login::Login(QWidget *parent)
 	media->setVolume(30);
 	media->play();
 
-
-
-
-
-
-
-
-
-
 }
 
 void Login::on_pushButton_3_clicked() {

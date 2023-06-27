@@ -154,6 +154,15 @@ QMap<QHostAddress, QPair<QString, QString>> SocketHandeling::get_servers() {
 
 }
 
+bool SocketHandeling::is_client_connected() {
+	return tcp_socket->isOpen();
+
+}
+
+bool SocketHandeling::is_server_connected() {
+	return tcp_server->isListening();
+}
+
 
 void SocketHandeling::reading_data_socket() {
 

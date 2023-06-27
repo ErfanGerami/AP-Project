@@ -5,26 +5,33 @@
 #include <QFontDatabase>
 #include "player.h"
 #include "changeinfo.h"
+#include "getserversinformation.h"
+#include "SocketHandeling.h"
+
 extern Player MainPLayer;
 namespace Ui {
-class MainMenu;
+	class MainMenu;
 }
 
-class MainMenu : public QDialog
-{
-    Q_OBJECT
+class MainMenu: public QDialog {
+	Q_OBJECT
 
 public:
-    explicit MainMenu(QWidget *parent = nullptr);
-    ~MainMenu();
+	explicit MainMenu(QWidget *parent = nullptr);
+	~MainMenu();
 
 private slots:
 
-    void on_change_info_clicked();
+	void on_change_info_clicked();
+	void on_create_server_clicked();
+	void on_join_server_clicked();
+
+
 public slots:
-    void show_me();
+	void show_me();
+	void server_joining_finished(bool is_connected);
 private:
-    Ui::MainMenu *ui;
+	Ui::MainMenu *ui;
 };
 
 #endif // MAINMENU_H

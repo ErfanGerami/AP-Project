@@ -28,33 +28,31 @@ GameHandeler::GameHandeler(QWidget* parent,int number_of_players,QGraphicsView* 
 }
 
 void GameHandeler::TellTheFirst(int index) {
-    //this function just fools the players to think the random player is decided here but all we need is the name of the winner to map the largest number to
-    int* numbers = new int[number_of_players];
-    for (int i = 0; i < number_of_players;i++) {
-        numbers[i] = rand() % 7 + 1;
-    }
-    //making the biggest go to the same index as the chosen player;
-    int max_index = 0;
-    for (int i = 0; i < number_of_players; i++) {
-        if (numbers[i] > max_index) {
-            max_index = i;
-        }
-    }
-    int temp = numbers[index];
-    numbers[index] = numbers[max_index];
-    numbers[max_index] = temp;
+	//this function just fools the players to think the random player is decided here but all we need is the name of the winner to map the largest number to
+	int *numbers = new int[number_of_players];
+	for ( int i = 0; i < number_of_players; i++ ) {
+		numbers[i] = rand() % 7 + 1;
+	}
+	//making the biggest go to the same index as the chosen player;
+	int max_index = 0;
+	for ( int i = 0; i < number_of_players; i++ ) {
+		if ( numbers[i] > max_index ) {
+			max_index = i;
+		}
+	}
+	int temp = numbers[index];
+	numbers[index] = numbers[max_index];
+	numbers[max_index] = temp;
 
-    Card** cards = new Card*[number_of_players];
-    for (int i = 0; i < number_of_players; i++) {
+	Card **cards = new Card * [number_of_players];
+	for ( int i = 0; i < number_of_players; i++ ) {
 
-        cards[i] = new Card(Card::parrot, scene, view, numbers[i]);
-        cards[i]->show();
-        cards[i]->PushTo(players[i]->GetBasePos(),rand()%150);
-        
-    }
+		cards[i] = new Card(Card::parrot, scene, view, numbers[i]);
+		cards[i]->show();
+		cards[i]->PushTo(players[i]->GetBasePos(), rand() % 150);
 
+	}
 
-   
 }
 void GameHandeler::Deal() {
 
@@ -64,19 +62,19 @@ void GameHandeler::Deal() {
       // players[2]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2) });
       // players[3]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2) });
 
-    int rotation;
-    for (int i = 0; i < number_of_players;i++) {
-        players[i]->Deal();
+	int rotation;
+	for ( int i = 0; i < number_of_players; i++ ) {
+		players[i]->Deal();
 
-    }
+	}
 }
-void GameHandeler::collect(PlayerInGame* winner){
+void GameHandeler::collect(PlayerInGame *winner) {
 
-    for(auto card:cards_on_deck){
+	for ( auto card : cards_on_deck ) {
 
-        card->PushTo(winner->GetCardsWonPos(),{60,100});
+		card->PushTo(winner->GetCardsWonPos(), { 60, 100 });
 
-    }
+	}
 }
 
 

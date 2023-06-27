@@ -23,6 +23,7 @@ public:
 	const static int cant_communicate;
 	const static int server_initiation_failed;
 	const static int server_not_found;
+	const static int invalid_server_number;
 private:
 	int stat;
 
