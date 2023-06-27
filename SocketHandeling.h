@@ -27,11 +27,12 @@ public:
 
 	void client_run_fast_connect(QString username);
 	void client_run(QHostAddress ip, QString username);
+	void send_data(char *code, DataPacket *data, int client_number = -1);
 
 
 
 	void server_run(QString server_name, QString username);
-	void send_data(char *code, DataPacket *data);
+
 
 	static std::string make_time();
 	QMap<QHostAddress, QPair<QString, QString>> get_servers();
@@ -61,8 +62,8 @@ private:
 
 public slots:
 	void new_connection_server();
-
-	void reading_data_socket();
+	QVector<QPair< char *, DataPacket * >> read_data_as_server();
+	QPair<char *, DataPacket *> reading_data_socket();
 	void writing_data_socket();
 	void connected_to_server_socket();
 	void disconnected_from_server_socket();

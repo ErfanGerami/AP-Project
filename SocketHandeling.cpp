@@ -38,7 +38,7 @@ SocketHandeling::SocketHandeling(QObject *parent) {
 
 	connect(tcp_socket, SIGNAL(connected()), this, SLOT(connected_to_server_socket()));
 	connect(tcp_socket, SIGNAL(bytesWritten(qint64)), this, SLOT(writing_data_socket()));
-	connect(tcp_socket, SIGNAL(readyRead()), this, SLOT(reading_data_socket()));
+	//connect(tcp_socket, SIGNAL(readyRead()), this, SLOT(reading_data_socket()));
 	connect(tcp_socket, SIGNAL(disconnected()), this, SLOT(disconnected_from_server_socket()));
 
 
@@ -160,29 +160,52 @@ bool SocketHandeling::is_client_connected() {
 }
 
 bool SocketHandeling::is_server_connected() {
+
 	return tcp_server->isListening();
 }
 
 
-void SocketHandeling::reading_data_socket() {
+QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server() {
 
-	QByteArray block = tcp_socket->readAll();
+	QVector<QPair<char *, DataPacket *>> data_vector;
 
-	char *code = new char[4];
-	for ( int i = 0; i < 4; i++ )
-		code[i] = block[i];
+	for ( auto i : channels ) {
+		auto pair = i->reading_data();
+		data_vector.push_back(pair);
+	}
 
-	block.remove(0, 4);
+	return data_vector;
+}
+
+QPair<char *, DataPacket *> SocketHandeling::reading_data_socket() {
+
+	DataPacket *data_packet = new DataPacket();
+	char *code = new char[5];
+	code[0] = '4';
+	if ( tcp_socket->waitForReadyRead(1000) ) {
+
+		QByteArray block = tcp_socket->readAll();
 
 
-	QDataStream in(&block, QIODevice::ReadOnly);
-	DataPacket data_packet;
-	in >> data_packet;
+		for ( int i = 0; i < 5; i++ )
+			code[i] = block[i];
+
+		block.remove(0, 4);
 
 
-	//now do things with data packet and code
+		if ( code[0] == '0' || code[0] == '1' ) {
+			//now do shit
+		}
+		else {
 
+			QDataStream in(&block, QIODevice::ReadOnly);
+			;
+			in >> *data_packet;
 
+		}
+	}
+
+	return QPair<char *, DataPacket *>(code, data_packet);
 
 }
 
@@ -222,6 +245,8 @@ void SocketHandeling::server_run(QString server_name, QString username) {
 		connect(tcp_server, SIGNAL(newConnection()), this, SLOT(new_connection_server()));
 
 		is_the_server = true;
+
+		tcp_socket->connectToHost("127.0.0.1", 1500);
 	}
 	else {
 		logWriteServer("> failed to start server\n\n");
@@ -230,6 +255,8 @@ void SocketHandeling::server_run(QString server_name, QString username) {
 
 
 }
+
+
 
 void SocketHandeling::broadcast_ip(QString server_name, QString username) {
 	while ( true ) {
@@ -242,31 +269,49 @@ void SocketHandeling::broadcast_ip(QString server_name, QString username) {
 
 }
 
-void SocketHandeling::send_data(char *code, DataPacket *data) {
-
-	QByteArray block;
-	QDataStream out(&block, QIODevice::WriteOnly);
-
-	out << *data;
-	QByteArray front = "";
-	front[0] = code[0];
-	front[1] = code[1];
-	front[2] = code[2];
-	front[3] = code[3];
+void SocketHandeling::send_data(char *code, DataPacket *data, int client_number) {
 
 
-	QByteArray final_block = front + block;
-	if ( is_the_server ) {
-		for ( auto i : channels ) {
-			i->send_data(final_block);
-		}
+
+	if ( code[0] == '0' || code[0] == '1' ) {
+		QByteArray block = "";
+
+		for ( int i = 0; i < 5; i++ )
+			block[i] = code[i];
+
+		tcp_socket->write(block);
 	}
-	else
-		tcp_socket->write(final_block);
+	else {
+		QByteArray block;
+		QDataStream out(&block, QIODevice::WriteOnly);
+		out << *data;
+
+		QByteArray front = "";
+
+		for ( int i = 0; i < 5; i++ )
+			front[i] = code[i];
 
 
 
+		QByteArray final_block = front + block;
+		if ( is_the_server ) {
+
+			int ctr = 0;
+			for ( auto i : channels ) {
+				if ( client_number == ctr++ || client_number == -1 )
+					i->send_data(final_block);
+			}
+
+
+		}
+		else
+			tcp_socket->write(final_block);
+
+	}
 }
+
+
+
 
 void SocketHandeling::new_connection_server() {
 	channel *new_channel = new channel(tcp_server->nextPendingConnection(), channels.size());

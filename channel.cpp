@@ -32,39 +32,50 @@ void channel::writing_data() {
 
 }
 
-void channel::reading_data() {
+QPair<char *, DataPacket *> channel::reading_data() {
 	logWriteServer("> reading data\n\n");
 
 	QByteArray block;
+	DataPacket *data_packet = new DataPacket();
+	char *code = new char[5];
+	code[0] = 4;
+	if ( socket->waitForReadyRead(1000) ) {
 
-	block = socket->readAll();
+		block = socket->readAll();
 
-	if ( client_name.size() == 0 ) {
-		client_name = block;
-		logWriteServer("> client name recieved: " + client_name.toStdString() + "\n\n");
+		if ( client_name.size() == 0 ) {
+			client_name = block;
+			logWriteServer("> client name recieved: " + client_name.toStdString() + "\n\n");
+
+			disconnect(socket, SIGNAL(readyRead()), this, SLOT(reading_data()));
+
+		}
+		else {
+
+			for ( int i = 0; i < 5; i++ )
+				code[i] = block[i];
+
+			block.remove(0, 4);
+
+
+			if ( code[0] == '0' || code[0] == '1' ) {
+				//now do shit
+			}
+			else {
+
+				QDataStream in(&block, QIODevice::ReadOnly);
+				in >> *data_packet;
+
+				//now do shit
+			}
+
+
+
+		}
+
 	}
-	else {
 
-
-
-		char *code = new char[4];
-		for ( int i = 0; i < 4; i++ )
-			code[i] = block[i];
-
-		block.remove(0, 4);
-
-
-		QDataStream in(&block, QIODevice::ReadOnly);
-		DataPacket data_packet;
-		in >> data_packet;
-
-
-		//now do things with data packet and code
-
-
-
-	}
-
+	return QPair<char *, DataPacket *>(code, data_packet);
 }
 
 void channel::disconnected_from_server() {

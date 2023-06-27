@@ -20,6 +20,7 @@ DataPacket::DataPacket(QString server_name, int player_count, QString plauer_nam
 
 
 QDataStream &operator>> (QDataStream &in, DataPacket &obj) {
+	in >> obj.your_points;
 	in >> obj.server_name;
 	in >> obj.player_count;
 
@@ -29,9 +30,8 @@ QDataStream &operator>> (QDataStream &in, DataPacket &obj) {
 	for ( int i = 0; i < 4; i++ )
 		in >> obj.player_bet[i];
 
-	for ( int i = 0; i < 4; i++ )
-		for ( int j = 0; j < 7; j++ )
-			in >> obj.player_cards[i][j];
+	for ( int j = 0; j < 7; j++ )
+		in >> obj.player_cards[j];
 
 	for ( int i = 0; i < 4; i++ )
 		in >> obj.player_won_round[i];
@@ -62,7 +62,7 @@ QDataStream &operator>> (QDataStream &in, DataPacket &obj) {
 }
 
 QDataStream &operator<<(QDataStream &out, DataPacket &obj) {
-
+	out << obj.your_points;
 
 	out << obj.server_name;
 	out << obj.player_count;
@@ -73,9 +73,8 @@ QDataStream &operator<<(QDataStream &out, DataPacket &obj) {
 	for ( int i = 0; i < 4; i++ )
 		out << obj.player_bet[i];
 
-	for ( int i = 0; i < 4; i++ )
-		for ( int j = 0; j < 7; j++ )
-			out << obj.player_cards[i][j];
+	for ( int j = 0; j < 7; j++ )
+		out << obj.player_cards[j];
 
 	for ( int i = 0; i < 4; i++ )
 		out << obj.player_won_round[i];
@@ -109,7 +108,7 @@ QDataStream &operator<<(QDataStream &out, DataPacket &obj) {
 template<class archive>
 void DataPacket::serialize(archive &ar, const unsigned int version) {
 
-
+	ar &your_points;
 	ar &server_name;
 	ar &player_count;
 
@@ -125,9 +124,8 @@ void DataPacket::serialize(archive &ar, const unsigned int version) {
 	for ( int i = 0; i < 4; i++ )
 		ar &player_Lost_round[i];
 
-	for ( int i = 0; i < 4; i++ )
-		for ( int j = 0; j < 7; j++ )
-			ar &player_cards[i][j];
+	for ( int j = 0; j < 7; j++ )
+		ar &player_cards[j];
 
 	for ( int i = 0; i < 4; i++ )
 		ar &player_used_timeout[i];

@@ -7,8 +7,7 @@ GetServersInformation::GetServersInformation(SocketHandeling *connection, QStrin
 	ui->setupUi(this);
 
 
-
-	this->is_connected = is_connected;
+	this->connection = connection;
 	this->client_name = client_name;
 
 

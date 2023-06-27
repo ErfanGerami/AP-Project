@@ -30,7 +30,7 @@ private:
 
 
 public slots:
-	void reading_data();
+	QPair<char *, DataPacket *> reading_data();
 	void writing_data();
 	void disconnected_from_server();
 	void send_data(QByteArray block);
