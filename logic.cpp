@@ -209,23 +209,24 @@ void Logic::StartGame() {
 	//Start Server Here
 	//-----------------
 
-	FillAllCards();
-	for ( int set_number = 0; set_number < 7; set_number++ ) {
-		shuffle();
-		initializeNewSet();
-		for ( int round_number = 0; round_number < round; round_number++ ) {
-			int rounds_score = 0;
+    FillAllCards();
+    for(int set_number=0;set_number<7;set_number++){
+        shuffle();
+        initializeNewSet();
+        for(int round_number=0;round_number<set;round_number++){
+            int rounds_score=0;
 
-			//notify clients of their cards(you can get cards using players[i]->GetCards()  a vector  of cards ;
-			//-----------------
-			for ( int i = 0; i < number_of_players; i++ ) {
-				//give the predicted_rounds here for each player
-				int prediction = 0;//set this
-				//-----------------
-				players[i]->SetRoundsPredicted(prediction);
-			}
-			this_rounds_first = getFirstPlayer();
-			//notify clients of the first player(the parrot animation thing in gamehandeling should be played)
+            //notify clients of their cards(you can get cards using players[i]->GetCards()  a vector  of cards ;
+            //-----------------
+            for(int i=0;i<number_of_players;i++){
+                //get the predicted_rounds here for each player
+                int prediction=0;//set this
+                //-----------------
+
+                players[i]->SetRoundsPredicted(prediction);
+            }
+            this_rounds_first=getFirstPlayer();
+            //notify clients of the first player(the parrot animation thing in gamehandeling should be played)
 
 
 			for ( int i = 0; i < number_of_players; i++ ) {
@@ -236,28 +237,27 @@ void Logic::StartGame() {
 				int number = -1;//set this
 				//-----------------
 
-				while ( true ) {//stays in the loop untill the client throws the right card;
-					if ( throwCard(Card(type, number), i) ) {
-						//inform the client that the throwing card is valid
-						type = -1;//set this
-						number = -1;//set this
-						break;
-					}
-					else {
-						//inform the client that the throwing card is valid
-						//and inform all
-					}
-				}
+               /* while(true){//stays in the loop untill the client throws the right card;
+                    if(throwCard(Card(type,number),i)){
+                        //inform the client that the throwing card is valid
+                        type=-1;//set this
+                        number=-1;//set this
+                        break;
+                    }else{
+                        //inform the client that the throwing card is valid
+                        //and inform all
+                    }
+                }*/
 
-				if ( type == Card::king )rounds_score += 15;
-				else if ( type == Card::queen )rounds_score += 20;
-				else if ( type == Card::pirate )rounds_score += 10;
-			}
-			int winner_index = notifyAndGetThisRoundsWinner();
-			players[winner_index]->SetPoints(players[winner_index]->GetPoints() + rounds_score);
-			this_rounds_first = winner_index;
-			//notify the winner here;
-			//-----------------
+                if(type==Card::king)rounds_score+=15;
+                else if(type==Card::queen)rounds_score+=20;
+                else if(type==Card::pirate)rounds_score+=10;
+            }
+            int winner_index=notifyAndGetThisRoundsWinner();
+            players[winner_index]->SetPoints(players[winner_index]->GetPoints()+rounds_score);
+            this_rounds_first=winner_index;
+            //notify the winner here;send winner_index
+            //-----------------
 
 
 
@@ -285,9 +285,10 @@ void Logic::StartGame() {
 			}
 
 
-		}
-		//notify the player their score here
-		//-----------------
+        }
+        //notify the player their score here  players[i]->GetPoints();
+
+        //-----------------
 
 
 
@@ -306,12 +307,17 @@ void Logic::StartGame() {
 
 }
 
-void Logic::DealCard() {
-	vector<Card>::iterator itr = all_cards.begin();
-	for ( int i = 0; i < number_of_players; i++ ) {
-		players[i]->NewCards(vector<Card>(itr, itr + round * 2));
-		itr += round * 2;
-	}
+void Logic::DealCard(){
+    int index=0;
+    for(int i=0;i<number_of_players;i++){
+        QVector<Card> vec;
+        for(int i=index;i<index+round*2;i++){
+            vec.push_back(all_cards[i]);
+        }
+        index+=2*round;
+
+
+    }
 }
 
 void Logic::shuffle() {

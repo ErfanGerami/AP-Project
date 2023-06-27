@@ -28,8 +28,8 @@ public:
 private:
     PlayerInGame* players[4];
     int number_of_players;
-    vector<Card> cards_on_deck;
-    vector<Card> all_cards;
+    QVector<Card> cards_on_deck;
+    QVector<Card> all_cards;
     int set;
     int round;
     int this_rounds_first;

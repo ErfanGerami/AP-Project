@@ -8,21 +8,23 @@
 #include "game.h"
 #include <algorithm>
 #include <QObject>
-class PlayerInGame:public Player {
+#include<QVector>
+class PlayerInGame:public Player
+{
 public:
 
 	bool haveType(Card::CardType type);
 	PlayerInGame();
 	PlayerInGame(const PlayerInGame &that);
 
-	PlayerInGame(const string &username, const string &password, int rank, int games_won, int games_loose
-		, const string &phone_number, const string &address, const string &email, const int coins
-		, vector<Card> cards, std::pair<int, int> base_pos, int place, Game prev_game, int round_won
-		, int predicted_rounds, int points);
+	PlayerInGame(const string& username, const string& password, int rank, int games_won, int games_loose
+		, const string& phone_number, const string& address, const string& email, const int coins
+        , QVector<Card*> cards, std::pair<int, int> base_pos,int place,  Game prev_game,int round_won
+                 ,int predicted_rounds,int points);
 
-	PlayerInGame(const Player &player, int place, vector<Card> cards, int rounds_won);
+    PlayerInGame(const Player& player,int place, QVector<Card*> cards,int rounds_won);
 
-	void NewCards(std::vector<Card> cards);
+    void NewCards(QVector<Card*> cards);
 	std::pair<int, int> GetBasePos();
 	std::pair<int, int> GetCardsWonPos();
 	void SetBasePos(std::pair<int, int> base_pos);
@@ -45,7 +47,7 @@ public slots:
 
 private:
 	int place;
-	std::vector<Card> cards;
+    QVector<Card*> cards;
 	std::pair<int, int> base_pos;
 	std::pair<int, int> cards_won_pos;
 	const int distance_to_cards_won = 200;
