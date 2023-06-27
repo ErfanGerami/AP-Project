@@ -37,12 +37,6 @@ void SignUp::on_start_clicked() {
 	QString email = ui->emailL->text();
 	bool agreed = ui->agree->isChecked();
 
-
-	/*if ( pass.indexOf('/') != -1 || user.indexOf('/') != -1 || adr.indexOf('/') != -1 || phone_number.indexOf('/') != -1 ) {
-		QMessageBox::critical(this, "ERROR", "The queries should not contain the character '/'");
-		return;
-	}*/
-
 	try {
 		if ( !FileHandeling::is_players_file_open() )
 			throw Errors(Errors::file_openning_error);
@@ -65,8 +59,6 @@ void SignUp::on_start_clicked() {
 		return;
 	}
 
-	//MainPlayer = new Player(user, pass, 0, 0, 0, phone_number, adr, email, nullptr);// now player should login
-	//FileHandeling::write(user, MainPlayer->Parse());
 
 
 	Player *new_player = new Player(user.toStdString(), pass.toStdString(), 0, 0, 0, phone_number.toStdString(), adr.toStdString(), email.toStdString(), 1000);
@@ -76,9 +68,9 @@ void SignUp::on_start_clicked() {
 	emit show_parent();
 }
 
-void SignUp::do_show_parent() {
-	emit show_parent();
-}
+//void SignUp::do_show_parent() {
+//	emit show_parent();
+//}
 
 void SignUp::closeEvent(QCloseEvent *event) {
 

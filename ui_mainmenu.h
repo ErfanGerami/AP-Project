@@ -253,6 +253,11 @@ public:
         splitter->addWidget(label_2);
         server_name = new QLineEdit(splitter);
         server_name->setObjectName(QString::fromUtf8("server_name"));
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(server_name->sizePolicy().hasHeightForWidth());
+        server_name->setSizePolicy(sizePolicy);
         splitter->addWidget(server_name);
 
         retranslateUi(MainMenu);

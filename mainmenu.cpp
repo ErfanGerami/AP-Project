@@ -68,22 +68,23 @@ void MainMenu::on_join_server_clicked() {
 
 	SocketHandeling *client = new SocketHandeling();
 
-	bool is_connected = false;
-	GetServersInformation *m = new GetServersInformation(client, "client_name", &is_connected);
+
+	GetServersInformation *m = new GetServersInformation(client, "client_name", this);
 	m->show();
 
 
-	//if ( is_connected ) {
-	//	//show next window
-	//}
-	//else {
-	//	QMessageBox::critical(this, "error", "failed to connect to server");
-	//}
+
 }
 
+void MainMenu::server_joining_finished(bool is_connected) {
+	if ( is_connected ) {
+		//show next window
+	}
+	else {
+		QMessageBox::critical(this, "error", "failed to connect to server");
+	}
 
-
-
+}
 void MainMenu::on_change_info_clicked() {
 	ChangeInfo *change_win = new ChangeInfo(this);
 	this->hide();

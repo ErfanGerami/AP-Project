@@ -31,8 +31,8 @@ int main(int argc, char *argv[]) {
 	//g->show();
 
 
-	//SocketHandeling *server = new SocketHandeling();
-	//server->server_run("server_name", "creator_name");
+	SocketHandeling *server = new SocketHandeling();
+	server->server_run("server_name", "creator_name");
 
 
 	SocketHandeling *client = new SocketHandeling();

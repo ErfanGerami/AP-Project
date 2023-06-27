@@ -55,3 +55,48 @@
 123/5/27|18:43:28
 > written to socket as client
 
+123/5/27|21:15:17
+> trying to catch server ip through udp socket
+
+123/5/27|21:15:18
+> 1 server found
+
+123/5/27|21:16:15
+> trying to connect to server with ip '172.19.0.1'
+
+123/5/27|21:16:15
+> connected to server
+
+123/5/27|21:16:16
+> written to socket as client
+
+123/5/27|21:18:59
+> trying to catch server ip through udp socket
+
+123/5/27|21:19:0
+> 1 server found
+
+123/5/27|21:19:6
+> trying to connect to server with ip '172.19.0.1'
+
+123/5/27|21:19:6
+> connected to server
+
+123/5/27|21:19:6
+> written to socket as client
+
+123/5/27|21:24:28
+> trying to catch server ip through udp socket
+
+123/5/27|21:24:29
+> 1 server found
+
+123/5/27|21:24:32
+> trying to connect to server with ip '192.168.1.102'
+
+123/5/27|21:24:32
+> connected to server
+
+123/5/27|21:24:32
+> written to socket as client
+

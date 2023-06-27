@@ -1,17 +1,18 @@
 #include "getserversinformation.h"
 #include "ui_getserversinformation.h"
 //for better reusablity and readability UpdateList and GetInfo work separately and totaly independed
-GetServersInformation::GetServersInformation(SocketHandeling *connection, QString client_name, bool *is_connected, QWidget *parent):
+GetServersInformation::GetServersInformation(SocketHandeling *connection, QString client_name, QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::GetServersInformation) {
 	ui->setupUi(this);
 
 
-	this->connection = connection;
+
 	this->is_connected = is_connected;
 	this->client_name = client_name;
 
 
+	connect(this, SIGNAL(show_parent(bool)), parent, SLOT(server_joining_finished(bool)));
 
 
 }
@@ -42,7 +43,7 @@ void GetServersInformation::UpdateList() {
 	int ctr = 1;
 	for ( auto i = server_map.begin(); i != server_map.end(); i++, ctr++ ) {
 		auto a = i.key();
-		ui->listWidget->addItem(QString::number(ctr) + "- name:" + i.value().first + "| creator" + i.value().second + "| ip:" + i.key().toString());
+		ui->listWidget->addItem(QString::number(ctr) + "- name: " + i.value().first + "| creator: " + i.value().second + "| ip:" + i.key().toString());
 	}
 
 }
@@ -65,11 +66,11 @@ void GetServersInformation::on_connect_clicked() {
 
 		if ( connection->is_client_connected() ) {
 			QMessageBox::information(this, "success", "connection successfull");
-			*is_connected = true;
+			is_connected = true;
 		}
 		else {
 			QMessageBox::information(this, "failure", "connection failed");
-			*is_connected = false;
+			is_connected = false;
 		}
 		this->close();
 
@@ -81,3 +82,14 @@ void GetServersInformation::on_connect_clicked() {
 
 }
 
+void GetServersInformation::closeEvent(QCloseEvent *event) {
+
+	if ( event->spontaneous() ) {
+		emit show_parent(is_connected);
+	}
+	else {
+		QWidget::closeEvent(event);
+		emit show_parent(is_connected);
+
+	}
+}

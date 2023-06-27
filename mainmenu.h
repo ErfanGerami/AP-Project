@@ -26,8 +26,10 @@ private slots:
 	void on_create_server_clicked();
 	void on_join_server_clicked();
 
+
 public slots:
 	void show_me();
+	void server_joining_finished(bool is_connected);
 private:
 	Ui::MainMenu *ui;
 };
