@@ -14,17 +14,21 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QVector>
+
 class GameHandeler:public QObject
 {
     Q_OBJECT
 public:
     GameHandeler();
-    GameHandeler(QWidget* parent,int number_of_players,QGraphicsView*view,QGraphicsScene* scene,int me,Player p1,Player p2,Player p3=Player(),Player p4=Player());
+    GameHandeler(QWidget* parent,int number_of_players,QGraphicsView*view,QGraphicsScene* scene,QGraphicsView* sticker_view,QGraphicsScene* sticker_scene,int me,Player p1,Player p2,Player p3=Player(),Player p4=Player());
     void TellTheFirst(int index);
     void Deal();
     void shuffle();
     void GameHandeler::collect(PlayerInGame* player);
     void StartRound();
+    void AddStickers(QString name,int index);
+    int GetMe();
+
 private:
     QWidget* parent;
     int number_of_players;
@@ -33,8 +37,11 @@ private:
     QVector<Card*> cards_on_deck;
     QGraphicsView*view;
     QGraphicsScene* scene;
+    QVector<QString> remaning_stickers;
     //needed for clients game logic;
     int round=-1;//will be set to 0 when the game starts;
+    QGraphicsView* sticker_view;
+    QGraphicsScene* sticker_scene;
 
 
 signals:

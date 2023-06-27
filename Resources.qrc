@@ -43,6 +43,12 @@
         <file>images/treasure5.png</file>
         <file>images/treasure6.png</file>
         <file>images/treasure7.png</file>
+        <file>images/cry.png</file>
+        <file>images/happy.png</file>
+        <file>images/laugh.png</file>
+        <file>images/sleep.png</file>
+        <file>images/VeryHappy.png</file>
+        <file>images/wondered.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/laugh.wav</file>
