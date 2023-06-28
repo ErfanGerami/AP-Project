@@ -18,6 +18,7 @@ public:
 	void StartGame();
 	void shuffle();
 	void DealCard();//note that it is depending on right round to count the number of cards;
+    void SwapCard(int player_index1,int player_index2,Card::CardType type1,Card::CardType type2,int num1,int num2);
 
 
 

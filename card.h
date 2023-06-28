@@ -43,15 +43,16 @@ public:
 	void SetNumber(int number);
 	void SetType(CardType type);
 	QPushButton *GetButton();
-	void PushCard();
-	void PushTo(std::pair<int, int> pos);
-	void PushTo(std::pair<int, int> pos, int rotation);
-	void PushTo(std::pair<int, int> pos, std::pair<int, int> size, int rotation = 0);
+    void PushCard();
+    QPropertyAnimation* PushTo(std::pair<int, int> pos);
+    QPropertyAnimation* PushTo(std::pair<int, int> pos, int rotation);
+    QPropertyAnimation* PushTo(std::pair<int, int> pos, std::pair<int, int> size, int rotation = 0);
 	void SetUpButton();
     void ChangeCard(Card::CardType type,int number);
 
 	void show();
 	void hide();
+    QGraphicsProxyWidget* GetProxy();
 
 
 

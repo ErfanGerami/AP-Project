@@ -125,7 +125,7 @@ void Card::PushCard() {
 	//QSound::play(":/sounds/sounds/card_push.wav");
 
 }
-void Card::PushTo(std::pair<int, int> pos) {
+QPropertyAnimation* Card::PushTo(std::pair<int, int> pos) {
 	QParallelAnimationGroup* group = new QParallelAnimationGroup;
 	QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
 	rotation_animation->setStartValue(0);
@@ -140,9 +140,10 @@ void Card::PushTo(std::pair<int, int> pos) {
 	group->addAnimation(tranform_animation);
 	group->addAnimation(rotation_animation);
 	//group->start();
+    return tranform_animation;
 
 }
-void Card::PushTo(std::pair<int, int> pos,int rotation) {
+QPropertyAnimation* Card::PushTo(std::pair<int, int> pos,int rotation) {
 	QParallelAnimationGroup* group = new QParallelAnimationGroup;
 	QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
 	rotation_animation->setStartValue(0);
@@ -158,8 +159,9 @@ void Card::PushTo(std::pair<int, int> pos,int rotation) {
 	group->addAnimation(rotation_animation);
 	group->start();
 
+     return tranform_animation;
 }
-void Card::PushTo(std::pair<int, int> pos,std::pair<int,int> size,int rotation) {
+QPropertyAnimation* Card::PushTo(std::pair<int, int> pos,std::pair<int,int> size,int rotation) {
 	QParallelAnimationGroup* group = new QParallelAnimationGroup;
 	QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
 	rotation_animation->setStartValue(0);
@@ -176,11 +178,13 @@ void Card::PushTo(std::pair<int, int> pos,std::pair<int,int> size,int rotation) 
 	group->start();
 	width=size.first;
 	height=size.second;
+    return tranform_animation;
 
 }
 
 
 int Card::GetNumber() const{ return number; }
+QGraphicsProxyWidget* Card::GetProxy(){return proxy;}
 int Card::GetType()const { return type; }
 void Card::SetNumber(int number) { this->number = number; }
 void Card::SetType(CardType type) { this->type = type; }

@@ -386,5 +386,31 @@ void Logic::shuffle() {
 	std::shuffle(all_cards.begin(), all_cards.end(), gen);
 
 }
+void Logic::SwapCard(int player_index1,int player_index2,Card::CardType type1,Card::CardType type2,int num1,int num2){
+    auto players1_cards=players[player_index1]->get_cards();
+    auto players2_cards=players[player_index2]->get_cards();
+    for(Card* card:players1_cards){
+        if(card->GetType()==type1,card->GetNumber()==num1){
+            card->ChangeCard(type2,num2);
+
+
+
+
+
+        }
+    }
+
+    for(Card* card:players2_cards){
+        if(card->GetType()==type2,card->GetNumber()==num2){
+            card->ChangeCard(type1,num2);
+
+
+
+
+
+        }
+    }
+}
+
 
 

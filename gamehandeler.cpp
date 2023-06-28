@@ -343,6 +343,22 @@ void GameHandeler::GetTheWinnerOfTheRound() {
 
 
 }
+void GameHandeler::SwitchCard(Card::CardType type,int number){
+    auto cards=players[me]->get_cards();
+    for( Card* card :cards){
+        if(card->GetType()==type,card->GetNumber()==number){
+            int width=card->GetButton()->width();
+            QPropertyAnimation* anim=card->PushTo({card->GetButton()->x(),card->GetButton()->y()},{0,card->GetButton()->height()},card->GetProxy()->rotation());
+
+            connect(anim,&QPropertyAnimation::finished,[this,width,card,type,number](){card->ChangeCard(type,number);card->PushTo({card->GetButton()->x(),card->GetButton()->y()},{width,card->GetButton()->height()},card->GetProxy()->rotation());});
+
+
+
+        }
+
+    }
+
+}
 
 
 
