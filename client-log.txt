@@ -106,3 +106,9 @@
 123/5/28|22:24:23
 > written to socket as client
 
+123/5/29|1:47:28
+> connected to server
+
+123/5/29|1:47:28
+> written to socket as client
+

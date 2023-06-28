@@ -413,3 +413,35 @@ void Logic::SwapCard(int player_index1, int player_index2, Card::CardType type1,
 
 
 
+int Logic::CardVectorToArray(QVector<Card*> cards,int array[2][14]){
+
+    for(int i=0;i<cards.size();i++){
+        array[0][i]=cards[i]->GetType();
+         array[1][i]=cards[i]->GetNumber();
+    }
+    return cards.size();
+
+}
+QVector<Card*> Logic::CardArrayToVectorOf(int array[2][14],int size){
+    QVector<Card*> cards;
+    for(int i=0;i<size;i++){
+        cards.push_back(new Card(array[0][i],array[1][i]));
+
+    }
+    return cards;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
