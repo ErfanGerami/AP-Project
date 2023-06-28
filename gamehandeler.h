@@ -15,51 +15,54 @@
 #include <QInputDialog>
 #include <QVector>
 #include <QObject>
+#include "SocketHandeling.h"
+#include "Code.h"
 
-class GameHandeler:public QObject
-{
-    Q_OBJECT
+class GameHandeler:public QObject {
+	Q_OBJECT
 public:
-    GameHandeler();
-    GameHandeler(QWidget* parent,int number_of_players,QGraphicsView*view,QGraphicsScene* scene,QGraphicsView* sticker_view,QGraphicsScene* sticker_scene,int me,Player p1,Player p2,Player p3=Player(),Player p4=Player());
-    void TellTheFirst(int index);
-    void Deal();
-    void shuffle();
-    void GameHandeler::collect(PlayerInGame* player);
-    void StartRound();
-    void AddStickers(QString name,int index);
-    int GetMe();
+	GameHandeler();
+	GameHandeler(QWidget *parent, SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
+	void TellTheFirst(int index);
+	void Deal();
+	void shuffle();
+	void GameHandeler::collect(PlayerInGame *player);
+	void StartRound();
+	void AddStickers(QString name, int index);
+	int GetMe();
 
 private:
-    QWidget* parent;
-    int number_of_players;
-    int me;
-    PlayerInGame* players[4];
-    QVector<Card*> cards_on_deck;
-    QGraphicsView*view;
-    QGraphicsScene* scene;
-    QVector<QString> remaning_stickers;
-    //needed for clients game logic;
-    int round=-1;//will be set to 0 when the game starts;
-    QGraphicsView* sticker_view;
-    QGraphicsScene* sticker_scene;
-    bool isValid(Card card, int turn);
-    void GetTheWinnerOfTheRound();
-    void StartSet();
-    int GetWhoseTurn();
-    int turn=0;
-    int set=-1;
-    int first_this_round;
+	SocketHandeling *client;
+
+	QWidget *parent;
+	int number_of_players;
+	int me;
+	PlayerInGame *players[4];
+	QVector<Card *> cards_on_deck;
+	QGraphicsView *view;
+	QGraphicsScene *scene;
+	QVector<QString> remaning_stickers;
+	//needed for clients game logic;
+	int round = -1;//will be set to 0 when the game starts;
+	QGraphicsView *sticker_view;
+	QGraphicsScene *sticker_scene;
+	bool isValid(Card card, int turn);
+	void GetTheWinnerOfTheRound();
+	void StartSet();
+	int GetWhoseTurn();
+	int turn = 0;
+	int set = -1;
+	int first_this_round;
 
 
 
 signals:
-    void GetOthersPushedCard_S();
+	void GetOthersPushedCard_S();
 
 private slots:
-    void GetOthersPushedCard();
+	void GetOthersPushedCard();
 public slots:
-    void PushCard();
+	void PushCard();
 
 
 

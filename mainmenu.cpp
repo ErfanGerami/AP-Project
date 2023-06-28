@@ -79,6 +79,7 @@ void MainMenu::on_join_server_clicked() {
 void MainMenu::server_joining_finished(bool is_connected) {
 	if ( is_connected ) {
 		//show next window
+
 	}
 	else {
 		QMessageBox::critical(this, "error", "failed to connect to server");

@@ -165,27 +165,27 @@ void Logic::initializeNewSet() {
 	// 
 	//notify the client that it is his turn;
 
-    char code[6] = "00100";//this is "your turn" code
-    DataPacket dummy;
-    server->send_data(code, &dummy, this_rounds_first);
+	char code[6] = "00100";//this is "your turn" code
+	DataPacket dummy;
+	server->send_data(code, &dummy, this_rounds_first);
 	//-----------------
-    //????????????????????????????????????????????????????????????????????????????????????????
-    //notify clients of their cards(you can get cards using players[i]->GetCards()  a vector  of cards ;
+	//????????????????????????????????????????????????????????????????????????????????????????
+	//notify clients of their cards(you can get cards using players[i]->GetCards()  a vector  of cards ;
 
 
-    char code1[6] = "02000";
+	char code1[6] = "02000";
 
-    for ( int i = 0; i < number_of_players; i++ ) {
+	for ( int i = 0; i < number_of_players; i++ ) {
 
-        DataPacket data;
-        data.player_cards;
-        auto cards = players[i]->get_cards();
+		DataPacket data;
+		data.player_cards;
+		auto cards = players[i]->get_cards();
 
-        for ( int j = 0; j < 7; j++ )
-            data.player_cards[j] = cards[j]->GetNumber();
+		for ( int j = 0; j < 7; j++ )
+			data.player_cards[j] = cards[j]->GetNumber();
 
-        server->send_data(code1, &data, i);
-    }
+		server->send_data(code1, &data, i);
+	}
 
 
 
@@ -251,7 +251,7 @@ void Logic::StartGame() {
 				code2 = data_vector[i].first;
 
 				int prediction;
-				if ( code2[0] == i + '0' && code2[1] == '0' && code2[2] == '2' )
+				if (/* code2[0] == i + '0' &&*/ code2[1] == '0' && code2[2] == '2' )
 					prediction = code2[3] - '0';//set this
 				else {
 					//handle it
@@ -274,7 +274,7 @@ void Logic::StartGame() {
 			for ( int i = 0; i < number_of_players; i++ ) {
 				Card::CardType type;
 				int number;
-                //Wait For the i-th player to move here and set the type and number(if it is role card set to -1)
+				//Wait For the i-th player to move here and set the type and number(if it is role card set to -1)
 				QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server();
 
 				char *code4;
@@ -295,7 +295,7 @@ void Logic::StartGame() {
 					server->send_data(code5, &dummy, j);
 				}
 				//-------------------
-                cards_on_deck.push_back(Card(type,number));
+				cards_on_deck.push_back(Card(type, number));
 
 
 				if ( type == Card::king )rounds_score += 15;
