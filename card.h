@@ -33,8 +33,8 @@ public:
 
 
 	Card();
-	Card::Card(CardType type, int number);//a constructor when we use it withoutshowing;
-	Card(CardType type, QGraphicsScene *scene, QGraphicsView *view, int number = -1, int x = 0, int y = 0, int rotation = 0);
+    Card::Card(CardType type, int number);//a constructor when we use it withoutshowing;
+    Card(QObject* parent,CardType type, QGraphicsScene *scene, QGraphicsView *view, int number = -1, int x = 0, int y = 0, int rotation = 0);
 	Card(const Card &other);
 	void operator=(const Card &other);
 
@@ -48,6 +48,7 @@ public:
 	void PushTo(std::pair<int, int> pos, int rotation);
 	void PushTo(std::pair<int, int> pos, std::pair<int, int> size, int rotation = 0);
 	void SetUpButton();
+    void ChangeCard(Card::CardType type,int number);
 
 	void show();
 	void hide();
@@ -68,7 +69,7 @@ private:
 	QGraphicsProxyWidget *proxy;
 	QGraphicsScene *scene;
 
-
+    QObject* parent;
 	QGraphicsView *view;
 
 

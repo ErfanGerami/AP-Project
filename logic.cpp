@@ -12,8 +12,6 @@ Logic::Logic(SocketHandeling *server, PlayerInGame p1, PlayerInGame p2, int numb
 }
 
 int Logic::getFirstPlayer() { return rand() % number_of_players; }
-
-
 bool Logic::isValid(Card card, int turn) {
 
 	if ( turn != 0 ) {
@@ -166,11 +164,28 @@ void Logic::initializeNewSet() {
 	// 
 	// 
 	//notify the client that it is his turn;
-	char code[6] = "00100";//this is "your turn" code
-	DataPacket dummy;
-	server->send_data(code, &dummy, this_rounds_first);
+
+    char code[6] = "00100";//this is "your turn" code
+    DataPacket dummy;
+    server->send_data(code, &dummy, this_rounds_first);
 	//-----------------
-	//????????????????????????????????????????????????????????????????????????????????????????
+    //????????????????????????????????????????????????????????????????????????????????????????
+    //notify clients of their cards(you can get cards using players[i]->GetCards()  a vector  of cards ;
+
+
+    char code1[6] = "02000";
+
+    for ( int i = 0; i < number_of_players; i++ ) {
+
+        DataPacket data;
+        data.player_cards;
+        auto cards = players[i]->get_cards();
+
+        for ( int j = 0; j < 7; j++ )
+            data.player_cards[j] = cards[j]->GetNumber();
+
+        server->send_data(code1, &data, i);
+    }
 
 
 
@@ -226,21 +241,7 @@ void Logic::StartGame() {
 		for ( int round_number = 0; round_number < set; round_number++ ) {
 			int rounds_score = 0;
 
-			//notify clients of their cards(you can get cards using players[i]->GetCards()  a vector  of cards ;
-			char code1[6] = "02000";
 
-			for ( int i = 0; i < number_of_players; i++ ) {
-
-				DataPacket data;
-				data.player_cards;
-				auto cards = players[i]->get_cards();
-
-				for ( int j = 0; j < 7; j++ )
-					data.player_cards[j] = cards[j]->GetNumber();
-
-				server->send_data(code1, &data, i);
-			}
-			//-----------------
 
 			for ( int i = 0; i < number_of_players; i++ ) {
 				//get the predicted_rounds here for each player
@@ -273,8 +274,7 @@ void Logic::StartGame() {
 			for ( int i = 0; i < number_of_players; i++ ) {
 				Card::CardType type;
 				int number;
-				//why first player??? I wait for i-th player
-				//Wait For the first player to move here and set the type and number(if it is role card set to -1)
+                //Wait For the i-th player to move here and set the type and number(if it is role card set to -1)
 				QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server();
 
 				char *code4;
@@ -286,22 +286,6 @@ void Logic::StartGame() {
 				}
 				//-----------------
 
-
-				//while ( true ) {//stays in the loop untill the client throws the right card;
-				//	if ( throwCard(Card(type, number), i) ) {
-				//		//inform the client that the throwing card is valid
-				//		type = -1;//set this
-				//		number = -1;//set this
-				//		break;
-				//	}
-				//	else {
-				//		//inform the client that the throwing card is valid
-				//		//and inform all
-				//	}
-				//}
-
-
-
 				//informing all:
 				char code5[6] = "00800";
 				code5[3] = type + '0';
@@ -311,6 +295,7 @@ void Logic::StartGame() {
 					server->send_data(code5, &dummy, j);
 				}
 				//-------------------
+                cards_on_deck.push_back(Card(type,number));
 
 
 				if ( type == Card::king )rounds_score += 15;

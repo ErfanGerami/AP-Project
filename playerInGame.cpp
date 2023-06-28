@@ -20,6 +20,7 @@ void PlayerInGame::operator=(const PlayerInGame &that) {
 	this->rounds_won = that.rounds_won;
 	this->predicted_rounds = that.predicted_rounds;
 	this->points = points;
+    this->parent=parent;
 
 
 
@@ -36,9 +37,10 @@ PlayerInGame::PlayerInGame():Player() {
 	this->rounds_won = 0;
 	this->predicted_rounds = 0;
 	this->points = 0;
+    this->parent=nullptr;
 
 }
-PlayerInGame::PlayerInGame(const string &username, const string &password, int rank, int games_won, int games_loose
+PlayerInGame::PlayerInGame(QObject* parent,const string &username, const string &password, int rank, int games_won, int games_loose
 	, const string &phone_number, const string &address, const string &email, const int coins
 	, QVector<Card *> cards, std::pair<int, int> base_pos, int place, Game prev_game = Game(), int round_won = 0, int predicted_rounds = 0, int points = 0)
 
@@ -49,17 +51,19 @@ PlayerInGame::PlayerInGame(const string &username, const string &password, int r
 	this->place = place;
 	this->predicted_rounds = predicted_rounds;
 	this->points = points;
+    this->parent=parent;
 	CalculateWonCardPosition();
 
 
 
 }
-PlayerInGame::PlayerInGame(const Player &player, int place, QVector<Card *> cards, int rounds_won = 0): Player(player) {
+PlayerInGame::PlayerInGame(const Player &player,QObject* parent, int place, QVector<Card *> cards, int rounds_won = 0): Player(player) {
 	//fix thiss later;
 	this->cards = cards;
 	this->place = place;
 	this->rounds_won = 0;
 	this->points = 0;
+    this->parent=parent;
 
 
 }
@@ -69,18 +73,23 @@ void PlayerInGame::NewCards(QVector<Card *> cards) {
 
 }
 
-Card *PlayerInGame::PushCard(Card::CardType card_type, int number) {
-	for ( auto itr = cards.begin(); itr != cards.end(); itr++ ) {
-		if ( (*itr)->GetNumber() == number && (*itr)->GetType() == card_type ) {
+Card *PlayerInGame::PushCard(Card::CardType card_type, int number,bool was_unknow) {
+    if(was_unknow){
+        Card *card = new Card(*cards.front());
+        cards.pop_front();
+    }else{
+        for ( auto itr = cards.begin(); itr != cards.end(); itr++ ) {
+            if ( (*itr)->GetNumber() == number && (*itr)->GetType() == card_type ) {
 
-			Card *card = new Card(**itr);
+                Card *card = new Card(**itr);
 
-			cards.erase(itr);
-			return card;
+                cards.erase(itr);
+                return card;
 
-		}
+            }
 
-	}
+        }
+    }
 	return nullptr;
 }
 

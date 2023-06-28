@@ -827,6 +827,31 @@ debug\moc_getserversinformation.cpp: getserversinformation.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qabstractanimation.h \
 		errors.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QString \
+		SocketHandeling.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qhostaddress.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpServer \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpserver.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDataStream \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QbyteArray \
+		channel.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QTextBrowser \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextbrowser.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextdocument.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpen.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qUdpSocket \
+		DataPacket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QCloseEvent \
 		debug\moc_predefs.h \
 		C:\Qt\5.12.12\msvc2017_64\bin\moc.exe
 	C:\Qt\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/Geramizade/Desktop/New folder (3)/AP-Project/debug/moc_predefs.h" -IC:/Qt/5.12.12/msvc2017_64/mkspecs/win32-msvc -I"C:/Users/Geramizade/Desktop/New folder (3)/AP-Project" -IC:/Qt/5.12.12/msvc2017_64/include -IC:/Qt/5.12.12/msvc2017_64/include/QtMultimedia -IC:/Qt/5.12.12/msvc2017_64/include/QtWidgets -IC:/Qt/5.12.12/msvc2017_64/include/QtGui -IC:/Qt/5.12.12/msvc2017_64/include/QtANGLE -IC:/Qt/5.12.12/msvc2017_64/include/QtNetwork -IC:/Qt/5.12.12/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" getserversinformation.h -o debug\moc_getserversinformation.cpp
@@ -1009,14 +1034,15 @@ debug\moc_login.cpp: login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QFontDatabase \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qfontdatabase.h \
 		changeinfo.h \
+		getserversinformation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		SocketHandeling.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QUdpSocket \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qudpsocket.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qhostaddress.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
-		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpServer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpserver.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDataStream \
@@ -1033,6 +1059,7 @@ debug\moc_login.cpp: login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qUdpSocket \
 		DataPacket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMap \
 		debug\moc_predefs.h \
 		C:\Qt\5.12.12\msvc2017_64\bin\moc.exe
 	C:\Qt\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/Geramizade/Desktop/New folder (3)/AP-Project/debug/moc_predefs.h" -IC:/Qt/5.12.12/msvc2017_64/mkspecs/win32-msvc -I"C:/Users/Geramizade/Desktop/New folder (3)/AP-Project" -IC:/Qt/5.12.12/msvc2017_64/include -IC:/Qt/5.12.12/msvc2017_64/include/QtMultimedia -IC:/Qt/5.12.12/msvc2017_64/include/QtWidgets -IC:/Qt/5.12.12/msvc2017_64/include/QtGui -IC:/Qt/5.12.12/msvc2017_64/include/QtANGLE -IC:/Qt/5.12.12/msvc2017_64/include/QtNetwork -IC:/Qt/5.12.12/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" login.h -o debug\moc_login.cpp
@@ -1188,6 +1215,11 @@ debug\moc_maingamewindow.cpp: maingamewindow.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QVBoxLayout \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlayout.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		debug\moc_predefs.h \
 		C:\Qt\5.12.12\msvc2017_64\bin\moc.exe
 	C:\Qt\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/Geramizade/Desktop/New folder (3)/AP-Project/debug/moc_predefs.h" -IC:/Qt/5.12.12/msvc2017_64/mkspecs/win32-msvc -I"C:/Users/Geramizade/Desktop/New folder (3)/AP-Project" -IC:/Qt/5.12.12/msvc2017_64/include -IC:/Qt/5.12.12/msvc2017_64/include/QtMultimedia -IC:/Qt/5.12.12/msvc2017_64/include/QtWidgets -IC:/Qt/5.12.12/msvc2017_64/include/QtGui -IC:/Qt/5.12.12/msvc2017_64/include/QtANGLE -IC:/Qt/5.12.12/msvc2017_64/include/QtNetwork -IC:/Qt/5.12.12/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" maingamewindow.h -o debug\moc_maingamewindow.cpp
@@ -1307,6 +1339,43 @@ debug\moc_mainmenu.cpp: mainmenu.h \
 		errors.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		getserversinformation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QPropertyAnimation \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpropertyanimation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvariantanimation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeasingcurve.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qabstractanimation.h \
+		SocketHandeling.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qhostaddress.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpServer \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpserver.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDataStream \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QbyteArray \
+		channel.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QTextBrowser \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextbrowser.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextdocument.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpen.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qUdpSocket \
+		DataPacket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QCloseEvent \
 		debug\moc_predefs.h \
 		C:\Qt\5.12.12\msvc2017_64\bin\moc.exe
 	C:\Qt\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/Geramizade/Desktop/New folder (3)/AP-Project/debug/moc_predefs.h" -IC:/Qt/5.12.12/msvc2017_64/mkspecs/win32-msvc -I"C:/Users/Geramizade/Desktop/New folder (3)/AP-Project" -IC:/Qt/5.12.12/msvc2017_64/include -IC:/Qt/5.12.12/msvc2017_64/include/QtMultimedia -IC:/Qt/5.12.12/msvc2017_64/include/QtWidgets -IC:/Qt/5.12.12/msvc2017_64/include/QtGui -IC:/Qt/5.12.12/msvc2017_64/include/QtANGLE -IC:/Qt/5.12.12/msvc2017_64/include/QtNetwork -IC:/Qt/5.12.12/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" mainmenu.h -o debug\moc_mainmenu.cpp
@@ -1679,6 +1748,43 @@ debug\moc_mainmenu.cpp: mainmenu.h \
 		errors.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		getserversinformation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QPropertyAnimation \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpropertyanimation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvariantanimation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeasingcurve.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qabstractanimation.h \
+		SocketHandeling.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qhostaddress.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpServer \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpserver.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDataStream \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QbyteArray \
+		channel.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QTextBrowser \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextbrowser.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextdocument.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpen.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qUdpSocket \
+		DataPacket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QCloseEvent \
 		debug\moc_predefs.h \
 		C:\Qt\5.12.12\msvc2017_64\bin\moc.exe
 	C:\Qt\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/Geramizade/Desktop/New folder (3)/AP-Project/debug/moc_predefs.h" -IC:/Qt/5.12.12/msvc2017_64/mkspecs/win32-msvc -I"C:/Users/Geramizade/Desktop/New folder (3)/AP-Project" -IC:/Qt/5.12.12/msvc2017_64/include -IC:/Qt/5.12.12/msvc2017_64/include/QtMultimedia -IC:/Qt/5.12.12/msvc2017_64/include/QtWidgets -IC:/Qt/5.12.12/msvc2017_64/include/QtGui -IC:/Qt/5.12.12/msvc2017_64/include/QtANGLE -IC:/Qt/5.12.12/msvc2017_64/include/QtNetwork -IC:/Qt/5.12.12/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" mainmenu.h -o debug\moc_mainmenu.cpp
@@ -2945,6 +3051,31 @@ debug\getserversinformation.obj: getserversinformation.cpp getserversinformation
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qabstractanimation.h \
 		errors.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QString \
+		SocketHandeling.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qhostaddress.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpServer \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpserver.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDataStream \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QbyteArray \
+		channel.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QTextBrowser \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextbrowser.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextdocument.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpen.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qUdpSocket \
+		DataPacket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QCloseEvent \
 		ui_getserversinformation.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVariant \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
@@ -2954,29 +3085,14 @@ debug\getserversinformation.obj: getserversinformation.cpp getserversinformation
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QCheckBox \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qcheckbox.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qicon.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlayout.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLabel \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLineEdit \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpen.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextoption.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QListWidget \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlistview.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qitemselectionmodel.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
@@ -2984,6 +3100,7 @@ debug\getserversinformation.obj: getserversinformation.cpp getserversinformation
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qvalidator.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qregularexpression.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qicon.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qslider.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractslider.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qstyle.h \
@@ -2992,7 +3109,9 @@ debug\getserversinformation.obj: getserversinformation.cpp getserversinformation
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qrubberband.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QPushButton \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QWidget
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractbutton.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QSplitter \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qsplitter.h
 
 debug\logic.obj: logic.cpp logic.h \
 		playerInGame.h \
@@ -3128,7 +3247,33 @@ debug\logic.obj: logic.cpp logic.h \
 		player.h \
 		game.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QObject \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVector
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVector \
+		SocketHandeling.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qhostaddress.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpServer \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpserver.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDataStream \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QbyteArray \
+		errors.h \
+		channel.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QTextBrowser \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextbrowser.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextdocument.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qUdpSocket \
+		DataPacket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray
 
 debug\main.obj: main.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QMainWindow \
@@ -3308,14 +3453,15 @@ debug\main.obj: main.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QFontDatabase \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qfontdatabase.h \
 		changeinfo.h \
+		getserversinformation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		SocketHandeling.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QUdpSocket \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qudpsocket.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qhostaddress.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
-		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpServer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpserver.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDataStream \
@@ -3332,6 +3478,7 @@ debug\main.obj: main.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qUdpSocket \
 		DataPacket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMap \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
@@ -3346,7 +3493,6 @@ debug\main.obj: main.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
-		getserversinformation.h \
 		waitmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QGraphicsView \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qgraphicsview.h \
@@ -3539,14 +3685,15 @@ debug\login.obj: login.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QFontDatabase \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qfontdatabase.h \
 		changeinfo.h \
+		getserversinformation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		SocketHandeling.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QUdpSocket \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qudpsocket.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qhostaddress.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
-		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpServer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpserver.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDataStream \
@@ -3563,6 +3710,7 @@ debug\login.obj: login.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qUdpSocket \
 		DataPacket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMap \
 		ui_login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
@@ -3734,6 +3882,11 @@ debug\maingamewindow.obj: maingamewindow.cpp maingamewindow.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QVBoxLayout \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlayout.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		ui_maingamewindow.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVariant \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
@@ -3859,6 +4012,43 @@ debug\mainmenu.obj: mainmenu.cpp mainmenu.h \
 		errors.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		getserversinformation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QPropertyAnimation \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpropertyanimation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvariantanimation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeasingcurve.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qabstractanimation.h \
+		SocketHandeling.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qhostaddress.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpServer \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpserver.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDataStream \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QbyteArray \
+		channel.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QTextBrowser \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextbrowser.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextdocument.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpen.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qUdpSocket \
+		DataPacket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QCloseEvent \
 		ui_mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVariant \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
@@ -3869,19 +4059,16 @@ debug\mainmenu.obj: mainmenu.cpp mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QFrame \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLabel \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlabel.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLineEdit \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpen.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextoption.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QPushButton \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qicon.h
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qicon.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QSplitter \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qsplitter.h
 
 debug\player.obj: player.cpp player.h \
 		game.h \
@@ -4333,6 +4520,43 @@ debug\mainmenu.obj: mainmenu.cpp mainmenu.h \
 		errors.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		getserversinformation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QPropertyAnimation \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpropertyanimation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvariantanimation.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeasingcurve.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qabstractanimation.h \
+		SocketHandeling.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QUdpSocket \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qudpsocket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qhostaddress.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\QTcpServer \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qtcpserver.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDataStream \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QbyteArray \
+		channel.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QTextBrowser \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextbrowser.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextdocument.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpen.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtNetwork\qUdpSocket \
+		DataPacket.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QCloseEvent \
 		ui_mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVariant \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
@@ -4343,19 +4567,16 @@ debug\mainmenu.obj: mainmenu.cpp mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QFrame \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLabel \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlabel.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLineEdit \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpen.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtextoption.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QPushButton \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qicon.h
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qicon.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QSplitter \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qsplitter.h
 
 debug\waitmenu.obj: waitmenu.cpp waitmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QDialog \
