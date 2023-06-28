@@ -2,7 +2,7 @@
 
 
 
-DataPacket::DataPacket(QString server_name, int player_count, QString plauer_name[4], int player_bet[4], int player_cards[4][7]) {
+DataPacket::DataPacket(QString server_name, int player_count, QString plauer_name[4], int player_bet[4], int player_cards[7]) {
 
 	this->server_name = server_name;
 	this->player_count = player_count;
@@ -15,7 +15,7 @@ DataPacket::DataPacket(QString server_name, int player_count, QString plauer_nam
 
 	for ( int i = 0; i < 4; i++ )
 		for ( int j = 0; j < 7; j++ )
-			this->player_cards[i][j] = player_cards[i][j];
+			this->player_cards[i] = player_cards[i];
 }
 
 

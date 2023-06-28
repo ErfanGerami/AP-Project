@@ -31,7 +31,7 @@ public:
 
 	DataPacket() = default;
 
-	DataPacket(QString server_name, int player_count, QString plauer_name[4], int player_bet[4], int player_cards[4][7]);
+	DataPacket(QString server_name, int player_count, QString plauer_name[4], int player_bet[4], int player_cards[7]);
 
 	/*DataPacket(QString server_name, int player_count, QString plauer_name[4], int player_bet[4], int player_cards[4][7], int player_won_round[4] = { 0 }, int player_Lost_round[4] = { 0 }, int player_used_timeout[4] = { 0 }, bool player_dropped[4] = { false }, bool player_abandoned[4] = { false }, bool player_is_swapping_card[4] = { false }, int rounds_passed = 0, int current_round = 0, bool is_game_in_timeout = false);*/
 
