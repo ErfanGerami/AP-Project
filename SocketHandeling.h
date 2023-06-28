@@ -39,6 +39,8 @@ public:
 
 	bool is_client_connected();
 	bool is_server_connected();
+
+	QTcpSocket *get_tcp_socket();
 private:
 	void logWriteServer(std::string str);
 	void logWriteClient(std::string str);

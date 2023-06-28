@@ -58,7 +58,7 @@ int Logic::notifyAndGetThisRoundsWinner() {
 
 }
 
-//lots of if s here :)
+//lots of if s here :]
 int Logic::Greater(Card card1, Card card2) {
 	Card::CardType type1 = card1.GetType();
 	Card::CardType type2 = card2.GetType();
@@ -165,7 +165,7 @@ void Logic::initializeNewSet() {
 	// 
 	//notify the client that it is his turn;
 
-	char code[6] = "00100";//this is "your turn" code
+	char *code = Code::set_code('0', Code::fromServer_Sent_FirstPlayer);//this is "your turn" code
 	DataPacket dummy;
 	server->send_data(code, &dummy, this_rounds_first);
 	//-----------------
@@ -173,8 +173,7 @@ void Logic::initializeNewSet() {
 	//notify clients of their cards(you can get cards using players[i]->GetCards()  a vector  of cards ;
 
 
-	char code1[6] = "02000";
-
+	char *code1 = Code::set_code('0', Code::fromServer_Sent_YourCards);
 	for ( int i = 0; i < number_of_players; i++ ) {
 
 		DataPacket data;
@@ -251,7 +250,7 @@ void Logic::StartGame() {
 				code2 = data_vector[i].first;
 
 				int prediction;
-				if (/* code2[0] == i + '0' &&*/ code2[1] == '0' && code2[2] == '2' )
+				if ( Code::get_code(code2) == Code::fromClient_Sent_Predictions )
 					prediction = code2[3] - '0';//set this
 				else {
 					//handle it
@@ -265,7 +264,7 @@ void Logic::StartGame() {
 			this_rounds_first = getFirstPlayer();
 
 			//notify clients of the first player(the parrot animation thing in gamehandeling should be played)
-			char code3[6] = "00300";
+			char *code3 = Code::set_code('0', Code::fromServer_Sent_FirstPlayer);
 			code3[3] = this_rounds_first;
 
 			server->send_data(code3, &dummy);
@@ -279,7 +278,7 @@ void Logic::StartGame() {
 
 				char *code4;
 				code4 = data_vector[i].first;
-				if ( code4[0] == '0' && code4[1] == '0' && code4[2] == '4' ) {
+				if ( Code::get_code(code4) == Code::fromClient_Sent_PlayedCard ) {
 
 					Card::CardType type = code4[3] - '0';//set this
 					int number = (type > 3) ? (code4[4] - '0') : (-1);//set this
@@ -287,7 +286,7 @@ void Logic::StartGame() {
 				//-----------------
 
 				//informing all:
-				char code5[6] = "00800";
+				char *code5 = Code::set_code('0', Code::fromServer_Sent_AnotherPlayerPlayedCard);
 				code5[3] = type + '0';
 				code5[4] = number + '0';
 				for ( int j = 0; j < 4; j++ ) {
@@ -305,8 +304,8 @@ void Logic::StartGame() {
 			int winner_index = notifyAndGetThisRoundsWinner();
 			players[winner_index]->SetPoints(players[winner_index]->GetPoints() + rounds_score);
 			this_rounds_first = winner_index;
-			//notify the winner here;send winner_index
-			char code6[6] = "00500";
+			//notify the round winner here;send winner_index
+			char *code6 = Code::set_code('0', Code::fromServer_Sent_RoundWinner);
 			code6[3] = winner_index;
 			server->send_data(code6, &dummy);
 			//-----------------
@@ -339,7 +338,7 @@ void Logic::StartGame() {
 
 		}
 		//notify the player their score here  players[i]->GetPoints();
-		char code7[6] = "00600";
+		char *code7 = Code::set_code('0', Code::fromServer_Sent_YourScore);
 		DataPacket data_packet;
 		for ( int j = 0; j < 4; j++ ) {
 			data_packet.your_points = players[j]->GetPoints();
@@ -360,7 +359,7 @@ void Logic::StartGame() {
 	}
 	//notify all that who won and that they should give up their money :)
 
-	char code8[6] = "00700";
+	char *code8 = Code::set_code('0', Code::fromServer_Sent_GameWinner);
 	code8[3] = winner;
 	server->send_data(code8, &dummy);
 
@@ -386,30 +385,30 @@ void Logic::shuffle() {
 	std::shuffle(all_cards.begin(), all_cards.end(), gen);
 
 }
-void Logic::SwapCard(int player_index1,int player_index2,Card::CardType type1,Card::CardType type2,int num1,int num2){
-    auto players1_cards=players[player_index1]->get_cards();
-    auto players2_cards=players[player_index2]->get_cards();
-    for(Card* card:players1_cards){
-        if(card->GetType()==type1,card->GetNumber()==num1){
-            card->ChangeCard(type2,num2);
+void Logic::SwapCard(int player_index1, int player_index2, Card::CardType type1, Card::CardType type2, int num1, int num2) {
+	auto players1_cards = players[player_index1]->get_cards();
+	auto players2_cards = players[player_index2]->get_cards();
+	for ( Card *card : players1_cards ) {
+		if ( card->GetType() == type1, card->GetNumber() == num1 ) {
+			card->ChangeCard(type2, num2);
 
 
 
 
 
-        }
-    }
+		}
+	}
 
-    for(Card* card:players2_cards){
-        if(card->GetType()==type2,card->GetNumber()==num2){
-            card->ChangeCard(type1,num2);
-
-
+	for ( Card *card : players2_cards ) {
+		if ( card->GetType() == type2, card->GetNumber() == num2 ) {
+			card->ChangeCard(type1, num2);
 
 
 
-        }
-    }
+
+
+		}
+	}
 }
 
 

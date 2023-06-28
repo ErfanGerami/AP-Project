@@ -1,5 +1,6 @@
 #include "gamehandeler.h"
 #include <thread>
+#include <qtcpsocket.h>
 GameHandeler::GameHandeler() {}
 GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3, Player p4) {
 	this->number_of_players = number_of_players;
@@ -145,6 +146,8 @@ void GameHandeler::GetOthersPushedCard() {
 
 
 	}
+	//you know what to do
+	//disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
 }
 bool GameHandeler::isValid(Card card, int turn) {
 
@@ -168,74 +171,68 @@ bool GameHandeler::isValid(Card card, int turn) {
 }
 void GameHandeler::StartRound() {
 
-
-
-
 	round++;
 	turn = 0;
 
+	//for ( int set = 0; set < 7; set++ ) {
+	//	DataPacket dummy;
+
+	//	round++;
+
+	//	QVector<Card *> given_cards;
+
+	//	//for ( int i = 0; i < number_of_players; i++ ) {
+	//		//for all cards in
+	//	Card::CardType type = -1;//set this
+	//	int number = -1;//set this
+	//	//given_cards.push_back(new Card(this,));
+	//	//get the cards and give it as a vector of Card class
+	//	QPair<char *, DataPacket *>pair = client->reading_data_socket();
+	//	char *code = pair.first;
+	//	DataPacket *data = pair.second;
+	//	if ( Code::get_code(code) == Code::fromServer_Sent_YourCards ) {
+	//		for ( int i = 0; i < 7; i++ )
+	//			given_cards.push_back(new Card(i, data->player_cards[i]));
+	//	}
+	//	else {
+	//		//handle
+	//	}
+	//	//---------------------------------------------------
+	//	players[me]->NewCards(given_cards);//set the input
+	//	//---------------------------------------------------
 
 
+	////}
+	//	bool okay = false;
+	//	int prediction;
+	//	while ( !okay )
+	//		prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going towin?", 0, 0, round * 2, 1, &okay);
 
-	for ( int set = 0; set < 7; set++ ) {
-		DataPacket dummy;
+	//	//send prediction
+	//	char *code1 = Code::set_code(me, Code::fromClient_Sent_Predictions);
+	//	client->send_data(code1, &dummy);
+	//	//-------------------
 
-		round++;
+	////this structure is wrong because we want to wait for the player to push button but it is the
+	////backbone of what socket should be
 
-		QVector<Card *> given_cards;
-
-		//for ( int i = 0; i < number_of_players; i++ ) {
-			//for all cards in
-		Card::CardType type = -1;//set this
-		int number = -1;//set this
-		//given_cards.push_back(new Card(this,));
-		//get the cards and give it as a vector of Card class
-		QPair<char *, DataPacket *>pair = client->reading_data_socket();
-		char *code = pair.first;
-		DataPacket *data = pair.second;
-		if ( Code::get_code(code) == Code::fromServer_Sent_YourCards ) {
-			for ( int i = 0; i < 7; i++ )
-				given_cards.push_back(new Card(i, data->player_cards[i]));
-		}
-		else {
-			//handle
-		}
-		//---------------------------------------------------
-		players[me]->NewCards(given_cards);//set the input
-		//---------------------------------------------------
-
-
+	//	for ( int i = 0; i < number_of_players; i++ ) {
+	//		//wait for others to predict and read if someone throw cards
+	//		Card::CardType type = -1;//set this
+	//		int number = -1;         //set this
+	//		int player = -1;         //set this
+	//		players[player]->PushCard(1, number);
+	//	}
+	//	//get the winner
+	//	int winner = -1;//set this
+	//	QPair<char *, DataPacket *>pair1 = client->reading_data_socket();
+	//	if ( Code::get_code(pair1.first) == Code::fromServer_Sent_RoundWinner )
+	//		winner = pair1.first[4];
+	//	else {
+	//		//handle
+	//	}
+	//	collect(players[winner]);
 	//}
-		bool okay = false;
-		int prediction;
-		while ( !okay )
-			prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going towin?", 0, 0, round * 2, 1, &okay);
-
-		//send prediction
-		char *code = Code::set_code(me, Code::fromClient_Sent_Predictions);
-		client->send_data(code, &dummy);
-		//-------------------
-
-	//this structure is wrong because we want to wait for the player to push button but it is the
-	//backbone of what socket should be
-
-		for ( int i = 0; i < number_of_players; i++ ) {
-			//wait for others to predict and read if someone throw cards
-			Card::CardType type = -1;//set this
-			int number = -1;         //set this
-			int player = -1;         //set this
-			players[player]->PushCard(1, number);
-		}
-		//get the winner
-		int winner = -1;//set this
-		QPair<char *, DataPacket *>pair = client->reading_data_socket();
-		if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner )
-			winner = pair.first[4];
-		else {
-			//handle
-		}
-		collect(players[winner]);
-	}
 
 
 
@@ -245,7 +242,7 @@ void GameHandeler::StartSet() {
 	//get who is first
 	QPair<char *, DataPacket *>pair = client->reading_data_socket();
 	if ( Code::get_code(pair.first) == Code::fromServer_Sent_FirstPlayer )
-		first_this_round = 0;//set this
+		first_this_round = pair.first[3];//set this
 	else {
 		//handle
 	}
@@ -278,7 +275,8 @@ void GameHandeler::StartSet() {
 			while ( !okay )
 				int prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, round * 2, 1, &okay);
 			//notify the prediction to others;
-
+			char *code = Code::set_code(me + '0', Code::fromClient_Sent_Predictions);
+			//--------------------
 
 		}
 		else {
@@ -293,7 +291,7 @@ void GameHandeler::StartSet() {
 	}
 	//connect the socket when sends data that someone pushed card to GetOthersPushedCard
 
-
+	connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
 
 }
 
@@ -318,6 +316,9 @@ void GameHandeler::PushCard() {
 
 				}
 				//notify the server of what card is pushed here
+				char *code = Code::set_code(me, Code::fromClient_Sent_PlayedCard);
+				DataPacket dummy;
+				client->send_data(code, &dummy);
 				//---------------------------------------------
 
 
@@ -334,7 +335,11 @@ void GameHandeler::PushCard() {
 }
 void GameHandeler::GetTheWinnerOfTheRound() {
 	//get the player that has won the round;
-	int player_index = 0;
+	int player_index;
+	QPair<char *, DataPacket *> pair = client->reading_data_socket();
+	if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner )
+		player_index = pair.first[3];
+
 	//-----------------------------------
 
 	collect(players[player_index]);
@@ -343,23 +348,15 @@ void GameHandeler::GetTheWinnerOfTheRound() {
 
 
 }
-void GameHandeler::SwitchCard(Card::CardType type,int number){
-    auto cards=players[me]->get_cards();
-    for( Card* card :cards){
-        if(card->GetType()==type,card->GetNumber()==number){
-            int width=card->GetButton()->width();
-            QPropertyAnimation* anim=card->PushTo({card->GetButton()->x(),card->GetButton()->y()},{0,card->GetButton()->height()},card->GetProxy()->rotation());
+void GameHandeler::SwitchCard(Card::CardType type, int number) {
+	auto cards = players[me]->get_cards();
+	for ( Card *card : cards ) {
+		if ( card->GetType() == type, card->GetNumber() == number ) {
+			int width = card->GetButton()->width();
+			QPropertyAnimation *anim = card->PushTo({ card->GetButton()->x(), card->GetButton()->y() }, { 0, card->GetButton()->height() }, card->GetProxy()->rotation());
 
-            connect(anim,&QPropertyAnimation::finished,[this,width,card,type,number](){card->ChangeCard(type,number);card->PushTo({card->GetButton()->x(),card->GetButton()->y()},{width,card->GetButton()->height()},card->GetProxy()->rotation());});
-
-
-
-        }
-
-    }
-
+			connect(anim, &QPropertyAnimation::finished, [this, width, card, type, number] () {card->ChangeCard(type, number); card->PushTo({ card->GetButton()->x(), card->GetButton()->y() }, { width, card->GetButton()->height() }, card->GetProxy()->rotation()); });
+		}
+	}
 }
-
-
-
 
