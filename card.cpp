@@ -17,16 +17,19 @@ Card::Card() {
 	this->number = 0;
 	this->type = Card::unknown;
 	this->button = nullptr;
+    this->parent=parent;
 }
 Card::Card(CardType type,int number=-1){
 	this->number=number;
 	this->type=type;
 
 
+
 }
-Card::Card(CardType type,QGraphicsScene *scene, QGraphicsView *view, int number,int x, int y, int rotation){
+Card::Card(QObject* parent,CardType type,QGraphicsScene *scene, QGraphicsView *view, int number,int x, int y, int rotation){
 	this->scene = scene;
 	this->view = view;
+    this->parent=parent;
 	this->type = type;
 	this->number = number;
 	button = new QPushButton();
@@ -40,11 +43,13 @@ Card::Card(CardType type,QGraphicsScene *scene, QGraphicsView *view, int number,
 	proxy->setRotation(rotation);
 
 	SetUpButton();
+    connect(button,SIGNAL(clicked()),parent,SLOT(PushCard()));
 
 }
 void Card::operator=( const Card&  other) {
     this->scene = other.scene;
     this->view = other.view;
+    this->parent=parent;
     this->type = other.type;
     this->number = other.number;
     button = new QPushButton();
@@ -57,6 +62,7 @@ void Card::operator=( const Card&  other) {
 
     proxy->setRotation(other.proxy->rotation());
     SetUpButton();
+    connect(button,SIGNAL(clicked()),parent,SLOT(PushCard()));
 
 }
 Card::Card(const Card& other) {
@@ -183,5 +189,11 @@ void Card::show() {
 	button->show();
 }
 void Card::hide() { button->hide(); }
+void Card::ChangeCard(Card::CardType type,int number){
+    this->number=number;
+    this->type=type;
+    SetUpButton();
+
+}
 
 

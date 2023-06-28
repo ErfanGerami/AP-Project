@@ -14,6 +14,7 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QVector>
+#include <QObject>
 
 class GameHandeler:public QObject
 {
@@ -42,10 +43,29 @@ private:
     int round=-1;//will be set to 0 when the game starts;
     QGraphicsView* sticker_view;
     QGraphicsScene* sticker_scene;
+    bool isValid(Card card, int turn);
+    void GetTheWinnerOfTheRound();
+    void StartSet();
+    int GetWhoseTurn();
+    int turn=0;
+    int set=-1;
+    int first_this_round;
+
 
 
 signals:
-    //void Animation();
+    void GetOthersPushedCard_S();
+
+private slots:
+    void GetOthersPushedCard();
+public slots:
+    void PushCard();
+
+
+
+
+
+
 
 
 
