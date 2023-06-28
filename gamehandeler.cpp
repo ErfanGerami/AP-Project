@@ -275,7 +275,9 @@ void GameHandeler::StartSet() {
 			while ( !okay )
 				int prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, round * 2, 1, &okay);
 			//notify the prediction to others;
-			char *code = Code::set_code(me + '0', Code::fromClient_Sent_Predictions);
+			char *code1 = Code::set_code(me + '0', Code::fromClient_Sent_Predictions);
+			DataPacket dummy;
+			client->send_data(code1, &dummy);
 			//--------------------
 
 		}
