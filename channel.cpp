@@ -37,7 +37,7 @@ QPair<char *, DataPacket *> channel::reading_data() {
 
 	QByteArray block;
 	DataPacket *data_packet = new DataPacket();
-	char *code = new char[5];
+	char *code = new char[6];
 	code[0] = 4;
 	if ( socket->waitForReadyRead(1000) ) {
 

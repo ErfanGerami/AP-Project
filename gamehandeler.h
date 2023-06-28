@@ -31,7 +31,7 @@ public:
 	void StartRound();
 	void AddStickers(QString name, int index);
 	int GetMe();
-    void SwitchCard(Card::CardType typpe,int number);
+	void SwitchCard(Card::CardType typpe, int number);
 
 private:
 	SocketHandeling *client;

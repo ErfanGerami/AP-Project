@@ -164,6 +164,10 @@ bool SocketHandeling::is_server_connected() {
 	return tcp_server->isListening();
 }
 
+QTcpSocket *SocketHandeling::get_tcp_socket() {
+	return tcp_socket;
+}
+
 
 QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server() {
 
@@ -180,7 +184,7 @@ QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server() {
 QPair<char *, DataPacket *> SocketHandeling::reading_data_socket() {
 
 	DataPacket *data_packet = new DataPacket();
-	char *code = new char[5];
+	char *code = new char[6];
 	code[0] = '4';
 	if ( tcp_socket->waitForReadyRead(1000) ) {
 

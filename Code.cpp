@@ -12,7 +12,7 @@ const int Code::fromServer_Sent_GameWinner = 7;
 const int Code::fromServer_Sent_AnotherPlayerPlayedCard = 8;
 
 int Code::get_code(char *code) {
-	if ( code[0] == '0' && code[1] == '0' && code[2] == '0' )
+	if ( code[0] == '0' && code[1] == '2' && code[2] == '0' )
 		return fromServer_Sent_YourCards;
 
 	if ( code[0] == '0' && code[1] == '0' && code[2] == '1' )
@@ -49,8 +49,10 @@ char *Code::set_code(char sender, int code) {
 	c[4] = c[5] = '0';
 
 
-	if ( code == fromServer_Sent_YourCards )
+	if ( code == fromServer_Sent_YourCards ) {
+		c[1] = '2';
 		c[3] = '0';
+	}
 
 	if ( code == fromServer_Sent_YourTurn )
 		c[3] = '1';

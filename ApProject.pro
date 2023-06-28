@@ -31,7 +31,8 @@ SOURCES += \
 	DataPacket.cpp \
 	serverselection.cpp \
 	SocketHandeling.cpp	\
-	channel.cpp
+	channel.cpp \
+	Code.cpp
 
 HEADERS += \
 	card.h\
@@ -55,7 +56,8 @@ HEADERS += \
 	DataPacket.h \
 	serverselection.h \
 	SocketHandeling.h \
-	channel.h
+	channel.h \
+	Code.h
 
 FORMS += \
 	changeinfo.ui \

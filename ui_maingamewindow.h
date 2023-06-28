@@ -17,22 +17,22 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_MainGameWindow {
+class Ui_MainGameWindow
+{
 public:
-	QGraphicsView *Graphics;
-	QPushButton *pushButton;
-	QPushButton *pushButton_2;
-	QPushButton *pushButton_3;
-	QPushButton *pushButton_4;
-	QPushButton *pushButton_5;
-	QPushButton *pushButton_6;
-	QGraphicsView *sticker_graphics;
+    QGraphicsView *Graphics;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
+    QPushButton *pushButton_5;
+    QPushButton *pushButton_6;
+    QGraphicsView *sticker_graphics;
 
     void setupUi(QDialog *MainGameWindow)
     {
         if (MainGameWindow->objectName().isEmpty())
             MainGameWindow->setObjectName(QString::fromUtf8("MainGameWindow"));
-
         MainGameWindow->resize(1733, 1020);
         Graphics = new QGraphicsView(MainGameWindow);
         Graphics->setObjectName(QString::fromUtf8("Graphics"));
@@ -71,26 +71,26 @@ public:
         sticker_graphics->setInteractive(true);
         sticker_graphics->setRenderHints(QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing);
 
+        retranslateUi(MainGameWindow);
 
-		retranslateUi(MainGameWindow);
+        QMetaObject::connectSlotsByName(MainGameWindow);
+    } // setupUi
 
-		QMetaObject::connectSlotsByName(MainGameWindow);
-	} // setupUi
-
-	void retranslateUi(QDialog *MainGameWindow) {
-		MainGameWindow->setWindowTitle(QApplication::translate("MainGameWindow", "Dialog", nullptr));
-		pushButton->setText(QString());
-		pushButton_2->setText(QString());
-		pushButton_3->setText(QString());
-		pushButton_4->setText(QString());
-		pushButton_5->setText(QString());
-		pushButton_6->setText(QString());
-	} // retranslateUi
+    void retranslateUi(QDialog *MainGameWindow)
+    {
+        MainGameWindow->setWindowTitle(QApplication::translate("MainGameWindow", "Dialog", nullptr));
+        pushButton->setText(QString());
+        pushButton_2->setText(QString());
+        pushButton_3->setText(QString());
+        pushButton_4->setText(QString());
+        pushButton_5->setText(QString());
+        pushButton_6->setText(QString());
+    } // retranslateUi
 
 };
 
 namespace Ui {
-	class MainGameWindow: public Ui_MainGameWindow {};
+    class MainGameWindow: public Ui_MainGameWindow {};
 } // namespace Ui
 
 QT_END_NAMESPACE
