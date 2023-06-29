@@ -57,7 +57,7 @@ QPair<char *, DataPacket *> channel::reading_data() {
 			for ( int i = 0; i < 5; i++ )
 				code[i] = block[i];
 
-			block.remove(0, 4);
+			block.remove(0, 5);
 
 
 			if ( code[1] == '0' || code[1] == '1' ) {

@@ -38,7 +38,7 @@ SocketHandeling::SocketHandeling(QObject *parent) {
 
 	connect(tcp_socket, SIGNAL(connected()), this, SLOT(connected_to_server_socket()));
 	connect(tcp_socket, SIGNAL(bytesWritten(qint64)), this, SLOT(writing_data_socket()));
-	connect(tcp_socket, SIGNAL(readyRead()), this, SLOT(reading_data_socket()));
+	//////connect(tcp_socket, SIGNAL(readyRead()), this, SLOT(reading_data_socket()));
 	connect(tcp_socket, SIGNAL(disconnected()), this, SLOT(disconnected_from_server_socket()));
 	connect(tcp_server, SIGNAL(newConnection()), this, SLOT(new_connection_server()));
 
@@ -89,6 +89,9 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 
 
 		tcp_socket->connectToHost(ip, 1500);
+
+		//connect(tcp_socket, SIGNAL(readyRead()), this, SLOT(reading_data_socket()));
+
 		//tcp_socket->waitForConnected(-1);
 		//tcp_socket->write(name.toUtf8());
 		//tcp_socket->waitForBytesWritten(-1);
@@ -195,40 +198,34 @@ QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server() {
 }
 
 QPair<char *, DataPacket *> SocketHandeling::reading_data_socket() {
-	emit newplayer_socket();
-	emit newplayer_socket();
-	emit newplayer_socket();
-	emit newplayer_socket();
+
+	QByteArray block = tcp_socket->readAll();
 	DataPacket *data_packet = new DataPacket();
 	char *code = new char[6];
-	code[0] = '4';
-	if ( 1 || tcp_socket->waitForReadyRead(1000) ) {
-
-		QByteArray block = tcp_socket->readAll();
 
 
-		for ( int i = 0; i < 5; i++ )
-			code[i] = block[i];
-
-		block.remove(0, 4);
 
 
-		if ( code[1] == '0' || code[1] == '1' ) {
-			//now do shit
 
-		}
-		else {
+	for ( int i = 0; i < 5; i++ )
+		code[i] = block[i];
 
-			QDataStream in(&block, QIODevice::ReadOnly);
-			;
-			in >> *data_packet;
+	block.remove(0, 5);
 
-		}
+
+	if ( code[1] == '0' || code[1] == '1' ) {
+		//now do shit
+
 	}
-	if ( Code::get_code(code) == Code::fromServer_Sent_PlayerNames || Code::get_code(code) == Code::fromServer_Sent_GameStarted ) {
+	else {
 
-		emit newplayer_socket();
+		QDataStream in(&block, QIODevice::ReadOnly);
+		;
+		in >> *data_packet;
+
 	}
+
+
 	return QPair<char *, DataPacket *>(code, data_packet);
 
 }
@@ -297,7 +294,7 @@ void SocketHandeling::send_data(char *code, DataPacket *data, int client_number)
 
 
 
-	if ( code[0] == '0' || code[0] == '1' ) {
+	if ( code[1] == '0' || code[1] == '1' ) {
 		QByteArray block = "";
 
 		for ( int i = 0; i < 5; i++ )
@@ -343,8 +340,6 @@ void SocketHandeling::send_data(char *code, DataPacket *data, int client_number)
 
 	}
 }
-
-
 
 
 void SocketHandeling::new_connection_server() {
