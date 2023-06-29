@@ -40,6 +40,7 @@ SocketHandeling::SocketHandeling(QObject *parent) {
 	connect(tcp_socket, SIGNAL(bytesWritten(qint64)), this, SLOT(writing_data_socket()));
 	//connect(tcp_socket, SIGNAL(readyRead()), this, SLOT(reading_data_socket()));
 	connect(tcp_socket, SIGNAL(disconnected()), this, SLOT(disconnected_from_server_socket()));
+	connect(tcp_server, SIGNAL(newConnection()), this, SLOT(new_connection_server()));
 
 
 }
@@ -107,12 +108,13 @@ void SocketHandeling::client_run(QHostAddress ip, QString username) {
 	logWriteClient("> trying to connect to server with ip '" + ip.toString().toStdString() + "'\n\n");
 
 	tcp_socket->connectToHost(ip, 1500);
-
+	//connect(tcp_socket, SIGNAL(connected()), this, SLOT(connected_to_server_socket()));
 	if ( !tcp_socket->waitForConnected(1000) ) {
 
 		logWriteClient("> connection failed\n\n");
 		throw Errors(Errors::cant_connect);
 	}
+
 }
 
 bool operator<(const QHostAddress &a, const QHostAddress &b) {
@@ -168,6 +170,17 @@ QTcpSocket *SocketHandeling::get_tcp_socket() {
 	return tcp_socket;
 }
 
+QTcpServer *SocketHandeling::get_tcp_server() {
+	return tcp_server;
+}
+
+QString SocketHandeling::get_name() {
+	return name;
+}
+
+channel *SocketHandeling::get_channel_pointer() {
+	return channel_pointer;
+}
 
 QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server() {
 
@@ -232,9 +245,9 @@ void SocketHandeling::disconnected_from_server_socket() {
 
 
 //server:
-void SocketHandeling::server_run(QString server_name, QString username) {
+void SocketHandeling::server_run(QString server_name, QString username, int player_count) {
 	name = username;
-
+	this->player_count = player_count;
 
 	logWriteServer("> trying to create server with name: '" + server_name.toStdString() + "' and created by '" + username.toStdString() + "'\n\n");
 
@@ -250,7 +263,7 @@ void SocketHandeling::server_run(QString server_name, QString username) {
 
 		is_the_server = true;
 
-		tcp_socket->connectToHost("127.0.0.1", 1500);
+
 	}
 	else {
 		logWriteServer("> failed to start server\n\n");
@@ -318,10 +331,24 @@ void SocketHandeling::send_data(char *code, DataPacket *data, int client_number)
 
 
 void SocketHandeling::new_connection_server() {
-	channel *new_channel = new channel(tcp_server->nextPendingConnection(), channels.size());
+	if ( channels.size() >= player_count - 1 )
+		disconnect(tcp_server, SIGNAL(newConnection()), this, SLOT(new_connection_server()));
+	channel *new_channel = channel_pointer = new channel(tcp_server->nextPendingConnection(), channels.size(), this);
+
 	channels.push_back(new_channel);
 
 	logWriteServer("> new client connected, client number: " + QString::number(channels.size()).toStdString() + "\n\n");
+
 }
 
+void SocketHandeling::func(QString name) { emit newplayer(name); }
 
+int SocketHandeling::get_joined_players_count() { return channels.size(); }
+
+int SocketHandeling::get_player_count() {
+	return player_count;
+}
+
+bool SocketHandeling::am_i_the_server() {
+	return is_the_server;
+}

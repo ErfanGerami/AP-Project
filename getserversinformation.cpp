@@ -71,6 +71,7 @@ void GetServersInformation::on_connect_clicked() {
 			QMessageBox::information(this, "failure", "connection failed");
 			is_connected = false;
 		}
+		ServerName = it.value().first;
 		this->close();
 
 
