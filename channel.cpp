@@ -60,7 +60,7 @@ QPair<char *, DataPacket *> channel::reading_data() {
 			block.remove(0, 4);
 
 
-			if ( code[0] == '0' || code[0] == '1' ) {
+			if ( code[1] == '0' || code[1] == '1' ) {
 				//now do shit
 			}
 			else {

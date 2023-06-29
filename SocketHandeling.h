@@ -15,6 +15,7 @@
 #include <fstream>
 #include <ctime>
 #include <sstream>
+#include "Code.h"
 
 class channel;
 
@@ -86,6 +87,6 @@ private slots:
 
 signals:
 	void newplayer(QString name);
-
+	void newplayer_socket();
 };
 

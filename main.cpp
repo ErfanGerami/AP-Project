@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 	//server->server_run("server_name", "creator_name", 2);
 
 
-	SocketHandeling *client = new SocketHandeling();
+	//SocketHandeling *client = new SocketHandeling();
 
 	Login *l = new Login();
 	l->show();

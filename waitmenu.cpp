@@ -2,7 +2,7 @@
 #include "ui_waitmenu.h"
 #include "channel.h"
 
-WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client, QWidget *parent):
+WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client_, QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::WaitMenu) {
 	ui->setupUi(this);
@@ -10,12 +10,13 @@ WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client, QWidget
 	am_i_server = connection->am_i_the_server();
 	if ( am_i_server ) {
 		server = connection;
-		this->client = client;
-
+		this->client = client_;
+		player_count = server->get_player_count();
 		connect(server, SIGNAL(newplayer(QString)), this, SLOT(new_player(QString)));
 	}
 	else {
-		client = connection;
+		this->client = connection;
+		connect(client, SIGNAL(newplayer_socket()), this, SLOT(new_player_socket2()));
 
 	}
 
@@ -70,7 +71,89 @@ WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client, QWidget
 
 void WaitMenu::new_player(QString name) {
 	ui->listWidget->addItem(name);
+	player_joined++;
+
+
+	name_vec.push_back(name);
+
+	DataPacket data_packet;
+	int ctr = 0;
+
+	for ( auto i : name_vec ) {
+		data_packet.player_name[ctr] = i;
+		ctr++;
+	}
+
+	char *code = Code::set_code('0', Code::fromServer_Sent_PlayerNames);
+
+	server->send_data(code, &data_packet);
+
+	if ( player_joined == player_count ) {
+		char *code = Code::set_code('0', Code::fromServer_Sent_GameStarted);
+		DataPacket dummy;
+		server->send_data(code, &dummy);
+
+		MainGameWindow *main_game_window = new MainGameWindow(server, client);
+		main_game_window->show();
+		this->hide();
+	}
+
 }
+
+
+void WaitMenu::new_player_socket() {
+	QPair<char *, DataPacket *> pair = client->reading_data_socket();
+	if ( Code::get_code(pair.first) == Code::fromServer_Sent_PlayerNames ) {
+		DataPacket *data = pair.second;
+		for ( int i = 0; i < 4; i++ )
+			if ( data->player_name[i].size() > 0 )
+				ui->listWidget->addItem(data->player_name[i]);
+	}
+	else if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameStarted ) {
+		MainGameWindow *main_game_window = new MainGameWindow(client);
+		main_game_window->show();
+		this->hide();
+	}
+	else {
+		//....
+	}
+}
+
+void WaitMenu::new_player_socket2() {
+
+	//if ( Code::get_code(pair.first) == Code::fromServer_Sent_PlayerNames ) {
+	//	DataPacket *data = pair.second;
+	//	for ( int i = 0; i < 4; i++ )
+	//		if ( data->player_name[i].size() > 0 )
+	//			ui->listWidget->addItem(data->player_name[i]);
+	//}
+	//else if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameStarted ) {
+	//	MainGameWindow *main_game_window = new MainGameWindow(client);
+	//	main_game_window->show();
+	//	this->hide();
+	//}
+	//else {
+	//	//....
+	//}
+
+
+}
+
+void WaitMenu::on_pushButton_clicked() {
+	DataPacket data_packet;
+	int ctr = 0;
+
+	for ( auto i : name_vec ) {
+		data_packet.player_name[ctr] = i;
+		ctr++;
+	}
+
+	char *code = Code::set_code('0', Code::fromServer_Sent_PlayerNames);
+
+	server->send_data(code, &data_packet);
+
+}
+
 
 WaitMenu::~WaitMenu() {
 	delete ui;

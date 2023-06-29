@@ -52,35 +52,44 @@ MainMenu::~MainMenu() {
 }
 
 void MainMenu::on_create_server_clicked() {
-	SocketHandeling *server = new SocketHandeling();
+	try {
 
-	server->server_run(ui->server_name->text(), QString::fromStdString(MainPlayer->GetUserName()), ui->player_count->text().toInt());
+		SocketHandeling *server = new SocketHandeling();
 
-	if ( server->is_server_connected() ) {
-		//show next window
-		client = new SocketHandeling();
-		client->client_run(QHostAddress("127.0.0.1"), server->get_name());
-		wait_menu = new WaitMenu(server, client, this);
-		this->hide();
-		wait_menu->show();
+		server->server_run(ui->server_name->text(), QString::fromStdString(MainPlayer->GetUserName()), ui->player_count->text().toInt());
+
+		if ( server->is_server_connected() ) {
+			//show next window
+			client = new SocketHandeling();
+			client->client_run(QHostAddress("127.0.0.1"), server->get_name());
+			wait_menu = new WaitMenu(server, client, this);
+			this->hide();
+			wait_menu->show();
+		}
+		else {
+			QMessageBox::critical(this, "error", "failed to create server");
+		}
 	}
-	else {
-		QMessageBox::critical(this, "error", "failed to create server");
+	catch ( Errors err ) {
+		QMessageBox::critical(this, "error", err.what());
 	}
 }
 
 void MainMenu::on_join_server_clicked() {
 
 
+	try {
+
+		client = new SocketHandeling();
 
 
-	client = new SocketHandeling();
+		GetServersInformation *m = new GetServersInformation(client, QString::fromStdString(MainPlayer->GetUserName()), this);
+		m->show();
 
-
-	GetServersInformation *m = new GetServersInformation(client, QString::fromStdString(MainPlayer->GetUserName()), this);
-	m->show();
-
-
+	}
+	catch ( Errors err ) {
+		QMessageBox::critical(this, "error", err.what());
+	}
 
 }
 

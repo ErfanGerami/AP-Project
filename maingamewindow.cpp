@@ -1,7 +1,7 @@
 #include "maingamewindow.h"
 #include "ui_maingamewindow.h"
 
-MainGameWindow::MainGameWindow(QWidget *parent):
+MainGameWindow::MainGameWindow(SocketHandeling *connection, SocketHandeling *client, QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::MainGameWindow) {
 	ui->setupUi(this);
@@ -17,6 +17,14 @@ MainGameWindow::MainGameWindow(QWidget *parent):
 	//game_handeler->Deal();
 
 	// game_handeler->collect(nullptr);
+	if ( connection->am_i_the_server() ) {
+		server = connection;
+		this->client = client;
+		player_count = server->get_player_count();
+	}
+	else {
+		this->client = connection;
+	}
 
 
 }

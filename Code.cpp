@@ -11,6 +11,8 @@ const int Code::fromServer_Sent_YourScore = 6;
 const int Code::fromServer_Sent_GameWinner = 7;
 const int Code::fromServer_Sent_AnotherPlayerPlayedCard = 8;
 const int Code::fromServer_Sent_PlayerNames = 9;
+const int Code::fromServer_Sent_GameStarted = 10;
+
 
 
 int Code::get_code(char *code) {
@@ -43,6 +45,9 @@ int Code::get_code(char *code) {
 
 	if ( code[0] == '0' && code[1] == '2' && code[2] == '9' )
 		return fromServer_Sent_PlayerNames;
+
+	if ( code[0] == '0' && code[1] == '2' && code[2] == 'a' )
+		return fromServer_Sent_GameStarted;
 
 	return undefined;
 }
@@ -95,6 +100,8 @@ char *Code::set_code(char sender, int code) {
 		c[2] = '9';
 	}
 
+	if ( code == fromServer_Sent_AnotherPlayerPlayedCard )
+		c[2] = 'a';
 
 	return c;
 }

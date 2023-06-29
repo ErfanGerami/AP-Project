@@ -15,6 +15,7 @@
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -24,6 +25,7 @@ public:
     QListWidget *listWidget;
     QLabel *Players;
     QGraphicsView *graphicsView;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *WaitMenu)
     {
@@ -50,9 +52,13 @@ public:
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
         graphicsView->setGeometry(QRect(0, 0, 661, 501));
         graphicsView->setStyleSheet(QString::fromUtf8("background-color:rgba(0,0,0,0);"));
+        pushButton = new QPushButton(WaitMenu);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(480, 150, 93, 28));
         graphicsView->raise();
         listWidget->raise();
         Players->raise();
+        pushButton->raise();
 
         retranslateUi(WaitMenu);
 
@@ -63,6 +69,7 @@ public:
     {
         WaitMenu->setWindowTitle(QApplication::translate("WaitMenu", "Dialog", nullptr));
         Players->setText(QApplication::translate("WaitMenu", "Players:", nullptr));
+        pushButton->setText(QApplication::translate("WaitMenu", "PushButton", nullptr));
     } // retranslateUi
 
 };
