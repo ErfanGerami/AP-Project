@@ -106,3 +106,747 @@
 123/5/28|22:24:23
 > written to socket as client
 
+123/5/29|1:21:46
+> connected to server
+
+123/5/29|1:21:46
+> written to socket as client
+
+123/5/29|1:22:12
+> trying to catch server ip through udp socket
+
+123/5/29|1:22:12
+> 1 server found
+
+123/5/29|1:22:13
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:22:13
+> connected to server
+
+123/5/29|1:22:13
+> written to socket as client
+
+123/5/29|1:24:13
+> connected to server
+
+123/5/29|1:24:13
+> written to socket as client
+
+123/5/29|1:24:44
+> trying to catch server ip through udp socket
+
+123/5/29|1:24:45
+> 1 server found
+
+123/5/29|1:24:47
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:24:47
+> connected to server
+
+123/5/29|1:24:47
+> written to socket as client
+
+123/5/29|1:25:20
+> connected to server
+
+123/5/29|1:25:20
+> written to socket as client
+
+123/5/29|1:25:40
+> trying to catch server ip through udp socket
+
+123/5/29|1:25:40
+> 1 server found
+
+123/5/29|1:25:42
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:25:42
+> connected to server
+
+123/5/29|1:25:42
+> written to socket as client
+
+123/5/29|1:27:20
+> connected to server
+
+123/5/29|1:27:20
+> written to socket as client
+
+123/5/29|1:27:37
+> trying to catch server ip through udp socket
+
+123/5/29|1:27:38
+> 1 server found
+
+123/5/29|1:27:46
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:27:46
+> connected to server
+
+123/5/29|1:27:46
+> written to socket as client
+
+123/5/29|1:33:21
+> connected to server
+
+123/5/29|1:33:21
+> written to socket as client
+
+123/5/29|1:33:29
+> trying to catch server ip through udp socket
+
+123/5/29|1:33:30
+> 1 server found
+
+123/5/29|1:33:31
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:33:31
+> connected to server
+
+123/5/29|1:33:31
+> written to socket as client
+
+123/5/29|1:35:56
+> connected to server
+
+123/5/29|1:35:56
+> written to socket as client
+
+123/5/29|1:36:6
+> trying to catch server ip through udp socket
+
+123/5/29|1:36:7
+> 1 server found
+
+123/5/29|1:36:8
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:36:8
+> connected to server
+
+123/5/29|1:36:9
+> written to socket as client
+
+123/5/29|1:40:21
+> connected to server
+
+123/5/29|1:40:21
+> written to socket as client
+
+123/5/29|1:40:32
+> trying to catch server ip through udp socket
+
+123/5/29|1:40:32
+> 1 server found
+
+123/5/29|1:40:33
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:40:33
+> connected to server
+
+123/5/29|1:40:33
+> written to socket as client
+
+123/5/29|1:40:55
+> connected to server
+
+123/5/29|1:40:55
+> written to socket as client
+
+123/5/29|1:41:6
+> trying to catch server ip through udp socket
+
+123/5/29|1:41:7
+> 1 server found
+
+123/5/29|1:41:8
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:41:8
+> connected to server
+
+123/5/29|1:41:8
+> written to socket as client
+
+123/5/29|1:41:35
+> connected to server
+
+123/5/29|1:41:35
+> written to socket as client
+
+123/5/29|1:42:9
+> connected to server
+
+123/5/29|1:42:9
+> written to socket as client
+
+123/5/29|1:44:7
+> connected to server
+
+123/5/29|1:44:7
+> written to socket as client
+
+123/5/29|1:44:16
+> trying to catch server ip through udp socket
+
+123/5/29|1:44:17
+> 1 server found
+
+123/5/29|1:44:18
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:44:18
+> connected to server
+
+123/5/29|1:44:19
+> written to socket as client
+
+123/5/29|1:46:34
+> connected to server
+
+123/5/29|1:46:34
+> written to socket as client
+
+123/5/29|1:46:43
+> trying to catch server ip through udp socket
+
+123/5/29|1:46:44
+> 1 server found
+
+123/5/29|1:46:45
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:46:45
+> connected to server
+
+123/5/29|1:46:45
+> written to socket as client
+
+123/5/29|1:48:1
+> connected to server
+
+123/5/29|1:48:1
+> written to socket as client
+
+123/5/29|1:48:9
+> trying to catch server ip through udp socket
+
+123/5/29|1:48:10
+> 1 server found
+
+123/5/29|1:48:10
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:48:10
+> connected to server
+
+123/5/29|1:48:10
+> written to socket as client
+
+123/5/29|1:48:46
+> connected to server
+
+123/5/29|1:48:46
+> written to socket as client
+
+123/5/29|1:48:58
+> trying to catch server ip through udp socket
+
+123/5/29|1:48:59
+> 1 server found
+
+123/5/29|1:49:0
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:49:0
+> connected to server
+
+123/5/29|1:49:0
+> written to socket as client
+
+123/5/29|1:49:28
+> connected to server
+
+123/5/29|1:49:28
+> written to socket as client
+
+123/5/29|1:49:41
+> trying to catch server ip through udp socket
+
+123/5/29|1:49:42
+> 1 server found
+
+123/5/29|1:49:43
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:49:43
+> connected to server
+
+123/5/29|1:49:43
+> written to socket as client
+
+123/5/29|1:50:35
+> connected to server
+
+123/5/29|1:50:35
+> written to socket as client
+
+123/5/29|1:50:43
+> trying to catch server ip through udp socket
+
+123/5/29|1:50:44
+> 1 server found
+
+123/5/29|1:50:45
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:50:45
+> connected to server
+
+123/5/29|1:50:45
+> written to socket as client
+
+123/5/29|1:51:35
+> connected to server
+
+123/5/29|1:51:35
+> written to socket as client
+
+123/5/29|1:51:47
+> trying to catch server ip through udp socket
+
+123/5/29|1:51:47
+> 1 server found
+
+123/5/29|1:51:48
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:51:48
+> connected to server
+
+123/5/29|1:51:48
+> written to socket as client
+
+123/5/29|1:53:17
+> connected to server
+
+123/5/29|1:53:17
+> written to socket as client
+
+123/5/29|1:54:10
+> connected to server
+
+123/5/29|1:54:10
+> written to socket as client
+
+123/5/29|1:54:21
+> trying to catch server ip through udp socket
+
+123/5/29|1:54:22
+> 1 server found
+
+123/5/29|1:54:23
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|1:54:23
+> connected to server
+
+123/5/29|1:54:23
+> written to socket as client
+
+123/5/29|2:15:7
+> connected to server
+
+123/5/29|2:15:7
+> written to socket as client
+
+123/5/29|2:15:48
+> connected to server
+
+123/5/29|2:15:48
+> written to socket as client
+
+123/5/29|2:15:54
+> trying to catch server ip through udp socket
+
+123/5/29|2:15:55
+> 1 server found
+
+123/5/29|2:15:56
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|2:15:56
+> connected to server
+
+123/5/29|2:15:56
+> written to socket as client
+
+123/5/29|2:16:13
+> connected to server
+
+123/5/29|2:16:13
+> written to socket as client
+
+123/5/29|2:16:57
+> connected to server
+
+123/5/29|2:16:57
+> written to socket as client
+
+123/5/29|2:31:28
+> connected to server
+
+123/5/29|2:31:28
+> written to socket as client
+
+123/5/29|2:31:37
+> trying to catch server ip through udp socket
+
+123/5/29|2:31:38
+> 1 server found
+
+123/5/29|2:31:39
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|2:31:39
+> connected to server
+
+123/5/29|2:31:39
+> written to socket as client
+
+123/5/29|2:34:10
+> connected to server
+
+123/5/29|2:34:10
+> written to socket as client
+
+123/5/29|2:34:33
+> trying to catch server ip through udp socket
+
+123/5/29|2:34:34
+> 1 server found
+
+123/5/29|2:35:5
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|2:35:5
+> connected to server
+
+123/5/29|2:35:6
+> written to socket as client
+
+123/5/29|2:35:57
+> connected to server
+
+123/5/29|2:35:57
+> written to socket as client
+
+123/5/29|2:36:31
+> trying to catch server ip through udp socket
+
+123/5/29|2:36:33
+> 1 server found
+
+123/5/29|2:36:39
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|2:36:39
+> connected to server
+
+123/5/29|2:36:44
+> written to socket as client
+
+123/5/29|2:37:6
+> connected to server
+
+123/5/29|2:37:6
+> written to socket as client
+
+123/5/29|2:37:21
+> connected to server
+
+123/5/29|2:37:21
+> written to socket as client
+
+123/5/29|2:37:50
+> trying to catch server ip through udp socket
+
+123/5/29|2:37:51
+> 1 server found
+
+123/5/29|2:37:54
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|2:37:54
+> connected to server
+
+123/5/29|2:37:54
+> written to socket as client
+
+123/5/29|2:38:12
+> connected to server
+
+123/5/29|2:38:12
+> written to socket as client
+
+123/5/29|2:38:21
+> trying to catch server ip through udp socket
+
+123/5/29|2:38:22
+> 1 server found
+
+123/5/29|2:38:22
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|2:38:22
+> connected to server
+
+123/5/29|2:38:23
+> written to socket as client
+
+123/5/29|2:53:4
+> connected to server
+
+123/5/29|2:53:4
+> written to socket as client
+
+123/5/29|2:53:48
+> connected to server
+
+123/5/29|2:53:48
+> written to socket as client
+
+123/5/29|3:13:9
+> connected to server
+
+123/5/29|3:13:9
+> written to socket as client
+
+123/5/29|3:13:59
+> trying to catch server ip through udp socket
+
+123/5/29|3:14:0
+> 1 server found
+
+123/5/29|3:14:2
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|3:14:2
+> connected to server
+
+123/5/29|3:14:3
+> written to socket as client
+
+123/5/29|3:14:12
+> server disconnected
+
+123/5/29|3:18:23
+> connected to server
+
+123/5/29|3:18:23
+> written to socket as client
+
+123/5/29|3:18:42
+> trying to catch server ip through udp socket
+
+123/5/29|3:18:43
+> 1 server found
+
+123/5/29|3:18:45
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|3:18:45
+> connected to server
+
+123/5/29|3:18:47
+> written to socket as client
+
+123/5/29|3:21:48
+> connected to server
+
+123/5/29|3:21:48
+> written to socket as client
+
+123/5/29|3:30:46
+> connected to server
+
+123/5/29|3:30:46
+> written to socket as client
+
+123/5/29|3:32:4
+> connected to server
+
+123/5/29|3:39:49
+> connected to server
+
+123/5/29|3:39:54
+> written to socket as client
+
+123/5/29|3:40:29
+> trying to catch server ip through udp socket
+
+123/5/29|3:40:30
+> 1 server found
+
+123/5/29|3:40:30
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|3:40:30
+> connected to server
+
+123/5/29|3:40:31
+> written to socket as client
+
+123/5/29|3:41:18
+> connected to server
+
+123/5/29|3:45:48
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|3:45:48
+> connected to server
+
+123/5/29|3:45:49
+> written to socket as client
+
+123/5/29|3:46:54
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|3:47:2
+> connected to server
+
+123/5/29|3:48:44
+> written to socket as client
+
+123/5/29|3:51:10
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|3:51:17
+> connected to server
+
+123/5/29|3:51:20
+> connected to server
+
+123/5/29|3:51:26
+> written to socket as client
+
+123/5/29|3:52:2
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|3:52:21
+> connected to server
+
+123/5/29|3:52:29
+> written to socket as client
+
+123/5/29|3:54:46
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|3:54:46
+> connected to server
+
+123/5/29|3:56:47
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|3:56:47
+> connected to server
+
+123/5/29|3:56:48
+> written to socket as client
+
+123/5/29|4:0:14
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|4:0:14
+> connected to server
+
+123/5/29|4:0:27
+> written to socket as client
+
+123/5/29|4:1:41
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|4:1:41
+> connected to server
+
+123/5/29|4:1:47
+> written to socket as client
+
+123/5/29|4:4:35
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|4:4:35
+> connected to server
+
+123/5/29|4:4:37
+> written to socket as client
+
+123/5/29|4:5:17
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|4:5:17
+> connected to server
+
+123/5/29|4:6:17
+> written to socket as client
+
+123/5/29|4:6:52
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|4:6:58
+> connected to server
+
+123/5/29|4:8:32
+> written to socket as client
+
+123/5/29|4:9:13
+> trying to catch server ip through udp socket
+
+123/5/29|4:9:14
+> 1 server found
+
+123/5/29|4:9:16
+> trying to connect to server with ip '172.31.48.1'
+
+123/5/29|4:17:10
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|4:17:15
+> connected to server
+
+123/5/29|4:18:28
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|4:18:31
+> connected to server
+
+123/5/29|4:19:24
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|4:19:24
+> connected to server
+
+123/5/29|4:26:38
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|4:26:38
+> connected to server
+
+123/5/29|4:26:54
+> written to socket as client
+
+123/5/29|4:36:44
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/29|4:36:44
+> connected to server
+
+123/5/29|4:36:53
+> written to socket as client
+

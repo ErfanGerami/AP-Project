@@ -13,10 +13,12 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSplitter>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -55,9 +57,14 @@ public:
     QLabel *lost;
     QLabel *coin_pic;
     QPushButton *change_info;
-    QSplitter *splitter;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout;
     QLabel *label_2;
     QLineEdit *server_name;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_3;
+    QLineEdit *player_count;
 
     void setupUi(QDialog *MainMenu)
     {
@@ -130,16 +137,18 @@ public:
         winner_show->setStyleSheet(QString::fromUtf8("color:red;font-size:30px"));
         create_server = new QPushButton(MainMenu);
         create_server->setObjectName(QString::fromUtf8("create_server"));
-        create_server->setGeometry(QRect(10, 620, 221, 28));
+        create_server->setGeometry(QRect(10, 630, 221, 28));
+        create_server->setCursor(QCursor(Qt::PointingHandCursor));
         create_server->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:white;"));
         join_server = new QPushButton(MainMenu);
         join_server->setObjectName(QString::fromUtf8("join_server"));
         join_server->setGeometry(QRect(10, 670, 221, 31));
+        join_server->setCursor(QCursor(Qt::PointingHandCursor));
         join_server->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:white\n"
 ";"));
         line = new QFrame(MainMenu);
         line->setObjectName(QString::fromUtf8("line"));
-        line->setGeometry(QRect(-10, 650, 261, 20));
+        line->setGeometry(QRect(-10, 660, 261, 20));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
         line_2 = new QFrame(MainMenu);
@@ -244,21 +253,49 @@ public:
 "color:black;\n"
 "}"));
         change_info->setFlat(false);
-        splitter = new QSplitter(MainMenu);
-        splitter->setObjectName(QString::fromUtf8("splitter"));
-        splitter->setGeometry(QRect(10, 580, 221, 24));
-        splitter->setOrientation(Qt::Horizontal);
-        label_2 = new QLabel(splitter);
+        layoutWidget = new QWidget(MainMenu);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 570, 225, 61));
+        verticalLayout = new QVBoxLayout(layoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        splitter->addWidget(label_2);
-        server_name = new QLineEdit(splitter);
+
+        horizontalLayout->addWidget(label_2);
+
+        server_name = new QLineEdit(layoutWidget);
         server_name->setObjectName(QString::fromUtf8("server_name"));
-        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(server_name->sizePolicy().hasHeightForWidth());
         server_name->setSizePolicy(sizePolicy);
-        splitter->addWidget(server_name);
+
+        horizontalLayout->addWidget(server_name);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_3 = new QLabel(layoutWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        horizontalLayout_2->addWidget(label_3);
+
+        player_count = new QLineEdit(layoutWidget);
+        player_count->setObjectName(QString::fromUtf8("player_count"));
+        sizePolicy.setHeightForWidth(player_count->sizePolicy().hasHeightForWidth());
+        player_count->setSizePolicy(sizePolicy);
+
+        horizontalLayout_2->addWidget(player_count);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
 
         retranslateUi(MainMenu);
 
@@ -294,6 +331,7 @@ public:
         coin_pic->setText(QString());
         change_info->setText(QApplication::translate("MainMenu", "Change Your Information Here", nullptr));
         label_2->setText(QApplication::translate("MainMenu", "server name:", nullptr));
+        label_3->setText(QApplication::translate("MainMenu", "player count:", nullptr));
     } // retranslateUi
 
 };

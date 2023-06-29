@@ -15,8 +15,9 @@
 #include "SocketHandeling.h"
 
 QString SavedPassword;
+QString ServerName;
 Player *MainPlayer = nullptr;
-QTcpSocket *MainSocket;
+
 
 int main(int argc, char *argv[]) {
 	srand(time(NULL));
@@ -31,8 +32,8 @@ int main(int argc, char *argv[]) {
 	//g->show();
 
 
-	SocketHandeling *server = new SocketHandeling();
-	server->server_run("server_name", "creator_name");
+	//SocketHandeling *server = new SocketHandeling();
+	//server->server_run("server_name", "creator_name", 2);
 
 
 	SocketHandeling *client = new SocketHandeling();

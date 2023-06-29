@@ -42,6 +42,7 @@ public:
         QFont font;
         font.setFamily(QString::fromUtf8("MV Boli"));
         reload->setFont(font);
+        reload->setCursor(QCursor(Qt::PointingHandCursor));
         reload->setStyleSheet(QString::fromUtf8("#reload{font-size:20px; border-color:white;border-radius:35px;;background-color:rgba(0,0,0,225);color:white;border-style: solid;\n"
 "  border-width: 4px;}\n"
 "#reload:hover{background-color:rgba(255,255,255,225);color:black;}"));
@@ -59,6 +60,7 @@ public:
         connect->setObjectName(QString::fromUtf8("connect"));
         connect->setGeometry(QRect(0, 300, 531, 61));
         connect->setFont(font);
+        connect->setCursor(QCursor(Qt::PointingHandCursor));
         connect->setStyleSheet(QString::fromUtf8("#connect{font-size:30px; border-color:white;border-radius:35px;;background-color:rgba(0,0,0,225);color:white;border-style: solid;\n"
 "  border-width: 4px;}\n"
 "#connect:hover{background-color:rgba(255,255,255,225);color:black;}"));
