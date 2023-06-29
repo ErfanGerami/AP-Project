@@ -28,8 +28,8 @@ int main(int argc, char *argv[]) {
 	QApplication a(argc, argv);
 
 
-	//MainGameWindow *g = new MainGameWindow;
-	//g->show();
+    MainGameWindow *g = new MainGameWindow;
+    g->show();
 
 
 	//SocketHandeling *server = new SocketHandeling();
@@ -38,8 +38,8 @@ int main(int argc, char *argv[]) {
 
 	SocketHandeling *client = new SocketHandeling();
 
-	Login *l = new Login();
-	l->show();
+    //Login *l = new Login();
+    //l->show();
 
 
 

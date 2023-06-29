@@ -10,6 +10,7 @@ ForgotMyPassword::ForgotMyPassword(QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::ForgotMyPassword) {
 	ui->setupUi(this);
+    setFixedSize(size());
 	ui->pass->hide();
 
 	ui->passL->hide();

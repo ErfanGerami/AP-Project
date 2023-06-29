@@ -6,6 +6,7 @@ ChangeInfo::ChangeInfo(QWidget *parent) :
     ui(new Ui::ChangeInfo)
 {
     ui->setupUi(this);
+    setFixedSize(size());
     ui->pass->hide();
     ui->passL->hide();
     ui->user->hide();

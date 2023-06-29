@@ -6,6 +6,7 @@ WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client, QWidget
 	QDialog(parent),
 	ui(new Ui::WaitMenu) {
 	ui->setupUi(this);
+    setFixedSize(size());
 
 	am_i_server = connection->am_i_the_server();
 	if ( am_i_server ) {

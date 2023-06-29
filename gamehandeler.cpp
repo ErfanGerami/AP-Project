@@ -57,7 +57,7 @@ void GameHandeler::TellTheFirst(int index) {
 
 void GameHandeler::Deal() {
 
-	Card *card = new Card(this, Card::map, scene, view, 2);
+    Card *card = new Card(this, Card::parrot, scene, view, 2);
 	players[0]->NewCards({ card });
 	// players[1]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2) });
 	// players[2]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2) });

@@ -8,6 +8,7 @@ Login::Login(QWidget *parent)
 	: QMainWindow(parent)
 	, ui(new Ui::Login) {
 	ui->setupUi(this);
+    setFixedSize(size());
 	QPropertyAnimation *anim = new QPropertyAnimation(ui->label, "geometry");
 	anim->setDuration(1000);
 	anim->setStartValue(QRect(-110, -110, 911, 720));

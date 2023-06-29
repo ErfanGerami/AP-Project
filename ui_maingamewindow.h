@@ -43,31 +43,37 @@ public:
         pushButton = new QPushButton(MainGameWindow);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(1600, 0, 61, 61));
-        pushButton->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/cry.png);"));
+        pushButton->setStyleSheet(QString::fromUtf8("#pushButton{border-image:url(:/images/images/cry.png);}\n"
+"#pushButton:hover{background-color:rgba(70,70,70,200);}"));
         pushButton_2 = new QPushButton(MainGameWindow);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(1670, 0, 61, 61));
-        pushButton_2->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/happy.png);"));
+        pushButton_2->setStyleSheet(QString::fromUtf8("#pushButton_2{border-image:url(:/images/images/happy.png);}\n"
+"#pushButton_2:hover{background-color:rgba(70,70,70,200);}"));
         pushButton_3 = new QPushButton(MainGameWindow);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
         pushButton_3->setGeometry(QRect(1600, 70, 61, 61));
-        pushButton_3->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/wondered.png);"));
+        pushButton_3->setStyleSheet(QString::fromUtf8("#pushButton_3{border-image:url(:/images/images/wondered.png);}\n"
+"#pushButton_3:hover{background-color:rgba(70,70,70,200);}"));
         pushButton_4 = new QPushButton(MainGameWindow);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
         pushButton_4->setGeometry(QRect(1670, 70, 61, 61));
-        pushButton_4->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/VeryHappy.png);"));
+        pushButton_4->setStyleSheet(QString::fromUtf8("#pushButton_4{border-image:url(:/images/images/VeryHappy.png);}\n"
+"#pushButton_4:hover{background-color:rgba(70,70,70,200);}"));
         pushButton_5 = new QPushButton(MainGameWindow);
         pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
         pushButton_5->setGeometry(QRect(1600, 150, 61, 61));
-        pushButton_5->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/laugh.png);"));
+        pushButton_5->setStyleSheet(QString::fromUtf8("#pushButton_5{border-image:url(:/images/images/laugh.png);}\n"
+"#pushButton_5:hover{background-color:rgba(70,70,70,200);}"));
         pushButton_6 = new QPushButton(MainGameWindow);
         pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
         pushButton_6->setGeometry(QRect(1670, 150, 61, 61));
-        pushButton_6->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/sleep.png);"));
+        pushButton_6->setStyleSheet(QString::fromUtf8("#pushButton_6{border-image:url(:/images/images/sleep.png);}\n"
+"#pushButton_6:hover{background-color:rgba(70,70,70,200);}"));
         sticker_graphics = new QGraphicsView(MainGameWindow);
         sticker_graphics->setObjectName(QString::fromUtf8("sticker_graphics"));
         sticker_graphics->setGeometry(QRect(1600, 230, 141, 791));
-        sticker_graphics->setStyleSheet(QString::fromUtf8(""));
+        sticker_graphics->setStyleSheet(QString::fromUtf8("background-color:rgba(200,200,200,200);"));
         sticker_graphics->setInteractive(true);
         sticker_graphics->setRenderHints(QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing);
 

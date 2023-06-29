@@ -31,7 +31,7 @@ public:
 
 	static int angle_between_cards;
 	static int space_between_cards;
-
+    static int id;
 
 	Card();
     Card::Card(CardType type, int number);//a constructor when we use it withoutshowing;

@@ -12,7 +12,7 @@ const CardType Card::king = 6;
 
 int Card::angle_between_cards=30 ;
 int Card::space_between_cards=50;
-
+int Card::id=0;
 Card::Card() {
 	this->number = 0;
 	this->type = Card::unknown;
@@ -70,9 +70,12 @@ Card::Card(const Card& other) {
 }
 void Card::SetUpButton(){
 	//adjusting each cards picture to itself.
+    id++;
+    button->setObjectName("card_button"+QString::number(id));
 	switch (type) {
 	case Card::parrot:
-		button->setStyleSheet("border-image:url(:/images/images/parrot"+QString::number(number)+".png) strech 0 0 0;background:transparent;");
+        button->setStyleSheet("#card_button"+QString::number(id)+"{border-image:url(:/images/images/parrot"+QString::number(number)+".png) strech 0 0 0;background:transparent;}\
+                        "+"#card_button"+QString::number(id)+":hover{border-image:url(:/images/images/unknown.png);}");
 		break;
 	case Card::map:
 		button->setStyleSheet("border-image:url(:/images/images/map"+QString::number(number)+".png) strech 0 0 0;background:transparent;");
