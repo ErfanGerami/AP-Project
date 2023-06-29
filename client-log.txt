@@ -118,3 +118,21 @@
 123/5/29|4:31:35
 > written to socket as client
 
+123/5/29|4:43:28
+> connected to server
+
+123/5/29|4:43:28
+> written to socket as client
+
+123/5/29|4:46:13
+> connected to server
+
+123/5/29|4:46:13
+> written to socket as client
+
+123/5/29|4:47:15
+> connected to server
+
+123/5/29|4:47:15
+> written to socket as client
+

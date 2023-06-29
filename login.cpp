@@ -20,6 +20,7 @@ Login::Login(QWidget *parent)
 	media->setPlaylist(playlist);
 	media->setVolume(30);
 	media->play();
+	connect(media, &QMediaPlayer::stateChanged, [media]() {media->play(); });
 
 }
 
