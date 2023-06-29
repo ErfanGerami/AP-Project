@@ -9,6 +9,7 @@
 #include <QGraphicsProxyWidget>
 #include <QGraphicsScene>
 
+
 namespace Ui {
 class MainGameWindow;
 }

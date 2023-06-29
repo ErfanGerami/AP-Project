@@ -7,14 +7,23 @@ MainGameWindow::MainGameWindow(QWidget *parent):
 	ui->setupUi(this);
     setFixedSize(size());
 	ui->Graphics->setAlignment(Qt::Alignment(0));
+
 	scene = new QGraphicsScene;
 	ui->Graphics->setScene(scene);
+
 	sticker_scene = new QGraphicsScene;
 	ui->sticker_graphics->setScene(sticker_scene);
+    //-----------
+
+
+
+
+
+
 
     game_handeler = new GameHandeler(this,nullptr, 2, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, 0
     , Player("ss", "s"), Player("s22", "s"), Player("s22", "s"), Player("s22", "s"));
-	//game_handeler->TellTheFirst(1);
+    //game_handeler->TellTheFirst(1);
 
     game_handeler->Deal();
 
