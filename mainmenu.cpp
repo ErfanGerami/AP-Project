@@ -82,14 +82,15 @@ void MainMenu::on_join_server_clicked() {
 	try {
 
 		client = new SocketHandeling();
-
+		//
 		client->client_run_fast_connect(QString::fromStdString(MainPlayer->GetUserName()));
 		wait_menu = new WaitMenu(client, this);
-
+		//
 		wait_menu->show();
 		this->hide();
-		//GetServersInformation *m = new GetServersInformation(client, QString::fromStdString//(MainPlayer->GetUserName()), this);
+		//GetServersInformation *m = new GetServersInformation(client, QString::fromStdString(MainPlayer->GetUserName()), this);
 		//m->show();
+		//wait_menu->show();
 
 	}
 	catch ( Errors err ) {
@@ -101,9 +102,8 @@ void MainMenu::on_join_server_clicked() {
 void MainMenu::server_joining_finished(bool is_connected) {
 	if ( is_connected ) {
 		//show next window
-		wait_menu = new WaitMenu(client, this);
+		//wait_menu = new WaitMenu(client, this);
 
-		wait_menu->show();
 		this->hide();
 
 	}

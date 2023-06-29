@@ -26,21 +26,19 @@ Login::Login(QWidget *parent)
 }
 
 void Login::on_pushButton_3_clicked() {
-	/*s = new SocketHandeling();
-	s->server_run("myserver", "laptop_server");
+	s = new SocketHandeling();
+	s->server_run("myserver", "laptop_server", 6);
 	t = new SocketHandeling();
-	t->client_run("mmd hastam");*/
+	//t->client_run("mmd hastam");
+	t->client_run_fast_connect("mmd hastam");
 }
 
 void Login::on_pushButton_clicked() {
-	/*QString names[4] = { "player names", "player names", "player names", "player names" };
-	int num1[4] = { 0 };
-	int num2[4][7] = { 0 };
-	char code[4] = { '1', '2', '3', '4' };
-
-	DataPacket *datap = new DataPacket("shafaghhhhhhserver", 2, names, num1, num2);
-
-	t->send_data(code, datap);*/
+	DataPacket *data = new DataPacket();
+	data->player_name[0] = "ahwduhuh";
+	char *code = new char[6];
+	code[0] = '0'; code[1] = '2'; code[2] = '9'; code[4] = '0'; code[5] = '0';
+	s->send_data(code, data);
 }
 
 

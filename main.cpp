@@ -33,11 +33,16 @@ int main(int argc, char *argv[]) {
 	//g->show();
 
 
-	//SocketHandeling *server = new SocketHandeling();
-	//server->server_run("server_name", "creator_name", 2);
+	/*SocketHandeling *server = new SocketHandeling();
+	server->server_run("server_name", "creator_name", 2);
+
+	SocketHandeling *client = new SocketHandeling();
+	client->client_run_fast_connect("wdijad");*/
 
 
-	//SocketHandeling *client = new SocketHandeling();
+
+
+
 
 	Login *l = new Login();
 	l->show();
