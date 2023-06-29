@@ -33,6 +33,7 @@ public slots:
 	void server_joining_finished(bool is_connected);
 
 private:
+	bool *is_connected;
 	WaitMenu *wait_menu;
 	SocketHandeling *client;
 	Ui::MainMenu *ui;

@@ -5,7 +5,7 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, SocketHandeling *cli
 	QDialog(parent),
 	ui(new Ui::MainGameWindow) {
 	ui->setupUi(this);
-    setFixedSize(size());
+	setFixedSize(size());
 	ui->Graphics->setAlignment(Qt::Alignment(0));
 
 	scene = new QGraphicsScene;
@@ -13,7 +13,7 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, SocketHandeling *cli
 
 	sticker_scene = new QGraphicsScene;
 	ui->sticker_graphics->setScene(sticker_scene);
-    //-----------
+	//-----------
 
 
 
@@ -21,11 +21,11 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, SocketHandeling *cli
 
 
 
-    game_handeler = new GameHandeler(this,nullptr, 2, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, 0
-    , Player("ss", "s"), Player("s22", "s"), Player("s22", "s"), Player("s22", "s"));
-    //game_handeler->TellTheFirst(1);
+	game_handeler = new GameHandeler(this, nullptr, 2, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, 0
+		, Player("ss", "s"), Player("s22", "s"), Player("s22", "s"), Player("s22", "s"));
+	//game_handeler->TellTheFirst(1);
 
-    game_handeler->Deal();
+	game_handeler->Deal();
 
 	// game_handeler->collect(nullptr);
 	if ( connection->am_i_the_server() ) {

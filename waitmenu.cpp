@@ -3,26 +3,22 @@
 #include "channel.h"
 
 WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client_, QWidget *parent):
-	QDialog(parent),
+	QMainWindow(parent),
 	ui(new Ui::WaitMenu) {
 	ui->setupUi(this);
-    setFixedSize(size());
+	setFixedSize(size());
 
 	am_i_server = connection->am_i_the_server();
-	if ( am_i_server ) {
-		server = connection;
-		this->client = client_;
-		player_count = server->get_player_count();
-		connect(server, SIGNAL(newplayer(QString)), this, SLOT(new_player(QString)));
-	}
-	else {
-		this->client = connection;
-		connect(client, SIGNAL(newplayer_socket()), this, SLOT(new_player_socket2()));
 
-	}
+	server = connection;
+	client = client_;
+	player_count = server->get_player_count();
+	connect(server, SIGNAL(newplayer(QString)), this, SLOT(new_player(QString)));
 
 
-	this->scene = new QGraphicsScene(ui->graphicsView);
+
+
+	//this->scene = new QGraphicsScene(ui->graphicsView);
 
 
 
@@ -68,6 +64,17 @@ WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client_, QWidge
 	ui->graphicsView->setScene(scene);
 	ui->graphicsView->show();
 	*/
+}
+
+WaitMenu::WaitMenu(SocketHandeling *client_, QWidget *parent):
+	QMainWindow(parent),
+	ui(new Ui::WaitMenu) {
+	ui->setupUi(this);
+	setFixedSize(size());
+
+	client = client_;
+	bool s = connect(client, SIGNAL(newplayer_socket()), this, SLOT(new_player_socket2()));
+	Q_ASSERT(s);
 }
 
 void WaitMenu::new_player(QString name) {

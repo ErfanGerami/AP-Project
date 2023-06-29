@@ -195,7 +195,10 @@ QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server() {
 }
 
 QPair<char *, DataPacket *> SocketHandeling::reading_data_socket() {
-
+	emit newplayer_socket();
+	emit newplayer_socket();
+	emit newplayer_socket();
+	emit newplayer_socket();
 	DataPacket *data_packet = new DataPacket();
 	char *code = new char[6];
 	code[0] = '4';

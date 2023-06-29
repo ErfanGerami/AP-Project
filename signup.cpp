@@ -6,7 +6,7 @@ SignUp::SignUp(QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::SignUp) {
 	ui->setupUi(this);
-    setFixedSize(size());
+	setFixedSize(size());
 
 	connect(this, SIGNAL(show_parent()), parent, SLOT(show_me()));
 

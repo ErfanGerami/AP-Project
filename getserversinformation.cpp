@@ -72,8 +72,8 @@ void GetServersInformation::on_connect_clicked() {
 			is_connected = false;
 		}
 		ServerName = it.value().first;
-		this->close();
-
+		emit show_parent(is_connected);
+		this->hide();
 
 	}
 	catch ( Errors err ) {
@@ -89,7 +89,7 @@ void GetServersInformation::closeEvent(QCloseEvent *event) {
 	}
 	else {
 		QWidget::closeEvent(event);
-		emit show_parent(is_connected);
+
 
 	}
 }

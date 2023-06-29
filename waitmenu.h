@@ -1,8 +1,7 @@
 #ifndef WAITMENU_H
 #define WAITMENU_H
 
-#include <QDialog>
-
+#include <QMainWindow>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
@@ -17,15 +16,18 @@ namespace Ui {
 	class WaitMenu;
 }
 
-class WaitMenu: public QDialog {
+class WaitMenu: public QMainWindow {
 	Q_OBJECT
 
 public:
-	explicit WaitMenu(SocketHandeling *connection, SocketHandeling *client = nullptr, QWidget *parent = nullptr);
+	WaitMenu(SocketHandeling *connection, SocketHandeling *client_, QWidget *parent = nullptr);
+	WaitMenu(SocketHandeling *client_, QWidget *parent = nullptr);
 
 
 
 	~WaitMenu();
+
+
 
 public slots:
 	void new_player(QString name);
@@ -42,6 +44,7 @@ private:
 	int player_joined = 0;
 	SocketHandeling *server;
 	SocketHandeling *client;
+
 	bool am_i_server;
 };
 

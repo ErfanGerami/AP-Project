@@ -52,7 +52,7 @@ private:
 	void closeEvent(QCloseEvent *event) override;
 
 signals:
-	void show_parent(bool);
+	void show_parent(bool is_connected);
 };
 
 #endif // GETSERVERSINFORMATION_H

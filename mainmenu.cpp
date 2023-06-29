@@ -9,7 +9,7 @@ MainMenu::MainMenu(QWidget *parent):
 	ui(new Ui::MainMenu) {
 
 	ui->setupUi(this);
-    setFixedSize(size());
+	setFixedSize(size());
 	ui->name->setText(QString(MainPlayer->GetUserName().c_str()));
 	if ( MainPlayer->GetPrevGame().GetIsPlayed() ) {
 		ui->no_games1->hide();
@@ -60,6 +60,7 @@ void MainMenu::on_create_server_clicked() {
 
 		if ( server->is_server_connected() ) {
 			//show next window
+
 			client = new SocketHandeling();
 			client->client_run(QHostAddress("127.0.0.1"), server->get_name());
 			wait_menu = new WaitMenu(server, client, this);
@@ -82,9 +83,13 @@ void MainMenu::on_join_server_clicked() {
 
 		client = new SocketHandeling();
 
+		client->client_run_fast_connect(QString::fromStdString(MainPlayer->GetUserName()));
+		wait_menu = new WaitMenu(client, this);
 
-		GetServersInformation *m = new GetServersInformation(client, QString::fromStdString(MainPlayer->GetUserName()), this);
-		m->show();
+		wait_menu->show();
+		this->hide();
+		//GetServersInformation *m = new GetServersInformation(client, QString::fromStdString//(MainPlayer->GetUserName()), this);
+		//m->show();
 
 	}
 	catch ( Errors err ) {
@@ -96,10 +101,10 @@ void MainMenu::on_join_server_clicked() {
 void MainMenu::server_joining_finished(bool is_connected) {
 	if ( is_connected ) {
 		//show next window
-		wait_menu = new WaitMenu(client);
+		wait_menu = new WaitMenu(client, this);
 
-		//this->hide();
 		wait_menu->show();
+		this->hide();
 
 	}
 	else {

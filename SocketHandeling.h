@@ -82,6 +82,8 @@ public slots:
 
 
 	void func(QString name);
+
+
 private slots:
 
 
