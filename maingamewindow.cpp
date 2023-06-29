@@ -1,20 +1,20 @@
 #include "maingamewindow.h"
 #include "ui_maingamewindow.h"
 
-MainGameWindow::MainGameWindow(SocketHandeling *connection, SocketHandeling *client, QWidget *parent):
+MainGameWindow::MainGameWindow(SocketHandeling *connection, SocketHandeling *client, QVector<QString> name_vec, QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::MainGameWindow) {
 	ui->setupUi(this);
-    setFixedSize(size());
-    ui->Graphics->setAlignment(Qt::Alignment(0));
+	setFixedSize(size());
+	ui->Graphics->setAlignment(Qt::Alignment(0));
 
 	scene = new QGraphicsScene;
-    ui->Graphics->setScene(scene);
-    QGraphicsItemGroup* fixedItemsGroup = new QGraphicsItemGroup;
-    fixedItemsGroup->setHandlesChildEvents(false);
-    scene->addItem(fixedItemsGroup);
+	ui->Graphics->setScene(scene);
+	QGraphicsItemGroup *fixedItemsGroup = new QGraphicsItemGroup;
+	fixedItemsGroup->setHandlesChildEvents(false);
+	scene->addItem(fixedItemsGroup);
 
-    ui->Graphics->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+	ui->Graphics->setAlignment(Qt::AlignLeft | Qt::AlignTop);
 
 	sticker_scene = new QGraphicsScene;
 	ui->sticker_graphics->setScene(sticker_scene);
@@ -23,17 +23,43 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, SocketHandeling *cli
 
 
 
+	if ( connection->am_i_the_server() ) {
+		server = connection;
+		this->client = client;
+
+		int player_count = name_vec.size();
+
+		while ( name_vec.size() < 4 )
+			name_vec.push_back("");
+
+		Logic *logic = new Logic(server, PlayerInGame(Player(name_vec[0].toStdString(), ""), this, 0), PlayerInGame(Player(name_vec[1].toStdString(), ""), this, 1), player_count, PlayerInGame(Player(name_vec[2].toStdString(), ""), this, 2), PlayerInGame(Player(name_vec[3].toStdString(), ""), this, 3));
 
 
 
-    game_handeler = new GameHandeler(this,nullptr,4, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, 0
-    , Player("ss", "s"), Player("s22", "s"), Player("s22", "s"), Player("s22", "s"));
-    //game_handeler->TellTheFirst(1);
+	}
+	else {
+		this->client = client;
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+	game_handeler = new GameHandeler(this, nullptr, 4, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, 0
+		, Player("ss", "s"), Player("s22", "s"), Player("s22", "s"), Player("s22", "s"));
+	//game_handeler->TellTheFirst(1);
 
 	game_handeler->Deal();
 
-    game_handeler->collect(nullptr);
-    game_handeler->SwitchCard(Card::parrot,2,Card::queen,3);
+	game_handeler->collect(nullptr);
+	game_handeler->SwitchCard(Card::parrot, 2, Card::queen, 3);
 
 
 

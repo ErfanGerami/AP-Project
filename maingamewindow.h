@@ -8,7 +8,9 @@
 #include <QVBoxLayout>
 #include <QGraphicsProxyWidget>
 #include <QGraphicsScene>
-#include <QVBoxLayout>w
+#include <QVBoxLayout>
+#include "logic.h"
+#include "gamehandeler.h"
 
 
 namespace Ui {
@@ -19,7 +21,7 @@ class MainGameWindow: public QDialog {
 	Q_OBJECT
 
 public:
-	explicit MainGameWindow(SocketHandeling *connection, SocketHandeling *client = nullptr, QWidget *parent = nullptr);
+	explicit MainGameWindow(SocketHandeling *connection, SocketHandeling *client = nullptr, QVector<QString> name_vec, QWidget *parent = nullptr);
 	~MainGameWindow();
 
 private slots:
@@ -36,6 +38,10 @@ private slots:
 	void on_pushButton_6_clicked();
 
 private:
+	std::thread logic_thread;
+
+
+
 	Ui::MainGameWindow *ui;
 	GameHandeler *game_handeler;
 	QGraphicsScene *scene;

@@ -12,16 +12,16 @@
 class PlayerInGame:public Player {
 public:
 
-    bool haveType(Card::CardType type);
+	bool haveType(Card::CardType type);
 	PlayerInGame();
 	PlayerInGame(const PlayerInGame &that);
 
-    PlayerInGame(QObject* parent,const string &username, const string &password, int rank, int games_won, int games_loose
+	PlayerInGame(QObject *parent, const string &username, const string &password, int rank, int games_won, int games_loose
 		, const string &phone_number, const string &address, const string &email, const int coins
 		, QVector<Card *> cards, std::pair<int, int> base_pos, int place, Game prev_game, int round_won
 		, int predicted_rounds, int points);
 
-    PlayerInGame(const Player &player,QObject* parent, int place, QVector<Card *> cards, int rounds_won);
+	PlayerInGame(const Player &player, QObject *parent, int place, QVector<Card *> cards, int rounds_won);
 
 	void NewCards(QVector<Card *> cards);
 	std::pair<int, int> GetBasePos();
@@ -30,7 +30,7 @@ public:
 
 	void CalculateWonCardPosition();
 	void Deal();
-    Card *PushCard(Card::CardType card_type, int number,bool was_unknow=true);
+	Card *PushCard(Card::CardType card_type, int number, bool was_unknow = true);
 	void operator=(const PlayerInGame &other);
 	void DeleteCard(Card::CardType card_type, int number);
 
@@ -54,7 +54,7 @@ private:
 	int rounds_won;
 	int predicted_rounds;
 	int points;
-    QObject* parent;
+	QObject *parent;
 
 
 
