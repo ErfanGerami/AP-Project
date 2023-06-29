@@ -6,14 +6,18 @@ MainGameWindow::MainGameWindow(QWidget *parent):
 	ui(new Ui::MainGameWindow) {
 	ui->setupUi(this);
     setFixedSize(size());
-	ui->Graphics->setAlignment(Qt::Alignment(0));
+    ui->Graphics->setAlignment(Qt::Alignment(0));
 
 	scene = new QGraphicsScene;
-	ui->Graphics->setScene(scene);
+    ui->Graphics->setScene(scene);
+    QGraphicsItemGroup* fixedItemsGroup = new QGraphicsItemGroup;
+    fixedItemsGroup->setHandlesChildEvents(false);
+    scene->addItem(fixedItemsGroup);
+
+    ui->Graphics->setAlignment(Qt::AlignLeft | Qt::AlignTop);
 
 	sticker_scene = new QGraphicsScene;
 	ui->sticker_graphics->setScene(sticker_scene);
-    //-----------
 
 
 
@@ -21,13 +25,17 @@ MainGameWindow::MainGameWindow(QWidget *parent):
 
 
 
-    game_handeler = new GameHandeler(this,nullptr, 2, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, 0
+
+    game_handeler = new GameHandeler(this,nullptr,4, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, 0
     , Player("ss", "s"), Player("s22", "s"), Player("s22", "s"), Player("s22", "s"));
     //game_handeler->TellTheFirst(1);
 
     game_handeler->Deal();
 
-	// game_handeler->collect(nullptr);
+    game_handeler->collect(nullptr);
+    game_handeler->SwitchCard(Card::parrot,2,Card::queen,3);
+
+
 
 
 }

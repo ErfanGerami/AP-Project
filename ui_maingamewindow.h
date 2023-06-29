@@ -13,7 +13,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGraphicsView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
@@ -29,10 +28,6 @@ public:
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
     QGraphicsView *sticker_graphics;
-    QLabel *name0;
-    QLabel *name2;
-    QLabel *name3;
-    QLabel *name1;
 
     void setupUi(QDialog *MainGameWindow)
     {
@@ -81,28 +76,6 @@ public:
         sticker_graphics->setStyleSheet(QString::fromUtf8("background-color:rgba(200,200,200,200);"));
         sticker_graphics->setInteractive(true);
         sticker_graphics->setRenderHints(QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing);
-        name0 = new QLabel(MainGameWindow);
-        name0->setObjectName(QString::fromUtf8("name0"));
-        name0->setGeometry(QRect(740, 910, 341, 31));
-        QFont font;
-        font.setFamily(QString::fromUtf8("MV Boli"));
-        name0->setFont(font);
-        name0->setStyleSheet(QString::fromUtf8("font-size:30px;color:white;"));
-        name2 = new QLabel(MainGameWindow);
-        name2->setObjectName(QString::fromUtf8("name2"));
-        name2->setGeometry(QRect(720, 10, 341, 31));
-        name2->setFont(font);
-        name2->setStyleSheet(QString::fromUtf8("font-size:30px;color:white;"));
-        name3 = new QLabel(MainGameWindow);
-        name3->setObjectName(QString::fromUtf8("name3"));
-        name3->setGeometry(QRect(0, 550, 341, 31));
-        name3->setFont(font);
-        name3->setStyleSheet(QString::fromUtf8("font-size:30px;color:white;"));
-        name1 = new QLabel(MainGameWindow);
-        name1->setObjectName(QString::fromUtf8("name1"));
-        name1->setGeometry(QRect(1400, 540, 341, 31));
-        name1->setFont(font);
-        name1->setStyleSheet(QString::fromUtf8("font-size:30px;color:white;"));
 
         retranslateUi(MainGameWindow);
 
@@ -118,10 +91,6 @@ public:
         pushButton_4->setText(QString());
         pushButton_5->setText(QString());
         pushButton_6->setText(QString());
-        name0->setText(QApplication::translate("MainGameWindow", "TextLabel", nullptr));
-        name2->setText(QApplication::translate("MainGameWindow", "TextLabel", nullptr));
-        name3->setText(QApplication::translate("MainGameWindow", "TextLabel", nullptr));
-        name1->setText(QApplication::translate("MainGameWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };

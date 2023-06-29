@@ -12,13 +12,39 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 	this->me = me;
 	const int max_height = 1021;
 	const int max_width = 1610;
-	const const pair<int, int> positions[4] = { { 0, max_height / 2 - 100 }, { 0, -view->height() / 2 + 150 },
-		{ max_width / 2 - 150, 0 }, { -max_width / 2 + 200, 0 } };
+    const const pair<int, int> positions[4] = { { max_width/2, max_height-100 }, { max_width/2,100 },
+        { max_width-100 , max_height/2 }, { 100, max_height/2 } };
 	for ( int i = me; i < number_of_players; i++ ) {
 		this->players[i % number_of_players] = new PlayerInGame(p2, this, i - me, {}, 0);
 		players[i % number_of_players]->SetBasePos(positions[i % number_of_players]);
 
 	}
+    for(int i=me;i<number_of_players;i++){
+        QLabel* label=new QLabel(players[(me+i)%4]->GetUserName().c_str());
+        label->setStyleSheet("font-size:40px;color:red;background:transparent");
+        QGraphicsProxyWidget* proxy=scene->addWidget(label);
+
+        switch (i) {
+        case 0:
+            proxy->setPos(max_width/2,950);
+            break;
+        case 1:
+            proxy->setPos(max_width/2,50);
+
+            break;
+        case 2:
+            proxy->setPos(max_width-75,max_height/2);
+            proxy->setRotation(270);
+            break;
+        case 3:
+            proxy->setPos(100,max_height/2);
+            proxy->setRotation(90);
+            break;
+
+        }
+
+    }
+
 
 
 
@@ -58,10 +84,10 @@ void GameHandeler::TellTheFirst(int index) {
 void GameHandeler::Deal() {
 
     Card *card = new Card(this, Card::parrot, scene, view, 2);
-	players[0]->NewCards({ card });
-	// players[1]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2) });
-	// players[2]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2) });
-	// players[3]->NewCards({ Card(Card::map,scene,view,2),Card(Card::king,scene,view,3),Card(Card::queen,scene,view,2) });
+    players[0]->NewCards({ new Card(this, Card::parrot, scene, view, 2),new Card(this, Card::parrot, scene, view, 2) });
+     players[1]->NewCards({ new Card(this,Card::map,scene,view,2),new Card(this,Card::king,scene,view,3),new Card(this,Card::queen,scene,view,2) });
+     players[2]->NewCards({ new Card(this,Card::map,scene,view,2),new Card(this,Card::king,scene,view,3),new Card(this,Card::queen,scene,view,2) });
+     players[3]->NewCards({ new Card(this,Card::map,scene,view,2),new Card(this,Card::king,scene,view,3),new Card(this,Card::queen,scene,view,2) });
 
 	int rotation;
 	for ( int i = 0; i < number_of_players; i++ ) {
@@ -350,15 +376,17 @@ void GameHandeler::GetTheWinnerOfTheRound() {
 
 
 }
-void GameHandeler::SwitchCard(Card::CardType type, int number) {
+void GameHandeler::SwitchCard(Card::CardType type, int number,Card::CardType type2, int number2) {
 	auto cards = players[me]->get_cards();
 	for ( Card *card : cards ) {
 		if ( card->GetType() == type, card->GetNumber() == number ) {
-			int width = card->GetButton()->width();
-			QPropertyAnimation *anim = card->PushTo({ card->GetButton()->x(), card->GetButton()->y() }, { 0, card->GetButton()->height() }, card->GetProxy()->rotation());
+            int width = card->GetButton()->width();
+            QPropertyAnimation *anim = card->PushTo({ card->GetProxy()->x(), card->GetProxy()->y() }, { 0, card->GetButton()->height() }, card->GetProxy()->rotation());
 
-			connect(anim, &QPropertyAnimation::finished, [this, width, card, type, number] () {card->ChangeCard(type, number); card->PushTo({ card->GetButton()->x(), card->GetButton()->y() }, { width, card->GetButton()->height() }, card->GetProxy()->rotation()); });
-		}
+
+           connect(anim, &QPropertyAnimation::finished, [this, width, card, type, number,type2, number2] () {card->ChangeCard(type2, number2); card->PushTo({ card->GetProxy()->pos().x(), card->GetProxy()->pos().y() }, { width, card->GetButton()->height() }, card->GetProxy()->rotation()); });
+           return;
+        }
 	}
 }
 

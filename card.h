@@ -26,8 +26,8 @@ public:
 	const static CardType king;
 	const static CardType unknown;
 
-	const int dest_x = -100;
-	const int dest_y = -100;
+    const int dest_x = rand()%200-50+1600;
+    const int dest_y = rand()%200-50+1000;
 
 	static int angle_between_cards;
 	static int space_between_cards;

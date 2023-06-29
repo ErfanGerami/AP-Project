@@ -8,6 +8,7 @@
 #include <QVBoxLayout>
 #include <QGraphicsProxyWidget>
 #include <QGraphicsScene>
+#include <QVBoxLayout>w
 
 
 namespace Ui {
