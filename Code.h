@@ -14,6 +14,7 @@ public:
 	const static int fromServer_Sent_YourScore;
 	const static int fromServer_Sent_GameWinner;
 	const static int fromServer_Sent_AnotherPlayerPlayedCard;
+	const static int fromServer_Sent_PlayerNames;
 
 	static int get_code(char *code);
 	static char *set_code(char sender, int code);

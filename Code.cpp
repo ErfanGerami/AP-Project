@@ -10,6 +10,8 @@ const int Code::fromServer_Sent_RoundWinner = 5;
 const int Code::fromServer_Sent_YourScore = 6;
 const int Code::fromServer_Sent_GameWinner = 7;
 const int Code::fromServer_Sent_AnotherPlayerPlayedCard = 8;
+const int Code::fromServer_Sent_PlayerNames = 9;
+
 
 int Code::get_code(char *code) {
 	if ( code[0] == '0' && code[1] == '2' && code[2] == '0' )
@@ -39,6 +41,9 @@ int Code::get_code(char *code) {
 	if ( code[0] == '0' && code[1] == '0' && code[2] == '8' )
 		return fromServer_Sent_AnotherPlayerPlayedCard;
 
+	if ( code[0] == '0' && code[1] == '2' && code[2] == '9' )
+		return fromServer_Sent_PlayerNames;
+
 	return undefined;
 }
 
@@ -46,44 +51,49 @@ char *Code::set_code(char sender, int code) {
 	char *c = new char[6];
 	c[0] = sender;
 	c[1] = '0';
-	c[4] = c[5] = '0';
+	c[3] = c[4] = '0';
 
 
 	if ( code == fromServer_Sent_YourCards ) {
 		c[1] = '2';
-		c[3] = '0';
+		c[2] = '0';
 	}
 
 	if ( code == fromServer_Sent_YourTurn )
-		c[3] = '1';
+		c[2] = '1';
 
 
 	if ( code == fromClient_Sent_Predictions )
-		c[3] = '2';
+		c[2] = '2';
 
 
 	if ( code == fromServer_Sent_FirstPlayer )
-		c[3] = '3';
+		c[2] = '3';
 
 
 	if ( code == fromClient_Sent_PlayedCard )
-		c[3] = '4';
+		c[2] = '4';
 
 
 	if ( code == fromServer_Sent_RoundWinner )
-		c[3] = '5';
+		c[2] = '5';
 
 
 	if ( code == fromServer_Sent_YourScore )
-		c[3] = '6';
+		c[2] = '6';
 
 
 	if ( code == fromServer_Sent_GameWinner )
-		c[3] = '7';
+		c[2] = '7';
 
 
 	if ( code == fromServer_Sent_AnotherPlayerPlayedCard )
-		c[3] = '8';
+		c[2] = '8';
+
+	if ( code == fromServer_Sent_PlayerNames ) {
+		c[1] = '2';
+		c[2] = '9';
+	}
 
 
 	return c;
