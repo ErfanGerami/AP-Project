@@ -2,6 +2,8 @@
 #include "ui_mainmenu.h"
 
 extern Player *MainPlayer;
+extern QString ServerName;
+
 MainMenu::MainMenu(QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::MainMenu) {
@@ -46,15 +48,21 @@ MainMenu::MainMenu(QWidget *parent):
 
 MainMenu::~MainMenu() {
 	delete ui;
+
 }
 
 void MainMenu::on_create_server_clicked() {
 	SocketHandeling *server = new SocketHandeling();
 
-	server->server_run(ui->server_name->text(), "creator_name");
+	server->server_run(ui->server_name->text(), QString::fromStdString(MainPlayer->GetUserName()), ui->player_count->text().toInt());
 
 	if ( server->is_server_connected() ) {
 		//show next window
+		client = new SocketHandeling();
+		client->client_run(QHostAddress("127.0.0.1"), server->get_name());
+		wait_menu = new WaitMenu(server, client, this);
+		this->hide();
+		wait_menu->show();
 	}
 	else {
 		QMessageBox::critical(this, "error", "failed to create server");
@@ -66,10 +74,10 @@ void MainMenu::on_join_server_clicked() {
 
 
 
-	SocketHandeling *client = new SocketHandeling();
+	client = new SocketHandeling();
 
 
-	GetServersInformation *m = new GetServersInformation(client, "client_name", this);
+	GetServersInformation *m = new GetServersInformation(client, QString::fromStdString(MainPlayer->GetUserName()), this);
 	m->show();
 
 
@@ -79,6 +87,10 @@ void MainMenu::on_join_server_clicked() {
 void MainMenu::server_joining_finished(bool is_connected) {
 	if ( is_connected ) {
 		//show next window
+		wait_menu = new WaitMenu(client);
+
+		//this->hide();
+		wait_menu->show();
 
 	}
 	else {
@@ -86,6 +98,9 @@ void MainMenu::server_joining_finished(bool is_connected) {
 	}
 
 }
+
+
+
 void MainMenu::on_change_info_clicked() {
 	ChangeInfo *change_win = new ChangeInfo(this);
 	this->hide();

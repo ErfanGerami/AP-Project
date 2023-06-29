@@ -7,8 +7,9 @@
 #include "changeinfo.h"
 #include "getserversinformation.h"
 #include "SocketHandeling.h"
+#include "waitmenu.h"
 
-extern Player MainPLayer;
+
 namespace Ui {
 	class MainMenu;
 }
@@ -30,8 +31,14 @@ private slots:
 public slots:
 	void show_me();
 	void server_joining_finished(bool is_connected);
+
 private:
+	WaitMenu *wait_menu;
+	SocketHandeling *client;
 	Ui::MainMenu *ui;
+
+
+
 };
 
 #endif // MAINMENU_H
