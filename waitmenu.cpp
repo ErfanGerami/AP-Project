@@ -3,7 +3,7 @@
 #include "channel.h"
 
 WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client_, QWidget *parent):
-	QMainWindow(parent),
+	QDialog(parent),
 	ui(new Ui::WaitMenu) {
 	ui->setupUi(this);
 	setFixedSize(size());
@@ -67,13 +67,13 @@ WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client_, QWidge
 }
 
 WaitMenu::WaitMenu(SocketHandeling *client_, QWidget *parent):
-	QMainWindow(parent),
+	QDialog(parent),
 	ui(new Ui::WaitMenu) {
 	ui->setupUi(this);
 	setFixedSize(size());
 
 	client = client_;
-	bool s = connect(client, SIGNAL(newplayer_socket()), this, SLOT(new_player_socket2()));
+	bool s = connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(new_player_socket()));
 	Q_ASSERT(s);
 }
 
@@ -83,6 +83,20 @@ void WaitMenu::new_player(QString name) {
 
 
 	name_vec.push_back(name);
+
+
+	if ( player_joined == player_count ) {
+		char *code = Code::set_code('0', Code::fromServer_Sent_GameStarted);
+		DataPacket dummy;
+		server->send_data(code, &dummy);
+
+		MainGameWindow *main_game_window = new MainGameWindow(server, client);
+		disconnect(server, SIGNAL(newplayer(QString)), this, SLOT(new_player(QString)));
+		main_game_window->show();
+		this->hide();
+		return;
+	}
+
 
 	DataPacket data_packet;
 	int ctr = 0;
@@ -95,17 +109,6 @@ void WaitMenu::new_player(QString name) {
 	char *code = Code::set_code('0', Code::fromServer_Sent_PlayerNames);
 
 	server->send_data(code, &data_packet);
-
-	if ( player_joined == player_count ) {
-		char *code = Code::set_code('0', Code::fromServer_Sent_GameStarted);
-		DataPacket dummy;
-		server->send_data(code, &dummy);
-
-		MainGameWindow *main_game_window = new MainGameWindow(server, client);
-		main_game_window->show();
-		this->hide();
-	}
-
 }
 
 
@@ -113,11 +116,14 @@ void WaitMenu::new_player_socket() {
 	QPair<char *, DataPacket *> pair = client->reading_data_socket();
 	if ( Code::get_code(pair.first) == Code::fromServer_Sent_PlayerNames ) {
 		DataPacket *data = pair.second;
+
+		ui->listWidget->clear();
 		for ( int i = 0; i < 4; i++ )
 			if ( data->player_name[i].size() > 0 )
 				ui->listWidget->addItem(data->player_name[i]);
 	}
 	else if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameStarted ) {
+		disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(new_player_socket()));
 		MainGameWindow *main_game_window = new MainGameWindow(client);
 		main_game_window->show();
 		this->hide();
@@ -127,7 +133,7 @@ void WaitMenu::new_player_socket() {
 	}
 }
 
-void WaitMenu::new_player_socket2() {
+//void WaitMenu::new_player_socket2() {
 
 	//if ( Code::get_code(pair.first) == Code::fromServer_Sent_PlayerNames ) {
 	//	DataPacket *data = pair.second;
@@ -145,22 +151,9 @@ void WaitMenu::new_player_socket2() {
 	//}
 
 
-}
+//}
 
-void WaitMenu::on_pushButton_clicked() {
-	DataPacket data_packet;
-	int ctr = 0;
 
-	for ( auto i : name_vec ) {
-		data_packet.player_name[ctr] = i;
-		ctr++;
-	}
-
-	char *code = Code::set_code('0', Code::fromServer_Sent_PlayerNames);
-
-	server->send_data(code, &data_packet);
-
-}
 
 
 WaitMenu::~WaitMenu() {

@@ -1,7 +1,7 @@
 #ifndef WAITMENU_H
 #define WAITMENU_H
 
-#include <QMainWindow>
+#include <QDialog>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
@@ -16,7 +16,7 @@ namespace Ui {
 	class WaitMenu;
 }
 
-class WaitMenu: public QMainWindow {
+class WaitMenu: public QDialog {
 	Q_OBJECT
 
 public:
@@ -33,9 +33,9 @@ public slots:
 	void new_player(QString name);
 
 	void new_player_socket();
-	void new_player_socket2();
+	//void new_player_socket2();
 
-	void on_pushButton_clicked();
+
 private:
 	QVector<QString> name_vec;
 	Ui::WaitMenu *ui;
