@@ -46,7 +46,7 @@ int Code::get_code(char *code) {
 	if ( code[0] == '0' && code[1] == '2' && code[2] == '9' )
 		return fromServer_Sent_PlayerNames;
 
-	if ( code[0] == '0' && code[1] == '2' && code[2] == 'a' )
+	if ( code[1] == '0' && code[2] == 'a' )
 		return fromServer_Sent_GameStarted;
 
 	return undefined;
@@ -100,7 +100,7 @@ char *Code::set_code(char sender, int code) {
 		c[2] = '9';
 	}
 
-	if ( code == fromServer_Sent_AnotherPlayerPlayedCard )
+	if ( code == fromServer_Sent_GameStarted )
 		c[2] = 'a';
 
 	return c;
