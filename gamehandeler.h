@@ -32,6 +32,8 @@ public:
 	void AddStickers(QString name, int index);
 	int GetMe();
 	void SwitchCard(Card::CardType typpe, int number);
+    int CardVectorToArray(QVector<Card*> cards,int array[2][14]);
+    QVector<Card*> CardArrayToVectorOf(int array[2][14],int size,QGraphicsView *view, QGraphicsScene *scene);
 
 private:
 	SocketHandeling *client;

@@ -362,3 +362,23 @@ void GameHandeler::SwitchCard(Card::CardType type, int number) {
 	}
 }
 
+int GameHandeler::CardVectorToArray(QVector<Card*> cards,int array[2][14]){
+
+    for(int i=0;i<cards.size();i++){
+        array[0][i]=cards[i]->GetType();
+         array[1][i]=cards[i]->GetNumber();
+    }
+    return cards.size();
+
+}
+QVector<Card*> GameHandeler::CardArrayToVectorOf(int array[2][14],int size,QGraphicsView *view, QGraphicsScene *scene){
+    QVector<Card*> cards;
+    for(int i=0;i<size;i++){
+        cards.push_back(new Card(this,array[0][i],scene,view,array[1][i]));
+
+    }
+    return cards;
+
+
+}
+

@@ -20,7 +20,8 @@ public:
 	void shuffle();
 	void DealCard();//note that it is depending on right round to count the number of cards;
 	void SwapCard(int player_index1, int player_index2, Card::CardType type1, Card::CardType type2, int num1, int num2);
-
+    int  CardVectorToArray(QVector<Card*> cards,int array[2][14]);//give the array as the second parameter//returns size;
+    QVector<Card*> CardArrayToVectorOf(int array[2][14],int size);
 
 
 
