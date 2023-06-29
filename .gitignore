@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -15,3 +15,6 @@
 /MainServer/release
 /ApProject.pro.user
 /MainServer/MainServer.pro.user
+.vs
+.vs/ApProject
+.vs/ApProject/v16/Browse.VC.opendb
