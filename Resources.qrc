@@ -49,6 +49,7 @@
         <file>images/sleep.png</file>
         <file>images/VeryHappy.png</file>
         <file>images/wondered.png</file>
+        <file>images/unknown.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/laugh.wav</file>

@@ -192,7 +192,11 @@ void Logic::initializeNewSet() {
 
 
 void Logic::FillAllCards() {
-	for ( int i = 0; i < number_of_players * 4; i++ ) {
+	int number_of_ordainary_cards = 8;
+	if (number_of_players == 4) {
+		number_of_ordainary_cards = 11;
+	}
+	for ( int i = 0; i < number_of_ordainary_cards; i++ ) {
 		Card card1(Card::treasure, i);
 		all_cards.push_back(card1);
 		Card card2(Card::map, i);
@@ -202,15 +206,10 @@ void Logic::FillAllCards() {
 		Card card4(Card::parrot, i);
 		all_cards.push_back(card4);
 	}
-	int pirates = number_of_players / 2 * 4;
-	int kings = number_of_players / 2 * 3;
-	int queens = number_of_players / 2 * 3;
-	if ( number_of_players == 3 ) {
-		pirates = 5;
-		kings = 4;
-		queens = 4;
-
-	}
+	int pirates = 4;
+	int kings = number_of_ordainary_cards == 4 ? 4 : 3;
+	int queens = number_of_ordainary_cards==4?4:3;
+	
 	for ( int i = 0; i < pirates; i++ ) {
 		Card card(Card::pirate, -1);
 
