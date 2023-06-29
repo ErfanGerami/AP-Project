@@ -11,7 +11,7 @@
 #include <QVBoxLayout>
 #include "logic.h"
 #include "gamehandeler.h"
-
+extern Player* MainPlayer;
 
 namespace Ui {
 	class MainGameWindow;
@@ -21,8 +21,8 @@ class MainGameWindow: public QDialog {
 	Q_OBJECT
 
 public:
-	explicit MainGameWindow(SocketHandeling *connection, SocketHandeling *client = nullptr, QVector<QString> name_vec, QWidget *parent = nullptr);
-	~MainGameWindow();
+    explicit MainGameWindow(SocketHandeling *connection, SocketHandeling *client = nullptr, QVector<QString> name_vec={}, QWidget *parent = nullptr);
+    ~MainGameWindow();
 
 private slots:
 	void on_pushButton_clicked();
