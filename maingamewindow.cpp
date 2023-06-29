@@ -2,7 +2,7 @@
 #include "ui_maingamewindow.h"
 
 
-MainGameWindow::MainGameWindow(SocketHandeling *connection, SocketHandeling *client, QVector<QString> name_vec, QWidget *parent):
+MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> name_vec, SocketHandeling *client, QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::MainGameWindow) {
 	ui->setupUi(this);
@@ -23,59 +23,47 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, SocketHandeling *cli
 
 
 
-    int player_count = name_vec.size();
+	int player_count = name_vec.size();
 
-    while ( name_vec.size() < 4 )
-        name_vec.push_back("");
+	while ( name_vec.size() < 4 )
+		name_vec.push_back("");
+
+	int me;
 	if ( connection->am_i_the_server() ) {
 		server = connection;
 		this->client = client;
+		me = 0;
+
+
+		Logic *logic = new Logic(server, PlayerInGame(Player(name_vec[0].toStdString(), ""), this, 0, {}, 0)
+			, PlayerInGame(Player(name_vec[1].toStdString(), ""), this, 1, {}, 0), player_count,
+			PlayerInGame(Player(name_vec[2].toStdString(), ""), this, 2, {}, 0)
+			, PlayerInGame(Player(name_vec[3].toStdString(), ""), this, 3, {}, 0));
 
 
 
-        Logic *logic = new Logic(server, PlayerInGame(Player(name_vec[0].toStdString(), ""), this, 0,{},0)
-                , PlayerInGame(Player(name_vec[1].toStdString(), ""), this, 1,{},0),player_count,
-                 PlayerInGame(Player(name_vec[2].toStdString(), ""),this,2,{},0)
-                , PlayerInGame(Player(name_vec[3].toStdString(), ""), this, 3,{},0));
-
-        game_handeler = new GameHandeler(this, nullptr, 4, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, 0
-            , Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
-                , Player(name_vec[3].toStdString(), ""));
-
-
-
+		//logic_thread = std::thread { &Logic::StartGame, logic };
+		logic->StartGame();
 
 	}
 	else {
-		this->client = client;
-        int me;
-        for(int i=0;i<name_vec.size();i++){
-            if(name_vec[i].toStdString()==MainPlayer->GetUserName()){
-                me=i;
-                break;
-            }
-        }
 
-        game_handeler = new GameHandeler(this, nullptr, 4, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
-            , Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
-                , Player(name_vec[3].toStdString(), ""));
+		this->client = connection;
+		for ( int i = 0; i < player_count; i++ ) {
+			if ( name_vec[i].toStdString() == MainPlayer->GetUserName() ) {
+				me = i;
+				break;
+			}
+		}
 
 
 
+		game_handeler = new GameHandeler(this, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
+			, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
+			, Player(name_vec[3].toStdString(), ""));
 
+		game_handeler->StartSet();
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

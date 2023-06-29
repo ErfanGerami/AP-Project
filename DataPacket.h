@@ -11,8 +11,8 @@ private:
 public:
 	int your_points = 0;
 	QString player_name[4];
-	int player_cards[7] = { 0 };
-
+	int card_size;
+	int player_cards[2][14];
 
 
 

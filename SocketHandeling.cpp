@@ -197,32 +197,32 @@ QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server() {
 	return data_vector;
 }
 
-QPair<char *, DataPacket *> SocketHandeling::reading_data_socket() {
+QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read) {
 
-	QByteArray block = tcp_socket->readAll();
 	DataPacket *data_packet = new DataPacket();
 	char *code = new char[6];
 
+	if ( force_read || tcp_socket->waitForReadyRead(-1) ) {
+
+		QByteArray block = tcp_socket->readAll();
+
+		for ( int i = 0; i < 5; i++ )
+			code[i] = block[i];
+
+		block.remove(0, 5);
 
 
+		if ( code[1] == '0' || code[1] == '1' ) {
+			//now do shit
 
+		}
+		else {
 
-	for ( int i = 0; i < 5; i++ )
-		code[i] = block[i];
+			QDataStream in(&block, QIODevice::ReadOnly);
+			;
+			in >> *data_packet;
 
-	block.remove(0, 5);
-
-
-	if ( code[1] == '0' || code[1] == '1' ) {
-		//now do shit
-
-	}
-	else {
-
-		QDataStream in(&block, QIODevice::ReadOnly);
-		;
-		in >> *data_packet;
-
+		}
 	}
 
 

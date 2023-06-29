@@ -7,8 +7,8 @@ Logic::Logic(SocketHandeling *server, PlayerInGame p1, PlayerInGame p2, int numb
 	this->players[3] = new PlayerInGame(p4);
 	this->set = 0;
 	this->round = 0;
-
-
+	this->server = server;
+	this->number_of_players = number_of_players;
 }
 
 int Logic::getFirstPlayer() { return rand() % number_of_players; }
@@ -155,19 +155,22 @@ int Logic::whose_turn(int turn) { return (this_rounds_first + turn) % number_of_
 
 void Logic::initializeNewSet() {
 	set++;
-	this_rounds_first++;
-	this_rounds_first %= number_of_players;
-
+	/*this_rounds_first++;
+	this_rounds_first %= number_of_players;*/
+	//this_rounds_first = getFirstPlayer();
 	shuffle();
 	DealCard();
 	//notify clients of their cards(you can get cards using players[i]->GetCards() a vector  of cards ;
 	// 
 	// 
 	//notify the client that it is his turn;
-
-	char *code = Code::set_code('0', Code::fromServer_Sent_FirstPlayer);//this is "your turn" code
 	DataPacket dummy;
-	server->send_data(code, &dummy, this_rounds_first);
+	char *code = Code::set_code('0', Code::fromServer_Sent_FirstPlayer);
+	code[3] = this_rounds_first + '0';
+
+	for ( int i = 0; i < number_of_players; i++ )
+		server->send_data(code, &dummy, i);
+
 	//-----------------
 	//????????????????????????????????????????????????????????????????????????????????????????
 	//notify clients of their cards(you can get cards using players[i]->GetCards()  a vector  of cards ;
@@ -177,11 +180,16 @@ void Logic::initializeNewSet() {
 	for ( int i = 0; i < number_of_players; i++ ) {
 
 		DataPacket data;
-		data.player_cards;
-		auto cards = players[i]->get_cards();
 
-		for ( int j = 0; j < 7; j++ )
-			data.player_cards[j] = cards[j]->GetNumber();
+		auto cards = players[i]->get_cards();
+		int card_arr[2][14];
+		int size = CardVectorToArray(cards, card_arr);
+
+
+		for ( int i = 0; i < 2; i++ )
+			for ( int j = 0; j < 14; j++ )
+				data.player_cards[i][j] = card_arr[i][j];
+		data.card_size = size;
 
 		server->send_data(code1, &data, i);
 	}
@@ -193,7 +201,7 @@ void Logic::initializeNewSet() {
 
 void Logic::FillAllCards() {
 	int number_of_ordainary_cards = 8;
-	if (number_of_players == 4) {
+	if ( number_of_players == 4 ) {
 		number_of_ordainary_cards = 11;
 	}
 	for ( int i = 0; i < number_of_ordainary_cards; i++ ) {
@@ -208,8 +216,8 @@ void Logic::FillAllCards() {
 	}
 	int pirates = 4;
 	int kings = number_of_ordainary_cards == 4 ? 4 : 3;
-	int queens = number_of_ordainary_cards==4?4:3;
-	
+	int queens = number_of_ordainary_cards == 4 ? 4 : 3;
+
 	for ( int i = 0; i < pirates; i++ ) {
 		Card card(Card::pirate, -1);
 
@@ -229,6 +237,8 @@ void Logic::FillAllCards() {
 
 	}
 }
+
+
 void Logic::StartGame() {
 	DataPacket dummy;
 
@@ -260,13 +270,13 @@ void Logic::StartGame() {
 
 				players[i]->SetRoundsPredicted(prediction);
 			}
-			this_rounds_first = getFirstPlayer();
+			//this_rounds_first = getFirstPlayer();
 
 			//notify clients of the first player(the parrot animation thing in gamehandeling should be played)
-			char *code3 = Code::set_code('0', Code::fromServer_Sent_FirstPlayer);
-			code3[3] = this_rounds_first;
+			/*char *code3 = Code::set_code('0', Code::fromServer_Sent_FirstPlayer);
+			code3[3] = this_rounds_first + '0';
 
-			server->send_data(code3, &dummy);
+			server->send_data(code3, &dummy);*/
 			//--------------
 
 			for ( int i = 0; i < number_of_players; i++ ) {
@@ -412,22 +422,22 @@ void Logic::SwapCard(int player_index1, int player_index2, Card::CardType type1,
 
 
 
-int Logic::CardVectorToArray(QVector<Card*> cards,int array[2][14]){
+int Logic::CardVectorToArray(QVector<Card *> cards, int array[2][14]) {
 
-    for(int i=0;i<cards.size();i++){
-        array[0][i]=cards[i]->GetType();
-         array[1][i]=cards[i]->GetNumber();
-    }
-    return cards.size();
+	for ( int i = 0; i < cards.size(); i++ ) {
+		array[0][i] = cards[i]->GetType();
+		array[1][i] = cards[i]->GetNumber();
+	}
+	return cards.size();
 
 }
-QVector<Card*> Logic::CardArrayToVectorOf(int array[2][14],int size){
-    QVector<Card*> cards;
-    for(int i=0;i<size;i++){
-        cards.push_back(new Card(array[0][i],array[1][i]));
+QVector<Card *> Logic::CardArrayToVectorOf(int array[2][14], int size) {
+	QVector<Card *> cards;
+	for ( int i = 0; i < size; i++ ) {
+		cards.push_back(new Card(array[0][i], array[1][i]));
 
-    }
-    return cards;
+	}
+	return cards;
 
 
 }

@@ -10,40 +10,41 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 	this->view = view;
 	this->parent = parent;
 	this->me = me;
+	this->client = client;
 	const int max_height = 1021;
 	const int max_width = 1610;
-    const const pair<int, int> positions[4] = { { max_width/2, max_height-100 }, { max_width/2,100 },
-        { max_width-100 , max_height/2 }, { 100, max_height/2 } };
+	const const pair<int, int> positions[4] = { { max_width / 2, max_height - 100 }, { max_width / 2, 100 },
+		{ max_width - 100, max_height / 2 }, { 100, max_height / 2 } };
 	for ( int i = me; i < number_of_players; i++ ) {
 		this->players[i % number_of_players] = new PlayerInGame(p2, this, i - me, {}, 0);
 		players[i % number_of_players]->SetBasePos(positions[i % number_of_players]);
 
 	}
-    for(int i=me;i<number_of_players;i++){
-        QLabel* label=new QLabel(players[(me+i)%4]->GetUserName().c_str());
-        label->setStyleSheet("font-size:40px;color:red;background:transparent");
-        QGraphicsProxyWidget* proxy=scene->addWidget(label);
+	for ( int i = me; i < number_of_players; i++ ) {
+		QLabel *label = new QLabel(players[(me + i) % 4]->GetUserName().c_str());
+		label->setStyleSheet("font-size:40px;color:red;background:transparent");
+		QGraphicsProxyWidget *proxy = scene->addWidget(label);
 
-        switch (i) {
-        case 0:
-            proxy->setPos(max_width/2,950);
-            break;
-        case 1:
-            proxy->setPos(max_width/2,50);
+		switch ( i ) {
+			case 0:
+				proxy->setPos(max_width / 2, 950);
+				break;
+			case 1:
+				proxy->setPos(max_width / 2, 50);
 
-            break;
-        case 2:
-            proxy->setPos(max_width-75,max_height/2);
-            proxy->setRotation(270);
-            break;
-        case 3:
-            proxy->setPos(100,max_height/2);
-            proxy->setRotation(90);
-            break;
+				break;
+			case 2:
+				proxy->setPos(max_width - 75, max_height / 2);
+				proxy->setRotation(270);
+				break;
+			case 3:
+				proxy->setPos(100, max_height / 2);
+				proxy->setRotation(90);
+				break;
 
-        }
+		}
 
-    }
+	}
 
 
 
@@ -83,11 +84,11 @@ void GameHandeler::TellTheFirst(int index) {
 
 void GameHandeler::Deal() {
 
-    Card *card = new Card(this, Card::parrot, scene, view, 2);
-    players[0]->NewCards({ new Card(this, Card::parrot, scene, view, 2),new Card(this, Card::parrot, scene, view, 2) });
-     players[1]->NewCards({ new Card(this,Card::map,scene,view,2),new Card(this,Card::king,scene,view,3),new Card(this,Card::queen,scene,view,2) });
-     players[2]->NewCards({ new Card(this,Card::map,scene,view,2),new Card(this,Card::king,scene,view,3),new Card(this,Card::queen,scene,view,2) });
-     players[3]->NewCards({ new Card(this,Card::map,scene,view,2),new Card(this,Card::king,scene,view,3),new Card(this,Card::queen,scene,view,2) });
+	Card *card = new Card(this, Card::parrot, scene, view, 2);
+	players[0]->NewCards({ new Card(this, Card::parrot, scene, view, 2), new Card(this, Card::parrot, scene, view, 2) });
+	players[1]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
+	players[2]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
+	players[3]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
 
 	int rotation;
 	for ( int i = 0; i < number_of_players; i++ ) {
@@ -148,7 +149,7 @@ void GameHandeler::GetOthersPushedCard() {
 		Card::CardType type; //set this
 		int number;       //set this
 
-		QPair<char *, DataPacket *>pair = client->reading_data_socket();
+		QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
 		char *code = pair.first;
 		if ( Code::get_code(code) == Code::fromServer_Sent_AnotherPlayerPlayedCard ) {
 			type = code[3] - '0';
@@ -266,14 +267,14 @@ void GameHandeler::StartRound() {
 }
 void GameHandeler::StartSet() {
 	//get who is first
-	QPair<char *, DataPacket *>pair = client->reading_data_socket();
+	QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
 	if ( Code::get_code(pair.first) == Code::fromServer_Sent_FirstPlayer )
 		first_this_round = pair.first[3];//set this
 	else {
 		//handle
 	}
 	//------------------------
-
+	TellTheFirst(first_this_round);
 
 
 	for ( int i = 0; i < number_of_players; i++ ) {
@@ -283,12 +284,13 @@ void GameHandeler::StartSet() {
 			//new Card(this,type,scene,view,number)
 			//or just initialize like the server and remind me to make it right later :) :)
 			QVector<Card *> cards;//set this
-			QPair<char *, DataPacket *>pair = client->reading_data_socket();
+			QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
 			char *code = pair.first;
 			DataPacket *data = pair.second;
 			if ( Code::get_code(code) == Code::fromServer_Sent_YourCards ) {
-				for ( int i = 0; i < 7; i++ )
-					cards.push_back(new Card(this, i, scene, view, data->player_cards[i]));
+
+				players[me]->NewCards(CardArrayToVectorOf(data->player_cards, data->card_size, view, scene));
+
 			}
 			else {
 				//handle
@@ -364,7 +366,7 @@ void GameHandeler::PushCard() {
 void GameHandeler::GetTheWinnerOfTheRound() {
 	//get the player that has won the round;
 	int player_index;
-	QPair<char *, DataPacket *> pair = client->reading_data_socket();
+	QPair<char *, DataPacket *> pair = client->reading_data_socket(false);
 	if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner )
 		player_index = pair.first[3];
 
@@ -376,36 +378,36 @@ void GameHandeler::GetTheWinnerOfTheRound() {
 
 
 }
-void GameHandeler::SwitchCard(Card::CardType type, int number,Card::CardType type2, int number2) {
+void GameHandeler::SwitchCard(Card::CardType type, int number, Card::CardType type2, int number2) {
 	auto cards = players[me]->get_cards();
 	for ( Card *card : cards ) {
 		if ( card->GetType() == type, card->GetNumber() == number ) {
-            int width = card->GetButton()->width();
-            QPropertyAnimation *anim = card->PushTo({ card->GetProxy()->x(), card->GetProxy()->y() }, { 0, card->GetButton()->height() }, card->GetProxy()->rotation());
+			int width = card->GetButton()->width();
+			QPropertyAnimation *anim = card->PushTo({ card->GetProxy()->x(), card->GetProxy()->y() }, { 0, card->GetButton()->height() }, card->GetProxy()->rotation());
 
 
-           connect(anim, &QPropertyAnimation::finished, [this, width, card, type, number,type2, number2] () {card->ChangeCard(type2, number2); card->PushTo({ card->GetProxy()->pos().x(), card->GetProxy()->pos().y() }, { width, card->GetButton()->height() }, card->GetProxy()->rotation()); });
-           return;
-        }
+			connect(anim, &QPropertyAnimation::finished, [this, width, card, type, number, type2, number2] () {card->ChangeCard(type2, number2); card->PushTo({ card->GetProxy()->pos().x(), card->GetProxy()->pos().y() }, { width, card->GetButton()->height() }, card->GetProxy()->rotation()); });
+			return;
+		}
 	}
 }
 
-int GameHandeler::CardVectorToArray(QVector<Card*> cards,int array[2][14]){
+int GameHandeler::CardVectorToArray(QVector<Card *> cards, int array[2][14]) {
 
-    for(int i=0;i<cards.size();i++){
-        array[0][i]=cards[i]->GetType();
-         array[1][i]=cards[i]->GetNumber();
-    }
-    return cards.size();
+	for ( int i = 0; i < cards.size(); i++ ) {
+		array[0][i] = cards[i]->GetType();
+		array[1][i] = cards[i]->GetNumber();
+	}
+	return cards.size();
 
 }
-QVector<Card*> GameHandeler::CardArrayToVectorOf(int array[2][14],int size,QGraphicsView *view, QGraphicsScene *scene){
-    QVector<Card*> cards;
-    for(int i=0;i<size;i++){
-        cards.push_back(new Card(this,array[0][i],scene,view,array[1][i]));
+QVector<Card *> GameHandeler::CardArrayToVectorOf(int array[2][14], int size, QGraphicsView *view, QGraphicsScene *scene) {
+	QVector<Card *> cards;
+	for ( int i = 0; i < size; i++ ) {
+		cards.push_back(new Card(this, array[0][i], scene, view, array[1][i]));
 
-    }
-    return cards;
+	}
+	return cards;
 
 
 }

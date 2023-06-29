@@ -85,19 +85,6 @@ void WaitMenu::new_player(QString name) {
 	name_vec.push_back(name);
 
 
-	if ( player_joined == player_count ) {
-		char *code = Code::set_code('0', Code::fromServer_Sent_GameStarted);
-		DataPacket dummy;
-		server->send_data(code, &dummy);
-
-		MainGameWindow *main_game_window = new MainGameWindow(server, client);
-		disconnect(server, SIGNAL(newplayer(QString)), this, SLOT(new_player(QString)));
-		main_game_window->show();
-		this->hide();
-		return;
-	}
-
-
 	DataPacket data_packet;
 	int ctr = 0;
 
@@ -106,6 +93,22 @@ void WaitMenu::new_player(QString name) {
 		ctr++;
 	}
 
+	if ( player_joined == player_count ) {
+		char *code = Code::set_code('0', Code::fromServer_Sent_GameStarted);
+		code[3] = player_count + '0';
+
+		server->send_data(code, &data_packet);
+
+		MainGameWindow *main_game_window = new MainGameWindow(server, name_vec, client);
+		disconnect(server, SIGNAL(newplayer(QString)), this, SLOT(new_player(QString)));
+		main_game_window->show();
+		this->hide();
+		return;
+	}
+
+
+
+
 	char *code = Code::set_code('0', Code::fromServer_Sent_PlayerNames);
 
 	server->send_data(code, &data_packet);
@@ -113,9 +116,9 @@ void WaitMenu::new_player(QString name) {
 
 
 void WaitMenu::new_player_socket() {
-	QPair<char *, DataPacket *> pair = client->reading_data_socket();
+	QPair<char *, DataPacket *> pair = client->reading_data_socket(true);
+	DataPacket *data = pair.second;
 	if ( Code::get_code(pair.first) == Code::fromServer_Sent_PlayerNames ) {
-		DataPacket *data = pair.second;
 
 		ui->listWidget->clear();
 		for ( int i = 0; i < 4; i++ )
@@ -123,8 +126,14 @@ void WaitMenu::new_player_socket() {
 				ui->listWidget->addItem(data->player_name[i]);
 	}
 	else if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameStarted ) {
+		QVector<QString> name_vec;
+		int player_count = pair.first[3] - '0';
+		for ( int i = 0; i < player_count; i++ )
+			name_vec.push_back(data->player_name[i]);
+
 		disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(new_player_socket()));
-		MainGameWindow *main_game_window = new MainGameWindow(client);
+
+		MainGameWindow *main_game_window = new MainGameWindow(client, name_vec);
 		main_game_window->show();
 		this->hide();
 	}

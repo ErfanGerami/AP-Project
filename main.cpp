@@ -44,11 +44,12 @@ int main(int argc, char *argv[]) {
 
 
 
-	Login *l = new Login();
-	l->show();
+	//Login *l = new Login();
+	//l->show();
 
-
-
+	MainPlayer = new Player("mmd", "461");
+	MainMenu *m = new MainMenu();
+	m->show();
 
 	//GetServersInformation *m = new GetServersInformation(client, "shafagh");
 	//m->show();

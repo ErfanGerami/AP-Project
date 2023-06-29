@@ -31,10 +31,11 @@ public:
 	void StartRound();
 	void AddStickers(QString name, int index);
 	int GetMe();
-    void SwitchCard(Card::CardType typpe, int number,Card::CardType type2, int number2);
-    int CardVectorToArray(QVector<Card*> cards,int array[2][14]);
-    QVector<Card*> CardArrayToVectorOf(int array[2][14],int size,QGraphicsView *view, QGraphicsScene *scene);
+	void SwitchCard(Card::CardType typpe, int number, Card::CardType type2, int number2);
+	int CardVectorToArray(QVector<Card *> cards, int array[2][14]);
+	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size, QGraphicsView *view, QGraphicsScene *scene);
 
+	void StartSet();
 private:
 	SocketHandeling *client;
 
@@ -52,7 +53,6 @@ private:
 	QGraphicsScene *sticker_scene;
 	bool isValid(Card card, int turn);
 	void GetTheWinnerOfTheRound();
-	void StartSet();
 	int GetWhoseTurn();
 	int turn = 0;
 	int set = -1;

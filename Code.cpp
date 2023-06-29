@@ -1,4 +1,5 @@
 #include "Code.h"
+#include <qdebug.h>
 
 const  int Code::undefined = -1;
 const int Code::fromServer_Sent_YourCards = 0;
@@ -16,6 +17,7 @@ const int Code::fromServer_Sent_GameStarted = 10;
 
 
 int Code::get_code(char *code) {
+	qDebug() << code;
 	if ( code[0] == '0' && code[1] == '2' && code[2] == '0' )
 		return fromServer_Sent_YourCards;
 
@@ -46,7 +48,7 @@ int Code::get_code(char *code) {
 	if ( code[0] == '0' && code[1] == '2' && code[2] == '9' )
 		return fromServer_Sent_PlayerNames;
 
-	if ( code[1] == '0' && code[2] == 'a' )
+	if ( code[1] == '2' && code[2] == 'a' )
 		return fromServer_Sent_GameStarted;
 
 	return undefined;
@@ -100,8 +102,10 @@ char *Code::set_code(char sender, int code) {
 		c[2] = '9';
 	}
 
-	if ( code == fromServer_Sent_GameStarted )
+	if ( code == fromServer_Sent_GameStarted ) {
+		c[1] = '2';
 		c[2] = 'a';
-
+	}
+	qDebug() << code;
 	return c;
 }
