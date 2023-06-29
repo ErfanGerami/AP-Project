@@ -31,6 +31,9 @@
      <pointsize>-1</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">#reload{font-size:20px; border-color:white;border-radius:35px;;background-color:rgba(0,0,0,225);color:white;border-style: solid;
   border-width: 4px;}
@@ -76,6 +79,9 @@
      <family>MV Boli</family>
      <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">#connect{font-size:30px; border-color:white;border-radius:35px;;background-color:rgba(0,0,0,225);color:white;border-style: solid;
