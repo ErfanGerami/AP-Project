@@ -8,7 +8,7 @@
 #include <QVBoxLayout>
 #include <QGraphicsProxyWidget>
 #include <QGraphicsScene>
-#include "SocketHandeling.h"
+#include <QVBoxLayout>w
 
 
 namespace Ui {

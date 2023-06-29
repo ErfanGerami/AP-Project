@@ -35,7 +35,7 @@ Card::Card(QObject* parent,CardType type,QGraphicsScene *scene, QGraphicsView *v
 	button = new QPushButton();
 	button->resize(width, height);
 	proxy = scene->addWidget(button);
-	proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
+    proxy->setFlag(QGraphicsItem::ItemIgnoresTransformations);
 	proxy->setPos(qreal(x),qreal(y));
 
 	button->hide();
@@ -131,12 +131,12 @@ void Card::PushCard() {
 QPropertyAnimation* Card::PushTo(std::pair<int, int> pos) {
 	QParallelAnimationGroup* group = new QParallelAnimationGroup;
 	QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
-	rotation_animation->setStartValue(0);
+    rotation_animation->setStartValue(proxy->rotation());
 	rotation_animation->setEndValue(rand() % 360);
 	rotation_animation->setDuration(200);
 	rotation_animation->start();
 	QPropertyAnimation* tranform_animation = new QPropertyAnimation(proxy, "geometry");
-	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
+    tranform_animation->setStartValue(QRect(proxy->x(), proxy->y(), width, height));
 	tranform_animation->setEndValue(QRect(pos.first, pos.second, width, height));
 	tranform_animation->setDuration(200);
 	tranform_animation->start();
@@ -147,32 +147,32 @@ QPropertyAnimation* Card::PushTo(std::pair<int, int> pos) {
 
 }
 QPropertyAnimation* Card::PushTo(std::pair<int, int> pos,int rotation) {
-	QParallelAnimationGroup* group = new QParallelAnimationGroup;
-	QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
-	rotation_animation->setStartValue(0);
-	rotation_animation->setEndValue(rotation);
-	rotation_animation->setDuration(200);
-	rotation_animation->start();
+    QParallelAnimationGroup* group = new QParallelAnimationGroup;
+    QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
+    rotation_animation->setStartValue(proxy->rotation());
+    rotation_animation->setEndValue(rotation);
+    rotation_animation->setDuration(200);
+    rotation_animation->start();
 	QPropertyAnimation* tranform_animation = new QPropertyAnimation(proxy, "geometry");
-	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
+    tranform_animation->setStartValue(QRect(proxy->x(), proxy->y(), width, height));
 	tranform_animation->setEndValue(QRect(pos.first, pos.second, width, height));
 	tranform_animation->setDuration(200);
 	tranform_animation->start();
-	group->addAnimation(tranform_animation);
-	group->addAnimation(rotation_animation);
-	group->start();
+    group->addAnimation(tranform_animation);
+    group->addAnimation(rotation_animation);
+    group->start();
 
      return tranform_animation;
 }
 QPropertyAnimation* Card::PushTo(std::pair<int, int> pos,std::pair<int,int> size,int rotation) {
 	QParallelAnimationGroup* group = new QParallelAnimationGroup;
 	QPropertyAnimation* rotation_animation = new QPropertyAnimation(proxy, "rotation");
-	rotation_animation->setStartValue(0);
+    rotation_animation->setStartValue(proxy->rotation());
 	rotation_animation->setEndValue(rotation);
 	rotation_animation->setDuration(200);
 	rotation_animation->start();
 	QPropertyAnimation* tranform_animation = new QPropertyAnimation(proxy, "geometry");
-	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
+    tranform_animation->setStartValue(QRect(proxy->x(), proxy->y(), width, height));
 	tranform_animation->setEndValue(QRect(pos.first, pos.second, size.first, size.second));
 	tranform_animation->setDuration(200);
 	tranform_animation->start();

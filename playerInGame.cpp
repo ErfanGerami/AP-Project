@@ -122,7 +122,7 @@ void PlayerInGame::CalculateWonCardPosition() {
 			cards_won_pos = { 700, -350 };
 			break;
 		case 2:
-			cards_won_pos = { -500, -350 };
+            cards_won_pos = { -500, -350 };
 			break;
 		case 3:
 			cards_won_pos = { -600, 350 };
@@ -134,7 +134,25 @@ void PlayerInGame::CalculateWonCardPosition() {
 
 void PlayerInGame::Deal() {
 
-	int rotation = 270 - (place + 1) * 90 - (cards.size() / 2 - 1) * Card::angle_between_cards - 10;
+   int rotation;
+    switch ( place ) {
+        case 0:
+            rotation=180;
+            break;
+
+        case 1:
+            rotation=0;
+            break;
+        case 2:
+                rotation=90;
+                break;
+        case 3:
+
+            rotation=270;
+            break;
+    }
+    rotation +=  (cards.size() / 2 - 1) * Card::angle_between_cards - 10;
+
 	auto position = base_pos;
 	switch ( place ) {
 		case 0:
@@ -142,10 +160,10 @@ void PlayerInGame::Deal() {
 			break;
 
 		case 1:
-			position.second += Card::space_between_cards * (cards.size() / 2 - 1);
+            position.first += Card::space_between_cards * (cards.size() / 2 - 1);
 			break;
 		case 2:
-			position.first += Card::space_between_cards * (cards.size() / 2 - 1);
+            position.second += Card::space_between_cards * (cards.size() / 2 - 1);
 			break;
 		case 3:
 			position.second -= Card::space_between_cards * (cards.size() / 2 - 1);
@@ -170,10 +188,10 @@ void PlayerInGame::Deal() {
 				break;
 
 			case 1:
-				position.second -= Card::space_between_cards;
+                position.first -= Card::space_between_cards;
 				break;
 			case 2:
-				position.first -= Card::space_between_cards;
+                position.second -= Card::space_between_cards;
 				break;
 			case 3:
 				position.second += Card::space_between_cards;
