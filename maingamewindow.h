@@ -10,6 +10,7 @@
 #include <QGraphicsScene>
 #include "SocketHandeling.h"
 
+
 namespace Ui {
 	class MainGameWindow;
 }

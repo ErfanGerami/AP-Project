@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>-10</x>
-     <y>-10</y>
+     <y>-20</y>
      <width>1611</width>
      <height>1031</height>
     </rect>
@@ -42,7 +42,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image:url(:/images/images/cry.png);</string>
+    <string notr="true">#pushButton{border-image:url(:/images/images/cry.png);}
+#pushButton:hover{background-color:rgba(70,70,70,200);}</string>
    </property>
    <property name="text">
     <string/>
@@ -58,7 +59,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image:url(:/images/images/happy.png);</string>
+    <string notr="true">#pushButton_2{border-image:url(:/images/images/happy.png);}
+#pushButton_2:hover{background-color:rgba(70,70,70,200);}</string>
    </property>
    <property name="text">
     <string/>
@@ -74,7 +76,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image:url(:/images/images/wondered.png);</string>
+    <string notr="true">#pushButton_3{border-image:url(:/images/images/wondered.png);}
+#pushButton_3:hover{background-color:rgba(70,70,70,200);}</string>
    </property>
    <property name="text">
     <string/>
@@ -90,7 +93,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image:url(:/images/images/VeryHappy.png);</string>
+    <string notr="true">#pushButton_4{border-image:url(:/images/images/VeryHappy.png);}
+#pushButton_4:hover{background-color:rgba(70,70,70,200);}</string>
    </property>
    <property name="text">
     <string/>
@@ -106,7 +110,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image:url(:/images/images/laugh.png);</string>
+    <string notr="true">#pushButton_5{border-image:url(:/images/images/laugh.png);}
+#pushButton_5:hover{background-color:rgba(70,70,70,200);}</string>
    </property>
    <property name="text">
     <string/>
@@ -122,7 +127,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image:url(:/images/images/sleep.png);</string>
+    <string notr="true">#pushButton_6{border-image:url(:/images/images/sleep.png);}
+#pushButton_6:hover{background-color:rgba(70,70,70,200);}</string>
    </property>
    <property name="text">
     <string/>
@@ -138,13 +144,101 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">background-color:rgba(200,200,200,200);</string>
    </property>
    <property name="interactive">
     <bool>true</bool>
    </property>
    <property name="renderHints">
     <set>QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="name0">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>910</y>
+     <width>341</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:30px;color:white;</string>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="name2">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>10</y>
+     <width>341</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:30px;color:white;</string>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="name3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>550</y>
+     <width>341</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:30px;color:white;</string>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="name1">
+   <property name="geometry">
+    <rect>
+     <x>1400</x>
+     <y>540</y>
+     <width>341</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:30px;color:white;</string>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
    </property>
   </widget>
  </widget>
