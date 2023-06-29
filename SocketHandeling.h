@@ -18,7 +18,7 @@
 
 class channel;
 
-class SocketHandeling: protected QObject {
+class SocketHandeling: public QObject {
 	Q_OBJECT
 
 public:
@@ -30,8 +30,11 @@ public:
 	void send_data(char *code, DataPacket *data, int client_number = -1);
 
 
+	int get_joined_players_count();
+	int get_player_count();
+	bool am_i_the_server();
 
-	void server_run(QString server_name, QString username);
+	void server_run(QString server_name, QString username, int player_count);
 
 
 	static std::string make_time();
@@ -41,10 +44,16 @@ public:
 	bool is_server_connected();
 
 	QTcpSocket *get_tcp_socket();
+	QTcpServer *get_tcp_server();
+	QString get_name();
+	channel *get_channel_pointer();
 private:
+	int player_count;
 	void logWriteServer(std::string str);
 	void logWriteClient(std::string str);
 	QString name;
+
+	channel *channel_pointer;
 
 	QUdpSocket *udp_socket = nullptr;
 	QTcpSocket *tcp_socket = nullptr;
@@ -71,11 +80,12 @@ public slots:
 	void disconnected_from_server_socket();
 
 
-
+	void func(QString name);
 private slots:
 
 
 signals:
+	void newplayer(QString name);
 
 };
 

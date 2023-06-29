@@ -10,7 +10,7 @@
 #include "DataPacket.h"
 
 
-class channel: protected QObject {
+class channel: public QObject {
 	Q_OBJECT
 
 
@@ -20,6 +20,8 @@ public:
 
 
 	void close_socket();
+
+	QString get_name();
 private:
 	QTcpSocket *socket = nullptr;
 	QUdpSocket *udp_socket = nullptr;
@@ -34,7 +36,8 @@ public slots:
 	void writing_data();
 	void disconnected_from_server();
 	void send_data(QByteArray block);
-
+signals:
+	void newplayer(QString name);
 };
 
 #endif // CHANNEL_H

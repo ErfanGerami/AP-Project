@@ -1,14 +1,15 @@
 #include "channel.h"
 using namespace std;
 
-channel::channel(QTcpSocket *_socket, int _client_number, QObject *parent) {
+channel::channel(QTcpSocket *_socket, int _client_number, QObject *parent):
+	QObject(parent) {
 	socket = _socket;
 
 
 	connect(socket, SIGNAL(bytesWritten(qint64)), this, SLOT(writing_data()));
 	connect(socket, SIGNAL(readyRead()), this, SLOT(reading_data()));
 	connect(socket, SIGNAL(disconnected()), this, SLOT(disconnected_from_server()));
-
+	connect(this, SIGNAL(newplayer(QString)), parent, SLOT(func(QString)));
 	client_number += _client_number;
 	udp_socket = new QUdpSocket();
 
@@ -39,12 +40,13 @@ QPair<char *, DataPacket *> channel::reading_data() {
 	DataPacket *data_packet = new DataPacket();
 	char *code = new char[6];
 	code[0] = 4;
-	if ( socket->waitForReadyRead(1000) ) {
+	if ( client_name.size() == 0 || socket->waitForReadyRead(1000) ) {
 
 		block = socket->readAll();
 
 		if ( client_name.size() == 0 ) {
 			client_name = block;
+			emit newplayer(client_name);
 			logWriteServer("> client name recieved: " + client_name.toStdString() + "\n\n");
 
 			disconnect(socket, SIGNAL(readyRead()), this, SLOT(reading_data()));
@@ -94,6 +96,10 @@ void channel::close_socket() {
 	socket->disconnect();
 
 	logWriteServer("> disconnected client number " + client_number + " and name '" + client_name.toStdString() + "'\n\n");
+}
+
+QString channel::get_name() {
+	return client_name;
 }
 
 channel::~channel() {
