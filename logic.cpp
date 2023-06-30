@@ -208,7 +208,7 @@ void Logic::FillAllCards() {
 		Card card2(Card::map, i);
 		all_cards.push_back(card2);
 		Card card3(Card::flag, i);
-		all_cards.push_back(card3);
+        all_cards.push_back(card3);
 		Card card4(Card::parrot, i);
 		all_cards.push_back(card4);
 	}

@@ -83,36 +83,44 @@ void Card::SetUpButton() {
 						" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
 		case Card::map:
-			button->setStyleSheet("border-image:url(:/images/images/map" + QString::number(number) + ".png) strech 0 0 0;background:transparent;");
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/map" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}\
+                                                                                                                                                " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
 		case Card::treasure:
-			button->setStyleSheet("border-image:url(:/images/images/treasure" + QString::number(number) + ".png) strech 0 0 0;background:transparent;");
+        ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/treasure" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}\
+                                " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
 		case Card::flag:
-			button->setStyleSheet("border-image:url(:/images/images/flag" + QString::number(number) + ".png) strech 0 0 0;background:transparent;");
+        ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/flag" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}\
+                                " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
 		case Card::queen:
-			button->setStyleSheet("border-image:url(:/images/images/queen.png) strech 0 0 0;background:transparent;");
+    ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/queen.png) strech 0 0 0;background:transparent;}\
+                            " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
 
 		case Card::king:
-			button->setStyleSheet("border-image:url(:/images/images/scullking.png) strech 0 0 0;background:transparent;");
+    ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/scullking.png) strech 0 0 0;background:transparent;}\
+                            " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
 
 
 		case Card::pirate:
-			button->setStyleSheet("border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;");
+    ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;}\
+                            " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
 		case Card::unknown:
 			//to be fixed;
-			button->setStyleSheet("border-image:url(:/images/images/unknown.png) strech 0 0 0;background:transparent;");
+    ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/unknown.png) strech 0 0 0;background:transparent;}");
 			break;
+
 
 
 
 
 
 	}
+
 
 }
 void Card::PushCard() {

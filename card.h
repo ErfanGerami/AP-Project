@@ -12,7 +12,7 @@
 #include <utility>
 #include <QPixmap>
 #include <QDebug>
-
+#include <QMessageBox>
 class Card:protected QWidget {
 public:
 	typedef int CardType;
