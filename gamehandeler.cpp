@@ -67,13 +67,13 @@ QPropertyAnimation *GameHandeler::TellTheFirst(int index) {
 	numbers[index] = numbers[max_index];
 	numbers[max_index] = temp;
 
-	Card **cards = new Card * [number_of_players];
+
 	for ( int i = 0; i < number_of_players; i++ ) {
 
-		cards[i] = new Card(this, Card::parrot, scene, view, numbers[i]);
-		cards[i]->show();
-		if ( i == number_of_players - 1 )return cards[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
-		else cards[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
+        turn_card[i] = new Card(this, Card::parrot, scene, view, numbers[i]);
+        turn_card[i]->show();
+        if ( i == number_of_players - 1 )return turn_card[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
+        else turn_card[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
 
 
 	}
@@ -87,6 +87,11 @@ QPropertyAnimation *GameHandeler::Deal() {
 	//players[1]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
 	//players[2]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
 	//players[3]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
+    _sleep(1000);
+    for(int i=0;i<number_of_players;i++){
+        turn_card[i]->hide();
+    }
+
 	QPropertyAnimation *last_animation;
 	int rotation;
 	for ( int i = 0; i < number_of_players; i++ ) {

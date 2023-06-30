@@ -34,6 +34,7 @@ public:
 	void SwitchCard(Card::CardType typpe, int number, Card::CardType type2, int number2);
 	int CardVectorToArray(QVector<Card *> cards, int array[2][14]);
 	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size, QGraphicsView *view, QGraphicsScene *scene);
+     Card* turn_card[4];
 
 
 
