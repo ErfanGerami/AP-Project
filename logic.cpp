@@ -155,8 +155,6 @@ int Logic::whose_turn(int turn) { return (this_rounds_first + turn) % number_of_
 
 void Logic::initializeNewSet() {
 	set++;
-	/*this_rounds_first++;
-	this_rounds_first %= number_of_players;*/
 	this_rounds_first = getFirstPlayer();
 	shuffle();
 	DealCard();
@@ -182,7 +180,7 @@ void Logic::initializeNewSet() {
 		DataPacket data;
 
 		auto cards = players[i]->get_cards();
-		int card_arr[2][14] = { 0 };
+		int card_arr[2][14] = { -2 };
 		int size = CardVectorToArray(cards, card_arr);
 
 
@@ -376,13 +374,13 @@ void Logic::StartGame() {
 void Logic::DealCard() {
 	int index = 0;
 	for ( int i = 0; i < number_of_players; i++ ) {
-		QVector<Card> vec;
-		for ( int i = index; i < index + round * 2; i++ ) {
-			vec.push_back(all_cards[i]);
+		QVector<Card *> vec;
+		for ( int i = index; i < index + set * 2; i++ ) {
+			vec.push_back(&all_cards[i]);
 		}
-		index += 2 * round;
+		index += 2 * set;
 
-
+		players[i]->NewCards(vec);
 	}
 }
 
