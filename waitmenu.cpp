@@ -94,12 +94,15 @@ void WaitMenu::new_player(QString name) {
 	}
 
 	if ( player_joined == player_count ) {
+
 		char *code = Code::set_code('0', Code::fromServer_Sent_GameStarted);
 		code[3] = player_count + '0';
 
 		server->send_data(code, &data_packet);
+		client->get_tcp_socket()->readAll();
 
 		MainGameWindow *main_game_window = new MainGameWindow(server, name_vec, client);
+
 		disconnect(server, SIGNAL(newplayer(QString)), this, SLOT(new_player(QString)));
 		main_game_window->show();
 		this->hide();
@@ -107,11 +110,10 @@ void WaitMenu::new_player(QString name) {
 	}
 
 
-
-
 	char *code = Code::set_code('0', Code::fromServer_Sent_PlayerNames);
 
 	server->send_data(code, &data_packet);
+
 }
 
 
@@ -126,6 +128,7 @@ void WaitMenu::new_player_socket() {
 				ui->listWidget->addItem(data->player_name[i]);
 	}
 	else if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameStarted ) {
+		client->get_tcp_socket()->readAll();
 		QVector<QString> name_vec;
 		int player_count = pair.first[3] - '0';
 		for ( int i = 0; i < player_count; i++ )
@@ -142,25 +145,6 @@ void WaitMenu::new_player_socket() {
 	}
 }
 
-//void WaitMenu::new_player_socket2() {
-
-	//if ( Code::get_code(pair.first) == Code::fromServer_Sent_PlayerNames ) {
-	//	DataPacket *data = pair.second;
-	//	for ( int i = 0; i < 4; i++ )
-	//		if ( data->player_name[i].size() > 0 )
-	//			ui->listWidget->addItem(data->player_name[i]);
-	//}
-	//else if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameStarted ) {
-	//	MainGameWindow *main_game_window = new MainGameWindow(client);
-	//	main_game_window->show();
-	//	this->hide();
-	//}
-	//else {
-	//	//....
-	//}
-
-
-//}
 
 
 

@@ -157,7 +157,7 @@ void Logic::initializeNewSet() {
 	set++;
 	/*this_rounds_first++;
 	this_rounds_first %= number_of_players;*/
-	//this_rounds_first = getFirstPlayer();
+	this_rounds_first = getFirstPlayer();
 	shuffle();
 	DealCard();
 	//notify clients of their cards(you can get cards using players[i]->GetCards() a vector  of cards ;
@@ -182,7 +182,7 @@ void Logic::initializeNewSet() {
 		DataPacket data;
 
 		auto cards = players[i]->get_cards();
-		int card_arr[2][14];
+		int card_arr[2][14] = { 0 };
 		int size = CardVectorToArray(cards, card_arr);
 
 
@@ -369,7 +369,7 @@ void Logic::StartGame() {
 	//notify all that who won and that they should give up their money :)
 
 	char *code8 = Code::set_code('0', Code::fromServer_Sent_GameWinner);
-	code8[3] = winner;
+	code8[3] = winner + '0';
 	server->send_data(code8, &dummy);
 
 

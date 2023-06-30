@@ -13,15 +13,15 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 	this->client = client;
 	const int max_height = 1021;
 	const int max_width = 1610;
-	const const pair<int, int> positions[4] = { { max_width / 2, max_height - 100 }, { max_width / 2, 100 },
+	const pair<int, int> positions[4] = { { max_width / 2, max_height - 100 }, { max_width / 2, 100 },
 		{ max_width - 100, max_height / 2 }, { 100, max_height / 2 } };
-	for ( int i = me; i < number_of_players; i++ ) {
+	for ( int i = 0; i < number_of_players; i++ ) {
 		this->players[i % number_of_players] = new PlayerInGame(p2, this, i - me, {}, 0);
 		players[i % number_of_players]->SetBasePos(positions[i % number_of_players]);
 
 	}
 	for ( int i = me; i < number_of_players; i++ ) {
-		QLabel *label = new QLabel(players[(me + i) % 4]->GetUserName().c_str());
+		QLabel *label = new QLabel(players[(me + i) % number_of_players]->GetUserName().c_str());
 		label->setStyleSheet("font-size:40px;color:red;background:transparent");
 		QGraphicsProxyWidget *proxy = scene->addWidget(label);
 
@@ -46,11 +46,7 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 
 	}
 
-
-
-
 	//just adding the cards
-
 
 }
 
@@ -63,7 +59,7 @@ void GameHandeler::TellTheFirst(int index) {
 	//making the biggest go to the same index as the chosen player;
 	int max_index = 0;
 	for ( int i = 0; i < number_of_players; i++ ) {
-		if ( numbers[i] > max_index ) {
+		if ( numbers[i] > numbers[max_index] ) {
 			max_index = i;
 		}
 	}
@@ -174,7 +170,7 @@ void GameHandeler::GetOthersPushedCard() {
 
 	}
 	//you know what to do
-	//disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
+	disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
 }
 bool GameHandeler::isValid(Card card, int turn) {
 
@@ -268,11 +264,14 @@ void GameHandeler::StartRound() {
 void GameHandeler::StartSet() {
 	//get who is first
 	QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
-	if ( Code::get_code(pair.first) == Code::fromServer_Sent_FirstPlayer )
-		first_this_round = pair.first[3];//set this
-	else {
-		//handle
-	}
+	while ( true )
+		if ( Code::get_code(pair.first) == Code::fromServer_Sent_FirstPlayer ) {
+			first_this_round = pair.first[3] - '0';//set this
+			break;
+		}
+		else {
+			//handle
+		}
 	//------------------------
 	TellTheFirst(first_this_round);
 

@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 	fclose(temp);
 
 	QApplication a(argc, argv);
-
+	qDebug() << sizeof(DataPacket);
 
 	//MainGameWindow *g = new MainGameWindow();
 	//g->show();
@@ -46,8 +46,8 @@ int main(int argc, char *argv[]) {
 
 	//Login *l = new Login();
 	//l->show();
-
-	MainPlayer = new Player("mmd", "461");
+	QString name = "mmd" + QString::number(rand() % 6);
+	MainPlayer = new Player(name.toStdString(), "461");
 	MainMenu *m = new MainMenu();
 	m->show();
 

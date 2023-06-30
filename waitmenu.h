@@ -33,7 +33,7 @@ public slots:
 	void new_player(QString name);
 
 	void new_player_socket();
-	//void new_player_socket2();
+
 
 
 private:

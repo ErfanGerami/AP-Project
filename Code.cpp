@@ -17,7 +17,10 @@ const int Code::fromServer_Sent_GameStarted = 10;
 
 
 int Code::get_code(char *code) {
-	qDebug() << code;
+	qDebug() << "recived code:";
+	qDebug() << QString(code[0]) + QString(code[1]) + QString(code[2]) + QString(code[3]) + QString(code[4]);
+
+
 	if ( code[0] == '0' && code[1] == '2' && code[2] == '0' )
 		return fromServer_Sent_YourCards;
 
@@ -106,6 +109,8 @@ char *Code::set_code(char sender, int code) {
 		c[1] = '2';
 		c[2] = 'a';
 	}
-	qDebug() << code;
+	qDebug() << "created code:";
+	qDebug() << QString(c[0]) + QString(c[1]) + QString(c[2]) + QString(c[3]) + QString(c[4]);
+
 	return c;
 }

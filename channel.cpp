@@ -39,8 +39,8 @@ QPair<char *, DataPacket *> channel::reading_data() {
 	QByteArray block;
 	DataPacket *data_packet = new DataPacket();
 	char *code = new char[6];
-	code[0] = 4;
-	if ( client_name.size() == 0 || socket->waitForReadyRead(1000) ) {
+
+	if ( client_name.size() == 0 || socket->waitForReadyRead(-1) ) {
 
 		block = socket->readAll();
 
@@ -56,6 +56,7 @@ QPair<char *, DataPacket *> channel::reading_data() {
 
 			for ( int i = 0; i < 5; i++ )
 				code[i] = block[i];
+			code[5] = '\0';
 
 			block.remove(0, 5);
 
@@ -89,6 +90,7 @@ void channel::disconnected_from_server() {
 void channel::send_data(QByteArray block) {
 
 	socket->write(block);
+	socket->waitForBytesWritten(-1);
 }
 
 void channel::close_socket() {

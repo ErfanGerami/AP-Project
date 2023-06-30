@@ -71,7 +71,10 @@ SocketHandeling::~SocketHandeling() {
 //client
 void SocketHandeling::client_run_fast_connect(QString username) {
 	logWriteClient("> trying to catch server ip through udp socket\n\n");
+
 	udp_socket->bind(QHostAddress::Any, 1500);
+
+
 
 	if ( udp_socket->waitForReadyRead(1000) ) {
 		logWriteClient("> server found\n\n");
@@ -203,11 +206,12 @@ QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read
 	char *code = new char[6];
 
 	if ( force_read || tcp_socket->waitForReadyRead(-1) ) {
-
-		QByteArray block = tcp_socket->readAll();
-
+		qDebug() << "buffer size:" << tcp_socket->readBufferSize();
+		QByteArray block = tcp_socket->read(157);
+		qDebug() << "read size: " << block.size();
 		for ( int i = 0; i < 5; i++ )
 			code[i] = block[i];
+		code[5] = '\0';
 
 		block.remove(0, 5);
 
@@ -255,6 +259,9 @@ void SocketHandeling::server_run(QString server_name, QString username, int play
 
 	logWriteServer("> trying to create server with name: '" + server_name.toStdString() + "' and created by '" + username.toStdString() + "'\n\n");
 
+
+
+	//udp_socket->bind(QHostAddress::Any, 1500);
 	broadcast_ip_thread = std::thread { &SocketHandeling::broadcast_ip, this, server_name, username };//continously announce ip
 
 	tcp_server = new QTcpServer();
@@ -282,10 +289,11 @@ void SocketHandeling::server_run(QString server_name, QString username, int play
 void SocketHandeling::broadcast_ip(QString server_name, QString username) {
 	while ( true ) {
 		QByteArray message = QString(server_name + "&" + username).toUtf8();
+
 		udp_socket->writeDatagram(message, QHostAddress::Broadcast, 1500);
 
 		std::this_thread::sleep_for(milliseconds(40));
-		udp_socket->flush();
+
 	}
 
 }
@@ -309,11 +317,12 @@ void SocketHandeling::send_data(char *code, DataPacket *data, int client_number)
 		}
 		else {
 			tcp_socket->write(block);
+			tcp_socket->waitForBytesWritten(-1);
 		}
 
 	}
 	else {
-		QByteArray block;
+		QByteArray block = "";
 		QDataStream out(&block, QIODevice::WriteOnly);
 		out << *data;
 
@@ -335,8 +344,10 @@ void SocketHandeling::send_data(char *code, DataPacket *data, int client_number)
 
 
 		}
-		else
+		else {
 			tcp_socket->write(final_block);
+			tcp_socket->waitForBytesWritten(-1);
+		}
 
 	}
 }

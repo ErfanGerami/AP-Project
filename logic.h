@@ -9,7 +9,7 @@
 
 class Logic {
 public:
-	Logic::Logic(SocketHandeling *server, PlayerInGame p1, PlayerInGame p2, int number_of_players, PlayerInGame p3, PlayerInGame p4);
+	Logic(SocketHandeling *server, PlayerInGame p1, PlayerInGame p2, int number_of_players, PlayerInGame p3, PlayerInGame p4);
 	void initializeNewSet();
 	bool isValid(Card card, int turn);
 	bool throwCard(Card card, int turn);

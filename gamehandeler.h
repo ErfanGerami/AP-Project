@@ -27,7 +27,7 @@ public:
 	void TellTheFirst(int index);
 	void Deal();
 	void shuffle();
-	void GameHandeler::collect(PlayerInGame *player);
+	void collect(PlayerInGame *player);
 	void StartRound();
 	void AddStickers(QString name, int index);
 	int GetMe();

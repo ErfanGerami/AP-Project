@@ -26,16 +26,16 @@ public:
 	const static CardType king;
 	const static CardType unknown;
 
-    const int dest_x = rand()%200-50+1600;
-    const int dest_y = rand()%200-50+1000;
+	const int dest_x = rand() % 200 - 50 + 1600;
+	const int dest_y = rand() % 200 - 50 + 1000;
 
 	static int angle_between_cards;
 	static int space_between_cards;
-    static int id;
+	static int id;
 
 	Card();
-    Card::Card(CardType type, int number);//a constructor when we use it withoutshowing;
-    Card(QObject* parent,CardType type, QGraphicsScene *scene, QGraphicsView *view, int number = -1, int x = 0, int y = 0, int rotation = 0);
+	Card(CardType type, int number);//a constructor when we use it withoutshowing;
+	Card(QObject *parent, CardType type, QGraphicsScene *scene, QGraphicsView *view, int number = -1, int x = 0, int y = 0, int rotation = 0);
 	Card(const Card &other);
 	void operator=(const Card &other);
 
@@ -44,16 +44,16 @@ public:
 	void SetNumber(int number);
 	void SetType(CardType type);
 	QPushButton *GetButton();
-    void PushCard();
-    QPropertyAnimation* PushTo(std::pair<int, int> pos);
-    QPropertyAnimation* PushTo(std::pair<int, int> pos, int rotation);
-    QPropertyAnimation* PushTo(std::pair<int, int> pos, std::pair<int, int> size, int rotation = 0);
+	void PushCard();
+	QPropertyAnimation *PushTo(std::pair<int, int> pos);
+	QPropertyAnimation *PushTo(std::pair<int, int> pos, int rotation);
+	QPropertyAnimation *PushTo(std::pair<int, int> pos, std::pair<int, int> size, int rotation = 0);
 	void SetUpButton();
-    void ChangeCard(Card::CardType type,int number);
+	void ChangeCard(Card::CardType type, int number);
 
 	void show();
 	void hide();
-    QGraphicsProxyWidget* GetProxy();
+	QGraphicsProxyWidget *GetProxy();
 
 
 
@@ -71,7 +71,7 @@ private:
 	QGraphicsProxyWidget *proxy;
 	QGraphicsScene *scene;
 
-    QObject* parent;
+	QObject *parent;
 	QGraphicsView *view;
 
 
