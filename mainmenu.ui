@@ -659,18 +659,18 @@ color:black;
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>570</y>
-     <width>225</width>
-     <height>61</height>
+     <width>227</width>
+     <height>57</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
@@ -678,6 +678,17 @@ color:black;
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>player count:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QLineEdit" name="server_name">
         <property name="sizePolicy">
@@ -688,24 +699,13 @@ color:black;
         </property>
        </widget>
       </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>player count:</string>
+       <widget class="QSpinBox" name="player_count">
+        <property name="minimum">
+         <number>2</number>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="player_count">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+        <property name="maximum">
+         <number>4</number>
         </property>
        </widget>
       </item>

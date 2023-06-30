@@ -298,11 +298,13 @@ void GameHandeler::StartSet() {
 			players[i]->NewCards(cards);
 
 			//wait for server to send data that wants the prediction
-			bool okay;
+			bool okay = false;////////////////////////////////////////////////check\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
+			int prediction;
 			while ( !okay )
-				int prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, round * 2, 1, &okay);
+				prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, max(round * 2, 1), 1, &okay);
 			//notify the prediction to others;
 			char *code1 = Code::set_code(me + '0', Code::fromClient_Sent_Predictions);
+			code1[3] = '0' + prediction;
 			DataPacket dummy;
 			client->send_data(code1, &dummy);
 			//--------------------

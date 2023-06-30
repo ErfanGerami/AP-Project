@@ -30,7 +30,7 @@ private:
 	std::string client_number;
 	static void logWriteServer(std::string str);
 
-
+	int zero = 0;
 public slots:
 	QPair<char *, DataPacket *> reading_data();
 	void writing_data();

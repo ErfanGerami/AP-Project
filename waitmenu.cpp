@@ -108,11 +108,13 @@ void WaitMenu::new_player(QString name) {
 		this->hide();
 		return;
 	}
+	if ( player_joined != 1 ) {
 
+		char *code = Code::set_code('0', Code::fromServer_Sent_PlayerNames);
 
-	char *code = Code::set_code('0', Code::fromServer_Sent_PlayerNames);
+		server->send_data(code, &data_packet);
+	}
 
-	server->send_data(code, &data_packet);
 
 }
 

@@ -56,7 +56,7 @@ void MainMenu::on_create_server_clicked() {
 
 		SocketHandeling *server = new SocketHandeling();
 
-		server->server_run(ui->server_name->text(), QString::fromStdString(MainPlayer->GetUserName()), ui->player_count->text().toInt());
+		server->server_run(ui->server_name->text(), QString::fromStdString(MainPlayer->GetUserName()), ui->player_count->value());
 
 		if ( server->is_server_connected() ) {
 			//show next window

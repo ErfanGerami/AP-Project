@@ -17,6 +17,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -57,14 +58,14 @@ public:
     QLabel *lost;
     QLabel *coin_pic;
     QPushButton *change_info;
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout;
+    QWidget *widget;
     QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout_2;
     QLabel *label_2;
-    QLineEdit *server_name;
-    QHBoxLayout *horizontalLayout_2;
     QLabel *label_3;
-    QLineEdit *player_count;
+    QVBoxLayout *verticalLayout;
+    QLineEdit *server_name;
+    QSpinBox *player_count;
 
     void setupUi(QDialog *MainMenu)
     {
@@ -253,20 +254,30 @@ public:
 "color:black;\n"
 "}"));
         change_info->setFlat(false);
-        layoutWidget = new QWidget(MainMenu);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 570, 225, 61));
-        verticalLayout = new QVBoxLayout(layoutWidget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
+        widget = new QWidget(MainMenu);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(10, 570, 227, 57));
+        horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label_2 = new QLabel(layoutWidget);
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        label_2 = new QLabel(widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
-        horizontalLayout->addWidget(label_2);
+        verticalLayout_2->addWidget(label_2);
 
-        server_name = new QLineEdit(layoutWidget);
+        label_3 = new QLabel(widget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        verticalLayout_2->addWidget(label_3);
+
+
+        horizontalLayout->addLayout(verticalLayout_2);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        server_name = new QLineEdit(widget);
         server_name->setObjectName(QString::fromUtf8("server_name"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -274,27 +285,17 @@ public:
         sizePolicy.setHeightForWidth(server_name->sizePolicy().hasHeightForWidth());
         server_name->setSizePolicy(sizePolicy);
 
-        horizontalLayout->addWidget(server_name);
+        verticalLayout->addWidget(server_name);
 
-
-        verticalLayout->addLayout(horizontalLayout);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_3 = new QLabel(layoutWidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-
-        horizontalLayout_2->addWidget(label_3);
-
-        player_count = new QLineEdit(layoutWidget);
+        player_count = new QSpinBox(widget);
         player_count->setObjectName(QString::fromUtf8("player_count"));
-        sizePolicy.setHeightForWidth(player_count->sizePolicy().hasHeightForWidth());
-        player_count->setSizePolicy(sizePolicy);
+        player_count->setMinimum(2);
+        player_count->setMaximum(4);
 
-        horizontalLayout_2->addWidget(player_count);
+        verticalLayout->addWidget(player_count);
 
 
-        verticalLayout->addLayout(horizontalLayout_2);
+        horizontalLayout->addLayout(verticalLayout);
 
 
         retranslateUi(MainMenu);

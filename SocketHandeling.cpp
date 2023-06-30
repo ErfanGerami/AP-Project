@@ -188,12 +188,15 @@ channel *SocketHandeling::get_channel_pointer() {
 	return channel_pointer;
 }
 
-QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server() {
+QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server(int player_number) {
 
 	QVector<QPair<char *, DataPacket *>> data_vector;
 
+	int ctr = 0;
 	for ( auto i : channels ) {
-		auto pair = i->reading_data();
+		QPair<char *, DataPacket *> pair;
+		if ( player_number == ctr++ || player_number == -1 )
+			pair = i->reading_data();
 		data_vector.push_back(pair);
 	}
 
@@ -202,12 +205,21 @@ QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server() {
 
 QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read) {
 
+
+
 	DataPacket *data_packet = new DataPacket();
 	char *code = new char[6];
 
-	if ( force_read || tcp_socket->waitForReadyRead(-1) ) {
+	if ( force_read || tcp_socket->bytesAvailable() || tcp_socket->waitForReadyRead(-1) ) {
 		qDebug() << "buffer size:" << tcp_socket->readBufferSize();
-		QByteArray block = tcp_socket->read(157);
+		QByteArray block = tcp_socket->read(180);
+
+
+
+		while ( block[0] == '&' )
+			block.remove(0, 1);
+
+
 		qDebug() << "read size: " << block.size();
 		for ( int i = 0; i < 5; i++ )
 			code[i] = block[i];
@@ -216,17 +228,13 @@ QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read
 		block.remove(0, 5);
 
 
-		if ( code[1] == '0' || code[1] == '1' ) {
-			//now do shit
 
-		}
-		else {
 
-			QDataStream in(&block, QIODevice::ReadOnly);
-			;
-			in >> *data_packet;
+		QDataStream in(&block, QIODevice::ReadOnly);
+		;
+		in >> *data_packet;
 
-		}
+
 	}
 
 
@@ -302,54 +310,47 @@ void SocketHandeling::send_data(char *code, DataPacket *data, int client_number)
 
 
 
-	if ( code[1] == '0' || code[1] == '1' ) {
-		QByteArray block = "";
 
-		for ( int i = 0; i < 5; i++ )
-			block[i] = code[i];
+	QByteArray block = "";
+	QDataStream out(&block, QIODevice::WriteOnly);
+	out << *data;
 
-		if ( is_the_server ) {
-			int ctr = 0;
-			for ( auto i : channels ) {
-				if ( client_number == ctr++ || client_number == -1 )
-					i->send_data(block);
-			}
+	QByteArray front = "";
+
+	for ( int i = 0; i < 5; i++ )
+		front[i] = code[i];
+
+
+
+	QByteArray final_block = front + block;
+
+	Q_ASSERT(final_block.size() < 180);
+	if ( final_block.size() < 180 ) {
+		int add = 180 - final_block.size();
+		QByteArray add_arr(add, '&');
+		final_block = add_arr + final_block;
+	}
+	Q_ASSERT(final_block.size() == 180);
+
+
+	qDebug() << "sending bytes: " << final_block.size();
+
+	if ( is_the_server ) {
+
+		int ctr = 0;
+		for ( auto i : channels ) {
+			if ( client_number == ctr++ || client_number == -1 )
+				i->send_data(final_block);
 		}
-		else {
-			tcp_socket->write(block);
-			tcp_socket->waitForBytesWritten(-1);
-		}
+
 
 	}
 	else {
-		QByteArray block = "";
-		QDataStream out(&block, QIODevice::WriteOnly);
-		out << *data;
-
-		QByteArray front = "";
-
-		for ( int i = 0; i < 5; i++ )
-			front[i] = code[i];
-
-
-
-		QByteArray final_block = front + block;
-		if ( is_the_server ) {
-
-			int ctr = 0;
-			for ( auto i : channels ) {
-				if ( client_number == ctr++ || client_number == -1 )
-					i->send_data(final_block);
-			}
-
-
-		}
-		else {
-			tcp_socket->write(final_block);
-			tcp_socket->waitForBytesWritten(-1);
-		}
-
+		tcp_socket->write(final_block);
+		tcp_socket->waitForBytesWritten(-1);
 	}
+
+
 }
 
 

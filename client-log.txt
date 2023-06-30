@@ -2446,3 +2446,324 @@
 123/5/30|15:1:48
 > written to socket as client
 
+123/5/30|16:18:44
+> trying to catch server ip through udp socket
+
+123/5/30|16:18:44
+> server found
+
+123/5/30|16:18:44
+> trying to connect to server with name '2' created by 'mmd4'
+
+123/5/30|16:18:46
+> connected to server
+
+123/5/30|16:18:46
+> written to socket as client
+
+123/5/30|16:19:51
+> trying to catch server ip through udp socket
+
+123/5/30|16:19:51
+> server found
+
+123/5/30|16:19:51
+> trying to connect to server with name '2' created by 'mmd3'
+
+123/5/30|16:19:52
+> connected to server
+
+123/5/30|16:19:52
+> written to socket as client
+
+123/5/30|16:20:37
+> trying to catch server ip through udp socket
+
+123/5/30|16:20:37
+> server found
+
+123/5/30|16:20:37
+> trying to connect to server with name '2' created by 'mmd4'
+
+123/5/30|16:20:38
+> connected to server
+
+123/5/30|16:20:38
+> written to socket as client
+
+123/5/30|16:23:26
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/30|16:23:26
+> connected to server
+
+123/5/30|16:23:27
+> written to socket as client
+
+123/5/30|16:24:8
+> trying to catch server ip through udp socket
+
+123/5/30|16:24:8
+> server found
+
+123/5/30|16:24:8
+> trying to connect to server with name '2' created by 'mmd5'
+
+123/5/30|16:24:9
+> connected to server
+
+123/5/30|16:24:9
+> written to socket as client
+
+123/5/30|16:41:38
+> trying to catch server ip through udp socket
+
+123/5/30|16:41:38
+> server found
+
+123/5/30|16:41:38
+> trying to connect to server with name '2' created by 'mmd2'
+
+123/5/30|16:41:39
+> connected to server
+
+123/5/30|16:41:39
+> written to socket as client
+
+123/5/30|16:45:6
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/30|16:45:6
+> connected to server
+
+123/5/30|16:45:7
+> written to socket as client
+
+123/5/30|16:45:48
+> trying to catch server ip through udp socket
+
+123/5/30|16:45:48
+> server found
+
+123/5/30|16:45:48
+> trying to connect to server with name '2' created by 'mmd3'
+
+123/5/30|16:45:49
+> connected to server
+
+123/5/30|16:45:49
+> written to socket as client
+
+123/5/30|16:49:41
+> trying to catch server ip through udp socket
+
+123/5/30|16:49:41
+> server found
+
+123/5/30|16:49:41
+> trying to connect to server with name '2' created by 'mmd5'
+
+123/5/30|16:49:42
+> connected to server
+
+123/5/30|16:49:42
+> written to socket as client
+
+123/5/30|16:55:16
+> trying to catch server ip through udp socket
+
+123/5/30|16:55:16
+> server found
+
+123/5/30|16:55:16
+> trying to connect to server with name '2' created by 'mmd5'
+
+123/5/30|16:55:17
+> connected to server
+
+123/5/30|16:55:17
+> written to socket as client
+
+123/5/30|16:57:39
+> trying to catch server ip through udp socket
+
+123/5/30|16:57:39
+> server found
+
+123/5/30|16:57:39
+> trying to connect to server with name '2' created by 'mmd4'
+
+123/5/30|16:57:40
+> connected to server
+
+123/5/30|16:57:40
+> written to socket as client
+
+123/5/30|17:5:31
+> trying to catch server ip through udp socket
+
+123/5/30|17:5:31
+> server found
+
+123/5/30|17:5:31
+> trying to connect to server with name '2' created by 'mmd0'
+
+123/5/30|17:5:32
+> connected to server
+
+123/5/30|17:5:32
+> written to socket as client
+
+123/5/30|17:6:51
+> trying to catch server ip through udp socket
+
+123/5/30|17:6:51
+> server found
+
+123/5/30|17:6:51
+> trying to connect to server with name '2' created by 'mmd3'
+
+123/5/30|17:6:52
+> connected to server
+
+123/5/30|17:6:52
+> written to socket as client
+
+123/5/30|17:8:23
+> written to socket as client
+
+123/5/30|17:25:6
+> trying to catch server ip through udp socket
+
+123/5/30|17:25:6
+> server found
+
+123/5/30|17:25:6
+> trying to connect to server with name '2' created by 'mmd5'
+
+123/5/30|17:25:7
+> connected to server
+
+123/5/30|17:25:7
+> written to socket as client
+
+123/5/30|17:25:14
+> server disconnected
+
+123/5/30|17:31:38
+> trying to catch server ip through udp socket
+
+123/5/30|17:31:38
+> server found
+
+123/5/30|17:31:38
+> trying to connect to server with name '2' created by 'mmd2'
+
+123/5/30|17:31:39
+> connected to server
+
+123/5/30|17:31:39
+> written to socket as client
+
+123/5/30|17:34:3
+> trying to catch server ip through udp socket
+
+123/5/30|17:34:4
+> server found
+
+123/5/30|17:34:4
+> trying to connect to server with name '2' created by 'mmd4'
+
+123/5/30|17:34:5
+> connected to server
+
+123/5/30|17:34:5
+> written to socket as client
+
+123/5/30|17:37:48
+> trying to catch server ip through udp socket
+
+123/5/30|17:37:48
+> server found
+
+123/5/30|17:37:48
+> trying to connect to server with name '2' created by 'mmd3'
+
+123/5/30|17:37:49
+> connected to server
+
+123/5/30|17:37:49
+> written to socket as client
+
+123/5/30|17:40:36
+> written to socket as client
+
+123/5/30|17:44:45
+> trying to catch server ip through udp socket
+
+123/5/30|17:44:45
+> server found
+
+123/5/30|17:44:45
+> trying to connect to server with name '2' created by 'mmd2'
+
+123/5/30|17:44:46
+> connected to server
+
+123/5/30|17:44:46
+> written to socket as client
+
+123/5/30|17:45:4
+> written to socket as client
+
+123/5/30|17:46:46
+> server disconnected
+
+123/5/30|17:53:3
+> trying to catch server ip through udp socket
+
+123/5/30|17:53:3
+> server found
+
+123/5/30|17:53:3
+> trying to connect to server with name '2' created by 'mmd5'
+
+123/5/30|17:53:4
+> connected to server
+
+123/5/30|17:53:4
+> written to socket as client
+
+123/5/30|17:53:6
+> written to socket as client
+
+123/5/30|17:53:56
+> server disconnected
+
+123/5/30|17:54:15
+> trying to catch server ip through udp socket
+
+123/5/30|17:54:16
+> no server found
+
+123/5/30|17:54:30
+> trying to catch server ip through udp socket
+
+123/5/30|17:54:30
+> server found
+
+123/5/30|17:54:30
+> trying to connect to server with name '2' created by 'mmd1'
+
+123/5/30|17:54:31
+> connected to server
+
+123/5/30|17:54:32
+> written to socket as client
+
+123/5/30|17:54:34
+> written to socket as client
+
+123/5/30|17:55:2
+> server disconnected
+

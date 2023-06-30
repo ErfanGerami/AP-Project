@@ -10,7 +10,7 @@ channel::channel(QTcpSocket *_socket, int _client_number, QObject *parent):
 	connect(socket, SIGNAL(readyRead()), this, SLOT(reading_data()));
 	connect(socket, SIGNAL(disconnected()), this, SLOT(disconnected_from_server()));
 	connect(this, SIGNAL(newplayer(QString)), parent, SLOT(func(QString)));
-	client_number += _client_number;
+	client_number = to_string(_client_number);
 	udp_socket = new QUdpSocket();
 
 }
@@ -40,9 +40,30 @@ QPair<char *, DataPacket *> channel::reading_data() {
 	DataPacket *data_packet = new DataPacket();
 	char *code = new char[6];
 
+	if ( QString::fromStdString(client_number).toInt() == 0 ) {
+		if ( zero == 0 ) { zero++; }
+		else if ( zero % 2 == 1 ) {
+			zero++;
+			code = Code::set_code('0', Code::fromClient_Sent_Predictions);
+			code[3] = '0';
+			return QPair<char *, DataPacket *>(code, data_packet);
+		}
+		else if ( zero % 2 == 0 ) {
+			zero++;
+			code = Code::set_code('0', Code::fromClient_Sent_PlayedCard);
+			code[4] = '1';
+			code[4] = '2';
+			return QPair<char *, DataPacket *>(code, data_packet);
+		}
+	}
+
+	//-----------
 	if ( client_name.size() == 0 || socket->waitForReadyRead(-1) ) {
 
 		block = socket->readAll();
+
+		while ( block[0] == '&' )
+			block.remove(0, 1);
 
 		if ( client_name.size() == 0 ) {
 			client_name = block;
@@ -61,18 +82,9 @@ QPair<char *, DataPacket *> channel::reading_data() {
 			block.remove(0, 5);
 
 
-			if ( code[1] == '0' || code[1] == '1' ) {
-				//now do shit
-			}
-			else {
 
-				QDataStream in(&block, QIODevice::ReadOnly);
-				in >> *data_packet;
-
-				//now do shit
-			}
-
-
+			QDataStream in(&block, QIODevice::ReadOnly);
+			in >> *data_packet;
 
 		}
 

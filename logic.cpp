@@ -251,11 +251,11 @@ void Logic::StartGame() {
 
 
 
-			for ( int i = 0; i < number_of_players; i++ ) {
-				//get the predicted_rounds here for each player
-				QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server();
+			//get the predicted_rounds here for each player
+			QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server();
 
-				char *code2;
+			char *code2;
+			for ( int i = 0; i < number_of_players; i++ ) {
 				code2 = data_vector[i].first;
 
 				int prediction;

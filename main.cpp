@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
 
 	//Login *l = new Login();
 	//l->show();
-	QString name = "mmd" + QString::number(rand() % 6);
+	QString name = "mmd" + QString::number(rand() % 10) + QString::number(rand() % 10);
 	MainPlayer = new Player(name.toStdString(), "461");
 	MainMenu *m = new MainMenu();
 	m->show();
