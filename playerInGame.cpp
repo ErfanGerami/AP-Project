@@ -133,7 +133,7 @@ void PlayerInGame::CalculateWonCardPosition() {
 }
 
 
-void PlayerInGame::Deal() {
+QPropertyAnimation* PlayerInGame::Deal() {
 
 	int rotation;
 	switch ( place ) {
@@ -177,11 +177,12 @@ void PlayerInGame::Deal() {
 
 
 	std::sort(cards.begin(), cards.end(), [] (Card *c1, Card *c2) {return (c1->GetType() > c2->GetType()); });
+    QPropertyAnimation* last_animation;
 	for ( auto &card : cards ) {
 
 		card->show();
 
-		card->PushTo(position, rotation);
+        last_animation=card->PushTo(position, rotation);
 		rotation += Card::angle_between_cards;
 		switch ( place ) {
 			case 0:
@@ -202,6 +203,7 @@ void PlayerInGame::Deal() {
 
 		}
 	}
+    return last_animation;
 
 
 

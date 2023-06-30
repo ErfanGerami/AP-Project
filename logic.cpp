@@ -204,10 +204,10 @@ void Logic::FillAllCards() {
 	if ( number_of_players == 4 ) {
 		number_of_ordainary_cards = 11;
 	}
-	for ( int i = 0; i < number_of_ordainary_cards; i++ ) {
+    for ( int i = 0; i < number_of_ordainary_cards; i++ ) {
 		Card card1(Card::treasure, i);
 		all_cards.push_back(card1);
-		Card card2(Card::map, i);
+        Card card2(Card::map, i);
 		all_cards.push_back(card2);
 		Card card3(Card::flag, i);
 		all_cards.push_back(card3);
@@ -220,13 +220,11 @@ void Logic::FillAllCards() {
 
 	for ( int i = 0; i < pirates; i++ ) {
 		Card card(Card::pirate, -1);
-
 		all_cards.push_back(card);
 
 	}
 	for ( int i = 0; i < kings; i++ ) {
 		Card card(Card::queen, -1);
-
 		all_cards.push_back(card);
 
 	}
