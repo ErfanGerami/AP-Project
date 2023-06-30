@@ -22,6 +22,7 @@ public:
 		, int predicted_rounds, int points);
 
 	PlayerInGame(const Player &player, QObject *parent, int place, QVector<Card *> cards, int rounds_won);
+    void SetPlace(int place);
 
 	void NewCards(QVector<Card *> cards);
 	std::pair<int, int> GetBasePos();

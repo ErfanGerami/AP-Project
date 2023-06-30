@@ -13,21 +13,27 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 	this->client = client;
 	const int max_height = 1021;
 	const int max_width = 1610;
-	const pair<int, int> positions[4] = { { max_width / 2, max_height - 100 }, { max_width / 2, 100 },
+    const pair<int, int> positions[4] = { { max_width / 2, 0 }, { max_width / 2, 100 },
 		{ max_width - 100, max_height / 2 }, { 100, max_height / 2 } };
-	for ( int i = me; i < number_of_players + me; i++ ) {
-		this->players[i % number_of_players] = new PlayerInGame(p2, this, i, {}, 0);
-		players[i % number_of_players]->SetBasePos(positions[i % number_of_players]);
+
+    this->players[0] = new PlayerInGame(p1, this,0, {}, 0);
+    this->players[1] = new PlayerInGame(p2, this, 0, {}, 0);
+    this->players[2] = new PlayerInGame(p3, this, 0, {}, 0);
+    this->players[3] = new PlayerInGame(p4, this, 0, {}, 0);
+
+    for ( int i = me; i < number_of_players+me ; i++ ) {
+        players[i%number_of_players]->SetPlace(i-me);
+        players[i % number_of_players]->SetBasePos(positions[(i-me) ]);
 
 	}
-	for ( int i = me; i < number_of_players; i++ ) {
-		QLabel *label = new QLabel(players[(i) % number_of_players]->GetUserName().c_str());
+    for ( int i = 0; i < number_of_players; i++ ) {
+        QLabel *label = new QLabel(players[(i) ]->GetUserName().c_str());
 		label->setStyleSheet("font-size:40px;color:red;background:transparent");
 		QGraphicsProxyWidget *proxy = scene->addWidget(label);
 
-		switch ( i ) {
+        switch ( players[i]->GetPlace()  ) {
 			case 0:
-				proxy->setPos(max_width / 2, 950);
+                proxy->setPos(max_width / 2, max_height);
 				break;
 			case 1:
 				proxy->setPos(max_width / 2, 50);
@@ -43,6 +49,7 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 				break;
 
 		}
+        proxy->show();
 
 	}
 

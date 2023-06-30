@@ -72,6 +72,7 @@ void PlayerInGame::NewCards(QVector<Card *> cards) {
 	this->cards = cards;
 
 }
+void PlayerInGame::SetPlace(int place){this->place=place;}
 
 Card *PlayerInGame::PushCard(Card::CardType card_type, int number, bool was_unknow) {
 	if ( was_unknow ) {
