@@ -72,8 +72,8 @@ QPropertyAnimation* GameHandeler::TellTheFirst(int index) {
 
 		cards[i] = new Card(this, Card::parrot, scene, view, numbers[i]);
 		cards[i]->show();
-        if(i==number_of_players-1)return cards[i]->PushTo(players[i]->GetBasePos(), rand() % 150);
-        else cards[i]->PushTo(players[i]->GetBasePos(), rand() % 150);
+        if(i==number_of_players-1)return cards[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
+        else cards[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
 
 
 	}
