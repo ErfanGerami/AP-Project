@@ -29,7 +29,7 @@ public:
 	void SetBasePos(std::pair<int, int> base_pos);
 
 	void CalculateWonCardPosition();
-	void Deal();
+    QPropertyAnimation* Deal();
 	Card *PushCard(Card::CardType card_type, int number, bool was_unknow = true);
 	void operator=(const PlayerInGame &other);
 	void DeleteCard(Card::CardType card_type, int number);

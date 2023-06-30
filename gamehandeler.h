@@ -24,8 +24,8 @@ class GameHandeler:public QObject {
 public:
 	GameHandeler();
 	GameHandeler(QWidget *parent, SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
-	void TellTheFirst(int index);
-	void Deal();
+    QPropertyAnimation* TellTheFirst(int index);
+    QPropertyAnimation* Deal();
 	void shuffle();
 	void collect(PlayerInGame *player);
 	void StartRound();
@@ -34,6 +34,8 @@ public:
 	void SwitchCard(Card::CardType typpe, int number, Card::CardType type2, int number2);
 	int CardVectorToArray(QVector<Card *> cards, int array[2][14]);
 	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size, QGraphicsView *view, QGraphicsScene *scene);
+
+
 
 	void StartSet();
 private:
@@ -65,6 +67,8 @@ signals:
 
 private slots:
 	void GetOthersPushedCard();
+    void GetMyCards();
+    void Predict();
 public slots:
 	void PushCard();
 
