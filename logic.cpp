@@ -202,13 +202,13 @@ void Logic::FillAllCards() {
 	if ( number_of_players == 4 ) {
 		number_of_ordainary_cards = 11;
 	}
-	for ( int i = 0; i < number_of_ordainary_cards; i++ ) {
+	for ( int i = 1; i < number_of_ordainary_cards + 1; i++ ) {
 		Card card1(Card::treasure, i);
 		all_cards.push_back(card1);
 		Card card2(Card::map, i);
 		all_cards.push_back(card2);
 		Card card3(Card::flag, i);
-        all_cards.push_back(card3);
+		all_cards.push_back(card3);
 		Card card4(Card::parrot, i);
 		all_cards.push_back(card4);
 	}
@@ -242,51 +242,48 @@ void Logic::StartGame() {
 	for ( int set_number = 0; set_number < 7; set_number++ ) {
 		shuffle();
 		initializeNewSet();
-		for ( int round_number = 0; round_number < set; round_number++ ) {
+
+
+		//get the predicted_rounds here for each player
+		QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server();
+
+		char *code2;
+		for ( int i = 0; i < number_of_players; i++ ) {
+			code2 = data_vector[i].first;
+
+			int prediction;
+			if ( Code::get_code(code2) == Code::fromClient_Sent_Predictions )
+				prediction = code2[3] - '0';//set this
+			else {
+				//handle it
+			}
+
+
+			//-----------------
+
+			players[i]->SetRoundsPredicted(prediction);
+		}
+
+		for ( int round_number = 0; round_number < set * 2; round_number++ ) {
 			int rounds_score = 0;
 
 
 
-			//get the predicted_rounds here for each player
-			QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server();
 
-			char *code2;
-			for ( int i = 0; i < number_of_players; i++ ) {
-				code2 = data_vector[i].first;
-
-				int prediction;
-				if ( Code::get_code(code2) == Code::fromClient_Sent_Predictions )
-					prediction = code2[3] - '0';//set this
-				else {
-					//handle it
-				}
-
-
-				//-----------------
-
-				players[i]->SetRoundsPredicted(prediction);
-			}
-			//this_rounds_first = getFirstPlayer();
-
-			//notify clients of the first player(the parrot animation thing in gamehandeling should be played)
-			/*char *code3 = Code::set_code('0', Code::fromServer_Sent_FirstPlayer);
-			code3[3] = this_rounds_first + '0';
-
-			server->send_data(code3, &dummy);*/
-			//--------------
-
-			for ( int i = 0; i < number_of_players; i++ ) {
+			for ( int i = this_rounds_first; i < number_of_players + this_rounds_first; i++ ) {
+				int turn = i % number_of_players;
 				Card::CardType type;
 				int number;
 				//Wait For the i-th player to move here and set the type and number(if it is role card set to -1)
-				QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server(i);
+				QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server(turn);
 
 				char *code4;
-				code4 = data_vector[i].first;
+				code4 = data_vector[turn].first;
 				if ( Code::get_code(code4) == Code::fromClient_Sent_PlayedCard ) {
 
-					Card::CardType type = code4[3] - '0';//set this
-					int number = (type > 3) ? (code4[4] - '0') : (-1);//set this
+					type = code4[3] - '0';//set this
+
+					number = (type <= 3) ? (code4[4] - '0') : (-1);//set this
 				}
 				//-----------------
 
@@ -295,8 +292,8 @@ void Logic::StartGame() {
 				code5[3] = type + '0';
 				code5[4] = number + '0';
 				for ( int jj = 0; jj < number_of_players; jj++ ) {
-					if ( i == jj )break;
-					server->send_data(code5, &dummy, jj);
+					if ( turn != jj )
+						server->send_data(code5, &dummy, jj);
 				}
 				//-------------------
 				cards_on_deck.push_back(Card(type, number));
@@ -311,7 +308,7 @@ void Logic::StartGame() {
 			this_rounds_first = winner_index;
 			//notify the round winner here;send winner_index
 			char *code6 = Code::set_code('0', Code::fromServer_Sent_RoundWinner);
-			code6[3] = winner_index;
+			code6[3] = winner_index + '0';
 			server->send_data(code6, &dummy);
 			//-----------------
 

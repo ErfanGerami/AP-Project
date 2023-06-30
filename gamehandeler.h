@@ -24,8 +24,8 @@ class GameHandeler:public QObject {
 public:
 	GameHandeler();
 	GameHandeler(QWidget *parent, SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
-    QPropertyAnimation* TellTheFirst(int index);
-    QPropertyAnimation* Deal();
+	QPropertyAnimation *TellTheFirst(int index);
+	QPropertyAnimation *Deal();
 	void shuffle();
 	void collect(PlayerInGame *player);
 	void StartRound();
@@ -34,7 +34,7 @@ public:
 	void SwitchCard(Card::CardType typpe, int number, Card::CardType type2, int number2);
 	int CardVectorToArray(QVector<Card *> cards, int array[2][14]);
 	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size, QGraphicsView *view, QGraphicsScene *scene);
-     Card* turn_card[4];
+	Card *turn_card[4];
 
 
 
@@ -55,7 +55,6 @@ private:
 	QGraphicsView *sticker_view;
 	QGraphicsScene *sticker_scene;
 	bool isValid(Card card, int turn);
-	void GetTheWinnerOfTheRound();
 	int GetWhoseTurn();
 	int turn = 0;
 	int set = 0;
@@ -67,19 +66,12 @@ signals:
 	void GetOthersPushedCard_S();
 
 private slots:
+	void GetTheWinnerOfTheRound();
 	void GetOthersPushedCard();
-    void GetMyCards();
-    void Predict();
+	void GetMyCards();
+	void Predict();
 public slots:
 	void PushCard();
-
-
-
-
-
-
-
-
 
 
 };

@@ -18,11 +18,11 @@ WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client_, QWidge
 
 
 
-	//this->scene = new QGraphicsScene(ui->graphicsView);
+	this->scene = new QGraphicsScene(ui->graphicsView);
 
 
 
-	/*for ( int i = 0; i < 150; i++ ) {
+	for ( int i = 0; i < 100; i++ ) {
 		QLabel *label = new QLabel;
 		QGraphicsProxyWidget *proxy = new QGraphicsProxyWidget;
 		proxy->setWidget(label);
@@ -54,8 +54,8 @@ WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client_, QWidge
 		anim->setStartValue(proxy->rotation());
 		anim->setEndValue(rand() % 360); anim->start(); });
 		connect(anim2, &QPropertyAnimation::finished, [this, anim3, proxy] {anim3->setDuration(rand() % 1500 + 500);
-		anim3->setStartValue(QRect(proxy->x(), proxy->y(), proxy->boundingRect().width(), proxy->boundingRect().heigh()));
-		int size = (rand() % 30 + 10); anim3->setEndValue(QRect(rand() % (ui->graphicsView->width() - 100), rand() %(ui->graphicsView->height() - 100), size, size));
+		anim3->setStartValue(QRect(proxy->x(), proxy->y(), proxy->boundingRect().width(), proxy->boundingRect().height()));
+		int size = (rand() % 30 + 10); anim3->setEndValue(QRect(rand() % (ui->graphicsView->width() - 100), rand() % (ui->graphicsView->height() - 100), size, size));
 		anim3->start(); });
 
 		anim->start();
@@ -63,7 +63,7 @@ WaitMenu::WaitMenu(SocketHandeling *connection, SocketHandeling *client_, QWidge
 
 	ui->graphicsView->setScene(scene);
 	ui->graphicsView->show();
-	*/
+
 }
 
 WaitMenu::WaitMenu(SocketHandeling *client_, QWidget *parent):

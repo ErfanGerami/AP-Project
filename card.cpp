@@ -1,4 +1,5 @@
 #include "card.h"
+#include <QSound>
 typedef int CardType;
 
 const CardType Card::unknown = -1;
@@ -50,9 +51,10 @@ Card::Card(QObject *parent, CardType type, QGraphicsScene *scene, QGraphicsView 
 void Card::operator=(const Card &other) {
 	this->scene = other.scene;
 	this->view = other.view;
-	this->parent = parent;
+	this->parent = other.parent;
 	this->type = other.type;
 	this->number = other.number;
+	this->button = other.button;
 	if ( other.scene != nullptr ) {
 
 		button = new QPushButton();
@@ -66,63 +68,83 @@ void Card::operator=(const Card &other) {
 
 		proxy->setRotation(other.proxy->rotation());
 		SetUpButton();
+
 		connect(button, SIGNAL(clicked()), parent, SLOT(PushCard()));
 	}
 
 }
+
 Card::Card(const Card &other) {
 	(*this) = other;
 }
+
 void Card::SetUpButton() {
+
 	//adjusting each cards picture to itself.
 	id++;
 	button->setObjectName("card_button" + QString::number(id));
 	switch ( type ) {
 		case Card::parrot:
-			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/parrot" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}\
-						" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+		{
+			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/parrot" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
+		}
+
+
+
 		case Card::map:
-            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/map" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}\
-                                                                                                                                                " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+		{
+			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/map" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
+		}
+
+
 		case Card::treasure:
-        ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/treasure" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}\
-                                " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+		{
+			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/treasure" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
+		}
+
+
+
 		case Card::flag:
-        ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/flag" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}\
-                                " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+		{
+			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/flag" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
+		}
+
+
 		case Card::queen:
-    ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/queen.png) strech 0 0 0;background:transparent;}\
-                            " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+		{
+			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/queen.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
+		}
 
 		case Card::king:
-    ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/scullking.png) strech 0 0 0;background:transparent;}\
-                            " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+		{
+			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/scullking.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
-
+		}
 
 		case Card::pirate:
-    ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;}\
-                            " + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+		{
+			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
 			break;
+		}
+
 		case Card::unknown:
+		{
 			//to be fixed;
-    ("#card_button" + QString::number(id) + "{border-image:url(:/images/images/unknown.png) strech 0 0 0;background:transparent;}");
+			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/unknown.png) strech 0 0 0;background:transparent;}");
 			break;
-
-
-
-
-
+		}
 
 	}
 
-
+	qDebug() << button->styleSheet();
 }
+
+
 void Card::PushCard() {
 	QParallelAnimationGroup *group = new QParallelAnimationGroup;
 	QPropertyAnimation *rotation_animation = new QPropertyAnimation(proxy, "rotation");
@@ -137,8 +159,8 @@ void Card::PushCard() {
 	tranform_animation->start();
 	group->addAnimation(tranform_animation);
 	group->addAnimation(rotation_animation);
-	//group->start();
-	//QSound::play(":/sounds/sounds/card_push.wav");
+	group->start();
+	QSound::play(":/sounds/sounds/card_push.wav");
 
 }
 QPropertyAnimation *Card::PushTo(std::pair<int, int> pos) {

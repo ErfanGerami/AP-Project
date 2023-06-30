@@ -51,7 +51,7 @@ QPair<char *, DataPacket *> channel::reading_data() {
 		else if ( zero % 2 == 0 ) {
 			zero++;
 			code = Code::set_code('0', Code::fromClient_Sent_PlayedCard);
-			code[4] = '1';
+			code[3] = '1';
 			code[4] = '2';
 			return QPair<char *, DataPacket *>(code, data_packet);
 		}

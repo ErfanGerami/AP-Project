@@ -19,8 +19,8 @@ void PlayerInGame::operator=(const PlayerInGame &that) {
 	this->place = that.place;
 	this->rounds_won = that.rounds_won;
 	this->predicted_rounds = that.predicted_rounds;
-	this->points = points;
-	this->parent = parent;
+	this->points = that.points;
+	this->parent = that.parent;
 
 
 
@@ -72,18 +72,20 @@ void PlayerInGame::NewCards(QVector<Card *> cards) {
 	this->cards = cards;
 
 }
-void PlayerInGame::SetPlace(int place){this->place=place;}
+void PlayerInGame::SetPlace(int place) { this->place = place; }
 
 Card *PlayerInGame::PushCard(Card::CardType card_type, int number, bool was_unknow) {
 	if ( was_unknow ) {
-		Card *card = new Card(*cards.front());
+
+		Card *card = cards.front();
 		cards.pop_front();
+		return card;
 	}
 	else {
 		for ( auto itr = cards.begin(); itr != cards.end(); itr++ ) {
 			if ( (*itr)->GetNumber() == number && (*itr)->GetType() == card_type ) {
 
-				Card *card = new Card(**itr);
+				Card *card = *itr;
 
 				cards.erase(itr);
 				return card;
@@ -134,7 +136,7 @@ void PlayerInGame::CalculateWonCardPosition() {
 }
 
 
-QPropertyAnimation* PlayerInGame::Deal() {
+QPropertyAnimation *PlayerInGame::Deal() {
 
 	int rotation;
 	switch ( place ) {
@@ -178,12 +180,12 @@ QPropertyAnimation* PlayerInGame::Deal() {
 
 
 	std::sort(cards.begin(), cards.end(), [] (Card *c1, Card *c2) {return (c1->GetType() > c2->GetType()); });
-    QPropertyAnimation* last_animation;
+	QPropertyAnimation *last_animation;
 	for ( auto &card : cards ) {
 
 		card->show();
 
-        last_animation=card->PushTo(position, rotation);
+		last_animation = card->PushTo(position, rotation);
 		rotation += Card::angle_between_cards;
 		switch ( place ) {
 			case 0:
@@ -204,7 +206,7 @@ QPropertyAnimation* PlayerInGame::Deal() {
 
 		}
 	}
-    return last_animation;
+	return last_animation;
 
 
 

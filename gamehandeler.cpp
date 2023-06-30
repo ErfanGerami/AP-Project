@@ -152,9 +152,13 @@ void GameHandeler::AddStickers(QString name, int player_index) {
 
 int GameHandeler::GetMe() { return me; };
 
-int GameHandeler::GetWhoseTurn() { return (turn + first_this_round) % number_of_players; }
+int GameHandeler::GetWhoseTurn() { qDebug() << turn + first_this_round; return (turn + first_this_round) % number_of_players; }
 
 void GameHandeler::GetOthersPushedCard() {
+
+	disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
+	disconnect(client->get_tcp_socket(), SIGNAL(bytesAvailable()), this, SLOT(GetOthersPushedCard()));
+
 	if ( me == turn ) {
 		//just pass
 	}
@@ -191,7 +195,9 @@ void GameHandeler::GetOthersPushedCard() {
 
 	}
 
-	disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
+
+	if ( turn == number_of_players )
+		connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetTheWinnerOfTheRound()));
 }
 bool GameHandeler::isValid(Card card, int turn) {
 
@@ -285,14 +291,14 @@ void GameHandeler::StartSet() {
 
 	//get who is first
 	QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
-	while ( true )
-		if ( Code::get_code(pair.first) == Code::fromServer_Sent_FirstPlayer ) {
-			first_this_round = pair.first[3] - '0';//set this
-			break;
-		}
-		else {
-			//handle
-		}
+
+	if ( Code::get_code(pair.first) == Code::fromServer_Sent_FirstPlayer ) {
+		first_this_round = pair.first[3] - '0';//set this
+
+	}
+	else {
+		//handle
+	}
 	//------------------------
 
 	for ( int i = 0; i < number_of_players; i++ ) {
@@ -352,10 +358,12 @@ void GameHandeler::Predict() {
 	client->send_data(code1, &dummy);
 	//--------------------
 	//connect the socket when sends data that someone pushed card to GetOthersPushedCard
-
+	//GetOthersPushedCard();
 	connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
 
 }
+
+
 void GameHandeler::PushCard() {
 	if ( GetWhoseTurn() == me ) {
 		Card::CardType type;
@@ -368,14 +376,15 @@ void GameHandeler::PushCard() {
 				type = cards[i]->GetType();
 				number = cards[i]->GetNumber();
 				if ( isValid(Card(type, number), turn) ) {
-					players[i]->PushCard(type, number, false);
+					players[i]->PushCard(type, number, false)->PushCard();
+
 				}
-				turn++;
-				if ( turn == number_of_players ) {
+
+				/*if ( turn == number_of_players ) {
 					GetTheWinnerOfTheRound();
 
 
-				}
+				}*/
 				//notify the server of what card is pushed here
 				char *code = Code::set_code(me, Code::fromClient_Sent_PlayedCard);
 				code[3] = type - '0';
@@ -394,14 +403,22 @@ void GameHandeler::PushCard() {
 		//just do nothing;
 	}
 
+	if ( ++turn == number_of_players )
+		connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetTheWinnerOfTheRound()));
+	else {
+		connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
+		connect(client->get_tcp_socket(), SIGNAL(bytesAvailable()), this, SLOT(GetOthersPushedCard()));
+		emit client->get_tcp_socket()->readyRead();
+	}
 
 }
+
 void GameHandeler::GetTheWinnerOfTheRound() {
 	//get the player that has won the round;
 	int player_index;
 	QPair<char *, DataPacket *> pair = client->reading_data_socket(false);
 	if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner )
-		player_index = pair.first[3];
+		player_index = pair.first[3] - '0';
 
 	//-----------------------------------
 
@@ -409,8 +426,10 @@ void GameHandeler::GetTheWinnerOfTheRound() {
 	if ( round == set )
 		StartRound();
 
+	disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetTheWinnerOfTheRound()));
 
 }
+
 void GameHandeler::SwitchCard(Card::CardType type, int number, Card::CardType type2, int number2) {
 	auto cards = players[me]->get_cards();
 	for ( Card *card : cards ) {
