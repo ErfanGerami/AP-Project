@@ -2992,3 +2992,33 @@
 123/5/30|19:45:22
 > written to socket as client
 
+123/5/30|19:54:52
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/30|19:54:52
+> connected to server
+
+123/5/30|19:54:53
+> written to socket as client
+
+123/5/30|19:54:59
+> trying to catch server ip through udp socket
+
+123/5/30|19:54:59
+> server found
+
+123/5/30|19:54:59
+> trying to connect to server with name '123' created by 'mmd83'
+
+123/5/30|19:55:0
+> connected to server
+
+123/5/30|19:55:0
+> written to socket as client
+
+123/5/30|19:55:32
+> written to socket as client
+
+123/5/30|19:57:55
+> server disconnected
+

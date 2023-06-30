@@ -50,7 +50,7 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 
 }
 
-QPropertyAnimation* GameHandeler::TellTheFirst(int index) {
+QPropertyAnimation *GameHandeler::TellTheFirst(int index) {
 	//th just is functionfools the players to think the random player is decided here but all we need is the name of the winner to map the largest number to
 	int *numbers = new int[number_of_players];
 	for ( int i = 0; i < number_of_players; i++ ) {
@@ -72,28 +72,28 @@ QPropertyAnimation* GameHandeler::TellTheFirst(int index) {
 
 		cards[i] = new Card(this, Card::parrot, scene, view, numbers[i]);
 		cards[i]->show();
-        if(i==number_of_players-1)return cards[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
-        else cards[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
+		if ( i == number_of_players - 1 )return cards[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
+		else cards[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
 
 
 	}
 
 }
 
-QPropertyAnimation* GameHandeler::Deal() {
+QPropertyAnimation *GameHandeler::Deal() {
 
-    //Card *card = new Card(this, Card::parrot, scene, view, 2);
-    //players[0]->NewCards({ new Card(this, Card::parrot, scene, view, 2), new Card(this, Card::parrot, scene, view, 2) });
-    //players[1]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
-    //players[2]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
-    //players[3]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
-    QPropertyAnimation* last_animation;
+	//Card *card = new Card(this, Card::parrot, scene, view, 2);
+	//players[0]->NewCards({ new Card(this, Card::parrot, scene, view, 2), new Card(this, Card::parrot, scene, view, 2) });
+	//players[1]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
+	//players[2]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
+	//players[3]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
+	QPropertyAnimation *last_animation;
 	int rotation;
 	for ( int i = 0; i < number_of_players; i++ ) {
-        last_animation=players[i]->Deal();
+		last_animation = players[i]->Deal();
 
 	}
-    return last_animation;
+	return last_animation;
 }
 
 void GameHandeler::collect(PlayerInGame *winner) {
@@ -172,7 +172,7 @@ void GameHandeler::GetOthersPushedCard() {
 
 
 	}
-	//you know what to do
+
 	disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
 }
 bool GameHandeler::isValid(Card card, int turn) {
@@ -186,9 +186,6 @@ bool GameHandeler::isValid(Card card, int turn) {
 				if ( players[me]->haveType(firsts_type) ) {
 					return false;
 				}
-
-
-
 			}
 		}
 	}
@@ -280,70 +277,65 @@ void GameHandeler::StartSet() {
 		}
 	//------------------------
 
-    for ( int i = 0; i < number_of_players; i++ ) {
-        if ( i != me ) {
-            QVector<Card *> cards;
-            for ( int i = 0; i < set * 2; i++ ) {
-                cards.push_back(new Card(this, Card::unknown, scene, view));
+	for ( int i = 0; i < number_of_players; i++ ) {
+		if ( i != me ) {
+			QVector<Card *> cards;
+			for ( int i = 0; i < set * 2; i++ ) {
+				cards.push_back(new Card(this, Card::unknown, scene, view));
 
 
-            }
-            players[i]->NewCards(cards);
-        }
+			}
+			players[i]->NewCards(cards);
+		}
 
-   }
-   QPropertyAnimation* anim=TellTheFirst(first_this_round);
-   connect(anim,&QPropertyAnimation::finished,this,&GameHandeler::GetMyCards);
-
-
-
-
-
+	}
+	QPropertyAnimation *anim = TellTheFirst(first_this_round);
+	connect(anim, &QPropertyAnimation::finished, this, &GameHandeler::GetMyCards);
 
 }
 
-void GameHandeler:: GetMyCards(){
-    //Get the cards here set it like in the logic but just set players[me]
-    //remember that you should initialize using this format
-    //new Card(this,type,scene,view,number)
-    //or just initialize like the server and remind me to make it right later :) :)
-    QVector<Card *> cards;//set this
-    QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
-    char *code = pair.first;
-    DataPacket *data = pair.second;
-    if ( Code::get_code(code) == Code::fromServer_Sent_YourCards ) {
+void GameHandeler::GetMyCards() {
+	//Get the cards here set it like in the logic but just set players[me]
+	//remember that you should initialize using this format
+	//new Card(this,type,scene,view,number)
+	//or just initialize like the server and remind me to make it right later :) :)
+	QVector<Card *> cards;//set this
+	QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
+	char *code = pair.first;
+	DataPacket *data = pair.second;
+	if ( Code::get_code(code) == Code::fromServer_Sent_YourCards ) {
 
-        players[me]->NewCards(CardArrayToVectorOf(data->player_cards, data->card_size, view, scene));
+		players[me]->NewCards(CardArrayToVectorOf(data->player_cards, data->card_size, view, scene));
 
-    }
-    else {
-        //handle
-    }
-    //------------------------------
-    players[me]->NewCards(cards);
+	}
+	else {
+		//handle
+	}
+	//------------------------------
+	players[me]->NewCards(cards);
 
-    //wait for server to send data that wants the prediction
-    QPropertyAnimation* last_anim=Deal();
-    connect(last_anim,&QPropertyAnimation::finished,this,&GameHandeler::Predict);
+	//wait for server to send data that wants the prediction
+	QPropertyAnimation *last_anim = Deal();
+	connect(last_anim, &QPropertyAnimation::finished, this, &GameHandeler::Predict);
 
 
 }
 
 
-void GameHandeler::Predict(){
-    bool okay = false;////////////////////////////////////////////////check\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
-    int prediction;
-    while ( !okay )
-        prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, max(round * 2, 1), 1, &okay);
-    //notify the prediction to others;
-    char *code1 = Code::set_code(me + '0', Code::fromClient_Sent_Predictions);
-    code1[3] = '0' + prediction;
-    DataPacket dummy;
-    client->send_data(code1, &dummy);
-    //--------------------
-    //connect the socket when sends data that someone pushed card to GetOthersPushedCard
+void GameHandeler::Predict() {
+	bool okay = false;////////////////////////////////////////////////check\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
+	int prediction;
+	while ( !okay )
+		prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, max(round * 2, 1), 1, &okay);
+	//notify the prediction to others;
+	char *code1 = Code::set_code(me + '0', Code::fromClient_Sent_Predictions);
+	code1[3] = '0' + prediction;
+	DataPacket dummy;
+	client->send_data(code1, &dummy);
+	//--------------------
+	//connect the socket when sends data that someone pushed card to GetOthersPushedCard
 
-    connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
+	connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
 
 }
 void GameHandeler::PushCard() {
@@ -368,6 +360,8 @@ void GameHandeler::PushCard() {
 				}
 				//notify the server of what card is pushed here
 				char *code = Code::set_code(me, Code::fromClient_Sent_PlayedCard);
+				code[3] = type - '0';
+				code[4] = number - '0';
 				DataPacket dummy;
 				client->send_data(code, &dummy);
 				//---------------------------------------------
