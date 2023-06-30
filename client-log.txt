@@ -3238,3 +3238,54 @@
 123/5/30|20:44:44
 > written to socket as client
 
+123/5/30|20:53:43
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/30|20:53:43
+> connected to server
+
+123/5/30|20:53:44
+> written to socket as client
+
+123/5/30|20:53:48
+> trying to catch server ip through udp socket
+
+123/5/30|20:53:48
+> server found
+
+123/5/30|20:53:48
+> trying to connect to server with name '12' created by 'mmd60'
+
+123/5/30|20:53:49
+> connected to server
+
+123/5/30|20:53:49
+> written to socket as client
+
+123/5/30|20:56:27
+> trying to connect to server with ip '127.0.0.1'
+
+123/5/30|20:56:27
+> connected to server
+
+123/5/30|20:56:29
+> written to socket as client
+
+123/5/30|20:56:31
+> trying to catch server ip through udp socket
+
+123/5/30|20:56:31
+> server found
+
+123/5/30|20:56:31
+> trying to connect to server with name '123' created by 'mmd86'
+
+123/5/30|20:56:32
+> connected to server
+
+123/5/30|20:56:32
+> written to socket as client
+
+123/5/30|20:56:43
+> written to socket as client
+

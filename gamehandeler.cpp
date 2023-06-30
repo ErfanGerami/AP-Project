@@ -15,8 +15,8 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 	const int max_width = 1610;
 	const pair<int, int> positions[4] = { { max_width / 2, max_height - 100 }, { max_width / 2, 100 },
 		{ max_width - 100, max_height / 2 }, { 100, max_height / 2 } };
-	for ( int i = 0; i < number_of_players; i++ ) {
-		this->players[i % number_of_players] = new PlayerInGame(p2, this, i - me, {}, 0);
+	for ( int i = me; i < number_of_players + me; i++ ) {
+		this->players[i % number_of_players] = new PlayerInGame(p2, this, i, {}, 0);
 		players[i % number_of_players]->SetBasePos(positions[i % number_of_players]);
 
 	}
