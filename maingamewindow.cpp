@@ -42,8 +42,8 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 
 
 
-		logic_thread = std::thread { &Logic::StartGame, logic };
-		//logic->StartGame();
+		//logic_thread = std::thread { &Logic::StartGame, logic };
+		logic->StartGame();
 
 	}
 	else {
@@ -55,13 +55,13 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 				break;
 			}
 		}
+
+		game_handeler = new GameHandeler(this, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
+			, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
+			, Player(name_vec[3].toStdString(), ""));
+
+		game_handeler->StartSet();
 	}
-
-	game_handeler = new GameHandeler(this, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
-		, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
-		, Player(name_vec[3].toStdString(), ""));
-
-	game_handeler->StartSet();
 
 
 

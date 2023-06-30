@@ -283,7 +283,7 @@ void Logic::StartGame() {
 				Card::CardType type;
 				int number;
 				//Wait For the i-th player to move here and set the type and number(if it is role card set to -1)
-				QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server();
+				QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server(i);
 
 				char *code4;
 				code4 = data_vector[i].first;
@@ -298,9 +298,9 @@ void Logic::StartGame() {
 				char *code5 = Code::set_code('0', Code::fromServer_Sent_AnotherPlayerPlayedCard);
 				code5[3] = type + '0';
 				code5[4] = number + '0';
-				for ( int j = 0; j < 4; j++ ) {
-					if ( i == j )break;
-					server->send_data(code5, &dummy, j);
+				for ( int jj = 0; jj < number_of_players; jj++ ) {
+					if ( i == jj )break;
+					server->send_data(code5, &dummy, jj);
 				}
 				//-------------------
 				cards_on_deck.push_back(Card(type, number));

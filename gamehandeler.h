@@ -55,7 +55,7 @@ private:
 	void GetTheWinnerOfTheRound();
 	int GetWhoseTurn();
 	int turn = 0;
-	int set = -1;
+	int set = 0;
 	int first_this_round;
 
 

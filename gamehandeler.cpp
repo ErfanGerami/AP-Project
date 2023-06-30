@@ -21,7 +21,7 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 
 	}
 	for ( int i = me; i < number_of_players; i++ ) {
-		QLabel *label = new QLabel(players[(me + i) % number_of_players]->GetUserName().c_str());
+		QLabel *label = new QLabel(players[(i) % number_of_players]->GetUserName().c_str());
 		label->setStyleSheet("font-size:40px;color:red;background:transparent");
 		QGraphicsProxyWidget *proxy = scene->addWidget(label);
 
@@ -262,6 +262,9 @@ void GameHandeler::StartRound() {
 
 }
 void GameHandeler::StartSet() {
+	set++;
+
+
 	//get who is first
 	QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
 	while ( true )
@@ -300,8 +303,8 @@ void GameHandeler::StartSet() {
 			//wait for server to send data that wants the prediction
 			bool okay = false;////////////////////////////////////////////////check\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
 			int prediction;
-			while ( !okay )
-				prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, max(round * 2, 1), 1, &okay);
+			if ( !okay )
+				prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, set * 2, 1, &okay);
 			//notify the prediction to others;
 			char *code1 = Code::set_code(me + '0', Code::fromClient_Sent_Predictions);
 			code1[3] = '0' + prediction;
