@@ -340,14 +340,16 @@ void SocketHandeling::server_run(QString server_name, QString username, int play
 
 void SocketHandeling::broadcast_ip(QString server_name, QString username) {
 	while ( true ) {
+
+
 		QByteArray message = QString(server_name + "&" + username).toUtf8();
 
 		udp_socket->writeDatagram(message, QHostAddress::Broadcast, 1500);
 
-		std::this_thread::sleep_for(milliseconds(40));
+		std::this_thread::sleep_for(milliseconds(400));
 
 	}
-
+	Q_ASSERT(false);
 }
 
 void SocketHandeling::send_data(char *code, DataPacket *data, int client_number) {

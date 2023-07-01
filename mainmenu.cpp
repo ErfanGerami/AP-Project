@@ -7,7 +7,7 @@ extern QString ServerName;
 MainMenu::MainMenu(QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::MainMenu) {
-    connect(this,SIGNAL(show_parent()),parent,SLOT(show_me()));
+	connect(this, SIGNAL(show_parent()), parent, SLOT(show_me()));
 
 
 	ui->setupUi(this);
@@ -39,8 +39,8 @@ MainMenu::MainMenu(QWidget *parent):
 		ui->line_1->hide();
 		ui->won->setText("0");
 		ui->lost->setText("0");
-        ui->coin->setText("1000");
-        ui->coin_pic->move(ui->coin_pic->x() + QString::number(1000).length() * 15, ui->coin_pic->y());
+		ui->coin->setText("1000");
+		ui->coin_pic->move(ui->coin_pic->x() + QString::number(1000).length() * 15, ui->coin_pic->y());
 	}
 
 
@@ -85,8 +85,14 @@ void MainMenu::on_join_server_clicked() {
 	try {
 
 		client = new SocketHandeling();
-		//
-		client->client_run_fast_connect(QString::fromStdString(MainPlayer->GetUserName()));
+		//zzzz
+		try {
+
+			client->client_run_fast_connect(QString::fromStdString(MainPlayer->GetUserName()));
+		}
+		catch ( Errors err ) {
+			client->client_run(QHostAddress(ui->ip->text()), QString::fromStdString(MainPlayer->GetUserName()));
+		}
 		wait_menu = new WaitMenu(client, this);
 		//
 		wait_menu->show();
@@ -161,11 +167,10 @@ void MainMenu::show_me() {
 }
 
 
-void MainMenu::on_pushButton_clicked()
-{
-    MainPlayer=nullptr;
-    SavedPassword="";
-    emit show_parent();
-    this->hide();
+void MainMenu::on_pushButton_clicked() {
+	MainPlayer = nullptr;
+	SavedPassword = "";
+	emit show_parent();
+	this->hide();
 }
 

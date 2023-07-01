@@ -1,7 +1,14 @@
 #include "maingamewindow.h"
 #include "ui_maingamewindow.h"
+#include <qthread.h>
 
-
+class logic_t: public QThread {
+public:
+	void run(MainGameWindow *p) {
+		p->logic->StartGame();
+	}
+};
+logic_t t;
 MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> name_vec, SocketHandeling *client, QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::MainGameWindow) {
@@ -28,10 +35,10 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 
 
 
-    QLabel* stars[4]={ui->star_0,ui->star_1,ui->star_2,ui->star_3};
-    for(int i=0;i<4;i++){
-        stars[i]->hide();
-    }
+	QLabel *stars[4] = { ui->star_0, ui->star_1, ui->star_2, ui->star_3 };
+	for ( int i = 0; i < 4; i++ ) {
+		stars[i]->hide();
+	}
 
 
 
@@ -44,16 +51,18 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 		me = 0;
 
 
+		client->reading_data_socket();
 
 
 
-
-		Logic *logic = new Logic(server, PlayerInGame(Player(name_vec[0].toStdString(), ""), this, 0, {}, 0)
+		logic = new Logic(server, PlayerInGame(Player(name_vec[0].toStdString(), ""), this, 0, {}, 0)
 			, PlayerInGame(Player(name_vec[1].toStdString(), ""), this, 1, {}, 0), player_count,
 			PlayerInGame(Player(name_vec[2].toStdString(), ""), this, 2, {}, 0)
 			, PlayerInGame(Player(name_vec[3].toStdString(), ""), this, 3, {}, 0));
 
 
+
+		//t.start();
 
 		//logic_thread = std::thread { &Logic::StartGame, logic };
 		logic->StartGame();
@@ -68,13 +77,13 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 				break;
 			}
 		}
-
-        game_handeler = new GameHandeler(this, ui->score,stars,this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
-			, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
-			, Player(name_vec[3].toStdString(), ""));
-
-		game_handeler->StartSet();
 	}
+
+	game_handeler = new GameHandeler(this, ui->score, stars, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
+		, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
+		, Player(name_vec[3].toStdString(), ""));
+
+	game_handeler->StartSet();
 	this->me = me;
 	for ( int i = me + 1; i < player_count + me; i++ ) {
 		ui->comboBox->addItem(name_vec[i % player_count]);
@@ -85,6 +94,7 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 }
 
 MainGameWindow::~MainGameWindow() {
+	t.wait();
 	delete ui;
 }
 

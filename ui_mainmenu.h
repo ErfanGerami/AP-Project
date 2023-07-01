@@ -67,6 +67,7 @@ public:
     QLineEdit *server_name;
     QSpinBox *player_count;
     QPushButton *pushButton;
+    QLineEdit *ip;
 
     void setupUi(QDialog *MainMenu)
     {
@@ -303,6 +304,11 @@ public:
         pushButton->setGeometry(QRect(20, 120, 51, 20));
         pushButton->setStyleSheet(QString::fromUtf8("#pushButton{border-radius:1px;background:transparent;color:red;font-size:13px;background:transparent;}\n"
 "#pushButton:hover{\\nborder-radius:1px;color:black;font-size:13px;background-color:red;\\ncolor:black;\\n}"));
+        ip = new QLineEdit(MainMenu);
+        ip->setObjectName(QString::fromUtf8("ip"));
+        ip->setGeometry(QRect(270, 630, 137, 24));
+        sizePolicy.setHeightForWidth(ip->sizePolicy().hasHeightForWidth());
+        ip->setSizePolicy(sizePolicy);
 
         retranslateUi(MainMenu);
 

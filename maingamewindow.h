@@ -20,10 +20,13 @@ namespace Ui {
 class MainGameWindow: public QDialog {
 	Q_OBJECT
 
+
 public:
+	friend class logic_thread;
 	explicit MainGameWindow(SocketHandeling *connection, QVector<QString> name_vec, SocketHandeling *client = nullptr, QWidget *parent = nullptr);
 	~MainGameWindow();
 
+	Logic *logic;
 private slots:
 	void on_pushButton_clicked();
 
@@ -44,7 +47,6 @@ private slots:
 private:
 	int me;
 	std::thread logic_thread;
-
 
 
 	Ui::MainGameWindow *ui;
