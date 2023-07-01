@@ -26,7 +26,6 @@ public:
 	GameHandeler(QWidget *parent, SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
 	QPropertyAnimation *TellTheFirst(int index);
 	QPropertyAnimation *Deal();
-	void shuffle();
 	void collect(PlayerInGame *player);
 	void StartRound();
 	void AddStickers(QString name, int index);

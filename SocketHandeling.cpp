@@ -82,7 +82,7 @@ void SocketHandeling::client_bytesAvailabe() {
 //client
 void SocketHandeling::client_run_fast_connect(QString username) {
 	client_log.open("client-log.txt", ios::out | ios::trunc);
-	client_log.clear();
+	client_log.close();
 
 	logWriteClient("> trying to catch server ip through udp socket");
 
@@ -284,6 +284,49 @@ QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server(int pl
 
 
 
+	DataPacket *data_packet = new DataPacket();
+	char *code = new char[6];
+
+	if ( force_read || tcp_socket->bytesAvailable() || tcp_socket->waitForReadyRead(-1) ) {
+
+
+		QByteArray block;
+		while ( true ) {
+			if ( tcp_socket_mutex.try_lock() ) {
+				block = tcp_socket->read(180);
+				tcp_socket_mutex.unlock();
+				break;
+			}
+		}
+
+
+
+		while ( block[0] == '&' )
+			block.remove(0, 1);
+
+		logWriteClient("> read " + to_string(block.size()) + "bytes of data from server");
+
+		for ( int i = 0; i < 5; i++ )
+			code[i] = block[i];
+		code[5] = '\0';
+
+		block.remove(0, 5);
+
+
+
+
+		QDataStream in(&block, QIODevice::ReadOnly);
+		;
+		in >> *data_packet;
+
+
+	}
+
+
+	return QPair<char *, DataPacket *>(code, data_packet);
+
+}
+
 void SocketHandeling::connected_to_server_socket() {
 	logWriteClient("> connected to server");
 	tcp_socket->write(name.toUtf8());
@@ -298,10 +341,13 @@ void SocketHandeling::disconnected_from_server_socket() {
 	logWriteClient("> server disconnected");
 }
 
+
+
+
 //server:
 void SocketHandeling::server_run(QString server_name, QString username, int player_count) {
 	server_log.open("server-log.txt", ios::out | ios::trunc);
-
+	server_log.close();
 
 
 	name = username;

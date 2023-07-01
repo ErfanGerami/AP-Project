@@ -50,6 +50,19 @@
         <file>images/VeryHappy.png</file>
         <file>images/wondered.png</file>
         <file>images/unknown.png</file>
+        <file>images/flag9.png</file>
+        <file>images/flag10.png</file>
+        <file>images/flag11.png</file>
+        <file>images/map9.png</file>
+        <file>images/map10.png</file>
+        <file>images/map11.png</file>
+        <file>images/parrot9.png</file>
+        <file>images/parrot10.png</file>
+        <file>images/parrot11.png</file>
+        <file>images/treasure9.png</file>
+        <file>images/treasure10.png</file>
+        <file>images/treasure11.png</file>
+        <file>images/treasure8.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/laugh.wav</file>
