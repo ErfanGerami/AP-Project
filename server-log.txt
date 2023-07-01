@@ -1,821 +1,949 @@
-123/6/1|20:20:51
+123/6/1|23:28:52
 > server created and listening on port 1500
-123/6/1|20:20:52
+123/6/1|23:28:54
 > new client connected, client number: 1
-123/6/1|20:20:52
-> reading data from socket number: 0123/6/1|20:20:52
-> read 5bytes of data123/6/1|20:20:52
-> client name recieved: mmd56123/6/1|20:20:57
+123/6/1|23:28:54
+> reading data from socket number: 0123/6/1|23:28:54
+> read 5bytes of data123/6/1|23:28:54
+> client name recieved: mmd46123/6/1|23:28:55
 > new client connected, client number: 2
-123/6/1|20:20:58
-> reading data from socket number: 1123/6/1|20:20:58
-> read 5bytes of data123/6/1|20:20:58
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:20:58
+123/6/1|23:28:56
+> reading data from socket number: 1123/6/1|23:28:56
+> read 5bytes of data123/6/1|23:28:56
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:28:56
 > sent 180bytes of data to client number 1
-123/6/1|20:20:58
-> written seccessfully as server to client number 1 and name 'mmd78'123/6/1|20:20:58
+123/6/1|23:28:56
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:28:56
 > sent 180bytes of data to client number 2
-123/6/1|20:20:58
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:20:58
+123/6/1|23:28:56
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:28:56
 > sent 180bytes of data to client number 1
-123/6/1|20:20:58
-> written seccessfully as server to client number 1 and name 'mmd78'123/6/1|20:20:58
-> sent 180bytes of data to client number 2
-123/6/1|20:20:58
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:20:58
-> sent 180bytes of data to client number 1
-123/6/1|20:20:58
-> written seccessfully as server to client number 1 and name 'mmd78'123/6/1|20:20:58
-> sent 180bytes of data to client number 2
-123/6/1|20:20:58
-> reading data from socket number: 0123/6/1|20:20:58
-> reading data from socket number: 1123/6/1|20:21:2
-> read 141bytes of data123/6/1|20:21:2
-code: 10200123/6/1|20:21:2
-> reading data from socket number: 0123/6/1|20:21:2
-> written seccessfully as server to client number 1 and name 'mmd78'123/6/1|20:21:2
-> sent 180bytes of data to client number 2
-123/6/1|20:21:2
-> reading data from socket number: 1123/6/1|20:21:24
-> client number 1 and name 'mmd78' disconnectd123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:28:56
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:28:56
+> sent 180bytes of data to client number 2
+123/6/1|23:28:56
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:28:56
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:28:56
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:28:56
+> sent 180bytes of data to client number 2
+123/6/1|23:28:56
+> reading data from socket number: 0123/6/1|23:28:56
+> reading data from socket number: 1123/6/1|23:28:58
+> read 141bytes of data123/6/1|23:28:58
+code: 10200123/6/1|23:28:58
+> reading data from socket number: 1123/6/1|23:28:59
+> read 141bytes of data123/6/1|23:28:59
+code: 10404123/6/1|23:28:59
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:28:59
+> sent 180bytes of data to client number 1
+123/6/1|23:28:59
+> reading data from socket number: 0123/6/1|23:28:59
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:28:59
+> sent 180bytes of data to client number 2
+123/6/1|23:28:59
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:28:59
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:28:59
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:28:59
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:28:59
+> reading data from socket number: 0123/6/1|23:28:59
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:28:59
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:28:59
+> reading data from socket number: 1123/6/1|23:29:3
+> read 141bytes of data123/6/1|23:29:3
+code: 10423123/6/1|23:29:3
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:3
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:3
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:3
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:3
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:3
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:3
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:3
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:3
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:3
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:3
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:3
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:3
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:3
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:3
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:3
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:3
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:3
+> sent 180bytes of data to client number 2
+123/6/1|23:29:3
+> reading data from socket number: 0123/6/1|23:29:3
+> reading data from socket number: 1123/6/1|23:29:7
+> read 141bytes of data123/6/1|23:29:7
+code: 10200123/6/1|23:29:7
+> reading data from socket number: 1123/6/1|23:29:10
+> read 141bytes of data123/6/1|23:29:10
+code: 10412123/6/1|23:29:10
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:10
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:10
+> reading data from socket number: 0123/6/1|23:29:10
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:10
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:10
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:10
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:10
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:10
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:10
+> reading data from socket number: 0123/6/1|23:29:10
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:10
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:10
+> reading data from socket number: 1123/6/1|23:29:13
+> read 141bytes of data123/6/1|23:29:13
+code: 10406123/6/1|23:29:13
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:13
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:13
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:13
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:13
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:13
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:13
+> reading data from socket number: 0123/6/1|23:29:13
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:13
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:13
+> reading data from socket number: 1123/6/1|23:29:17
+> read 141bytes of data123/6/1|23:29:17
+code: 10436123/6/1|23:29:17
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:17
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:17
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:17
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:17
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:17
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:17
+> reading data from socket number: 0123/6/1|23:29:17
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:17
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:17
+> reading data from socket number: 1123/6/1|23:29:19
+> read 141bytes of data123/6/1|23:29:19
+code: 10432123/6/1|23:29:19
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:19
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:19
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:19
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:19
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:19
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:19
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:19
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:19
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:19
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:19
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:19
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:19
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:19
+> sent 180bytes of data to client number 2
+123/6/1|23:29:19
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:19
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:19
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:19
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:19
+> reading data from socket number: 0123/6/1|23:29:19
+> reading data from socket number: 1123/6/1|23:29:24
+> read 141bytes of data123/6/1|23:29:24
+code: 10200123/6/1|23:29:24
+> reading data from socket number: 1123/6/1|23:29:26
+> read 141bytes of data123/6/1|23:29:26
+code: 10414123/6/1|23:29:26
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:26
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:26
+> reading data from socket number: 0123/6/1|23:29:26
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:26
+> sent 180bytes of data to client number 2
+123/6/1|23:29:26
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:26
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:26
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:26
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:26
+> reading data from socket number: 0123/6/1|23:29:26
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:26
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:26
+> reading data from socket number: 1123/6/1|23:29:28
+> read 141bytes of data123/6/1|23:29:28
+code: 10432123/6/1|23:29:28
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:28
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:28
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:28
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:28
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:28
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:28
+> reading data from socket number: 0123/6/1|23:29:28
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:28
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:28
+> reading data from socket number: 1123/6/1|23:29:30
+> read 141bytes of data123/6/1|23:29:30
+code: 10426123/6/1|23:29:30
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:30
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:30
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:30
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:30
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:30
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:30
+> reading data from socket number: 0123/6/1|23:29:30
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:30
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:30
+> reading data from socket number: 1123/6/1|23:29:33
+> read 141bytes of data123/6/1|23:29:33
+code: 10416123/6/1|23:29:33
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:33
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:33
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:33
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:33
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:33
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:33
+> reading data from socket number: 0123/6/1|23:29:33
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:33
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:33
+> reading data from socket number: 1123/6/1|23:29:36
+> read 141bytes of data123/6/1|23:29:36
+code: 10437123/6/1|23:29:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:36
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:36
+> reading data from socket number: 0123/6/1|23:29:36
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:36
+> reading data from socket number: 1123/6/1|23:29:38
+> read 141bytes of data123/6/1|23:29:38
+code: 10436123/6/1|23:29:38
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:38
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:38
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:38
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:38
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:38
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:38
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:38
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:38
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:38
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:38
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:38
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:38
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:38
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:38
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:38
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:38
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:38
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
-> sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:38
+> reading data from socket number: 0123/6/1|23:29:38
+> reading data from socket number: 1123/6/1|23:29:42
+> read 141bytes of data123/6/1|23:29:42
+code: 10200123/6/1|23:29:42
+> reading data from socket number: 0123/6/1|23:29:42
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:42
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:42
+> reading data from socket number: 1123/6/1|23:29:43
+> read 141bytes of data123/6/1|23:29:43
+code: 10413123/6/1|23:29:43
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:43
+> sent 180bytes of data to client number 1
+123/6/1|23:29:43
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:43
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:43
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:43
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:43
+> reading data from socket number: 0123/6/1|23:29:43
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:43
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:43
+> reading data from socket number: 1123/6/1|23:29:46
+> read 141bytes of data123/6/1|23:29:46
+code: 1044/123/6/1|23:29:46
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:46
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:46
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:46
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:46
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:46
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:46
+> reading data from socket number: 0123/6/1|23:29:46
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:46
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:46
+> reading data from socket number: 1123/6/1|23:29:49
+> read 141bytes of data123/6/1|23:29:49
+code: 1046/123/6/1|23:29:49
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:49
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:49
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:49
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:49
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:49
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:49
+> reading data from socket number: 0123/6/1|23:29:49
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:49
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:49
+> reading data from socket number: 1123/6/1|23:29:51
+> read 141bytes of data123/6/1|23:29:51
+code: 10408123/6/1|23:29:51
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:51
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:51
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:51
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:51
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:51
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:51
+> reading data from socket number: 0123/6/1|23:29:51
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:51
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:51
+> reading data from socket number: 1123/6/1|23:29:54
+> read 141bytes of data123/6/1|23:29:54
+code: 10432123/6/1|23:29:54
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:54
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:54
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:54
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:54
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:54
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:54
+> reading data from socket number: 0123/6/1|23:29:54
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:54
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:54
+> reading data from socket number: 1123/6/1|23:29:56
+> read 141bytes of data123/6/1|23:29:56
+code: 10431123/6/1|23:29:56
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:56
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:56
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:56
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:56
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:56
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:56
+> reading data from socket number: 0123/6/1|23:29:56
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:56
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:56
+> reading data from socket number: 1123/6/1|23:29:59
+> read 141bytes of data123/6/1|23:29:59
+code: 10413123/6/1|23:29:59
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:59
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:59
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:29:59
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:29:59
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:59
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:29:59
+> reading data from socket number: 0123/6/1|23:29:59
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:29:59
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:29:59
+> reading data from socket number: 1123/6/1|23:30:1
+> read 141bytes of data123/6/1|23:30:1
+code: 10434123/6/1|23:30:1
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:1
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:1
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:1
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:1
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:1
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:1
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:1
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:1
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:1
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:1
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:1
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:1
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:1
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:1
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:1
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:1
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:1
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:1
+> reading data from socket number: 0123/6/1|23:30:1
+> reading data from socket number: 1123/6/1|23:30:6
+> read 141bytes of data123/6/1|23:30:6
+code: 10200123/6/1|23:30:6
+> reading data from socket number: 1123/6/1|23:30:8
+> read 141bytes of data123/6/1|23:30:8
+code: 10407123/6/1|23:30:8
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:8
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:8
+> reading data from socket number: 0123/6/1|23:30:8
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:8
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:8
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:8
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:8
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:8
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:8
+> reading data from socket number: 0123/6/1|23:30:8
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:8
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:8
+> reading data from socket number: 1123/6/1|23:30:11
+> read 141bytes of data123/6/1|23:30:11
+code: 10417123/6/1|23:30:11
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:11
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:11
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:11
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:11
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:11
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:11
+> reading data from socket number: 0123/6/1|23:30:11
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:11
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:11
+> reading data from socket number: 1123/6/1|23:30:14
+> read 141bytes of data123/6/1|23:30:14
+code: 10422123/6/1|23:30:14
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:14
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:14
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:14
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:14
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:14
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:14
+> reading data from socket number: 0123/6/1|23:30:14
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:14
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:14
+> reading data from socket number: 1123/6/1|23:30:17
+> read 141bytes of data123/6/1|23:30:17
+code: 1045/123/6/1|23:30:17
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:17
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:17
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:17
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:17
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:17
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:17
+> reading data from socket number: 0123/6/1|23:30:17
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:17
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:17
+> reading data from socket number: 1123/6/1|23:30:19
+> read 141bytes of data123/6/1|23:30:19
+code: 1044/123/6/1|23:30:19
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:19
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:19
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:19
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:19
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:19
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:19
+> reading data from socket number: 0123/6/1|23:30:19
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:19
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:19
+> reading data from socket number: 1123/6/1|23:30:22
+> read 141bytes of data123/6/1|23:30:22
+code: 10423123/6/1|23:30:22
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:22
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:22
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:22
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:22
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:22
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:22
+> reading data from socket number: 0123/6/1|23:30:22
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:22
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:22
+> reading data from socket number: 1123/6/1|23:30:27
+> read 141bytes of data123/6/1|23:30:27
+code: 10434123/6/1|23:30:27
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:27
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:27
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:27
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:27
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:27
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:27
+> reading data from socket number: 0123/6/1|23:30:27
+> written seccessfully as server to client number 1 and name 'mmd85'123/6/1|23:30:27
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:27
+> reading data from socket number: 1123/6/1|23:30:35
+> client number 1 and name 'mmd85' disconnectd123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 0123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 1123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 0123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 1123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 0123/6/1|23:30:35
+> reading data from socket number: 1123/6/1|23:30:35
+> reading data from socket number: 1123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 0123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 0123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 1123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 0123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 1123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:35
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:35
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:35
+> reading data from socket number: 0123/6/1|23:30:35
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 0123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 0123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> reading data from socket number: 1123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> reading data from socket number: 1123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> written seccessfully as server to client number 0 and name 'mmd56'123/6/1|20:21:24
+123/6/1|23:30:36
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/1|23:30:36
 > sent 180bytes of data to client number 1
-123/6/1|20:21:24
+123/6/1|23:30:36
 > sent 180bytes of data to client number 2
-123/6/1|20:21:24
-> client name recieved: mmd78
+123/6/1|23:30:36
+> client name recieved: mmd85

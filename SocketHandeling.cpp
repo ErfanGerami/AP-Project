@@ -70,10 +70,10 @@ SocketHandeling::~SocketHandeling() {
 void SocketHandeling::client_bytesAvailabe() {
 
 	while ( true ) {
-		if ( tcp_socket_mutex.try_lock() ) {
-			if ( tcp_socket->bytesAvailable() )
+		if ( data_vector_mutex.try_lock() ) {
+			if ( !data_pair_vector.isEmpty() )
 				emit main_game_read();
-			tcp_socket_mutex.unlock();
+			data_vector_mutex.unlock();
 		}
 		std::this_thread::sleep_for(milliseconds(1000));
 	}
@@ -171,16 +171,16 @@ void SocketHandeling::client_thread_funtion() {
 
 
 QPair<char *, DataPacket *> SocketHandeling::reading_data_socket() {
-	while ( data_pair_vector.isEmpty() ) { _sleep(200); }
+	//while ( data_pair_vector.isEmpty() ) { _sleep(200); }
 
-	//std::unique_lock<mutex> lck{data_vector_mutex};
+	std::unique_lock<mutex> lck{data_vector_mutex};
 
-	//cond_var.wait(lck, [this] { return !data_pair_vector.isEmpty(); });
-	data_vector_mutex.lock();
+	cond_var.wait(lck, [this] { return !data_pair_vector.isEmpty(); });
+	//data_vector_mutex.lock();
 	QPair<char *, DataPacket *> data = data_pair_vector.front();
 	data_pair_vector.pop_front();
-	data_vector_mutex.unlock();
-	//lck.unlock();
+	//data_vector_mutex.unlock();
+	lck.unlock();
 	return data;
 
 }
