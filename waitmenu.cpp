@@ -120,7 +120,7 @@ void WaitMenu::new_player(QString name) {
 
 
 void WaitMenu::new_player_socket() {
-	QPair<char *, DataPacket *> pair = client->reading_data_socket(true);
+	QPair<char *, DataPacket *> pair = client->reading_data_socket();
 	DataPacket *data = pair.second;
 	if ( Code::get_code(pair.first) == Code::fromServer_Sent_PlayerNames ) {
 

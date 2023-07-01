@@ -17,6 +17,9 @@
 #include <sstream>
 #include "Code.h"
 #include <mutex>
+#include <condition_variable>
+
+
 
 class channel;
 
@@ -51,6 +54,9 @@ public:
 	channel *get_channel_pointer();
 private:
 	std::mutex tcp_socket_mutex;
+	std::mutex data_vector_mutex;
+	std::condition_variable cond_var;
+
 	int player_count;
 	void logWriteServer(std::string str);
 	void logWriteClient(std::string str);
@@ -64,6 +70,12 @@ private:
 
 	std::thread broadcast_ip_thread;
 	std::thread client_bytesAvailabe_emit;
+	std::thread client_thread;
+
+	void client_thread_funtion();
+
+	QVector<QPair<char *, DataPacket *>> data_pair_vector;
+
 
 	std::vector<channel *> channels;
 
@@ -80,7 +92,7 @@ private:
 public slots:
 	void new_connection_server();
 	QVector<QPair< char *, DataPacket * >> read_data_as_server(int player_number = -1);
-	QPair<char *, DataPacket *> reading_data_socket(bool force_read);
+	QPair<char *, DataPacket *> reading_data_socket();
 	void writing_data_socket();
 	void connected_to_server_socket();
 	void disconnected_from_server_socket();

@@ -227,7 +227,7 @@ void GameHandeler::StartSet() {
 
 	}
 
-	QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
+	QPair<char *, DataPacket *>pair = client->reading_data_socket();
 
 	if ( Code::get_code(pair.first) == Code::fromServer_Sent_FirstPlayer ) {
 		first_this_round = pair.first[3] - '0';//set this
@@ -266,7 +266,7 @@ void GameHandeler::Read() {
 		Card::CardType type;
 		int number;
 
-		QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
+		QPair<char *, DataPacket *>pair = client->reading_data_socket();
 		char *code = pair.first;
 		if ( Code::get_code(code) == Code::fromServer_Sent_AnotherPlayerPlayedCard ) {
 			type = code[3] - '0';
@@ -289,7 +289,7 @@ void GameHandeler::Read() {
 
 		//get the player that has won the round;
 		int player_index;
-		QPair<char *, DataPacket *> pair = client->reading_data_socket(false);
+		QPair<char *, DataPacket *> pair = client->reading_data_socket();
 		if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner )
 			player_index = pair.first[3] - '0';
 		else
@@ -318,7 +318,7 @@ void GameHandeler::Read() {
 		disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
 
 
-		QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
+		QPair<char *, DataPacket *>pair = client->reading_data_socket();
 		int points;
 		if ( Code::get_code(pair.first) == Code::fromServer_Sent_YourScore ) {
 
@@ -333,7 +333,7 @@ void GameHandeler::Read() {
 	}
 	else if ( curr_state == 5 ) {
 		disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
-		QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
+		QPair<char *, DataPacket *>pair = client->reading_data_socket();
 		int Game_Winner;
 		if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameWinner ) {
 
@@ -351,7 +351,7 @@ void GameHandeler::GetMyCards() {
 	//new Card(this,type,scene,view,number)
 	//or just initialize like the server and remind me to make it right later :) :)
 	QVector<Card *> cards;//set this
-	QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
+	QPair<char *, DataPacket *>pair = client->reading_data_socket();
 	char *code = pair.first;
 	DataPacket *data = pair.second;
 	if ( Code::get_code(code) == Code::fromServer_Sent_YourCards ) {

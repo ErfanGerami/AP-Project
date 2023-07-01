@@ -107,11 +107,7 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 
 		tcp_socket->connectToHost(ip, 1500);
 
-		//connect(tcp_socket, SIGNAL(readyRead()), this, SLOT(reading_data_socket()));
 
-		//tcp_socket->waitForConnected(-1);
-		//tcp_socket->write(name.toUtf8());
-		//tcp_socket->waitForBytesWritten(-1);
 		client_bytesAvailabe_emit = std::thread { &SocketHandeling::client_bytesAvailabe, this };
 		name = username;
 
@@ -122,6 +118,73 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 		throw Errors(Errors::server_not_found);
 	}
 }
+
+
+void SocketHandeling::client_thread_funtion() {
+	while ( true ) {
+		if ( tcp_socket->bytesAvailable() || tcp_socket->waitForReadyRead(-1) ) {
+			DataPacket *data_packet = new DataPacket();
+			char *code = new char[6];
+			QByteArray block;
+			while ( true ) {
+				if ( tcp_socket_mutex.try_lock() ) {
+					block = tcp_socket->read(180);
+					tcp_socket_mutex.unlock();
+					break;
+				}
+			}
+
+			while ( block[0] == '&' )
+				block.remove(0, 1);
+
+			logWriteClient("> read " + to_string(block.size()) + "bytes of data from server");
+
+			for ( int i = 0; i < 5; i++ )
+				code[i] = block[i];
+			code[5] = '\0';
+
+			block.remove(0, 5);
+
+
+
+
+			QDataStream in(&block, QIODevice::ReadOnly);
+			;
+			in >> *data_packet;
+
+
+			while ( true ) {
+				if ( data_vector_mutex.try_lock() ) {
+					qDebug() << "locked";
+					data_pair_vector.push_back(QPair<char *, DataPacket *>(code, data_packet));
+					data_vector_mutex.unlock();
+					qDebug() << "unlocked";
+					break;
+				}
+			}
+
+			cond_var.notify_one();
+
+		}
+	}
+}
+
+
+QPair<char *, DataPacket *> SocketHandeling::reading_data_socket() {
+	while ( data_pair_vector.isEmpty() ) { _sleep(200); }
+
+	//std::unique_lock<mutex> lck{data_vector_mutex};
+
+	//cond_var.wait(lck, [this] { return !data_pair_vector.isEmpty(); });
+	data_vector_mutex.lock();
+	QPair<char *, DataPacket *> data = data_pair_vector.front();
+	data_pair_vector.pop_front();
+	data_vector_mutex.unlock();
+	//lck.unlock();
+	return data;
+
+}
+
 
 void SocketHandeling::client_run(QHostAddress ip, QString username) {
 	name = username;
@@ -219,61 +282,16 @@ QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server(int pl
 	return data_vector;
 }
 
-QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read) {
 
-
-
-	DataPacket *data_packet = new DataPacket();
-	char *code = new char[6];
-
-	if ( force_read || tcp_socket->bytesAvailable() || tcp_socket->waitForReadyRead(-1) ) {
-
-
-		QByteArray block;
-		while ( true ) {
-			if ( tcp_socket_mutex.try_lock() ) {
-				block = tcp_socket->read(180);
-				tcp_socket_mutex.unlock();
-				break;
-			}
-		}
-
-
-
-		while ( block[0] == '&' )
-			block.remove(0, 1);
-
-		logWriteClient("> read " + to_string(block.size()) + "bytes of data from server");
-
-		for ( int i = 0; i < 5; i++ )
-			code[i] = block[i];
-		code[5] = '\0';
-
-		block.remove(0, 5);
-
-
-
-
-		QDataStream in(&block, QIODevice::ReadOnly);
-		;
-		in >> *data_packet;
-
-
-	}
-
-
-	return QPair<char *, DataPacket *>(code, data_packet);
-
-}
 
 void SocketHandeling::connected_to_server_socket() {
 	logWriteClient("> connected to server");
 	tcp_socket->write(name.toUtf8());
+	client_thread = std::thread { &SocketHandeling::client_thread_funtion, this };
 }
 
 void SocketHandeling::writing_data_socket() {
 	logWriteClient("> written to socket as client");
-
 }
 
 void SocketHandeling::disconnected_from_server_socket() {
