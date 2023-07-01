@@ -29,12 +29,12 @@ void channel::logWriteServer(std::string str) {
 void channel::writing_data() {
 
 
-	logWriteServer("> written seccessfully as server to client number " + client_number + " and name '" + client_name.toStdString() + "'\n\n");
+	logWriteServer("> written seccessfully as server to client number " + client_number + " and name '" + client_name.toStdString() + "'");
 
 }
 
 QPair<char *, DataPacket *> channel::reading_data() {
-	logWriteServer("> reading data\n\n");
+	logWriteServer("> reading data from socket number: " + client_number);
 
 	QByteArray block;
 	DataPacket *data_packet = new DataPacket();
@@ -65,10 +65,13 @@ QPair<char *, DataPacket *> channel::reading_data() {
 		while ( block[0] == '&' )
 			block.remove(0, 1);
 
+		logWriteServer("> read " + to_string(block.size()) + "bytes of data");
+
+
 		if ( client_name.size() == 0 ) {
 			client_name = block;
 			emit newplayer(client_name);
-			logWriteServer("> client name recieved: " + client_name.toStdString() + "\n\n");
+			logWriteServer("> client name recieved: " + client_name.toStdString());
 
 			disconnect(socket, SIGNAL(readyRead()), this, SLOT(reading_data()));
 
@@ -81,7 +84,7 @@ QPair<char *, DataPacket *> channel::reading_data() {
 
 			block.remove(0, 5);
 
-
+			logWriteServer("code: " + std::string(code));
 
 			QDataStream in(&block, QIODevice::ReadOnly);
 			in >> *data_packet;
@@ -95,7 +98,7 @@ QPair<char *, DataPacket *> channel::reading_data() {
 
 void channel::disconnected_from_server() {
 
-	logWriteServer("> client number " + client_number + " and name '" + client_name.toStdString() + "' disconnectd\n\n");
+	logWriteServer("> client number " + client_number + " and name '" + client_name.toStdString() + "' disconnectd");
 
 }
 
@@ -109,7 +112,7 @@ void channel::close_socket() {
 
 	socket->disconnect();
 
-	logWriteServer("> disconnected client number " + client_number + " and name '" + client_name.toStdString() + "'\n\n");
+	logWriteServer("> disconnected client number " + client_number + " and name '" + client_name.toStdString() + "'");
 }
 
 QString channel::get_name() {
