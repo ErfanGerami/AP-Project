@@ -26,12 +26,26 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 	while ( name_vec.size() < 4 )
 		name_vec.push_back("");
 
+
+
+    QLabel* stars[4]={ui->star_0,ui->star_1,ui->star_2,ui->star_3};
+    for(int i=0;i<4;i++){
+        stars[i]->hide();
+    }
+
+
+
 	int me;
+
 	if ( connection->am_i_the_server() ) {
 		//server side
 		server = connection;
 		this->client = client;
 		me = 0;
+
+
+
+
 
 
 		Logic *logic = new Logic(server, PlayerInGame(Player(name_vec[0].toStdString(), ""), this, 0, {}, 0)
@@ -55,7 +69,7 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 			}
 		}
 
-		game_handeler = new GameHandeler(this, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
+        game_handeler = new GameHandeler(this, ui->score,stars,this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
 			, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
 			, Player(name_vec[3].toStdString(), ""));
 

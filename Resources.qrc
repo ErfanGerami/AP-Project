@@ -63,6 +63,7 @@
         <file>images/treasure10.png</file>
         <file>images/treasure11.png</file>
         <file>images/treasure8.png</file>
+        <file>images/star.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/laugh.wav</file>

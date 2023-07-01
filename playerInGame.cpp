@@ -157,6 +157,7 @@ QPropertyAnimation *PlayerInGame::Deal() {
 			rotation = 270;
 			break;
 	}
+
 	rotation -= (cards.size() / 2 - 1) * Card::angle_between_cards - 10;
 
 	auto position = base_pos;
