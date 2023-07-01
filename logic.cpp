@@ -267,7 +267,7 @@ void Logic::StartGame() {
 
 		for ( int round_number = 0; round_number < set * 2; round_number++ ) {
 			int rounds_score = 0;
-
+			cards_on_deck = {};
 
 
 

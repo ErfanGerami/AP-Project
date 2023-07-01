@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 123/6/1|23:43:40
 > trying to catch server ip through udp socket
 123/6/1|23:43:40
@@ -266,3 +267,29 @@
 > read 141bytes of data from server
 123/6/1|23:45:35
 > read 141bytes of data from server
+=======
+123/6/1|22:21:38
+> trying to catch server ip through udp socket
+123/6/1|22:21:38
+> server found
+123/6/1|22:21:38
+> trying to connect to server with name '' created by 'mmd90'
+123/6/1|22:21:39
+> connected to server
+123/6/1|22:21:39
+> written to socket as client
+123/6/1|22:21:39
+> read 161bytes of data from server
+123/6/1|22:21:39
+> read 141bytes of data from server
+123/6/1|22:21:39
+> read 141bytes of data from server
+123/6/1|22:21:42
+> written to socket as client
+123/6/1|22:21:42
+> sent 180bytes of data
+123/6/1|22:21:42
+> written to socket as client
+123/6/1|22:21:42
+> sent 180bytes of data
+>>>>>>> f9075e5600bc383e52bb84b22e32919122fab140
