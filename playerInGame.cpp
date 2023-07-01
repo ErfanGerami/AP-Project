@@ -118,20 +118,20 @@ std::pair<int, int> PlayerInGame::GetCardsWonPos() { return cards_won_pos; }
 void PlayerInGame::CalculateWonCardPosition() {
 
 	cards_won_pos = base_pos;
-    const int max_height = 1021;
-    const int max_width = 1610;
+	const int max_height = 1021;
+	const int max_width = 1610;
 	switch ( place ) {
 		case 0:
-            cards_won_pos = { max_width/2+300, max_height-50 };
+			cards_won_pos = { max_width / 2 + 300, max_height - 50 };
 			break;
 		case 1:
-            cards_won_pos = { max_width/2+-300, 50 };
+			cards_won_pos = { max_width / 2 + -300, 50 };
 			break;
 		case 2:
-            cards_won_pos = {max_width-50 , max_height-300 };
+			cards_won_pos = { max_width - 50, max_height - 300 };
 			break;
 		case 3:
-            cards_won_pos = { 50, max_height+300 };
+			cards_won_pos = { 50, max_height + 300 };
 			break;
 
 	}
@@ -157,7 +157,7 @@ QPropertyAnimation *PlayerInGame::Deal() {
 			rotation = 270;
 			break;
 	}
-	rotation += (cards.size() / 2 - 1) * Card::angle_between_cards - 10;
+	rotation -= (cards.size() / 2 - 1) * Card::angle_between_cards - 10;
 
 	auto position = base_pos;
 	switch ( place ) {

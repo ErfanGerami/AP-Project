@@ -124,6 +124,7 @@ void GameHandeler::collect(PlayerInGame *winner) {
 		card->PushTo(winner->GetCardsWonPos(), { 60, 100 });
 
 	}
+	cards_on_deck = {};
 }
 
 
@@ -168,13 +169,13 @@ void GameHandeler::GetOthersPushedCard(Card::CardType type, int number) {
 		qDebug() << "awdjadajwdjuajwiduajjdoajuodjaiwdjoamdo";
 	}
 	else {
-
 		Card *card = players[GetWhoseTurn()]->PushCard(type, number, true);
+		turn++;
 		card->ChangeCard(type, number);
 		card->PushCard();
 		card->SetDisabled(true);
 		cards_on_deck.push_back(card);
-		turn++;
+
 
 	}
 
@@ -318,7 +319,7 @@ void GameHandeler::Read() {
 		disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
 
 
-		QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
+		QPair<char *, DataPacket *> pair = client->reading_data_socket(false);
 		int points;
 		if ( Code::get_code(pair.first) == Code::fromServer_Sent_YourScore ) {
 
@@ -326,7 +327,11 @@ void GameHandeler::Read() {
 		}
 		else {
 			//handle
+
 		}
+
+
+
 
 		StartSet();
 
@@ -342,6 +347,7 @@ void GameHandeler::Read() {
 		else {
 			//handle
 		}
+
 	}
 }
 
@@ -380,7 +386,7 @@ void GameHandeler::Predict() {
 	bool okay = false;
 	int prediction;
 	while ( !okay )
-		prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, max(round * 2, 1), 1, &okay);
+		prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, set * 2, 1, &okay);
 	//notify the prediction to others;
 	char *code1 = Code::set_code(me + '0', Code::fromClient_Sent_Predictions);
 	code1[3] = '0' + prediction;
@@ -397,6 +403,7 @@ void GameHandeler::Predict() {
 
 void GameHandeler::PushCard() {
 	if ( GetWhoseTurn() == me ) {
+
 		Card::CardType type;
 		int number;
 		//inform the client
@@ -407,35 +414,31 @@ void GameHandeler::PushCard() {
 				type = cards[i]->GetType();
 				number = cards[i]->GetNumber();
 				if ( isValid(Card(type, number), turn) ) {
+					turn++;
 					Card *card = players[me]->PushCard(type, number, false);
 					cards_on_deck.push_back(card);
 					card->PushCard();
 					card->SetDisabled(true);
 
+
+
+
+					//notify the server of what card is pushed here
+					char *code = Code::set_code(me + '0', Code::fromClient_Sent_PlayedCard);
+					code[3] = type + '0';
+					code[4] = number + '0';
+					DataPacket dummy;
+					client->send_data(code, &dummy);
+					//---------------------------------------------
+
+					if ( turn == number_of_players ) {
+
+						curr_state = 3;
+
+					}
 				}
-
-				/*if ( turn == number_of_players ) {
-					GetTheWinnerOfTheRound();
-
-
-				}*/
-				//notify the server of what card is pushed here
-				char *code = Code::set_code(me + '0', Code::fromClient_Sent_PlayedCard);
-				code[3] = type + '0';
-				code[4] = number + '0';
-				DataPacket dummy;
-				client->send_data(code, &dummy);
-				//---------------------------------------------
-
-
-
-
+				break;
 			}
-		}
-		turn++;
-		if ( turn == number_of_players ) {
-
-			curr_state = 3;
 
 		}
 	}
