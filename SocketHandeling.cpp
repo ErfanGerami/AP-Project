@@ -18,13 +18,13 @@ std::string SocketHandeling::make_time() {
 
 void SocketHandeling::logWriteServer(std::string str) {
 	server_log.open("server-log.txt", ios::out | ios::app);
-	server_log << make_time() << str;
+	server_log << make_time() << str << endl;
 	server_log.close();
 }
 
 void SocketHandeling::logWriteClient(std::string str) {
 	client_log.open("client-log.txt", ios::out | ios::app);
-	client_log << make_time() << str;
+	client_log << make_time() << str << endl;
 	client_log.close();
 }
 
@@ -81,14 +81,17 @@ void SocketHandeling::client_bytesAvailabe() {
 }
 //client
 void SocketHandeling::client_run_fast_connect(QString username) {
-	logWriteClient("> trying to catch server ip through udp socket\n\n");
+	client_log.open("client-log.txt", ios::out | ios::trunc);
+	client_log.close();
+
+	logWriteClient("> trying to catch server ip through udp socket");
 
 	udp_socket->bind(QHostAddress::Any, 1500);
 
 
 
 	if ( udp_socket->waitForReadyRead(1000) ) {
-		logWriteClient("> server found\n\n");
+		logWriteClient("> server found");
 
 		QByteArray buffer;
 		QHostAddress ip;
@@ -99,7 +102,7 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 		QByteArrayList list = buffer.split('&');
 
 
-		logWriteClient("> trying to connect to server with name '" + list[0].toStdString() + "' created by '" + list[1].toStdString() + "'\n\n");
+		logWriteClient("> trying to connect to server with name '" + list[0].toStdString() + "' created by '" + list[1].toStdString() + "'");
 
 
 		tcp_socket->connectToHost(ip, 1500);
@@ -115,7 +118,7 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 
 	}
 	else {
-		logWriteClient("> no server found\n\n");
+		logWriteClient("> no server found");
 		throw Errors(Errors::server_not_found);
 	}
 }
@@ -123,13 +126,13 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 void SocketHandeling::client_run(QHostAddress ip, QString username) {
 	name = username;
 
-	logWriteClient("> trying to connect to server with ip '" + ip.toString().toStdString() + "'\n\n");
+	logWriteClient("> trying to connect to server with ip '" + ip.toString().toStdString() + "'");
 
 	tcp_socket->connectToHost(ip, 1500);
 	//connect(tcp_socket, SIGNAL(connected()), this, SLOT(connected_to_server_socket()));
 	if ( !tcp_socket->waitForConnected(1000) ) {
 
-		logWriteClient("> connection failed\n\n");
+		logWriteClient("> connection failed");
 		throw Errors(Errors::cant_connect);
 	}
 
@@ -148,7 +151,7 @@ bool operator<(const QHostAddress &a, const QHostAddress &b) {
 
 QMap<QHostAddress, QPair<QString, QString>> SocketHandeling::get_servers() {
 
-	logWriteClient("> trying to catch server ip through udp socket\n\n");
+	logWriteClient("> trying to catch server ip through udp socket");
 	udp_socket->bind(QHostAddress::AnyIPv4, 1500);
 	QMap<QHostAddress, QPair<QString, QString>> server_map;
 
@@ -168,7 +171,7 @@ QMap<QHostAddress, QPair<QString, QString>> SocketHandeling::get_servers() {
 		udp_socket->flush();
 	}
 
-	logWriteClient("> " + QString::number(server_map.size()).toStdString() + " server found\n\n");
+	logWriteClient("> " + QString::number(server_map.size()).toStdString() + " server found");
 
 	return server_map;
 
@@ -225,7 +228,7 @@ QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read
 
 	if ( force_read || tcp_socket->bytesAvailable() || tcp_socket->waitForReadyRead(-1) ) {
 
-		qDebug() << "buffer size:" << tcp_socket->readBufferSize();
+
 		QByteArray block;
 		while ( true ) {
 			if ( tcp_socket_mutex.try_lock() ) {
@@ -240,8 +243,8 @@ QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read
 		while ( block[0] == '&' )
 			block.remove(0, 1);
 
+		logWriteClient("> read " + to_string(block.size()) + "bytes of data from server");
 
-		qDebug() << "read size: " << block.size();
 		for ( int i = 0; i < 5; i++ )
 			code[i] = block[i];
 		code[5] = '\0';
@@ -264,29 +267,32 @@ QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read
 }
 
 void SocketHandeling::connected_to_server_socket() {
-	logWriteClient("> connected to server\n\n");
+	logWriteClient("> connected to server");
 	tcp_socket->write(name.toUtf8());
 }
 
 void SocketHandeling::writing_data_socket() {
-	logWriteClient("> written to socket as client\n\n");
+	logWriteClient("> written to socket as client");
 
 }
 
 void SocketHandeling::disconnected_from_server_socket() {
-	logWriteClient("> server disconnected\n\n");
+	logWriteClient("> server disconnected");
 }
-
 
 
 
 
 //server:
 void SocketHandeling::server_run(QString server_name, QString username, int player_count) {
+	server_log.open("server-log.txt", ios::out | ios::trunc);
+	server_log.close();
+
+
 	name = username;
 	this->player_count = player_count;
 
-	logWriteServer("> trying to create server with name: '" + server_name.toStdString() + "' and created by '" + username.toStdString() + "'\n\n");
+	logWriteServer("> trying to create server with name: '" + server_name.toStdString() + "' and created by '" + username.toStdString() + "'");
 
 
 
@@ -297,7 +303,7 @@ void SocketHandeling::server_run(QString server_name, QString username, int play
 	tcp_server->listen(QHostAddress::Any, 1500);
 
 	if ( tcp_server->isListening() ) {
-		logWriteServer("> server created and listening on port 1500\n\n");
+		logWriteServer("> server created and listening on port 1500");
 
 		connect(tcp_server, SIGNAL(newConnection()), this, SLOT(new_connection_server()));
 
@@ -306,14 +312,12 @@ void SocketHandeling::server_run(QString server_name, QString username, int play
 
 	}
 	else {
-		logWriteServer("> failed to start server\n\n");
+		logWriteServer("> failed to start server");
 		throw Errors(Errors::server_initiation_failed);
 	}
 
 
 }
-
-
 
 void SocketHandeling::broadcast_ip(QString server_name, QString username) {
 	while ( true ) {
@@ -326,7 +330,6 @@ void SocketHandeling::broadcast_ip(QString server_name, QString username) {
 	}
 
 }
-
 
 void SocketHandeling::send_data(char *code, DataPacket *data, int client_number) {
 
@@ -355,14 +358,18 @@ void SocketHandeling::send_data(char *code, DataPacket *data, int client_number)
 	Q_ASSERT(final_block.size() == 180);
 
 
-	qDebug() << "sending bytes: " << final_block.size();
+
+
+
 
 	if ( is_the_server ) {
 
 		int ctr = 0;
 		for ( auto i : channels ) {
-			if ( client_number == ctr++ || client_number == -1 )
+			if ( client_number == ctr++ || client_number == -1 ) {
 				i->send_data(final_block);
+				logWriteServer("> sent " + to_string(final_block.size()) + "bytes of data to client number " + to_string(ctr));
+			}
 		}
 
 
@@ -370,6 +377,7 @@ void SocketHandeling::send_data(char *code, DataPacket *data, int client_number)
 	else {
 		tcp_socket->write(final_block);
 		tcp_socket->waitForBytesWritten(-1);
+		logWriteClient("> sent " + to_string(final_block.size()) + "bytes of data");
 	}
 
 
@@ -383,7 +391,7 @@ void SocketHandeling::new_connection_server() {
 
 	channels.push_back(new_channel);
 
-	logWriteServer("> new client connected, client number: " + QString::number(channels.size()).toStdString() + "\n\n");
+	logWriteServer("> new client connected, client number: " + QString::number(channels.size()).toStdString());
 
 }
 
