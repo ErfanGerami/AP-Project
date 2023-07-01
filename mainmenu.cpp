@@ -7,6 +7,8 @@ extern QString ServerName;
 MainMenu::MainMenu(QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::MainMenu) {
+    connect(this,SIGNAL(show_parent()),parent,SLOT(show_me()));
+
 
 	ui->setupUi(this);
 	setFixedSize(size());
@@ -37,7 +39,8 @@ MainMenu::MainMenu(QWidget *parent):
 		ui->line_1->hide();
 		ui->won->setText("0");
 		ui->lost->setText("0");
-		ui->won->setText("1000");
+        ui->coin->setText("1000");
+        ui->coin_pic->move(ui->coin_pic->x() + QString::number(1000).length() * 15, ui->coin_pic->y());
 	}
 
 
@@ -155,5 +158,14 @@ void MainMenu::show_me() {
 		ui->won->setText("1000");
 	}
 
+}
+
+
+void MainMenu::on_pushButton_clicked()
+{
+    MainPlayer=nullptr;
+    SavedPassword="";
+    emit show_parent();
+    this->hide();
 }
 

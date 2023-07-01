@@ -417,6 +417,24 @@
     <string>new Address:</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>10</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton{font-size:10px; border-color:white;border-radius:35px;;background-color:rgba(0,0,0,225);color:white;border-style: solid;
+  border-width: 1px;}
+#pushButton:hover{background-color:rgba(255,255,255,225);color:black;}</string>
+   </property>
+   <property name="text">
+    <string>return</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>

@@ -659,7 +659,7 @@ color:black;
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -712,6 +712,23 @@ color:black;
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>120</y>
+     <width>51</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton{border-radius:1px;background:transparent;color:red;font-size:13px;background:transparent;}
+#pushButton:hover{\nborder-radius:1px;color:black;font-size:13px;background-color:red;\ncolor:black;\n}</string>
+   </property>
+   <property name="text">
+    <string>log out</string>
+   </property>
   </widget>
  </widget>
  <resources/>

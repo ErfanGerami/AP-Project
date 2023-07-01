@@ -28,10 +28,13 @@ private slots:
 	void on_join_server_clicked();
 
 
+    void on_pushButton_clicked();
+
 public slots:
 	void show_me();
 	void server_joining_finished(bool is_connected);
-
+signals:
+    void show_parent();
 private:
 	bool *is_connected;
 	WaitMenu *wait_menu;

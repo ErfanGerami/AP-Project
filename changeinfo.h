@@ -37,6 +37,8 @@ private slots:
 	void on_adr_check_toggled(bool checked);
 
 
+    void on_pushButton_clicked();
+
 private:
 	Ui::ChangeInfo *ui;
 signals:

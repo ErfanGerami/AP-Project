@@ -48,7 +48,7 @@ Login::~Login() {
 }
 
 
-void Login::show_me() { this->show(); }
+void Login::show_me() { this->show();ui->pass->setText("");ui->user->setText(""); }
 
 
 
@@ -64,7 +64,7 @@ void Login::on_login_clicked() {
 
 		MainPlayer = FileHandeling::file_read(ui->user->text(), ui->pass->text());
 		SavedPassword = ui->pass->text();
-		MainMenu *main_menu = new MainMenu;
+        MainMenu *main_menu = new MainMenu(this);
 		main_menu->show();
 		this->hide();
 

@@ -157,3 +157,11 @@ void ChangeInfo::on_submit_clicked()
 
 
 
+
+void ChangeInfo::on_pushButton_clicked()
+{
+    emit show_parent();
+    this->close();
+
+}
+

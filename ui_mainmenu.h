@@ -58,7 +58,7 @@ public:
     QLabel *lost;
     QLabel *coin_pic;
     QPushButton *change_info;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_2;
@@ -66,6 +66,7 @@ public:
     QVBoxLayout *verticalLayout;
     QLineEdit *server_name;
     QSpinBox *player_count;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *MainMenu)
     {
@@ -254,20 +255,20 @@ public:
 "color:black;\n"
 "}"));
         change_info->setFlat(false);
-        widget = new QWidget(MainMenu);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 570, 227, 57));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(MainMenu);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 570, 227, 57));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         verticalLayout_2->addWidget(label_2);
 
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
         verticalLayout_2->addWidget(label_3);
@@ -277,7 +278,7 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        server_name = new QLineEdit(widget);
+        server_name = new QLineEdit(layoutWidget);
         server_name->setObjectName(QString::fromUtf8("server_name"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -287,7 +288,7 @@ public:
 
         verticalLayout->addWidget(server_name);
 
-        player_count = new QSpinBox(widget);
+        player_count = new QSpinBox(layoutWidget);
         player_count->setObjectName(QString::fromUtf8("player_count"));
         player_count->setMinimum(2);
         player_count->setMaximum(4);
@@ -297,6 +298,11 @@ public:
 
         horizontalLayout->addLayout(verticalLayout);
 
+        pushButton = new QPushButton(MainMenu);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(20, 120, 51, 20));
+        pushButton->setStyleSheet(QString::fromUtf8("#pushButton{border-radius:1px;background:transparent;color:red;font-size:13px;background:transparent;}\n"
+"#pushButton:hover{\\nborder-radius:1px;color:black;font-size:13px;background-color:red;\\ncolor:black;\\n}"));
 
         retranslateUi(MainMenu);
 
@@ -333,6 +339,7 @@ public:
         change_info->setText(QApplication::translate("MainMenu", "Change Your Information Here", nullptr));
         label_2->setText(QApplication::translate("MainMenu", "server name:", nullptr));
         label_3->setText(QApplication::translate("MainMenu", "player count:", nullptr));
+        pushButton->setText(QApplication::translate("MainMenu", "log out", nullptr));
     } // retranslateUi
 
 };

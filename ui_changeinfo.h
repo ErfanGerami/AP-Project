@@ -39,6 +39,7 @@ public:
     QLineEdit *adr;
     QCheckBox *adr_check;
     QLabel *adrL;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *ChangeInfo)
     {
@@ -172,6 +173,12 @@ public:
         adrL->setFont(font1);
         adrL->setStyleSheet(QString::fromUtf8("border-style:solid; background-color: rgba(0, 0, 0,200); color:red\n"
 ";font-size:15px;border-radius:10px;"));
+        pushButton = new QPushButton(ChangeInfo);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(640, 10, 93, 28));
+        pushButton->setStyleSheet(QString::fromUtf8("#pushButton{font-size:10px; border-color:white;border-radius:35px;;background-color:rgba(0,0,0,225);color:white;border-style: solid;\n"
+"  border-width: 1px;}\n"
+"#pushButton:hover{background-color:rgba(255,255,255,225);color:black;}"));
 
         retranslateUi(ChangeInfo);
         QObject::connect(user_check, SIGNAL(toggled(bool)), userL, SLOT(setVisible(bool)));
@@ -203,6 +210,7 @@ public:
         submit->setText(QApplication::translate("ChangeInfo", "Submit", nullptr));
         adr_check->setText(QApplication::translate("ChangeInfo", "Address", nullptr));
         adrL->setText(QApplication::translate("ChangeInfo", "new Address:", nullptr));
+        pushButton->setText(QApplication::translate("ChangeInfo", "return", nullptr));
     } // retranslateUi
 
 };
