@@ -54,6 +54,7 @@ public:
 	void show();
 	void hide();
 	QGraphicsProxyWidget *GetProxy();
+    void SetDisabled(bool disabled);
 
 
 
@@ -63,6 +64,7 @@ public:
 
 
 private:
+    bool disabled=false;
 	int width = 120;
 	int height = 200;
 	int number;

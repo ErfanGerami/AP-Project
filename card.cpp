@@ -14,6 +14,7 @@ const CardType Card::king = 6;
 int Card::angle_between_cards = 30;
 int Card::space_between_cards = 50;
 int Card::id = 0;
+
 Card::Card() {
 	this->number = 0;
 	this->type = Card::unknown;
@@ -83,10 +84,11 @@ void Card::SetUpButton() {
 	//adjusting each cards picture to itself.
 	id++;
 	button->setObjectName("card_button" + QString::number(id));
+    QString hover=!disabled?"#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}":"";
 	switch ( type ) {
 		case Card::parrot:
 		{
-			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/parrot" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/parrot" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" +hover);
 			break;
 		}
 
@@ -94,14 +96,14 @@ void Card::SetUpButton() {
 
 		case Card::map:
 		{
-			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/map" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/map" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" +hover);
 			break;
 		}
 
 
 		case Card::treasure:
 		{
-			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/treasure" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/treasure" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" + hover);
 			break;
 		}
 
@@ -109,26 +111,26 @@ void Card::SetUpButton() {
 
 		case Card::flag:
 		{
-			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/flag" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/flag" + QString::number(number) + ".png) strech 0 0 0;background:transparent;}" + hover);
 			break;
 		}
 
 
 		case Card::queen:
 		{
-			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/queen.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/queen.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + hover);
 			break;
 		}
 
 		case Card::king:
 		{
-			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/scullking.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/scullking.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + hover);
 			break;
 		}
 
 		case Card::pirate:
 		{
-			button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + ":hover{border-image:url(:/images/images/unknown.png);}");
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + hover);
 			break;
 		}
 
@@ -237,5 +239,5 @@ void Card::ChangeCard(Card::CardType type, int number) {
 	SetUpButton();
 
 }
-
+void Card::SetDisabled(bool disabled){this->disabled=disabled;SetUpButton();}
 

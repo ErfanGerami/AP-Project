@@ -118,18 +118,20 @@ std::pair<int, int> PlayerInGame::GetCardsWonPos() { return cards_won_pos; }
 void PlayerInGame::CalculateWonCardPosition() {
 
 	cards_won_pos = base_pos;
+    const int max_height = 1021;
+    const int max_width = 1610;
 	switch ( place ) {
 		case 0:
-			cards_won_pos = { 500, 350 };
+            cards_won_pos = { max_width/2+300, max_height-50 };
 			break;
 		case 1:
-			cards_won_pos = { 700, -350 };
+            cards_won_pos = { max_width/2+-300, 50 };
 			break;
 		case 2:
-			cards_won_pos = { -500, -350 };
+            cards_won_pos = {max_width-50 , max_height-300 };
 			break;
 		case 3:
-			cards_won_pos = { -600, 350 };
+            cards_won_pos = { 50, max_height+300 };
 			break;
 
 	}

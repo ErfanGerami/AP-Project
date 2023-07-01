@@ -155,7 +155,7 @@ int Logic::whose_turn(int turn) { return (this_rounds_first + turn) % number_of_
 
 void Logic::initializeNewSet() {
 	set++;
-	this_rounds_first = getFirstPlayer();
+    this_rounds_first = getFirstPlayer();
 	shuffle();
 	DealCard();
 	//notify clients of their cards(you can get cards using players[i]->GetCards() a vector  of cards ;

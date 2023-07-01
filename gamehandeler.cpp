@@ -186,6 +186,7 @@ void GameHandeler::GetOthersPushedCard() {
 		Card *card = players[GetWhoseTurn()]->PushCard(type, number, true);
 		card->ChangeCard(type, number);
 		card->PushCard();
+        card->SetDisabled(true);
 		cards_on_deck.push_back(card);
 		turn++;
 		if ( turn == number_of_players ) {
@@ -376,7 +377,10 @@ void GameHandeler::PushCard() {
 				type = cards[i]->GetType();
 				number = cards[i]->GetNumber();
 				if ( isValid(Card(type, number), turn) ) {
-					players[i]->PushCard(type, number, false)->PushCard();
+                    Card* card=players[i]->PushCard(type, number, false);
+                    cards_on_deck.push_back(card);
+                    card->PushCard();
+                    card->SetDisabled(true);
 
 				}
 
