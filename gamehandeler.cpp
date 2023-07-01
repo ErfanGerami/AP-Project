@@ -40,7 +40,7 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 
 		switch ( players[i]->GetPlace() ) {
 			case 0:
-                proxy->setPos(max_width / 2, max_height-75);
+				proxy->setPos(max_width / 2, max_height - 75);
 				break;
 			case 1:
 				proxy->setPos(max_width / 2, 50);
@@ -88,8 +88,6 @@ QPropertyAnimation *GameHandeler::TellTheFirst(int index) {
 		turn_card[i]->show();
 		if ( i == number_of_players - 1 )return turn_card[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
 		else turn_card[i]->PushTo(players[i]->GetBasePos(), rand() % 90);
-
-
 	}
 
 }
@@ -157,8 +155,6 @@ int GameHandeler::GetWhoseTurn() { qDebug() << turn + first_this_round; return (
 
 void GameHandeler::GetOthersPushedCard() {
 
-	disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
-	disconnect(client->get_tcp_socket(), SIGNAL(bytesAvailable()), this, SLOT(GetOthersPushedCard()));
 
 	if ( me == turn ) {
 		//just pass
@@ -167,7 +163,6 @@ void GameHandeler::GetOthersPushedCard() {
 
 
 		//get the pushe card here
-		int player_index;  //set this // no
 		Card::CardType type; //set this
 		int number;       //set this
 
@@ -177,9 +172,8 @@ void GameHandeler::GetOthersPushedCard() {
 			type = code[3] - '0';
 			number = code[4] - '0';
 		}
-		else {
-			//handle
-		}
+		else
+			qDebug() << "false read------------------------------------------";
 
 		//------------
 
@@ -187,7 +181,7 @@ void GameHandeler::GetOthersPushedCard() {
 		Card *card = players[GetWhoseTurn()]->PushCard(type, number, true);
 		card->ChangeCard(type, number);
 		card->PushCard();
-        card->SetDisabled(true);
+		card->SetDisabled(true);
 		cards_on_deck.push_back(card);
 		turn++;
 		if ( turn == number_of_players ) {
@@ -198,8 +192,7 @@ void GameHandeler::GetOthersPushedCard() {
 	}
 
 
-	if ( turn == number_of_players )
-		connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetTheWinnerOfTheRound()));
+
 }
 bool GameHandeler::isValid(Card card, int turn) {
 
@@ -258,7 +251,7 @@ void GameHandeler::StartRound() {
 	//		prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going towin?", 0, 0, round * 2, 1, &okay);
 
 	//	//send prediction
-	//	char *code1 = Code::set_code(me, Code::fromClient_Sent_Predictions);
+	//	char *code1 = Code::set_code(me + '0', Code::fromClient_Sent_Predictions);
 	//	client->send_data(code1, &dummy);
 	//	//-------------------
 
@@ -289,7 +282,7 @@ void GameHandeler::StartRound() {
 }
 void GameHandeler::StartSet() {
 	set++;
-
+	round = 0;
 
 	//get who is first
 	QPair<char *, DataPacket *>pair = client->reading_data_socket(false);
@@ -308,7 +301,7 @@ void GameHandeler::StartSet() {
 			QVector<Card *> cards;
 			for ( int i = 0; i < set * 2; i++ ) {
 				cards.push_back(new Card(this, Card::unknown, scene, view));
-                cards[i]->SetDisabled(true);
+				cards[i]->SetDisabled(true);
 
 
 			}
@@ -349,8 +342,15 @@ void GameHandeler::GetMyCards() {
 }
 
 
+void GameHandeler::read() {
+	if ( turn == number_of_players )
+		GetTheWinnerOfTheRound();
+	else
+		GetOthersPushedCard();
+}
+
 void GameHandeler::Predict() {
-	bool okay = false;////////////////////////////////////////////////check\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//
+	bool okay = false;
 	int prediction;
 	while ( !okay )
 		prediction = QInputDialog::getInt(parent, "Prediction", "How many rounds your are going to win?", 0, 0, max(round * 2, 1), 1, &okay);
@@ -362,7 +362,9 @@ void GameHandeler::Predict() {
 	//--------------------
 	//connect the socket when sends data that someone pushed card to GetOthersPushedCard
 	//GetOthersPushedCard();
-	connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
+	connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(read()));
+	connect(client->get_tcp_socket(), SIGNAL(bytesAvailable()), this, SLOT(read()));
+	//SIGNAL(bytesAvailable())
 
 }
 
@@ -379,10 +381,10 @@ void GameHandeler::PushCard() {
 				type = cards[i]->GetType();
 				number = cards[i]->GetNumber();
 				if ( isValid(Card(type, number), turn) ) {
-                    Card* card=players[me]->PushCard(type, number, false);
-                    cards_on_deck.push_back(card);
-                    card->PushCard();
-                    card->SetDisabled(true);
+					Card *card = players[me]->PushCard(type, number, false);
+					cards_on_deck.push_back(card);
+					card->PushCard();
+					card->SetDisabled(true);
 
 				}
 
@@ -392,9 +394,9 @@ void GameHandeler::PushCard() {
 
 				}*/
 				//notify the server of what card is pushed here
-				char *code = Code::set_code(me, Code::fromClient_Sent_PlayedCard);
-				code[3] = type - '0';
-				code[4] = number - '0';
+				char *code = Code::set_code(me + '0', Code::fromClient_Sent_PlayedCard);
+				code[3] = type + '0';
+				code[4] = number + '0';
 				DataPacket dummy;
 				client->send_data(code, &dummy);
 				//---------------------------------------------
@@ -408,14 +410,8 @@ void GameHandeler::PushCard() {
 	else {
 		//just do nothing;
 	}
+	turn++;
 
-	if ( ++turn == number_of_players )
-		connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetTheWinnerOfTheRound()));
-	else {
-		connect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetOthersPushedCard()));
-		connect(client->get_tcp_socket(), SIGNAL(bytesAvailable()), this, SLOT(GetOthersPushedCard()));
-		emit client->get_tcp_socket()->readyRead();
-	}
 
 }
 
@@ -425,14 +421,18 @@ void GameHandeler::GetTheWinnerOfTheRound() {
 	QPair<char *, DataPacket *> pair = client->reading_data_socket(false);
 	if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner )
 		player_index = pair.first[3] - '0';
+	else
+		qDebug() << "false read------------------------------------------";
 
 	//-----------------------------------
-
+	//turn = 0;//check this...............................................
+	StartRound();//check this...............................................
+	first_this_round = player_index;//check this...............................................
 	collect(players[player_index]);
 	if ( round == set )
 		StartRound();
 
-	disconnect(client->get_tcp_socket(), SIGNAL(readyRead()), this, SLOT(GetTheWinnerOfTheRound()));
+
 
 }
 
@@ -471,4 +471,4 @@ QVector<Card *> GameHandeler::CardArrayToVectorOf(int array[2][14], int size, QG
 }
 
 
-void GameHandeler::SwapCard(int player_index){}
+void GameHandeler::SwapCard(int player_index) {}

@@ -6046,3 +6046,195 @@
 123/6/1|10:5:31
 > written to socket as client
 
+123/6/1|13:3:20
+> trying to connect to server with ip '127.0.0.1'
+
+123/6/1|13:3:20
+> connected to server
+
+123/6/1|13:3:21
+> written to socket as client
+
+123/6/1|13:3:22
+> trying to catch server ip through udp socket
+
+123/6/1|13:3:22
+> server found
+
+123/6/1|13:3:22
+> trying to connect to server with name '1' created by 'mmd51'
+
+123/6/1|13:3:24
+> connected to server
+
+123/6/1|13:3:24
+> written to socket as client
+
+123/6/1|13:3:29
+> written to socket as client
+
+123/6/1|13:4:4
+> written to socket as client
+
+123/6/1|13:6:55
+> trying to connect to server with ip '127.0.0.1'
+
+123/6/1|13:6:55
+> connected to server
+
+123/6/1|13:6:57
+> written to socket as client
+
+123/6/1|13:6:57
+> trying to catch server ip through udp socket
+
+123/6/1|13:6:57
+> server found
+
+123/6/1|13:6:57
+> trying to connect to server with name '11' created by 'mmd06'
+
+123/6/1|13:6:59
+> connected to server
+
+123/6/1|13:6:59
+> written to socket as client
+
+123/6/1|13:7:2
+> written to socket as client
+
+123/6/1|13:7:11
+> written to socket as client
+
+123/6/1|13:7:34
+> written to socket as client
+
+123/6/1|13:7:59
+> server disconnected
+
+123/6/1|13:9:22
+> trying to connect to server with ip '127.0.0.1'
+
+123/6/1|13:9:22
+> connected to server
+
+123/6/1|13:9:23
+> written to socket as client
+
+123/6/1|13:9:24
+> trying to catch server ip through udp socket
+
+123/6/1|13:9:24
+> server found
+
+123/6/1|13:9:24
+> trying to connect to server with name '11' created by 'mmd39'
+
+123/6/1|13:9:25
+> connected to server
+
+123/6/1|13:9:25
+> written to socket as client
+
+123/6/1|13:9:28
+> written to socket as client
+
+123/6/1|13:10:25
+> written to socket as client
+
+123/6/1|13:11:37
+> written to socket as client
+
+123/6/1|13:15:53
+> trying to connect to server with ip '127.0.0.1'
+
+123/6/1|13:15:53
+> connected to server
+
+123/6/1|13:15:54
+> written to socket as client
+
+123/6/1|13:15:56
+> trying to catch server ip through udp socket
+
+123/6/1|13:15:56
+> server found
+
+123/6/1|13:15:56
+> trying to connect to server with name '11' created by 'mmd20'
+
+123/6/1|13:15:57
+> connected to server
+
+123/6/1|13:15:57
+> written to socket as client
+
+123/6/1|13:16:1
+> written to socket as client
+
+123/6/1|13:18:24
+> written to socket as client
+
+123/6/1|13:25:25
+> trying to connect to server with ip '127.0.0.1'
+
+123/6/1|13:25:25
+> connected to server
+
+123/6/1|13:25:27
+> written to socket as client
+
+123/6/1|13:25:32
+> trying to catch server ip through udp socket
+
+123/6/1|13:25:32
+> server found
+
+123/6/1|13:25:32
+> trying to connect to server with name '1111' created by 'mmd67'
+
+123/6/1|13:25:34
+> connected to server
+
+123/6/1|13:25:34
+> written to socket as client
+
+123/6/1|13:25:36
+> written to socket as client
+
+123/6/1|13:34:38
+> written to socket as client
+
+123/6/1|13:39:5
+> trying to connect to server with ip '127.0.0.1'
+
+123/6/1|13:39:5
+> connected to server
+
+123/6/1|13:39:6
+> written to socket as client
+
+123/6/1|13:39:9
+> trying to catch server ip through udp socket
+
+123/6/1|13:39:9
+> server found
+
+123/6/1|13:39:9
+> trying to connect to server with name '122' created by 'mmd39'
+
+123/6/1|13:39:10
+> connected to server
+
+123/6/1|13:39:10
+> written to socket as client
+
+123/6/1|13:39:14
+> written to socket as client
+
+123/6/1|13:39:49
+> written to socket as client
+
+123/6/1|13:40:41
+> written to socket as client
+

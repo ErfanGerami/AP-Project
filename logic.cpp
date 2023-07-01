@@ -155,8 +155,8 @@ int Logic::whose_turn(int turn) { return (this_rounds_first + turn) % number_of_
 
 void Logic::initializeNewSet() {
 	set++;
-    //this_rounds_first = getFirstPlayer();
-    this_rounds_first=0;
+	//this_rounds_first = getFirstPlayer();
+	this_rounds_first = 0;
 	shuffle();
 	DealCard();
 	//notify clients of their cards(you can get cards using players[i]->GetCards() a vector  of cards ;
@@ -287,7 +287,7 @@ void Logic::StartGame() {
 					number = (type <= 3) ? (code4[4] - '0') : (-1);//set this
 				}
 				//-----------------
-                cards_on_deck.push_back(Card(type, number));
+				cards_on_deck.push_back(Card(type, number));
 
 				//informing all:
 				char *code5 = Code::set_code('0', Code::fromServer_Sent_AnotherPlayerPlayedCard);

@@ -31,11 +31,11 @@ public:
 	void StartRound();
 	void AddStickers(QString name, int index);
 	int GetMe();
-    void SwitchCardShow(Card::CardType typpe, int number, Card::CardType type2, int number2);
+	void SwitchCardShow(Card::CardType typpe, int number, Card::CardType type2, int number2);
 	int CardVectorToArray(QVector<Card *> cards, int array[2][14]);
 	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size, QGraphicsView *view, QGraphicsScene *scene);
 	Card *turn_card[4];
-    void SwapCard(int player_index);
+	void SwapCard(int player_index);
 
 
 
@@ -67,11 +67,12 @@ signals:
 	void GetOthersPushedCard_S();
 
 private slots:
+public slots:
+	void read();
 	void GetTheWinnerOfTheRound();
 	void GetOthersPushedCard();
 	void GetMyCards();
 	void Predict();
-public slots:
 	void PushCard();
 
 
