@@ -284,48 +284,6 @@ QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server(int pl
 
 
 
-	DataPacket *data_packet = new DataPacket();
-	char *code = new char[6];
-
-	if ( force_read || tcp_socket->bytesAvailable() || tcp_socket->waitForReadyRead(-1) ) {
-
-
-		QByteArray block;
-		while ( true ) {
-			if ( tcp_socket_mutex.try_lock() ) {
-				block = tcp_socket->read(180);
-				tcp_socket_mutex.unlock();
-				break;
-			}
-		}
-
-
-
-		while ( block[0] == '&' )
-			block.remove(0, 1);
-
-		logWriteClient("> read " + to_string(block.size()) + "bytes of data from server");
-
-		for ( int i = 0; i < 5; i++ )
-			code[i] = block[i];
-		code[5] = '\0';
-
-		block.remove(0, 5);
-
-
-
-
-		QDataStream in(&block, QIODevice::ReadOnly);
-		;
-		in >> *data_packet;
-
-
-	}
-
-
-	return QPair<char *, DataPacket *>(code, data_packet);
-
-}
 
 void SocketHandeling::connected_to_server_socket() {
 	logWriteClient("> connected to server");

@@ -319,7 +319,7 @@ void GameHandeler::Read() {
 		disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
 
 
-		QPair<char *, DataPacket *> pair = client->reading_data_socket(false);
+		QPair<char *, DataPacket *> pair = client->reading_data_socket();
 		int points;
 		if ( Code::get_code(pair.first) == Code::fromServer_Sent_YourScore ) {
 
