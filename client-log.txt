@@ -6046,3 +6046,12 @@
 123/6/1|10:5:31
 > written to socket as client
 
+123/6/1|13:31:38
+> trying to connect to server with ip '127.0.0.1'
+
+123/6/1|13:31:38
+> connected to server
+
+123/6/1|13:31:38
+> written to socket as client
+

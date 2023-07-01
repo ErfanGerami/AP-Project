@@ -41,6 +41,7 @@ public:
 
 	void StartSet();
 private:
+    int curr_state;
 	SocketHandeling *client;
 
 	QWidget *parent;
@@ -71,6 +72,7 @@ private slots:
 	void GetOthersPushedCard();
 	void GetMyCards();
 	void Predict();
+    void Read();
 public slots:
 	void PushCard();
 
