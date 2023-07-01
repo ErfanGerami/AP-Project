@@ -12,6 +12,7 @@
 #include <QPropertyAnimation>
 #include <QDebug>
 #include <QMessageBox>
+#include <QLabel>
 #include <QInputDialog>
 #include <QVector>
 #include <QObject>
@@ -19,11 +20,12 @@
 #include "SocketHandeling.h"
 #include "Code.h"
 
+
 class GameHandeler:public QObject {
 	Q_OBJECT
 public:
 	GameHandeler();
-	GameHandeler(QWidget *parent, SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
+    GameHandeler(QWidget *parent,QLabel* score_label,QLabel* stars[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
 	QPropertyAnimation *TellTheFirst(int index);
 	QPropertyAnimation *Deal();
 	void shuffle();
@@ -42,8 +44,9 @@ public:
 	void StartSet();
 	SocketHandeling *client;
 private:
+    QLabel* stars[4];
 	int curr_state;
-
+    QLabel* score_label;
 	QWidget *parent;
 	int number_of_players;
 	int me;

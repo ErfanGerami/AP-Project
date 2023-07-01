@@ -7,8 +7,11 @@
 //1 predict
 
 GameHandeler::GameHandeler() {}
-GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3, Player p4) {
-	this->number_of_players = number_of_players;
+GameHandeler::GameHandeler(QWidget *parent,QLabel* score_label,QLabel* stars[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3, Player p4) {
+    for(int i=0;i<4;i++){
+        this->stars[i]=stars[i];
+    }
+    this->number_of_players = number_of_players;
 	this->sticker_scene = sticker_scene;
 	this->sticker_view = sticker_view;
 	this->scene = scene;
@@ -16,6 +19,7 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 	this->parent = parent;
 	this->me = me;
 	this->client = client;
+    this->score_label=score_label;
 	const int max_height = 1021;
 	const int max_width = 1610;
 	const pair<int, int> positions[4] = { { max_width / 2, max_height - 100 }, { max_width / 2, 100 },
@@ -323,6 +327,7 @@ void GameHandeler::Read() {
 		if ( Code::get_code(pair.first) == Code::fromServer_Sent_YourScore ) {
 
 			points = pair.second->your_points;
+            score_label->setText(QString::number(points));
 		}
 		else {
 			//handle
@@ -447,8 +452,17 @@ void GameHandeler::PushCard() {
 
 void GameHandeler::GetTheWinnerOfTheRound(int player_index) {
 	turn = 0;
+    //we could use the this_round_first as the previous winnet if it is not first round but I avoided it to prevent furthur complications;;
+
+    for(int i=0;i<number_of_players;i++){
+        stars[i]->hide();
+    }
 	first_this_round = player_index;
+    stars[players[player_index]->GetPlace()]->show();
 	collect(players[player_index]);
+
+
+
 }
 
 void GameHandeler::SwitchCardShow(Card::CardType type, int number, Card::CardType type2, int number2) {
