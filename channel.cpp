@@ -40,7 +40,7 @@ QPair<char *, DataPacket *> channel::reading_data() {
 	DataPacket *data_packet = new DataPacket();
 	char *code = new char[6];
 
-	if ( QString::fromStdString(client_number).toInt() == 0 ) {
+	/*if ( QString::fromStdString(client_number).toInt() == 0 ) {
 		if ( zero == 0 ) { zero++; }
 		else if ( zero % 2 == 1 ) {
 			zero++;
@@ -55,7 +55,7 @@ QPair<char *, DataPacket *> channel::reading_data() {
 			code[4] = '2';
 			return QPair<char *, DataPacket *>(code, data_packet);
 		}
-	}
+	}*/
 
 	//-----------
 	if ( client_name.size() == 0 || socket->waitForReadyRead(-1) ) {

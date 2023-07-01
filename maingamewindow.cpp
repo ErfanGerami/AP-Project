@@ -62,10 +62,10 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 
 
 
-		//t.start();
+		t.start();
 
 		//logic_thread = std::thread { &Logic::StartGame, logic };
-		logic->StartGame();
+		//logic->StartGame();
 
 	}
 	else {
