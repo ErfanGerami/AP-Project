@@ -27,6 +27,7 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 
 	}
 
+
 	//qDebug() << players[0]->GetBasePos().first << players[0]->GetBasePos().second;
 	//qDebug() << players[1]->GetBasePos().first << players[1]->GetBasePos().second;
 
@@ -39,7 +40,7 @@ GameHandeler::GameHandeler(QWidget *parent, SocketHandeling *client, int number_
 
 		switch ( players[i]->GetPlace() ) {
 			case 0:
-				proxy->setPos(max_width / 2, max_height);
+                proxy->setPos(max_width / 2, max_height-75);
 				break;
 			case 1:
 				proxy->setPos(max_width / 2, 50);
@@ -307,6 +308,7 @@ void GameHandeler::StartSet() {
 			QVector<Card *> cards;
 			for ( int i = 0; i < set * 2; i++ ) {
 				cards.push_back(new Card(this, Card::unknown, scene, view));
+                cards[i]->SetDisabled(true);
 
 
 			}
@@ -377,7 +379,7 @@ void GameHandeler::PushCard() {
 				type = cards[i]->GetType();
 				number = cards[i]->GetNumber();
 				if ( isValid(Card(type, number), turn) ) {
-                    Card* card=players[i]->PushCard(type, number, false);
+                    Card* card=players[me]->PushCard(type, number, false);
                     cards_on_deck.push_back(card);
                     card->PushCard();
                     card->SetDisabled(true);
@@ -434,7 +436,7 @@ void GameHandeler::GetTheWinnerOfTheRound() {
 
 }
 
-void GameHandeler::SwitchCard(Card::CardType type, int number, Card::CardType type2, int number2) {
+void GameHandeler::SwitchCardShow(Card::CardType type, int number, Card::CardType type2, int number2) {
 	auto cards = players[me]->get_cards();
 	for ( Card *card : cards ) {
 		if ( card->GetType() == type, card->GetNumber() == number ) {
@@ -468,3 +470,5 @@ QVector<Card *> GameHandeler::CardArrayToVectorOf(int array[2][14], int size, QG
 
 }
 
+
+void GameHandeler::SwapCard(int player_index){}

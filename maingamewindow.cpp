@@ -21,8 +21,6 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 	ui->sticker_graphics->setScene(sticker_scene);
 
 
-
-
 	int player_count = name_vec.size();
 
 	while ( name_vec.size() < 4 )
@@ -30,6 +28,7 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 
 	int me;
 	if ( connection->am_i_the_server() ) {
+        //server side
 		server = connection;
 		this->client = client;
 		me = 0;
@@ -47,7 +46,7 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 
 	}
 	else {
-
+        //client side
 		this->client = connection;
 		for ( int i = 0; i < player_count; i++ ) {
 			if ( name_vec[i].toStdString() == MainPlayer->GetUserName() ) {
@@ -62,6 +61,10 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 
 		game_handeler->StartSet();
 	}
+    this->me=me;
+    for ( int i = me+1; i < player_count + me; i++ ) {
+       ui->comboBox->addItem(name_vec[i%player_count]);
+    }
 
 
 
@@ -103,5 +106,11 @@ void MainGameWindow::on_pushButton_5_clicked() {
 
 void MainGameWindow::on_pushButton_6_clicked() {
 	game_handeler->AddStickers("sleep", game_handeler->GetMe());
+}
+
+
+void MainGameWindow::on_pushButton_7_clicked()
+{
+    game_handeler->SwapCard(me+ui->comboBox->currentIndex());
 }
 

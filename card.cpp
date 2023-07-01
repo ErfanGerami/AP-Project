@@ -118,19 +118,19 @@ void Card::SetUpButton() {
 
 		case Card::queen:
 		{
-            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/queen.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + hover);
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/queen.png) strech 0 0 0;background:transparent;}" + hover);
 			break;
 		}
 
 		case Card::king:
 		{
-            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/scullking.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + hover);
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/scullking.png) strech 0 0 0;background:transparent;}" + hover);
 			break;
 		}
 
 		case Card::pirate:
 		{
-            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;}" + "#card_button" + QString::number(id) + hover);
+            button->setStyleSheet("#card_button" + QString::number(id) + "{border-image:url(:/images/images/pirate.png) strech 0 0 0;background:transparent;}" +  hover);
 			break;
 		}
 
@@ -143,7 +143,7 @@ void Card::SetUpButton() {
 
 	}
 
-	qDebug() << button->styleSheet();
+    QString style= button->styleSheet();
 }
 
 
@@ -239,5 +239,10 @@ void Card::ChangeCard(Card::CardType type, int number) {
 	SetUpButton();
 
 }
-void Card::SetDisabled(bool disabled){this->disabled=disabled;SetUpButton();}
+void Card::SetDisabled(bool disabled){
+
+    this->disabled=disabled;SetUpButton();
+    if(disabled)disconnect(button, SIGNAL(clicked()), parent, SLOT(PushCard()));
+    else connect(button, SIGNAL(clicked()), parent, SLOT(PushCard()));
+}
 

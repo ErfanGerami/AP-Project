@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QPushButton>
@@ -28,6 +29,8 @@ public:
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
     QGraphicsView *sticker_graphics;
+    QComboBox *comboBox;
+    QPushButton *pushButton_7;
 
     void setupUi(QDialog *MainGameWindow)
     {
@@ -76,6 +79,12 @@ public:
         sticker_graphics->setStyleSheet(QString::fromUtf8("background-color:rgba(200,200,200,200);"));
         sticker_graphics->setInteractive(true);
         sticker_graphics->setRenderHints(QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing);
+        comboBox = new QComboBox(MainGameWindow);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setGeometry(QRect(950, 940, 111, 31));
+        pushButton_7 = new QPushButton(MainGameWindow);
+        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+        pushButton_7->setGeometry(QRect(1070, 940, 181, 31));
 
         retranslateUi(MainGameWindow);
 
@@ -91,6 +100,7 @@ public:
         pushButton_4->setText(QString());
         pushButton_5->setText(QString());
         pushButton_6->setText(QString());
+        pushButton_7->setText(QApplication::translate("MainGameWindow", "Swap Cards with this player", nullptr));
     } // retranslateUi
 
 };
