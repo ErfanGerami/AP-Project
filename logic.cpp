@@ -155,8 +155,8 @@ int Logic::whose_turn(int turn) { return (this_rounds_first + turn) % number_of_
 
 void Logic::initializeNewSet() {
 	set++;
-	//this_rounds_first = getFirstPlayer();
-	this_rounds_first = 0;
+	this_rounds_first = getFirstPlayer();
+
 	shuffle();
 	DealCard();
 	//notify clients of their cards(you can get cards using players[i]->GetCards() a vector  of cards ;
@@ -308,9 +308,10 @@ void Logic::StartGame() {
 			int winner_index = notifyAndGetThisRoundsWinner();
 			players[winner_index]->SetPoints(players[winner_index]->GetPoints() + rounds_score);
 			this_rounds_first = winner_index;
+			qDebug() << "--------winner: " << this_rounds_first;
 			//notify the round winner here;send winner_index
 			char *code6 = Code::set_code('0', Code::fromServer_Sent_RoundWinner);
-			code6[3] = winner_index + '0';
+			code6[3] = this_rounds_first + '0';
 			server->send_data(code6, &dummy);
 			//-----------------
 
@@ -344,7 +345,7 @@ void Logic::StartGame() {
 		//notify the player their score here  players[i]->GetPoints();
 		char *code7 = Code::set_code('0', Code::fromServer_Sent_YourScore);
 		DataPacket data_packet;
-		for ( int j = 0; j < 4; j++ ) {
+		for ( int j = 0; j < number_of_players; j++ ) {
 			data_packet.your_points = players[j]->GetPoints();
 
 			server->send_data(code7, &data_packet, j);

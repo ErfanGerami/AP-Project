@@ -67,7 +67,18 @@ SocketHandeling::~SocketHandeling() {
 
 }
 
+void SocketHandeling::client_bytesAvailabe() {
 
+	while ( true ) {
+		if ( tcp_socket_mutex.try_lock() ) {
+			if ( tcp_socket->bytesAvailable() )
+				emit main_game_read();
+			tcp_socket_mutex.unlock();
+		}
+		std::this_thread::sleep_for(milliseconds(1000));
+	}
+
+}
 //client
 void SocketHandeling::client_run_fast_connect(QString username) {
 	logWriteClient("> trying to catch server ip through udp socket\n\n");
@@ -98,6 +109,7 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 		//tcp_socket->waitForConnected(-1);
 		//tcp_socket->write(name.toUtf8());
 		//tcp_socket->waitForBytesWritten(-1);
+		client_bytesAvailabe_emit = std::thread { &SocketHandeling::client_bytesAvailabe, this };
 		name = username;
 
 
@@ -160,6 +172,7 @@ QMap<QHostAddress, QPair<QString, QString>> SocketHandeling::get_servers() {
 
 	return server_map;
 
+
 }
 
 bool SocketHandeling::is_client_connected() {
@@ -211,8 +224,16 @@ QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read
 	char *code = new char[6];
 
 	if ( force_read || tcp_socket->bytesAvailable() || tcp_socket->waitForReadyRead(-1) ) {
+
 		qDebug() << "buffer size:" << tcp_socket->readBufferSize();
-		QByteArray block = tcp_socket->read(180);
+		QByteArray block;
+		while ( true ) {
+			if ( tcp_socket_mutex.try_lock() ) {
+				block = tcp_socket->read(180);
+				tcp_socket_mutex.unlock();
+				break;
+			}
+		}
 
 
 
@@ -305,6 +326,7 @@ void SocketHandeling::broadcast_ip(QString server_name, QString username) {
 	}
 
 }
+
 
 void SocketHandeling::send_data(char *code, DataPacket *data, int client_number) {
 

@@ -40,9 +40,9 @@ public:
 
 
 	void StartSet();
+	SocketHandeling *client;
 private:
 	int curr_state;
-	SocketHandeling *client;
 
 	QWidget *parent;
 	int number_of_players;
@@ -67,11 +67,10 @@ private:
 signals:
 	void GetOthersPushedCard_S();
 
-private slots:
+
 public slots:
-	void read();
-	void GetTheWinnerOfTheRound();
-	void GetOthersPushedCard();
+	void GetTheWinnerOfTheRound(int player_index);
+	void GetOthersPushedCard(Card::CardType type, int number);
 	void GetMyCards();
 	void Predict();
 	void Read();

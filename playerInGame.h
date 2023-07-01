@@ -22,7 +22,7 @@ public:
 		, int predicted_rounds, int points);
 
 	PlayerInGame(const Player &player, QObject *parent, int place, QVector<Card *> cards, int rounds_won);
-    void SetPlace(int place);
+	void SetPlace(int place);
 
 	void NewCards(QVector<Card *> cards);
 	std::pair<int, int> GetBasePos();
@@ -30,7 +30,7 @@ public:
 	void SetBasePos(std::pair<int, int> base_pos);
 
 	void CalculateWonCardPosition();
-    QPropertyAnimation* Deal();
+	QPropertyAnimation *Deal();
 	Card *PushCard(Card::CardType card_type, int number, bool was_unknow = true);
 	void operator=(const PlayerInGame &other);
 	void DeleteCard(Card::CardType card_type, int number);

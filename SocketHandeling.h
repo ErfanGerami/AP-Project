@@ -16,6 +16,7 @@
 #include <ctime>
 #include <sstream>
 #include "Code.h"
+#include <mutex>
 
 class channel;
 
@@ -49,6 +50,7 @@ public:
 	QString get_name();
 	channel *get_channel_pointer();
 private:
+	std::mutex tcp_socket_mutex;
 	int player_count;
 	void logWriteServer(std::string str);
 	void logWriteClient(std::string str);
@@ -61,6 +63,7 @@ private:
 	QTcpServer *tcp_server = nullptr;
 
 	std::thread broadcast_ip_thread;
+	std::thread client_bytesAvailabe_emit;
 
 	std::vector<channel *> channels;
 
@@ -71,6 +74,8 @@ private:
 	bool is_the_server = false;
 
 	void broadcast_ip(QString server_name, QString username);
+	void client_bytesAvailabe();
+
 
 public slots:
 	void new_connection_server();
@@ -90,5 +95,6 @@ private slots:
 signals:
 	void newplayer(QString name);
 	void newplayer_socket();
+	void main_game_read();
 };
 
