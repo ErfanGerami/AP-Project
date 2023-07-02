@@ -31,7 +31,7 @@ bool Logic::throwCard(ServerCard card, int turn) {
 
 int Logic::notifyAndGetThisRoundsWinner() {
 	int index = 0;
-	for ( int i = 0; i < number_of_players; i++ ) {
+	for ( int i = 1; i < number_of_players; i++ ) {
 
 		if ( Greater(cards_on_deck[index], cards_on_deck[i]) == 1 ) {
 			index = i;
@@ -39,7 +39,7 @@ int Logic::notifyAndGetThisRoundsWinner() {
 	}
 	ServerPlayerInGame *this_rounds_winner = players[(this_rounds_first + index) % number_of_players];
 	this_rounds_winner->setRoundsWon(this_rounds_winner->getRoundsWon() + 1);
-	return index;
+	return (this_rounds_first + index) % number_of_players;
 
 }
 

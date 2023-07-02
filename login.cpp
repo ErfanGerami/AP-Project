@@ -15,14 +15,14 @@ Login::Login(QWidget *parent)
 	anim->setEndValue(QRect(0, 0, 160, 100));
 	anim->start();
 	QSound::play(":/sounds/sounds/laugh.wav");
-    media = new QMediaPlayer();
+	media = new QMediaPlayer();
 	QMediaPlaylist *playlist = new QMediaPlaylist;
 	playlist->addMedia(QUrl("qrc:/sounds/sounds/UiBackSound.mp3"));
 	media->setPlaylist(playlist);
-    media->setVolume(30);
-    ui->horizontalSlider->setValue(30);
+	media->setVolume(30);
+	ui->horizontalSlider->setValue(30);
 	media->play();
-    connect(media, &QMediaPlayer::stateChanged, [this] () {media->play(); });
+	connect(media, &QMediaPlayer::stateChanged, [this] () {media->play(); });
 
 }
 
@@ -49,7 +49,7 @@ Login::~Login() {
 }
 
 
-void Login::show_me() { this->show();ui->pass->setText("");ui->user->setText(""); }
+void Login::show_me() { this->show(); ui->pass->setText(""); ui->user->setText(""); }
 
 
 
@@ -65,7 +65,7 @@ void Login::on_login_clicked() {
 
 		MainPlayer = FileHandeling::file_read(ui->user->text(), ui->pass->text());
 		SavedPassword = ui->pass->text();
-        MainMenu *main_menu = new MainMenu(this);
+		MainMenu *main_menu = new MainMenu(this);
 		main_menu->show();
 		this->hide();
 
@@ -88,8 +88,7 @@ void Login::on_forgot_clicked() {
 }
 
 
-void Login::on_horizontalSlider_valueChanged(int value)
-{
-    media->setVolume(value);
+void Login::on_horizontalSlider_valueChanged(int value) {
+	media->setVolume(value);
 }
 
