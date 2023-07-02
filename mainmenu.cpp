@@ -45,9 +45,10 @@ MainMenu::MainMenu(QWidget *parent):
 		MainPlayer->SettCoins(1000);
 	}
 
-
-
-
+	ui->ip->hide();
+	ui->ip->setDisabled(true);
+	ui->ip_connect->hide();
+	ui->ip_connect->setDisabled(true);
 
 }
 
