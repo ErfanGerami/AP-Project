@@ -8,6 +8,7 @@
 #include "getserversinformation.h"
 #include "SocketHandeling.h"
 #include "waitmenu.h"
+#include "dinogame.h"
 
 
 namespace Ui {
@@ -30,12 +31,15 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_join_server_2_clicked();
+
 public slots:
 	void show_me();
 	void server_joining_finished(bool is_connected);
 signals:
     void show_parent();
 private:
+    int coins_first_place;
 	bool *is_connected;
 	WaitMenu *wait_menu;
 	SocketHandeling *client;

@@ -67,6 +67,7 @@ public:
     QLineEdit *server_name;
     QSpinBox *player_count;
     QPushButton *pushButton;
+    QPushButton *join_server_2;
 
     void setupUi(QDialog *MainMenu)
     {
@@ -303,6 +304,13 @@ public:
         pushButton->setGeometry(QRect(20, 120, 51, 20));
         pushButton->setStyleSheet(QString::fromUtf8("#pushButton{border-radius:1px;background:transparent;color:red;font-size:13px;background:transparent;}\n"
 "#pushButton:hover{\\nborder-radius:1px;color:black;font-size:13px;background-color:red;\\ncolor:black;\\n}"));
+        join_server_2 = new QPushButton(MainMenu);
+        join_server_2->setObjectName(QString::fromUtf8("join_server_2"));
+        join_server_2->setGeometry(QRect(620, 190, 291, 91));
+        join_server_2->setCursor(QCursor(Qt::PointingHandCursor));
+        join_server_2->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:rgb(70,50,50);color:red;\n"
+"\n"
+";"));
 
         retranslateUi(MainMenu);
 
@@ -340,6 +348,7 @@ public:
         label_2->setText(QApplication::translate("MainMenu", "server name:", nullptr));
         label_3->setText(QApplication::translate("MainMenu", "player count:", nullptr));
         pushButton->setText(QApplication::translate("MainMenu", "log out", nullptr));
+        join_server_2->setText(QApplication::translate("MainMenu", "Earn Coins While You Wait With a Wide Game", nullptr));
     } // retranslateUi
 
 };

@@ -64,6 +64,12 @@
         <file>images/treasure11.png</file>
         <file>images/treasure8.png</file>
         <file>images/star.png</file>
+        <file>images/barrier.png</file>
+        <file>images/bird1.png</file>
+        <file>images/bird2.png</file>
+        <file>images/cloud.png</file>
+        <file>images/dino.png</file>
+        <file>images/dino2.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/laugh.wav</file>
