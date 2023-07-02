@@ -1,14 +1,8 @@
 #include "maingamewindow.h"
 #include "ui_maingamewindow.h"
-#include <qthread.h>
 
-class logic_t: public QThread {
-public:
-	void run(MainGameWindow *p) {
-		p->logic->StartGame();
-	}
-};
-logic_t t;
+
+
 MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> name_vec, SocketHandeling *client, QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::MainGameWindow) {
@@ -94,7 +88,7 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 }
 
 MainGameWindow::~MainGameWindow() {
-	t.wait();
+
 	delete ui;
 }
 

@@ -11,6 +11,8 @@
 #include <QVBoxLayout>
 #include "logic.h"
 #include "gamehandeler.h"
+#include <qthread.h>
+
 extern Player *MainPlayer;
 
 namespace Ui {

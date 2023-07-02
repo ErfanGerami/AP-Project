@@ -279,30 +279,54 @@ void GameHandeler::Read() {
 		}
 		else {
 			//check if the code is pause do this
-			OthersPause();
+			if ( Code::get_code(code) == Code::Sent_Pause )
+				OthersPause();
 			//-----------------------------------
 
 			//check if somone has sent a swap card then if yes do this
-			int index_of_the_requested_player;//set this too
-			QMessageBox::StandardButton response;
-			response = QMessageBox::question(nullptr, "Swap Request"
-				, "would you swapa a card with " + QString(players[index_of_the_requested_player]->GetUserName().c_str())
-				, QMessageBox::Yes | QMessageBox::No);
 
-			if ( response == QMessageBox::Yes ) {
-				std::pair<bool, int> swap_card_answer_stat = { true, index_of_the_requested_player };
+			if ( Code::get_code(code) == Code::Requested_SwapCard ) {
 
+
+				int index_of_the_requested_player = pair.first[3] - '0';
+
+
+				QMessageBox::StandardButton response;
+				response = QMessageBox::question(nullptr, "Swap Request"
+					, "would you swapa a card with " + QString(players[index_of_the_requested_player]->GetUserName().c_str())
+					, QMessageBox::Yes | QMessageBox::No);
+
+				if ( response == QMessageBox::Yes ) {
+					std::pair<bool, int> swap_card_answer_stat = { true, index_of_the_requested_player };
+
+
+					char *code = Code::set_code(me + '0', Code::Accepted_SwapCard);
+					code[3] = index_of_the_requested_player + '0';
+					DataPacket dummy;
+					client->send_data(code, &dummy);
+				}
+				else {
+					char *code = Code::set_code(me + '0', Code::Denied_SwapCard);
+					DataPacket dummy;
+					client->send_data(code, &dummy);
+				}
+				//------
+
+				//---------------------------------------------
 			}
-			else {
-
-			}
-			//---------------------------------------------
 
 
-			//check if someone has accepted our swapcard reques and if yes get the type and number and call ths
+			//check if someone has accepted our swapcard reqeust and if yes get the type and number and call ths
 			Card::CardType type;//set this
 			int number;//set this
-			SwitchCardShow(type, number, swap_candidate.first, swap_candidate.second);
+			if ( Code::get_code(code) == Code::Accepted_SwapCard ) {
+				type = pair.first[3] - '0';
+				number = pair.first[4] - '0';
+				SwitchCardShow(type, number, swap_candidate.first, swap_candidate.second);
+			}
+			else if ( Code::get_code(code) == Code::Denied_SwapCard ) {
+				//denied
+			}
 
 		}
 

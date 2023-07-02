@@ -23,7 +23,7 @@ public:
 	int CardVectorToArray(QVector<Card *> cards, int array[2][14]);//give the array as the second parameter//returns size;
 	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size);
 
-
+	void handle(char *code, int who);
 
 
 
