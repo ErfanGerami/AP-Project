@@ -28,7 +28,10 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 		name_vec.push_back("");
 
 
-
+    QLabel *arrows[4] = { ui->arrow0, ui->arrow1, ui->arrow2, ui->arrow3 };
+    for ( int i = 0; i < 4; i++ ) {
+        arrows[i]->hide();
+    }
 	QLabel *stars[4] = { ui->star_0, ui->star_1, ui->star_2, ui->star_3 };
 	for ( int i = 0; i < 4; i++ ) {
 		stars[i]->hide();
@@ -75,7 +78,7 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 		}
 	}
 
-	game_handeler = new GameHandeler(this, ui->score, stars, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
+    game_handeler = new GameHandeler(this, ui->score, stars,arrows, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
 		, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
 		, Player(name_vec[3].toStdString(), ""));
 

@@ -41,6 +41,10 @@ public:
     QLabel *star_1;
     QLabel *star_3;
     QPushButton *pause;
+    QLabel *arrow0;
+    QLabel *arrow1;
+    QLabel *arrow3;
+    QLabel *arrow2;
 
     void setupUi(QDialog *MainGameWindow)
     {
@@ -91,17 +95,17 @@ public:
         sticker_graphics->setRenderHints(QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing);
         comboBox = new QComboBox(MainGameWindow);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setGeometry(QRect(950, 940, 111, 31));
+        comboBox->setGeometry(QRect(1270, 920, 111, 31));
         pushButton_7 = new QPushButton(MainGameWindow);
         pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
-        pushButton_7->setGeometry(QRect(1070, 940, 181, 31));
+        pushButton_7->setGeometry(QRect(1390, 920, 181, 31));
         label = new QLabel(MainGameWindow);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(1600, 0, 81, 31));
         label->setStyleSheet(QString::fromUtf8("font-size:30px"));
         score = new QLabel(MainGameWindow);
         score->setObjectName(QString::fromUtf8("score"));
-        score->setGeometry(QRect(1640, 50, 81, 31));
+        score->setGeometry(QRect(1600, 30, 81, 31));
         score->setStyleSheet(QString::fromUtf8("font-size:30px;color:red"));
         line = new QFrame(MainGameWindow);
         line->setObjectName(QString::fromUtf8("line"));
@@ -136,6 +140,22 @@ public:
         font.setStrikeOut(false);
         pause->setFont(font);
         pause->setStyleSheet(QString::fromUtf8("font-size:30px"));
+        arrow0 = new QLabel(MainGameWindow);
+        arrow0->setObjectName(QString::fromUtf8("arrow0"));
+        arrow0->setGeometry(QRect(420, 910, 71, 71));
+        arrow0->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow.png);"));
+        arrow1 = new QLabel(MainGameWindow);
+        arrow1->setObjectName(QString::fromUtf8("arrow1"));
+        arrow1->setGeometry(QRect(1430, 420, 71, 71));
+        arrow1->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow.png);"));
+        arrow3 = new QLabel(MainGameWindow);
+        arrow3->setObjectName(QString::fromUtf8("arrow3"));
+        arrow3->setGeometry(QRect(0, 480, 71, 71));
+        arrow3->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow.png);"));
+        arrow2 = new QLabel(MainGameWindow);
+        arrow2->setObjectName(QString::fromUtf8("arrow2"));
+        arrow2->setGeometry(QRect(480, 0, 71, 71));
+        arrow2->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow.png);"));
 
         retranslateUi(MainGameWindow);
 
@@ -159,6 +179,10 @@ public:
         star_1->setText(QString());
         star_3->setText(QString());
         pause->setText(QApplication::translate("MainGameWindow", "pause", nullptr));
+        arrow0->setText(QString());
+        arrow1->setText(QString());
+        arrow3->setText(QString());
+        arrow2->setText(QString());
     } // retranslateUi
 
 };

@@ -26,7 +26,7 @@ class GameHandeler:public QObject {
 	Q_OBJECT
 public:
 	GameHandeler();
-    GameHandeler(QWidget *parent,QLabel* score_label,QLabel* stars[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
+    GameHandeler(QWidget *parent,QLabel* score_label,QLabel* stars[4],QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
 	QPropertyAnimation *TellTheFirst(int index);
 	QPropertyAnimation *Deal();
 	void collect(PlayerInGame *player);
@@ -52,6 +52,7 @@ private:
 
     bool is_pause=false;
     QLabel* stars[4];
+    QLabel *arrows[4];
 	int curr_state;
     QLabel* score_label;
 	QWidget *parent;

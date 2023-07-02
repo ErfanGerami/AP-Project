@@ -7,10 +7,13 @@
 //1 predict
 
 GameHandeler::GameHandeler() {}
-GameHandeler::GameHandeler(QWidget *parent, QLabel *score_label, QLabel *stars[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3, Player p4) {
+GameHandeler::GameHandeler(QWidget *parent, QLabel *score_label, QLabel *stars[4], QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3, Player p4) {
 	for ( int i = 0; i < 4; i++ ) {
 		this->stars[i] = stars[i];
 	}
+    for ( int i = 0; i < 4; i++ ) {
+        this->arrows[i] = arrows[i];
+    }
 	this->number_of_players = number_of_players;
 	this->sticker_scene = sticker_scene;
 	this->sticker_view = sticker_view;
@@ -165,6 +168,11 @@ void GameHandeler::GetOthersPushedCard(Card::CardType type, int number) {
 
 	if ( me == GetWhoseTurn() ) {
 		//just pass
+        for (int i=0;i<4;i++){
+            this->arrows[i]->hide();
+
+        }
+        this->arrows[players[GetWhoseTurn()]->GetPlace()]->show();
 		qDebug() << "awdjadajwdjuajwiduajjdoajuodjaiwdjoamdo";
 	}
 	else {
@@ -239,8 +247,7 @@ void GameHandeler::StartSet() {
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
 
 	connect(anim, &QPropertyAnimation::finished, [this] () {
-		_sleep(1000);
-		GetMyCards();
+        GetMyCards();
 		curr_state = 2;
 		});
 

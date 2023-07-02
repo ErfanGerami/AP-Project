@@ -1,29 +1,29 @@
-123/6/2|22:38:58
-> trying to create server with name: '' and created by 'mmd77'
-123/6/2|22:38:58
+123/6/3|1:0:41
+> trying to create server with name: '' and created by 'mmd46'
+123/6/3|1:0:41
 > server created and listening on port 1500
-123/6/2|22:39:0
+123/6/3|1:0:42
 > new client connected, client number: 1
-123/6/2|22:39:0
-> reading data from socket number: 0123/6/2|22:39:0
-> read 5bytes of data123/6/2|22:39:0
-> client name recieved: mmd77123/6/2|22:39:0
+123/6/3|1:0:42
+> reading data from socket number: 0123/6/3|1:0:42
+> read 5bytes of data123/6/3|1:0:42
+> client name recieved: mmd46123/6/3|1:0:43
 > new client connected, client number: 2
-123/6/2|22:39:1
-> reading data from socket number: 1123/6/2|22:39:1
-> read 5bytes of data123/6/2|22:39:1
-> written seccessfully as server to client number 0 and name 'mmd77'123/6/2|22:39:1
+123/6/3|1:0:44
+> reading data from socket number: 1123/6/3|1:0:44
+> read 5bytes of data123/6/3|1:0:44
+> written seccessfully as server to client number 0 and name 'mmd46'123/6/3|1:0:44
 > sent 220bytes of data to client number 1
-123/6/2|22:39:1
-> written seccessfully as server to client number 1 and name 'mmd04'123/6/2|22:39:1
+123/6/3|1:0:44
+> written seccessfully as server to client number 1 and name 'mmd96'123/6/3|1:0:44
 > sent 220bytes of data to client number 2
-123/6/2|22:39:2
+123/6/3|1:0:44
 > sent 220bytes of data to client number 1
-123/6/2|22:39:2
+123/6/3|1:0:44
 > sent 220bytes of data to client number 2
-123/6/2|22:39:2
+123/6/3|1:0:44
 > sent 220bytes of data to client number 1
-123/6/2|22:39:2
+123/6/3|1:0:44
 > sent 220bytes of data to client number 2
-123/6/2|22:39:2
+123/6/3|1:0:44
 > reading data from socket number: 0
