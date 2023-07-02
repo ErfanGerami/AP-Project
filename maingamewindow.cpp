@@ -77,13 +77,13 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 				break;
 			}
 		}
+
+		game_handeler = new GameHandeler(this, ui->score, stars, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
+			, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
+			, Player(name_vec[3].toStdString(), ""));
+
+		game_handeler->StartSet();
 	}
-
-	game_handeler = new GameHandeler(this, ui->score, stars, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
-		, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
-		, Player(name_vec[3].toStdString(), ""));
-
-	game_handeler->StartSet();
 	this->me = me;
 	for ( int i = me + 1; i < player_count + me; i++ ) {
 		ui->comboBox->addItem(name_vec[i % player_count]);

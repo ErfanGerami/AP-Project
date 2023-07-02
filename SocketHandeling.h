@@ -92,7 +92,7 @@ private:
 public slots:
 	void new_connection_server();
 	QVector<QPair< char *, DataPacket * >> read_data_as_server(int player_number = -1);
-	QPair<char *, DataPacket *> reading_data_socket();
+	QPair<char *, DataPacket *> reading_data_socket(bool force_read = false);
 	void writing_data_socket();
 	void connected_to_server_socket();
 	void disconnected_from_server_socket();

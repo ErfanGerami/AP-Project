@@ -9,7 +9,7 @@ MainMenu::MainMenu(QWidget *parent):
 	ui(new Ui::MainMenu) {
 	connect(this, SIGNAL(show_parent()), parent, SLOT(show_me()));
 
-
+	client = new SocketHandeling();
 	ui->setupUi(this);
 	setFixedSize(size());
 	ui->name->setText(QString(MainPlayer->GetUserName().c_str()));
@@ -57,6 +57,7 @@ MainMenu::~MainMenu() {
 }
 
 void MainMenu::on_create_server_clicked() {
+
 	try {
 
 		SocketHandeling *server = new SocketHandeling();
@@ -66,7 +67,7 @@ void MainMenu::on_create_server_clicked() {
 		if ( server->is_server_connected() ) {
 			//show next window
 
-			client = new SocketHandeling();
+
 			client->client_run(QHostAddress("127.0.0.1"), server->get_name());
 			wait_menu = new WaitMenu(server, client, this);
 			this->hide();
@@ -78,22 +79,22 @@ void MainMenu::on_create_server_clicked() {
 	}
 	catch ( Errors err ) {
 		QMessageBox::critical(this, "error", err.what());
+		delete client;
 	}
 }
 
 void MainMenu::on_join_server_clicked() {
-
-
+	//SocketHandeling *client = new SocketHandeling();
+	//SocketHandeling c = new SocketHandeling();
+	//c.client_run_fast_connect("asd");
+	//c.client_run_fast_connect("asd");
+	//c.client_run_fast_connect("asd");
 	try {
-
-		client = new SocketHandeling();
-		//zzzz
-
 
 		client->client_run_fast_connect(QString::fromStdString(MainPlayer->GetUserName()));
 
 		wait_menu = new WaitMenu(client, this);
-		//
+
 		wait_menu->show();
 		this->hide();
 		//GetServersInformation *m = new GetServersInformation(client, QString::fromStdString(MainPlayer->GetUserName()), this);
@@ -103,6 +104,7 @@ void MainMenu::on_join_server_clicked() {
 	}
 	catch ( Errors err ) {
 		QMessageBox::critical(this, "error", err.what());
+		//delete client;
 	}
 
 }

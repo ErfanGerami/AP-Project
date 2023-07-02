@@ -31,11 +31,12 @@ void SocketHandeling::logWriteClient(std::string str) {
 
 SocketHandeling::SocketHandeling(QObject *parent) {
 
-	udp_socket = new QUdpSocket();
 	tcp_socket = new QTcpSocket();
 	tcp_server = new QTcpServer();
-
-
+	/*udp_socket = new QUdpSocket();
+	udp_socket->bind(QHostAddress::Any, 1500);*/
+	udp_socket = new QUdpSocket();
+	udp_socket->bind(QHostAddress::Any, 1500);
 	connect(tcp_socket, SIGNAL(connected()), this, SLOT(connected_to_server_socket()));
 	connect(tcp_socket, SIGNAL(bytesWritten(qint64)), this, SLOT(writing_data_socket()));
 	//////connect(tcp_socket, SIGNAL(readyRead()), this, SLOT(reading_data_socket()));
@@ -71,7 +72,7 @@ void SocketHandeling::client_bytesAvailabe() {
 
 	while ( true ) {
 		if ( data_vector_mutex.try_lock() ) {
-			if ( !data_pair_vector.isEmpty() )
+			if ( tcp_socket->bytesAvailable() )
 				emit main_game_read();
 			data_vector_mutex.unlock();
 		}
@@ -86,7 +87,7 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 
 	logWriteClient("> trying to catch server ip through udp socket");
 
-	udp_socket->bind(QHostAddress::Any, 1500);
+
 
 
 
@@ -170,18 +171,58 @@ void SocketHandeling::client_thread_funtion() {
 }
 
 
-QPair<char *, DataPacket *> SocketHandeling::reading_data_socket() {
+QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read) {
+
+	DataPacket *data_packet = new DataPacket();
+	char *code = new char[6];
+
+
+	if ( force_read || tcp_socket->bytesAvailable() || tcp_socket->waitForReadyRead(-1) ) {
+		QByteArray block;
+		while ( true ) {
+			if ( tcp_socket_mutex.try_lock() ) {
+				block = tcp_socket->read(180);
+				tcp_socket_mutex.unlock();
+				break;
+			}
+		}
+
+		while ( block[0] == '&' )
+			block.remove(0, 1);
+
+		logWriteClient("> read " + to_string(block.size()) + "bytes of data from server");
+
+		for ( int i = 0; i < 5; i++ )
+			code[i] = block[i];
+		code[5] = '\0';
+
+		block.remove(0, 5);
+
+
+
+
+		QDataStream in(&block, QIODevice::ReadOnly);
+		;
+		in >> *data_packet;
+
+
+
+
+	}
+
+	return QPair<char *, DataPacket *>(code, data_packet);
+
 	//while ( data_pair_vector.isEmpty() ) { _sleep(200); }
 
-	std::unique_lock<mutex> lck{data_vector_mutex};
+	//std::unique_lock<mutex> lck{data_vector_mutex};
 
-	cond_var.wait(lck, [this] { return !data_pair_vector.isEmpty(); });
-	//data_vector_mutex.lock();
-	QPair<char *, DataPacket *> data = data_pair_vector.front();
-	data_pair_vector.pop_front();
-	//data_vector_mutex.unlock();
-	lck.unlock();
-	return data;
+	//cond_var.wait(lck, [this] { return !data_pair_vector.isEmpty(); });
+	////data_vector_mutex.lock();
+	//QPair<char *, DataPacket *> data = data_pair_vector.front();
+	//data_pair_vector.pop_front();
+	////data_vector_mutex.unlock();
+	//lck.unlock();
+	//return data;
 
 }
 
@@ -287,7 +328,7 @@ QVector<QPair<char *, DataPacket *>> SocketHandeling::read_data_as_server(int pl
 void SocketHandeling::connected_to_server_socket() {
 	logWriteClient("> connected to server");
 	tcp_socket->write(name.toUtf8());
-	client_thread = std::thread { &SocketHandeling::client_thread_funtion, this };
+	//client_thread = std::thread { &SocketHandeling::client_thread_funtion, this };
 }
 
 void SocketHandeling::writing_data_socket() {
@@ -314,8 +355,10 @@ void SocketHandeling::server_run(QString server_name, QString username, int play
 
 
 
+	//udp_socket = new QUdpSocket();
 	//udp_socket->bind(QHostAddress::Any, 1500);
 	broadcast_ip_thread = std::thread { &SocketHandeling::broadcast_ip, this, server_name, username };//continously announce ip
+
 
 	tcp_server = new QTcpServer();
 	tcp_server->listen(QHostAddress::Any, 1500);

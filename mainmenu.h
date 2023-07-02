@@ -21,6 +21,7 @@ class MainMenu: public QDialog {
 public:
 	explicit MainMenu(QWidget *parent = nullptr);
 	~MainMenu();
+	SocketHandeling *client;
 
 private slots:
 
@@ -42,7 +43,6 @@ private:
 	int coins_first_place;
 	bool *is_connected;
 	WaitMenu *wait_menu;
-	SocketHandeling *client;
 	Ui::MainMenu *ui;
 
 
