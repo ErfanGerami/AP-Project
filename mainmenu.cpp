@@ -13,7 +13,7 @@ MainMenu::MainMenu(QWidget *parent):
 	ui->setupUi(this);
 	setFixedSize(size());
 	ui->name->setText(QString(MainPlayer->GetUserName().c_str()));
-    coins_first_place=ui->coin_pic->x();
+	coins_first_place = ui->coin_pic->x();
 	if ( MainPlayer->GetPrevGame().GetIsPlayed() ) {
 		ui->no_games1->hide();
 		ui->no_games2->hide();
@@ -23,7 +23,7 @@ MainMenu::MainMenu(QWidget *parent):
 		ui->won->setText(QString::number(MainPlayer->GetGamesWon()));
 		ui->lost->setText(QString::number(MainPlayer->GetGamesLoose()));
 		ui->coin->setText(QString::number(MainPlayer->GettCoins()));
-        ui->coin_pic->move(coins_first_place + QString::number(MainPlayer->GettCoins()).length() * 15, ui->coin_pic->y());
+		ui->coin_pic->move(coins_first_place + QString::number(MainPlayer->GettCoins()).length() * 15, ui->coin_pic->y());
 	}
 	else {
 		ui->time->hide();
@@ -40,9 +40,9 @@ MainMenu::MainMenu(QWidget *parent):
 		ui->line_1->hide();
 		ui->won->setText("0");
 		ui->lost->setText("0");
-        ui->coin->setText("1000");
-        ui->coin_pic->move(coins_first_place + QString::number(1000).length() * 15, ui->coin_pic->y());
-        MainPlayer->SettCoins(1000);
+		ui->coin->setText("1000");
+		ui->coin_pic->move(coins_first_place + QString::number(1000).length() * 15, ui->coin_pic->y());
+		MainPlayer->SettCoins(1000);
 	}
 
 
@@ -88,13 +88,10 @@ void MainMenu::on_join_server_clicked() {
 
 		client = new SocketHandeling();
 		//zzzz
-		try {
 
-			client->client_run_fast_connect(QString::fromStdString(MainPlayer->GetUserName()));
-		}
-		catch ( Errors err ) {
-			client->client_run(QHostAddress(ui->ip->text()), QString::fromStdString(MainPlayer->GetUserName()));
-		}
+
+		client->client_run_fast_connect(QString::fromStdString(MainPlayer->GetUserName()));
+
 		wait_menu = new WaitMenu(client, this);
 		//
 		wait_menu->show();
@@ -146,7 +143,7 @@ void MainMenu::show_me() {
 		ui->won->setText(QString::number(MainPlayer->GetGamesWon()));
 		ui->lost->setText(QString::number(MainPlayer->GetGamesLoose()));
 		ui->coin->setText(QString::number(MainPlayer->GettCoins()));
-        ui->coin_pic->move(coins_first_place + QString::number(MainPlayer->GettCoins()).length() * 15, ui->coin_pic->y());
+		ui->coin_pic->move(coins_first_place + QString::number(MainPlayer->GettCoins()).length() * 15, ui->coin_pic->y());
 	}
 	else {
 		ui->time->hide();
@@ -163,27 +160,25 @@ void MainMenu::show_me() {
 		ui->line_1->hide();
 		ui->won->setText("0");
 		ui->lost->setText("0");
-        ui->coin->setText(QString::number(MainPlayer->GettCoins()));
-        ui->coin_pic->move(coins_first_place + QString::number(MainPlayer->GettCoins()).length() * 15, ui->coin_pic->y());
+		ui->coin->setText(QString::number(MainPlayer->GettCoins()));
+		ui->coin_pic->move(coins_first_place + QString::number(MainPlayer->GettCoins()).length() * 15, ui->coin_pic->y());
 	}
 
 }
 
 
-void MainMenu::on_pushButton_clicked()
-{
-    MainPlayer=nullptr;
-    SavedPassword="";
-    emit show_parent();
-    this->hide();
+void MainMenu::on_pushButton_clicked() {
+	MainPlayer = nullptr;
+	SavedPassword = "";
+	emit show_parent();
+	this->hide();
 }
 
 
-void MainMenu::on_join_server_2_clicked()
-{
-    DinoGame* dino_game=new DinoGame(this);
-    dino_game->show();
-    this->hide();
+void MainMenu::on_join_server_2_clicked() {
+	DinoGame *dino_game = new DinoGame(this);
+	dino_game->show();
+	this->hide();
 
 
 }

@@ -220,7 +220,6 @@ QMap<QHostAddress, QPair<QString, QString>> SocketHandeling::get_servers() {
 
 	for ( int i = 0; i < 20 && udp_socket->waitForReadyRead(200 + i * 5); i++ ) {
 
-
 		QByteArray buffer;
 		QHostAddress ip;
 		quint16 port;

@@ -33,7 +33,8 @@ SOURCES += \
 	serverselection.cpp \
 	SocketHandeling.cpp	\
 	channel.cpp \
-	Code.cpp
+	Code.cpp \
+	dinogame.cpp
 
 HEADERS += \
 	card.h\
@@ -59,7 +60,8 @@ HEADERS += \
 	serverselection.h \
 	SocketHandeling.h \
 	channel.h \
-	Code.h
+	Code.h \
+	dinogame.h
 
 FORMS += \
 	changeinfo.ui \
@@ -73,7 +75,8 @@ FORMS += \
 	test.ui\
 	mainmenu.ui \
 	waitmenu.ui \
-	serverselection.ui
+	serverselection.ui \
+	dinogame.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

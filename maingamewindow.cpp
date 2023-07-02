@@ -62,10 +62,10 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 
 
 
-		t.start();
+		//t.start();
 
 		//logic_thread = std::thread { &Logic::StartGame, logic };
-		//logic->StartGame();
+		logic->StartGame();
 
 	}
 	else {
@@ -138,14 +138,12 @@ void MainGameWindow::on_pushButton_7_clicked() {
 }
 
 
-void MainGameWindow::on_pushButton_8_clicked()
-{
+void MainGameWindow::on_pushButton_8_clicked() {
 
 }
 
 
-void MainGameWindow::on_pause_clicked()
-{
-    game_handeler->MyPause();
+void MainGameWindow::on_pause_clicked() {
+	game_handeler->MyPause();
 }
 
