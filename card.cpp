@@ -19,7 +19,7 @@ Card::Card() {
 	this->number = 0;
 	this->type = Card::unknown;
 	this->button = nullptr;
-	this->parent = parent;
+    this->parent = nullptr;
 	this->scene = nullptr;
 }
 Card::Card(CardType type, int number = -1) {
@@ -50,13 +50,15 @@ Card::Card(QObject *parent, CardType type, QGraphicsScene *scene, QGraphicsView 
 
 }
 void Card::operator=(const Card &other) {
-	this->scene = other.scene;
-	this->view = other.view;
+
 	this->parent = other.parent;
 	this->type = other.type;
 	this->number = other.number;
-	this->button = other.button;
 	if ( other.scene != nullptr ) {
+        this->view = other.view;
+        this->button = other.button;
+        this->scene = other.scene;
+
 
 		button = new QPushButton();
 		button->resize(width, height);

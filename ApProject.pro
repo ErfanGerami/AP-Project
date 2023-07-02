@@ -24,6 +24,8 @@ SOURCES += \
 	maingamewindow.cpp \
 	mainmenu.cpp \
 	player.cpp \
+	servercard.cpp \
+	serverplayeringame.cpp \
 	signup.cpp \
 	test.cpp\
 	mainmenu.cpp \
@@ -51,6 +53,8 @@ HEADERS += \
 	maingamewindow.h \
 	mainmenu.h \
 	player.h \
+	servercard.h \
+	serverplayeringame.h \
 	signup.h \
 	test.h\
 	mainmenu.h \

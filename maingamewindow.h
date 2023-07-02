@@ -12,6 +12,8 @@
 #include "logic.h"
 #include "gamehandeler.h"
 #include <qthread.h>
+#include "servercard.h"
+#include "serverplayeringame.h"
 
 extern Player *MainPlayer;
 

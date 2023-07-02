@@ -1,45 +1,47 @@
 #ifndef LOGIC_H
 #define LOGIC_H
 
-#include "playerInGame.h"
+#include "servercard.h"
+#include "serverplayeringame.h"
 #include <vector>
 #include <random>
 #include "SocketHandeling.h"
-#include "Code.h"
 
-class Logic {
+#include <QThread>
+
+class Logic:public QThread {
 public:
-	Logic(SocketHandeling *server, PlayerInGame p1, PlayerInGame p2, int number_of_players, PlayerInGame p3, PlayerInGame p4);
+    Logic(SocketHandeling *server, ServerPlayerInGame p1, ServerPlayerInGame p2, int number_of_players, ServerPlayerInGame p3, ServerPlayerInGame p4);
 	void initializeNewSet();
-	bool isValid(Card card, int turn);
-	bool throwCard(Card card, int turn);
+    bool throwCard(ServerCard card, int turn);
 	int getFirstPlayer();
 	int notifyAndGetThisRoundsWinner();//this will increament round_won in winner player and returns his\hers username
 
 	void StartGame();
 	void shuffle();
 	void DealCard();//note that it is depending on right round to count the number of cards;
-	void SwapCard(int player_index1, int player_index2, Card::CardType type1, Card::CardType type2, int num1, int num2);
-	int CardVectorToArray(QVector<Card *> cards, int array[2][14]);//give the array as the second parameter//returns size;
-	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size);
+    void SwapCard(int player_index1, int player_index2, ServerCard::CardType type1, ServerCard::CardType type2, int num1, int num2);
+    int CardVectorToArray(QVector<ServerCard *> cards, int array[2][14]);//give the array as the second parameter//returns size;
+    QVector<ServerCard *> CardArrayToVectorOf(int array[2][14], int size);
 
 	void handle(char *code, int who);
+    void run() override;
 
 
 
 
 private:
 	SocketHandeling *server;
-	PlayerInGame *players[4];
+    ServerPlayerInGame *players[4];
 	int number_of_players;
-	QVector<Card> cards_on_deck;
-	QVector<Card> all_cards;
+    QVector<ServerCard> cards_on_deck;
+    QVector<ServerCard> all_cards;
 	int set;
 	int round;
 	int this_rounds_first;
 	int whose_turn(int turn);
 	//return value is -1 0 1
-	int Greater(Card card1, Card card2);
+    int Greater(ServerCard card1, ServerCard card2);
 	void FillAllCards();
 
 

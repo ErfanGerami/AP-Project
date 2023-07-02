@@ -49,17 +49,19 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 
 
 
-		logic = new Logic(server, PlayerInGame(Player(name_vec[0].toStdString(), ""), this, 0, {}, 0)
-			, PlayerInGame(Player(name_vec[1].toStdString(), ""), this, 1, {}, 0), player_count,
-			PlayerInGame(Player(name_vec[2].toStdString(), ""), this, 2, {}, 0)
-			, PlayerInGame(Player(name_vec[3].toStdString(), ""), this, 3, {}, 0));
+
+        logic = new Logic(server, ServerPlayerInGame(name_vec[0].toStdString(), "")
+            , ServerPlayerInGame(name_vec[1].toStdString(), ""), player_count,
+            ServerPlayerInGame(name_vec[2].toStdString(), "")
+            , ServerPlayerInGame(name_vec[3].toStdString(), ""));
 
 
 
 		//t.start();
 
 		//logic_thread = std::thread { &Logic::StartGame, logic };
-		logic->StartGame();
+        //logic->StartGame();
+        logic->start();
 
 	}
 	else {

@@ -1,3 +1,9 @@
+#define I srand(time(NULL));
+#define REALLY srand(time(NULL));
+#define HATE FILE *temp = fopen("players.bin", "ab+");
+#define QTFRAMEWORK QApplication a(argc, argv);
+
+
 #include "login.h"
 #include <QApplication>
 #include "filehandeling.h"
@@ -21,12 +27,19 @@ Player *MainPlayer = nullptr;
 
 
 int main(int argc, char *argv[]) {
-	srand(time(NULL));
-	//to create the file if it doesn't already exist
-	FILE *temp = fopen("players.bin", "ab+");
-	fclose(temp);
+    //srand(time(NULL));
+    ////to create the file if it doesn't already exist
+    //FILE *temp = fopen("players.bin", "ab+");
+    //fclose(temp);
+    //
+    //QApplication a(argc, argv);
+    I;
+    REALLY;
+    HATE;
+    QTFRAMEWORK;
 
-	QApplication a(argc, argv);
+
+
 	qDebug() << sizeof(DataPacket);
 
 	//MainGameWindow *g = new MainGameWindow();
