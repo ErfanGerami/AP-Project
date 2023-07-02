@@ -26,9 +26,8 @@ DinoGame::DinoGame(QWidget *parent) :
 
         }
         QPropertyAnimation* anim=new QPropertyAnimation(barriers[i],"geometry");
-        int distance=rand()%3000+max+1000;
-        int base=rand()%3000+max+1000;
-        distance=base+200;
+        int base=rand()%1000+max+500;
+        int distance=base+200;
         anim->setStartValue(QRect(distance
                                   ,barriers[i]->y(),barriers[i]->width(),barriers[i]->height()));
         anim->setDuration(time*distance*1.0/time_in_distance
@@ -36,6 +35,19 @@ DinoGame::DinoGame(QWidget *parent) :
         anim->setEndValue(QRect(-200,barriers[i]->y(),barriers[i]->width(),barriers[i]->height()));
         anim->start();
         connect(anim,&QPropertyAnimation::finished,[this,anim,distance](){
+
+                int max=-10000;//-inf
+                for(int j=0;j<3;j++){
+                    if(barriers[j]->x()>max){
+                        max=barriers[j]->x();
+                    }
+
+
+                }
+                int base=rand()%1000+max+500;
+                int distance=base+200;
+                anim->setStartValue(QRect(distance
+                                          ,barriers[0]->y(),barriers[0]->width(),barriers[0]->height()));
 
                 anim->setDuration(time*distance*1.0/time_in_distance);
                 anim->start();});

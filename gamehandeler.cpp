@@ -278,8 +278,33 @@ void GameHandeler::Read() {
 			number = code[4] - '0';
 		}
 		else {
-			//handle
+            //check if the code is pause do this
+            OthersPause();
+            //-----------------------------------
+
+            //check if somone has sent a swap card then if yes do this
+            int index_of_the_requested_player;//set this too
+            QMessageBox::StandardButton response;
+                response = QMessageBox::question(nullptr, "Swap Request"
+                                                 , "would you swapa a card with "+QString(players[index_of_the_requested_player]->GetUserName().c_str())
+                                                 , QMessageBox::Yes | QMessageBox::No);
+
+             if (response == QMessageBox::Yes) {
+                 std::pair<bool,int> swap_card_answer_stat={true,index_of_the_requested_player};
+
+             }else{
+
+             }
+            //---------------------------------------------
+
+
+            //check if someone has accepted our swapcard reques and if yes get the type and number and call ths
+             Card::CardType type;//set this
+             int number;//set this
+             SwitchCardShow(type,number,swap_candidate.first,swap_candidate.second);
+
 		}
+
 
 
 		GetOthersPushedCard(type, number);
@@ -400,8 +425,9 @@ void GameHandeler::Predict() {
 	//--------------------
 	//connect the socket when sends data that someone pushed card to GetOthersPushedCard
 
-
 	//SIGNAL(bytesAvailable())
+
+
 
 }
 
@@ -425,7 +451,27 @@ void GameHandeler::PushCard() {
 					card->PushCard();
 					card->SetDisabled(true);
 
+                    if(swap_card_answer_stat.first==true){
+                        //first notify the server that the answer is yes;and the type
+                        int index_of_card=rand()%players[me]->get_cards().size();
+                        Card::CardType type=players[me]->get_cards()[index_of_card]->GetType();
+                        int number=players[me]->get_cards()[index_of_card]->GetNumber();
+                        swap_candidate.first=type;
+                        swap_candidate.second=number;
 
+                        //-----------------------------------------------
+
+                        swap_card_answer_stat.first=false;
+
+                    }
+                    if(swap_card_stat.first){
+                        //send to the server the targeted player and the type and the number
+                        int index_of_targeted=swap_card_stat.second;
+                        int index_of_card=rand()%players[me]->get_cards().size();
+                        Card::CardType type=players[me]->get_cards()[index_of_card]->GetType();
+                        int number=players[me]->get_cards()[index_of_card]->GetNumber();
+                        //send the
+                    }
 
 
 					//notify the server of what card is pushed here
@@ -441,6 +487,7 @@ void GameHandeler::PushCard() {
 						curr_state = 3;
 
 					}
+
 				}
 				break;
 			}
@@ -501,6 +548,50 @@ QVector<Card *> GameHandeler::CardArrayToVectorOf(int array[2][14], int size, QG
 
 
 }
+void GameHandeler::SwapCard(int player_index) {
+    if(GetWhoseTurn()==me){
+        //notify the targeted index player if he wants to swap
+        swap_card_stat={true,player_index};
 
 
-void GameHandeler::SwapCard(int player_index) {}
+    }
+
+}
+
+
+void GameHandeler::OthersPause(){
+    QMessageBox messageBox(parent);
+    messageBox.setText("game has been paused");
+    messageBox.setStandardButtons(0);
+    QTimer::singleShot(30000, &messageBox, &QMessageBox::close);
+}
+
+
+void GameHandeler::MyPause(){
+    if(!is_pause&&GetWhoseTurn()==me){
+        is_pause=true;
+        //notify the server and the other clients of the pause
+        //remember to check code in server in order to check if the cards are played or it is paused
+
+
+        //--------------------------------------
+        QMessageBox messageBox(parent);
+        messageBox.setText("game has been paused");
+        messageBox.setStandardButtons(0);
+        QTimer::singleShot(30000, &messageBox, &QMessageBox::close);
+
+        is_pause=false;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
