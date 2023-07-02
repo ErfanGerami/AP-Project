@@ -17,6 +17,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -39,8 +40,8 @@ public:
     QPushButton *login;
     QLabel *label;
     QPushButton *forgot;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton;
+    QSlider *horizontalSlider;
+    QLabel *PassL_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -140,19 +141,22 @@ public:
         forgot->setStyleSheet(QString::fromUtf8("#forgot{border-radius:1px;background:transparent;color:red;font-size:13px;background:transparent;}\n"
 "#forgot:hover{border-radius:6px;color:black;font-size:13px;background-color:red;\n"
 "color:black}"));
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(110, 60, 93, 28));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(220, 60, 93, 28));
+        horizontalSlider = new QSlider(centralwidget);
+        horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
+        horizontalSlider->setGeometry(QRect(90, 330, 160, 22));
+        horizontalSlider->setOrientation(Qt::Horizontal);
+        PassL_2 = new QLabel(centralwidget);
+        PassL_2->setObjectName(QString::fromUtf8("PassL_2"));
+        PassL_2->setGeometry(QRect(20, 320, 55, 31));
+        PassL_2->setStyleSheet(QString::fromUtf8("color:white\n"
+""));
         Login->setCentralWidget(centralwidget);
         layoutWidget->raise();
         forgot->raise();
         start->raise();
         label->raise();
-        pushButton_3->raise();
-        pushButton->raise();
+        horizontalSlider->raise();
+        PassL_2->raise();
         menubar = new QMenuBar(Login);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 26));
@@ -178,8 +182,7 @@ public:
         login->setText(QApplication::translate("Login", "Login", nullptr));
         label->setText(QString());
         forgot->setText(QApplication::translate("Login", "forgot my password", nullptr));
-        pushButton_3->setText(QApplication::translate("Login", "PushButton", nullptr));
-        pushButton->setText(QApplication::translate("Login", "PushButton", nullptr));
+        PassL_2->setText(QApplication::translate("Login", "Sound", nullptr));
     } // retranslateUi
 
 };

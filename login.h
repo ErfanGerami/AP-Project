@@ -27,7 +27,7 @@ namespace Ui { class Login; }
 QT_END_NAMESPACE
 
 class Login: public QMainWindow {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
 	Login(QWidget *parent = nullptr);
@@ -41,7 +41,10 @@ private slots:
 
 	void on_pushButton_3_clicked();
 	void on_pushButton_clicked();
+    void on_horizontalSlider_valueChanged(int value);
+
 private:
+    QMediaPlayer *media;
 	std::thread *th;
 	Ui::Login *ui;
 	ForgotMyPassword *forgot_password;

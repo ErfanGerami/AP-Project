@@ -15,13 +15,14 @@ Login::Login(QWidget *parent)
 	anim->setEndValue(QRect(0, 0, 160, 100));
 	anim->start();
 	QSound::play(":/sounds/sounds/laugh.wav");
-	QMediaPlayer *media = new QMediaPlayer();
+    media = new QMediaPlayer();
 	QMediaPlaylist *playlist = new QMediaPlaylist;
 	playlist->addMedia(QUrl("qrc:/sounds/sounds/UiBackSound.mp3"));
 	media->setPlaylist(playlist);
-	media->setVolume(30);
+    media->setVolume(30);
+    ui->horizontalSlider->setValue(30);
 	media->play();
-	connect(media, &QMediaPlayer::stateChanged, [media] () {media->play(); });
+    connect(media, &QMediaPlayer::stateChanged, [this] () {media->play(); });
 
 }
 
@@ -84,5 +85,11 @@ void Login::on_forgot_clicked() {
 	forgot_password = new ForgotMyPassword(this);
 	forgot_password->show();
 	this->hide();
+}
+
+
+void Login::on_horizontalSlider_valueChanged(int value)
+{
+    media->setVolume(value);
 }
 
