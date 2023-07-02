@@ -1,30 +1,14 @@
-123/6/2|15:46:20
+123/6/2|16:6:52
 > trying to catch server ip through udp socket
-123/6/2|15:46:20
+123/6/2|16:6:52
 > server found
-123/6/2|15:46:20
-> trying to connect to server with name '' created by 'mmd99'
-123/6/2|15:46:21
+123/6/2|16:6:52
+> trying to connect to server with name '' created by 'mmd90'
+123/6/2|16:6:53
 > connected to server
-123/6/2|15:46:21
+123/6/2|16:6:53
 > written to socket as client
-123/6/2|15:46:21
+123/6/2|16:6:53
 > read 161bytes of data from server
-123/6/2|15:46:21
+123/6/2|16:6:53
 > read 161bytes of data from server
-123/6/2|15:46:21
-> read 141bytes of data from server
-123/6/2|15:46:21
-> read 141bytes of data from server
-123/6/2|15:46:26
-> written to socket as client
-123/6/2|15:46:26
-> sent 180bytes of data
-123/6/2|15:46:27
-> read 141bytes of data from server
-123/6/2|15:46:28
-> written to socket as client
-123/6/2|15:46:28
-> sent 180bytes of data
-123/6/2|15:46:29
-> read 141bytes of data from server

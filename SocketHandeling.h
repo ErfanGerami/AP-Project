@@ -50,6 +50,7 @@ public:
 
 	QTcpSocket *get_tcp_socket();
 	QTcpServer *get_tcp_server();
+	QUdpSocket *get_udp_socket();
 	QString get_name();
 	channel *get_channel_pointer();
 private:

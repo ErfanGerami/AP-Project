@@ -90,6 +90,7 @@ void MainMenu::on_join_server_clicked() {
 	//c.client_run_fast_connect("asd");
 	//c.client_run_fast_connect("asd");
 	try {
+		client->get_udp_socket()->waitForReadyRead(250);
 
 		client->client_run_fast_connect(QString::fromStdString(MainPlayer->GetUserName()));
 

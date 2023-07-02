@@ -36,7 +36,9 @@ SocketHandeling::SocketHandeling(QObject *parent) {
 	/*udp_socket = new QUdpSocket();
 	udp_socket->bind(QHostAddress::Any, 1500);*/
 	udp_socket = new QUdpSocket();
-	udp_socket->bind(QHostAddress::Any, 1500);
+
+
+
 	connect(tcp_socket, SIGNAL(connected()), this, SLOT(connected_to_server_socket()));
 	connect(tcp_socket, SIGNAL(bytesWritten(qint64)), this, SLOT(writing_data_socket()));
 	//////connect(tcp_socket, SIGNAL(readyRead()), this, SLOT(reading_data_socket()));
@@ -89,7 +91,7 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 
 
 
-
+	udp_socket->bind(QHostAddress::Any, 1500);
 
 	if ( udp_socket->waitForReadyRead(1000) ) {
 		logWriteClient("> server found");
@@ -297,6 +299,10 @@ QTcpSocket *SocketHandeling::get_tcp_socket() {
 
 QTcpServer *SocketHandeling::get_tcp_server() {
 	return tcp_server;
+}
+
+QUdpSocket *SocketHandeling::get_udp_socket() {
+	return udp_socket;
 }
 
 QString SocketHandeling::get_name() {
