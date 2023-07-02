@@ -322,7 +322,9 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image:url(:/images/images/arrow.png);</string>
+    <string notr="true">border-image:url(:/images/images/arrow.png);
+background-color:rgba(100,100,100,100);border-style: solid;border-radius:30px;
+</string>
    </property>
    <property name="text">
     <string/>
@@ -331,14 +333,16 @@
   <widget class="QLabel" name="arrow1">
    <property name="geometry">
     <rect>
-     <x>1430</x>
-     <y>420</y>
+     <x>1510</x>
+     <y>630</y>
      <width>71</width>
      <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image:url(:/images/images/arrow.png);</string>
+    <string notr="true">border-image:url(:/images/images/arrow_up.png);
+background-color:rgba(100,100,100,100);border-style: solid;border-radius:30px;
+</string>
    </property>
    <property name="text">
     <string/>
@@ -347,14 +351,16 @@
   <widget class="QLabel" name="arrow3">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>480</y>
+     <x>20</x>
+     <y>300</y>
      <width>71</width>
      <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image:url(:/images/images/arrow.png);</string>
+    <string notr="true">border-image:url(:/images/images/arrow_down.png);
+background-color:rgba(100,100,100,100);border-style: solid;border-radius:30px;
+</string>
    </property>
    <property name="text">
     <string/>
@@ -363,14 +369,15 @@
   <widget class="QLabel" name="arrow2">
    <property name="geometry">
     <rect>
-     <x>480</x>
+     <x>1030</x>
      <y>0</y>
      <width>71</width>
      <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image:url(:/images/images/arrow.png);</string>
+    <string notr="true">border-image:url(:/images/images/arrow_left.png);background-color:rgba(100,100,100,100);border-style: solid;border-radius:30px;
+</string>
    </property>
    <property name="text">
     <string/>

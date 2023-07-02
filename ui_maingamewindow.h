@@ -146,16 +146,16 @@ public:
         arrow0->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow.png);"));
         arrow1 = new QLabel(MainGameWindow);
         arrow1->setObjectName(QString::fromUtf8("arrow1"));
-        arrow1->setGeometry(QRect(1430, 420, 71, 71));
-        arrow1->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow.png);"));
+        arrow1->setGeometry(QRect(1510, 630, 71, 71));
+        arrow1->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow_up.png);"));
         arrow3 = new QLabel(MainGameWindow);
         arrow3->setObjectName(QString::fromUtf8("arrow3"));
-        arrow3->setGeometry(QRect(0, 480, 71, 71));
-        arrow3->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow.png);"));
+        arrow3->setGeometry(QRect(20, 300, 71, 71));
+        arrow3->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow_down.png);"));
         arrow2 = new QLabel(MainGameWindow);
         arrow2->setObjectName(QString::fromUtf8("arrow2"));
-        arrow2->setGeometry(QRect(480, 0, 71, 71));
-        arrow2->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow.png);"));
+        arrow2->setGeometry(QRect(1030, 0, 71, 71));
+        arrow2->setStyleSheet(QString::fromUtf8("border-image:url(:/images/images/arrow_left.png);background-color:rgba(100,100,100,100);border-radius:50px;"));
 
         retranslateUi(MainGameWindow);
 
