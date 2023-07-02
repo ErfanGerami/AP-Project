@@ -361,7 +361,9 @@ void Logic::StartGame() {
 		char *code7 = Code::set_code('0', Code::fromServer_Sent_YourScore);
 		DataPacket data_packet;
 		for ( int j = 0; j < number_of_players; j++ ) {
-			data_packet.your_points = players[j]->GetPoints();
+			int points = players[j]->GetPoints();
+
+			data_packet.your_points = points;
 
 			server->send_data(code7, &data_packet, j);
 		}

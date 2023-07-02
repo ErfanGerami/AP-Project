@@ -11,9 +11,9 @@ GameHandeler::GameHandeler(QWidget *parent, QLabel *score_label, QLabel *stars[4
 	for ( int i = 0; i < 4; i++ ) {
 		this->stars[i] = stars[i];
 	}
-    for ( int i = 0; i < 4; i++ ) {
-        this->arrows[i] = arrows[i];
-    }
+	for ( int i = 0; i < 4; i++ ) {
+		this->arrows[i] = arrows[i];
+	}
 	this->number_of_players = number_of_players;
 	this->sticker_scene = sticker_scene;
 	this->sticker_view = sticker_view;
@@ -170,7 +170,7 @@ void GameHandeler::GetOthersPushedCard(Card::CardType type, int number) {
 		//just pass
 
 
-		qDebug() << "awdjadajwdjuajwiduajjdoajuodjaiwdjoamdo";
+		qDebug() << "this line is never executed";
 	}
 	else {
 
@@ -179,8 +179,8 @@ void GameHandeler::GetOthersPushedCard(Card::CardType type, int number) {
 		card->ChangeCard(type, number);
 		card->PushCard();
 		card->SetDisabled(true);
-        cards_on_deck.push_back(card);
-        PlaceArrow();
+		cards_on_deck.push_back(card);
+		PlaceArrow();
 
 
 
@@ -251,10 +251,10 @@ void GameHandeler::StartSet() {
 				Q_ASSERT(false);
 			}
 		}
-    PlaceArrow();
+	PlaceArrow();
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
 
-    connect(anim, &QPropertyAnimation::finished, [this] () {});
+	connect(anim, &QPropertyAnimation::finished, [this] () {});
 
 	//connect(anim, &QPropertyAnimation::finished, [this] () {});
 	GetMyCards();
@@ -472,12 +472,12 @@ void GameHandeler::Predict() {
 }
 
 
-void GameHandeler::PlaceArrow(){
-    for (int i=0;i<4;i++){
-        this->arrows[i]->hide();
+void GameHandeler::PlaceArrow() {
+	for ( int i = 0; i < 4; i++ ) {
+		this->arrows[i]->hide();
 
-    }
-    this->arrows[players[GetWhoseTurn()]->GetPlace()]->show();
+	}
+	this->arrows[players[GetWhoseTurn()]->GetPlace()]->show();
 
 }
 void GameHandeler::PushCard() {
@@ -494,12 +494,12 @@ void GameHandeler::PushCard() {
 				number = cards[i]->GetNumber();
 				if ( isValid(Card(type, number), turn) ) {
 
-                    turn++;
+					turn++;
 					Card *card = players[me]->PushCard(type, number, false);
 					cards_on_deck.push_back(card);
 					card->PushCard();
 					card->SetDisabled(true);
-                    PlaceArrow();
+					PlaceArrow();
 
 
 
@@ -561,7 +561,7 @@ void GameHandeler::GetTheWinnerOfTheRound(int player_index) {
 	}
 	first_this_round = player_index;
 	stars[players[player_index]->GetPlace()]->show();
-    PlaceArrow();
+	PlaceArrow();
 	collect(players[player_index]);
 
 
