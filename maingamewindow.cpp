@@ -28,7 +28,8 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 		name_vec.push_back("");
 
 
-    QLabel *arrows[4] = { ui->arrow0, ui->arrow1, ui->arrow2, ui->arrow3 };
+    QLabel *arrows[4] = { ui->arrow0, ui->arrow2,ui->arrow1,
+                          ui->arrow3 };
     for ( int i = 0; i < 4; i++ ) {
         arrows[i]->hide();
     }

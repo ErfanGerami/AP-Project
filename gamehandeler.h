@@ -44,6 +44,7 @@ public:
 	void StartSet();
     void MyPause();
 	SocketHandeling *client;
+    void PlaceArrow();
 
 private:
     std::pair<Card::CardType,int> swap_candidate;
