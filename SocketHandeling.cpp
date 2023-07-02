@@ -131,7 +131,7 @@ void SocketHandeling::client_thread_funtion() {
 			QByteArray block;
 			while ( true ) {
 				if ( tcp_socket_mutex.try_lock() ) {
-					block = tcp_socket->read(180);
+					block = tcp_socket->read(220);
 					tcp_socket_mutex.unlock();
 					break;
 				}
@@ -183,7 +183,7 @@ QPair<char *, DataPacket *> SocketHandeling::reading_data_socket(bool force_read
 		QByteArray block;
 		while ( true ) {
 			if ( tcp_socket_mutex.try_lock() ) {
-				block = tcp_socket->read(180);
+				block = tcp_socket->read(220);
 				tcp_socket_mutex.unlock();
 				break;
 			}
@@ -418,13 +418,13 @@ void SocketHandeling::send_data(char *code, DataPacket *data, int client_number)
 
 	QByteArray final_block = front + block;
 
-	Q_ASSERT(final_block.size() < 180);
-	if ( final_block.size() < 180 ) {
-		int add = 180 - final_block.size();
+	Q_ASSERT(final_block.size() < 220);
+	if ( final_block.size() < 220 ) {
+		int add = 220 - final_block.size();
 		QByteArray add_arr(add, '&');
 		final_block = add_arr + final_block;
 	}
-	Q_ASSERT(final_block.size() == 180);
+	Q_ASSERT(final_block.size() == 220);
 
 
 

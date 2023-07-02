@@ -45,23 +45,23 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 		me = 0;
 
 
-		client->reading_data_socket();
+		//client->reading_data_socket();
+		client->get_tcp_socket()->readAll();
 
 
 
-
-        logic = new Logic(server, ServerPlayerInGame(name_vec[0].toStdString(), "")
-            , ServerPlayerInGame(name_vec[1].toStdString(), ""), player_count,
-            ServerPlayerInGame(name_vec[2].toStdString(), "")
-            , ServerPlayerInGame(name_vec[3].toStdString(), ""));
+		logic = new Logic(server, ServerPlayerInGame(name_vec[0].toStdString(), "")
+			, ServerPlayerInGame(name_vec[1].toStdString(), ""), player_count,
+			ServerPlayerInGame(name_vec[2].toStdString(), "")
+			, ServerPlayerInGame(name_vec[3].toStdString(), ""));
 
 
 
 		//t.start();
 
 		//logic_thread = std::thread { &Logic::StartGame, logic };
-        //logic->StartGame();
-        logic->start();
+		//logic->StartGame();
+		logic->start();
 
 	}
 	else {
@@ -73,13 +73,13 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 				break;
 			}
 		}
-
-		game_handeler = new GameHandeler(this, ui->score, stars, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
-			, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
-			, Player(name_vec[3].toStdString(), ""));
-
-		game_handeler->StartSet();
 	}
+
+	game_handeler = new GameHandeler(this, ui->score, stars, this->client, player_count, ui->Graphics, scene, ui->sticker_graphics, sticker_scene, me
+		, Player(name_vec[0].toStdString(), ""), Player(name_vec[1].toStdString(), ""), Player(name_vec[2].toStdString(), "")
+		, Player(name_vec[3].toStdString(), ""));
+
+	game_handeler->StartSet();
 	this->me = me;
 	for ( int i = me + 1; i < player_count + me; i++ ) {
 		ui->comboBox->addItem(name_vec[i % player_count]);

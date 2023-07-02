@@ -102,12 +102,7 @@ QPropertyAnimation *GameHandeler::TellTheFirst(int index) {
 
 QPropertyAnimation *GameHandeler::Deal() {
 
-	//Card *card = new Card(this, Card::parrot, scene, view, 2);
-	//players[0]->NewCards({ new Card(this, Card::parrot, scene, view, 2), new Card(this, Card::parrot, scene, view, 2) });
-	//players[1]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
-	//players[2]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
-	//players[3]->NewCards({ new Card(this, Card::map, scene, view, 2), new Card(this, Card::king, scene, view, 3), new Card(this, Card::queen, scene, view, 2) });
-	_sleep(1000);
+
 	for ( int i = 0; i < number_of_players; i++ ) {
 		turn_card[i]->hide();
 	}
@@ -242,14 +237,19 @@ void GameHandeler::StartSet() {
 		//handle
 	}
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
-	connect(anim, &QPropertyAnimation::finished, [this] () {/*curr_state = 0;*/ });
-	GetMyCards();
-	curr_state = 2;
+
+	connect(anim, &QPropertyAnimation::finished, [this] () {
+		_sleep(1000);
+		GetMyCards();
+		curr_state = 2;
+		});
+
 	connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
 	//----------------------------------
 
 
 }
+
 
 void GameHandeler::Read() {
 	if ( curr_state == -1 ) {

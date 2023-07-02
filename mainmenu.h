@@ -27,6 +27,7 @@ private slots:
 
 	void on_change_info_clicked();
 	void on_create_server_clicked();
+	void on_ip_connect_clicked();
 	void on_join_server_clicked();
 
 

@@ -68,6 +68,10 @@ public:
     QSpinBox *player_count;
     QPushButton *pushButton;
     QPushButton *join_server_2;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *ip_connect;
+    QLineEdit *ip;
 
     void setupUi(QDialog *MainMenu)
     {
@@ -311,6 +315,22 @@ public:
         join_server_2->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:rgb(70,50,50);color:red;\n"
 "\n"
 ";"));
+        widget = new QWidget(MainMenu);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(260, 680, 239, 30));
+        horizontalLayout_2 = new QHBoxLayout(widget);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        ip_connect = new QPushButton(widget);
+        ip_connect->setObjectName(QString::fromUtf8("ip_connect"));
+
+        horizontalLayout_2->addWidget(ip_connect);
+
+        ip = new QLineEdit(widget);
+        ip->setObjectName(QString::fromUtf8("ip"));
+
+        horizontalLayout_2->addWidget(ip);
+
 
         retranslateUi(MainMenu);
 
@@ -349,6 +369,7 @@ public:
         label_3->setText(QApplication::translate("MainMenu", "player count:", nullptr));
         pushButton->setText(QApplication::translate("MainMenu", "log out", nullptr));
         join_server_2->setText(QApplication::translate("MainMenu", "Earn Coins While You Wait With a Wide Game", nullptr));
+        ip_connect->setText(QApplication::translate("MainMenu", "connect via ip:", nullptr));
     } // retranslateUi
 
 };

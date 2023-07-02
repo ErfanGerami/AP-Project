@@ -83,6 +83,21 @@ void MainMenu::on_create_server_clicked() {
 	}
 }
 
+void MainMenu::on_ip_connect_clicked() {
+	try {
+		client->client_run(QHostAddress(ui->ip->text()), QString::fromStdString(MainPlayer->GetUserName()));
+		wait_menu = new WaitMenu(client, this);
+
+		wait_menu->show();
+		this->hide();
+
+	}
+	catch ( Errors err ) {
+		QMessageBox::critical(this, "error", err.what());
+
+	}
+}
+
 void MainMenu::on_join_server_clicked() {
 	//SocketHandeling *client = new SocketHandeling();
 	//SocketHandeling c = new SocketHandeling();
@@ -90,7 +105,7 @@ void MainMenu::on_join_server_clicked() {
 	//c.client_run_fast_connect("asd");
 	//c.client_run_fast_connect("asd");
 	try {
-		client->get_udp_socket()->waitForReadyRead(250);
+		//client->get_udp_socket()->waitForReadyRead(250);
 
 		client->client_run_fast_connect(QString::fromStdString(MainPlayer->GetUserName()));
 
