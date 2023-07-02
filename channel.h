@@ -17,7 +17,7 @@ class channel: public QObject {
 public:
 	channel(QTcpSocket *_socket, int _client_number, QObject *parent = nullptr);
 	~channel();
-
+	int set = 0, round = 0;
 
 	void close_socket();
 
