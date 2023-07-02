@@ -20,6 +20,7 @@
 #include "SocketHandeling.h"
 #include "Code.h"
 
+#include <QTimer>
 
 class GameHandeler:public QObject {
 	Q_OBJECT
@@ -38,11 +39,18 @@ public:
 	Card *turn_card[4];
 	void SwapCard(int player_index);
 
-
+    void OthersPause();
 
 	void StartSet();
+    void MyPause();
 	SocketHandeling *client;
+
 private:
+    std::pair<Card::CardType,int> swap_candidate;
+    std::pair<bool,int> swap_card_stat={false,-1};
+    std::pair<bool,int> swap_card_answer_stat={false,-1};
+
+    bool is_pause=false;
     QLabel* stars[4];
 	int curr_state;
     QLabel* score_label;
@@ -63,6 +71,7 @@ private:
 	int turn = 0;
 	int set = 0;
 	int first_this_round;
+
 
 
 

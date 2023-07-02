@@ -730,20 +730,25 @@ color:black;
     <string>log out</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="ip">
+  <widget class="QPushButton" name="join_server_2">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>630</y>
-     <width>137</width>
-     <height>24</height>
+     <x>620</x>
+     <y>190</y>
+     <width>291</width>
+     <height>91</height>
     </rect>
    </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:0px;background-color:rgb(70,50,50);color:red;
+
+;</string>
+   </property>
+   <property name="text">
+    <string>Earn Coins While You Wait With a Wide Game</string>
    </property>
   </widget>
  </widget>

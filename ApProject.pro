@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
 	card.cpp\
 	changeinfo.cpp \
+	dinogame.cpp \
 	errors.cpp \
 	filehandeling.cpp \
 	forgotmypassword.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
 HEADERS += \
 	card.h\
 	changeinfo.h \
+	dinogame.h \
 	errors.h \
 	filehandeling.h \
 	forgotmypassword.h \
@@ -61,6 +63,7 @@ HEADERS += \
 
 FORMS += \
 	changeinfo.ui \
+	dinogame.ui \
 	forgotmypassword.ui \
 	getserversinformation.ui \
 	login.ui \

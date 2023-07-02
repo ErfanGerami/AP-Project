@@ -134,12 +134,7 @@ int Logic::Greater(Card card1, Card card2) {
 
 			}
 			else {
-				if ( number1 == cards_on_deck[0].GetType() )
-					return -1;
-				else if ( number2 == cards_on_deck[0].GetType() )
-					return 1;
-				else
-					return 0;
+                return -1;
 
 			}
 		}

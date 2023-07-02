@@ -137,3 +137,15 @@ void MainGameWindow::on_pushButton_7_clicked() {
 	game_handeler->SwapCard(me + ui->comboBox->currentIndex());
 }
 
+
+void MainGameWindow::on_pushButton_8_clicked()
+{
+
+}
+
+
+void MainGameWindow::on_pause_clicked()
+{
+    game_handeler->MyPause();
+}
+
