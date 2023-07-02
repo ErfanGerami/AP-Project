@@ -229,21 +229,25 @@ void GameHandeler::StartSet() {
 
 	QPair<char *, DataPacket *>pair = client->reading_data_socket();
 
-	if ( Code::get_code(pair.first) == Code::fromServer_Sent_FirstPlayer ) {
-		first_this_round = pair.first[3] - '0';//set this
-
-	}
-	else {
-		//handle
-	}
+	while ( true )
+		if ( Code::get_code(pair.first) == Code::fromServer_Sent_FirstPlayer ) {
+			first_this_round = pair.first[3] - '0';//set this
+			break;
+		}
+		else {
+			if ( Code::get_code(pair.first) == Code::fromServer_Sent_PlayerNames ||
+				Code::get_code(pair.first) == Code::fromServer_Sent_GameStarted ) {
+				pair = client->reading_data_socket();
+			}
+			else {
+				Q_ASSERT(false);
+			}
+		}
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
 
-	connect(anim, &QPropertyAnimation::finished, [this] () {
-		_sleep(1000);
-		GetMyCards();
-		curr_state = 2;
-		});
-
+	//connect(anim, &QPropertyAnimation::finished, [this] () {});
+	GetMyCards();
+	curr_state = 2;
 	connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
 	//----------------------------------
 

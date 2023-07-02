@@ -18,3 +18,5 @@
 .vs
 .vs/ApProject
 .vs/ApProject/v16/Browse.VC.opendb
+/client-log.txt
+/server-log.txt

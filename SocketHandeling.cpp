@@ -71,13 +71,17 @@ SocketHandeling::~SocketHandeling() {
 }
 
 void SocketHandeling::client_bytesAvailabe() {
-
+	qDebug() << "++++++++++++++++++++++++++++thread initialized";
 	while ( true ) {
 		if ( data_vector_mutex.try_lock() ) {
-			if ( tcp_socket->bytesAvailable() )
+			if ( tcp_socket->bytesAvailable() ) {
 				emit main_game_read();
+				qDebug() << "+++++++++++++++++++++++++ has unread data";
+
+			}
 			data_vector_mutex.unlock();
 		}
+
 		std::this_thread::sleep_for(milliseconds(1000));
 	}
 
@@ -236,6 +240,7 @@ void SocketHandeling::client_run(QHostAddress ip, QString username) {
 
 	tcp_socket->connectToHost(ip, 1500);
 	//connect(tcp_socket, SIGNAL(connected()), this, SLOT(connected_to_server_socket()));
+	client_bytesAvailabe_emit = std::thread { &SocketHandeling::client_bytesAvailabe, this };
 	if ( !tcp_socket->waitForConnected(1000) ) {
 
 		logWriteClient("> connection failed");
