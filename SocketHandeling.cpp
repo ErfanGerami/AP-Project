@@ -95,6 +95,8 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 
 
 
+	if ( udp_socket == nullptr )
+		udp_socket = new QUdpSocket();
 	udp_socket->bind(QHostAddress::Any, 1500);
 
 	if ( udp_socket->waitForReadyRead(1000) ) {
@@ -117,8 +119,9 @@ void SocketHandeling::client_run_fast_connect(QString username) {
 
 		client_bytesAvailabe_emit = std::thread { &SocketHandeling::client_bytesAvailabe, this };
 		name = username;
-
-
+		udp_socket->close();
+		delete udp_socket;
+		udp_socket = nullptr;
 	}
 	else {
 		logWriteClient("> no server found");

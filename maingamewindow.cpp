@@ -84,9 +84,6 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 	for ( int i = me + 1; i < player_count + me; i++ ) {
 		ui->comboBox->addItem(name_vec[i % player_count]);
 	}
-
-
-
 }
 
 MainGameWindow::~MainGameWindow() {
