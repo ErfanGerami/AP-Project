@@ -1,142 +1,402 @@
-123/6/2|1:34:28
+123/6/2|7:35:31
 > trying to catch server ip through udp socket
-123/6/2|1:34:28
+123/6/2|7:35:31
 > server found
-123/6/2|1:34:28
-> trying to connect to server with name '' created by 'mmd41'
-123/6/2|1:34:29
+123/6/2|7:35:31
+> trying to connect to server with name '' created by 'mmd64'
+123/6/2|7:35:32
 > connected to server
-123/6/2|1:34:29
+123/6/2|7:35:32
 > written to socket as client
-123/6/2|1:34:29
+123/6/2|7:35:32
 > read 161bytes of data from server
-123/6/2|1:34:30
+123/6/2|7:35:32
 > read 141bytes of data from server
-123/6/2|1:34:30
+123/6/2|7:35:32
 > read 141bytes of data from server
-123/6/2|1:34:32
+123/6/2|7:35:35
 > written to socket as client
-123/6/2|1:34:32
+123/6/2|7:35:35
 > sent 180bytes of data
-123/6/2|1:34:33
+123/6/2|7:35:35
 > read 141bytes of data from server
-123/6/2|1:34:34
+123/6/2|7:35:38
 > written to socket as client
-123/6/2|1:34:34
+123/6/2|7:35:38
 > sent 180bytes of data
-123/6/2|1:34:35
+123/6/2|7:38:47
 > read 141bytes of data from server
-123/6/2|1:34:36
+123/6/2|7:38:48
+> read 141bytes of data from server
+123/6/2|7:38:49
 > written to socket as client
-123/6/2|1:34:36
+123/6/2|7:38:49
 > sent 180bytes of data
-123/6/2|1:34:37
+123/6/2|7:38:53
 > read 141bytes of data from server
-123/6/2|1:34:38
+123/6/2|7:38:54
 > read 141bytes of data from server
-123/6/2|1:34:39
+123/6/2|7:38:54
 > read 141bytes of data from server
-123/6/2|1:34:39
+123/6/2|7:38:54
 > read 141bytes of data from server
-123/6/2|1:34:39
-> read 141bytes of data from server
-123/6/2|1:34:41
+123/6/2|7:38:56
 > written to socket as client
-123/6/2|1:34:41
+123/6/2|7:38:56
 > sent 180bytes of data
-123/6/2|1:34:42
-> read 141bytes of data from server
-123/6/2|1:34:44
+123/6/2|7:38:58
 > written to socket as client
-123/6/2|1:34:44
+123/6/2|7:38:58
 > sent 180bytes of data
-123/6/2|1:34:45
+123/6/2|7:38:59
 > read 141bytes of data from server
-123/6/2|1:34:46
+123/6/2|7:39:0
 > read 141bytes of data from server
-123/6/2|1:34:47
+123/6/2|7:39:1
+> read 141bytes of data from server
+123/6/2|7:39:3
 > written to socket as client
-123/6/2|1:34:47
+123/6/2|7:39:3
 > sent 180bytes of data
-123/6/2|1:34:48
+123/6/2|7:39:4
 > read 141bytes of data from server
-123/6/2|1:34:49
+123/6/2|7:39:5
+> read 141bytes of data from server
+123/6/2|7:39:6
 > written to socket as client
-123/6/2|1:34:49
+123/6/2|7:39:6
 > sent 180bytes of data
-123/6/2|1:34:50
+123/6/2|7:39:7
 > read 141bytes of data from server
-123/6/2|1:34:51
+123/6/2|7:39:8
 > read 141bytes of data from server
-123/6/2|1:34:52
-> read 141bytes of data from server
-123/6/2|1:34:52
+123/6/2|7:39:9
 > written to socket as client
-123/6/2|1:34:52
+123/6/2|7:39:9
 > sent 180bytes of data
-123/6/2|1:34:53
+123/6/2|7:39:10
 > read 141bytes of data from server
-123/6/2|1:34:54
+123/6/2|7:39:11
 > read 141bytes of data from server
-123/6/2|1:34:54
+123/6/2|7:39:11
 > read 141bytes of data from server
-123/6/2|1:34:54
+123/6/2|7:39:11
 > read 141bytes of data from server
-123/6/2|1:34:56
+123/6/2|7:39:14
 > written to socket as client
-123/6/2|1:34:56
+123/6/2|7:39:14
 > sent 180bytes of data
-123/6/2|1:34:57
+123/6/2|7:39:14
+> read 141bytes of data from server
+123/6/2|7:39:19
 > written to socket as client
-123/6/2|1:34:57
+123/6/2|7:39:19
 > sent 180bytes of data
-123/6/2|1:34:58
+123/6/2|7:39:20
 > read 141bytes of data from server
-123/6/2|1:34:59
-> read 141bytes of data from server
-123/6/2|1:35:0
-> read 141bytes of data from server
-123/6/2|1:35:3
+123/6/2|7:39:22
 > written to socket as client
-123/6/2|1:35:3
+123/6/2|7:39:22
 > sent 180bytes of data
-123/6/2|1:35:4
+123/6/2|7:39:22
 > read 141bytes of data from server
-123/6/2|1:35:5
+123/6/2|7:39:23
+> read 141bytes of data from server
+123/6/2|7:39:24
+> read 141bytes of data from server
+123/6/2|7:39:26
 > written to socket as client
-123/6/2|1:35:5
+123/6/2|7:39:26
 > sent 180bytes of data
-123/6/2|1:35:6
+123/6/2|7:39:27
 > read 141bytes of data from server
-123/6/2|1:35:7
-> read 141bytes of data from server
-123/6/2|1:35:8
-> read 141bytes of data from server
-123/6/2|1:35:10
+123/6/2|7:39:28
 > written to socket as client
-123/6/2|1:35:10
+123/6/2|7:39:28
 > sent 180bytes of data
-123/6/2|1:35:10
+123/6/2|7:39:29
 > read 141bytes of data from server
-123/6/2|1:35:11
+123/6/2|7:39:30
+> read 141bytes of data from server
+123/6/2|7:39:31
+> read 141bytes of data from server
+123/6/2|7:39:31
 > written to socket as client
-123/6/2|1:35:11
+123/6/2|7:39:31
 > sent 180bytes of data
-123/6/2|1:35:12
+123/6/2|7:39:32
 > read 141bytes of data from server
-123/6/2|1:35:13
-> read 141bytes of data from server
-123/6/2|1:35:14
-> read 141bytes of data from server
-123/6/2|1:35:15
+123/6/2|7:39:33
 > written to socket as client
-123/6/2|1:35:15
+123/6/2|7:39:33
 > sent 180bytes of data
-123/6/2|1:35:16
+123/6/2|7:39:33
 > read 141bytes of data from server
-123/6/2|1:35:17
+123/6/2|7:39:34
 > read 141bytes of data from server
-123/6/2|1:35:17
+123/6/2|7:39:35
 > read 141bytes of data from server
-123/6/2|1:35:17
+123/6/2|7:39:35
 > read 141bytes of data from server
+123/6/2|7:39:35
+> read 141bytes of data from server
+123/6/2|7:39:38
+> written to socket as client
+123/6/2|7:39:38
+> sent 180bytes of data
+123/6/2|7:39:47
+> written to socket as client
+123/6/2|7:39:47
+> sent 180bytes of data
+123/6/2|7:39:47
+> read 141bytes of data from server
+123/6/2|7:41:30
+> read 141bytes of data from server
+123/6/2|7:41:31
+> read 141bytes of data from server
+123/6/2|7:41:45
+> written to socket as client
+123/6/2|7:41:45
+> sent 180bytes of data
+123/6/2|7:41:48
+> read 141bytes of data from server
+123/6/2|7:41:50
+> written to socket as client
+123/6/2|7:41:50
+> sent 180bytes of data
+123/6/2|7:41:51
+> read 141bytes of data from server
+123/6/2|7:41:52
+> read 141bytes of data from server
+123/6/2|7:41:53
+> read 141bytes of data from server
+123/6/2|7:41:55
+> written to socket as client
+123/6/2|7:41:55
+> sent 180bytes of data
+123/6/2|7:41:56
+> read 141bytes of data from server
+123/6/2|7:41:58
+> written to socket as client
+123/6/2|7:41:58
+> sent 180bytes of data
+123/6/2|7:41:58
+> read 141bytes of data from server
+123/6/2|7:41:59
+> read 141bytes of data from server
+123/6/2|7:42:0
+> read 141bytes of data from server
+123/6/2|7:42:1
+> written to socket as client
+123/6/2|7:42:1
+> sent 180bytes of data
+123/6/2|7:42:1
+> read 141bytes of data from server
+123/6/2|7:42:2
+> written to socket as client
+123/6/2|7:42:2
+> sent 180bytes of data
+123/6/2|7:42:3
+> read 141bytes of data from server
+123/6/2|7:42:4
+> read 141bytes of data from server
+123/6/2|7:42:5
+> read 141bytes of data from server
+123/6/2|7:42:7
+> written to socket as client
+123/6/2|7:42:7
+> sent 180bytes of data
+123/6/2|7:42:7
+> read 141bytes of data from server
+123/6/2|7:42:8
+> read 141bytes of data from server
+123/6/2|7:42:8
+> read 141bytes of data from server
+123/6/2|7:42:8
+> read 141bytes of data from server
+123/6/2|7:42:14
+> written to socket as client
+123/6/2|7:42:14
+> sent 180bytes of data
+123/6/2|7:42:15
+> written to socket as client
+123/6/2|7:42:15
+> sent 180bytes of data
+123/6/2|7:42:16
+> read 141bytes of data from server
+123/6/2|7:42:17
+> read 141bytes of data from server
+123/6/2|7:42:18
+> read 141bytes of data from server
+123/6/2|7:42:21
+> written to socket as client
+123/6/2|7:42:21
+> sent 180bytes of data
+123/6/2|7:42:21
+> read 141bytes of data from server
+123/6/2|7:42:23
+> written to socket as client
+123/6/2|7:42:23
+> sent 180bytes of data
+123/6/2|7:42:24
+> read 141bytes of data from server
+123/6/2|7:42:25
+> read 141bytes of data from server
+123/6/2|7:42:26
+> read 141bytes of data from server
+123/6/2|7:42:28
+> written to socket as client
+123/6/2|7:42:28
+> sent 180bytes of data
+123/6/2|7:42:28
+> read 141bytes of data from server
+123/6/2|7:42:29
+> read 141bytes of data from server
+123/6/2|7:42:31
+> written to socket as client
+123/6/2|7:42:31
+> sent 180bytes of data
+123/6/2|7:42:31
+> read 141bytes of data from server
+123/6/2|7:42:32
+> read 141bytes of data from server
+123/6/2|7:42:34
+> written to socket as client
+123/6/2|7:42:34
+> sent 180bytes of data
+123/6/2|7:42:34
+> read 141bytes of data from server
+123/6/2|7:42:37
+> written to socket as client
+123/6/2|7:42:37
+> sent 180bytes of data
+123/6/2|7:42:37
+> read 141bytes of data from server
+123/6/2|7:42:38
+> read 141bytes of data from server
+123/6/2|7:42:39
+> read 141bytes of data from server
+123/6/2|7:42:40
+> written to socket as client
+123/6/2|7:42:40
+> sent 180bytes of data
+123/6/2|7:42:40
+> read 141bytes of data from server
+123/6/2|7:42:42
+> written to socket as client
+123/6/2|7:42:42
+> sent 180bytes of data
+123/6/2|7:42:42
+> read 141bytes of data from server
+123/6/2|7:42:43
+> read 141bytes of data from server
+123/6/2|7:42:44
+> read 141bytes of data from server
+123/6/2|7:42:45
+> written to socket as client
+123/6/2|7:42:45
+> sent 180bytes of data
+123/6/2|7:42:45
+> read 141bytes of data from server
+123/6/2|7:42:46
+> read 141bytes of data from server
+123/6/2|7:42:46
+> read 141bytes of data from server
+123/6/2|7:42:46
+> read 141bytes of data from server
+123/6/2|7:42:50
+> written to socket as client
+123/6/2|7:42:50
+> sent 180bytes of data
+123/6/2|7:42:50
+> read 141bytes of data from server
+123/6/2|7:42:54
+> written to socket as client
+123/6/2|7:42:54
+> sent 180bytes of data
+123/6/2|7:42:54
+> read 141bytes of data from server
+123/6/2|7:42:58
+> written to socket as client
+123/6/2|7:42:58
+> sent 180bytes of data
+123/6/2|7:42:58
+> read 141bytes of data from server
+123/6/2|7:42:59
+> read 141bytes of data from server
+123/6/2|7:43:0
+> read 141bytes of data from server
+123/6/2|7:43:7
+> written to socket as client
+123/6/2|7:43:7
+> sent 180bytes of data
+123/6/2|7:43:7
+> read 141bytes of data from server
+123/6/2|7:43:19
+> written to socket as client
+123/6/2|7:43:19
+> sent 180bytes of data
+123/6/2|7:43:20
+> read 141bytes of data from server
+123/6/2|7:43:26
+> read 141bytes of data from server
+123/6/2|7:43:28
+> written to socket as client
+123/6/2|7:43:28
+> sent 180bytes of data
+123/6/2|7:43:29
+> read 141bytes of data from server
+123/6/2|7:43:34
+> read 141bytes of data from server
+123/6/2|7:43:35
+> read 141bytes of data from server
+123/6/2|7:43:38
+> written to socket as client
+123/6/2|7:43:38
+> sent 180bytes of data
+123/6/2|7:43:39
+> read 141bytes of data from server
+123/6/2|7:43:40
+> read 141bytes of data from server
+123/6/2|7:43:41
+> written to socket as client
+123/6/2|7:43:41
+> sent 180bytes of data
+123/6/2|7:43:42
+> read 141bytes of data from server
+123/6/2|7:43:45
+> written to socket as client
+123/6/2|7:43:45
+> sent 180bytes of data
+123/6/2|7:43:46
+> read 141bytes of data from server
+123/6/2|7:43:47
+> read 141bytes of data from server
+123/6/2|7:43:48
+> read 141bytes of data from server
+123/6/2|7:43:59
+> written to socket as client
+123/6/2|7:43:59
+> sent 180bytes of data
+123/6/2|7:44:11
+> read 141bytes of data from server
+123/6/2|7:44:12
+> read 141bytes of data from server
+123/6/2|7:44:17
+> written to socket as client
+123/6/2|7:44:17
+> sent 180bytes of data
+123/6/2|7:44:20
+> read 141bytes of data from server
+123/6/2|7:44:34
+> written to socket as client
+123/6/2|7:44:34
+> sent 180bytes of data
+123/6/2|7:44:35
+> read 141bytes of data from server
+123/6/2|7:45:46
+> read 141bytes of data from server
+123/6/2|7:45:47
+> read 141bytes of data from server
+123/6/2|7:45:54
+> server disconnected
