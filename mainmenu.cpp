@@ -69,6 +69,7 @@ void MainMenu::on_create_server_clicked() {
 
 
 			client->client_run(QHostAddress("127.0.0.1"), server->get_name());
+
 			wait_menu = new WaitMenu(server, client, this);
 			this->hide();
 			wait_menu->show();

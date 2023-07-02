@@ -58,40 +58,41 @@ QPair<char *, DataPacket *> channel::reading_data() {
 	}*/
 
 	//-----------
-	if ( client_name.size() == 0 || socket->waitForReadyRead(-1) ) {
+	while ( true )
+		if ( client_name.size() == 0 || socket->bytesAvailable() || socket->waitForReadyRead(1000) ) {
+			qDebug() << "-*/-*/-/-*/read data from :" << QString::fromStdString(client_number) << " I'm not dead**/-*-*/*//*/-";
+			block = socket->read(220);
 
-		block = socket->read(220);
+			while ( block[0] == '&' )
+				block.remove(0, 1);
 
-		while ( block[0] == '&' )
-			block.remove(0, 1);
-
-		logWriteServer("> read " + to_string(block.size()) + "bytes of data");
+			logWriteServer("> read " + to_string(block.size()) + "bytes of data");
 
 
-		if ( client_name.size() == 0 ) {
-			client_name = block;
-			emit newplayer(client_name);
-			logWriteServer("> client name recieved: " + client_name.toStdString());
+			if ( client_name.size() == 0 ) {
+				client_name = block;
+				emit newplayer(client_name);
+				logWriteServer("> client name recieved: " + client_name.toStdString());
 
-			disconnect(socket, SIGNAL(readyRead()), this, SLOT(reading_data()));
+				disconnect(socket, SIGNAL(readyRead()), this, SLOT(reading_data()));
 
+			}
+			else {
+
+				for ( int i = 0; i < 5; i++ )
+					code[i] = block[i];
+				code[5] = '\0';
+
+				block.remove(0, 5);
+
+				logWriteServer("code: " + std::string(code));
+
+				QDataStream in(&block, QIODevice::ReadOnly);
+				in >> *data_packet;
+
+			}
+			break;
 		}
-		else {
-
-			for ( int i = 0; i < 5; i++ )
-				code[i] = block[i];
-			code[5] = '\0';
-
-			block.remove(0, 5);
-
-			logWriteServer("code: " + std::string(code));
-
-			QDataStream in(&block, QIODevice::ReadOnly);
-			in >> *data_packet;
-
-		}
-
-	}
 
 	return QPair<char *, DataPacket *>(code, data_packet);
 }

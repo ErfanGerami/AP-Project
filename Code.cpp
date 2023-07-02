@@ -19,8 +19,8 @@ const int Code::Accepted_SwapCard = 13;
 const int Code::Denied_SwapCard = 14;
 
 int Code::get_code(char *code) {
-	qDebug() << "recived code:";
-	qDebug() << QString(code[0]) + QString(code[1]) + QString(code[2]) + QString(code[3]) + QString(code[4]);
+	//qDebug() << "recived code:";
+	//qDebug() << QString(code[0]) + QString(code[1]) + QString(code[2]) + QString(code[3]) + QString(code[4]);
 
 
 	if ( code[1] == '2' && code[2] == '0' )
@@ -140,8 +140,8 @@ char *Code::set_code(char sender, int code) {
 		c[2] = 'e';
 	}
 
-	qDebug() << "created code:";
-	qDebug() << QString(c[0]) + QString(c[1]) + QString(c[2]) + QString(c[3]) + QString(c[4]);
+	//qDebug() << "created code:";
+	//qDebug() << QString(c[0]) + QString(c[1]) + QString(c[2]) + QString(c[3]) + QString(c[4]);
 
 	return c;
 }

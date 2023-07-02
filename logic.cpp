@@ -1,15 +1,15 @@
 
 #include "logic.h"
-void Logic::run(){
-    StartGame();
+void Logic::run() {
+	StartGame();
 
 }
 
 Logic::Logic(SocketHandeling *server, ServerPlayerInGame p1, ServerPlayerInGame p2, int number_of_players = 2, ServerPlayerInGame p3 = ServerPlayerInGame(), ServerPlayerInGame p4 = ServerPlayerInGame()) {
-    this->players[0] = new ServerPlayerInGame(p1);
-    this->players[1] = new ServerPlayerInGame(p2);
-    this->players[2] = new ServerPlayerInGame(p3);
-    this->players[3] = new ServerPlayerInGame(p4);
+	this->players[0] = new ServerPlayerInGame(p1);
+	this->players[1] = new ServerPlayerInGame(p2);
+	this->players[2] = new ServerPlayerInGame(p3);
+	this->players[3] = new ServerPlayerInGame(p4);
 	this->set = 0;
 	this->round = 0;
 	this->server = server;
@@ -37,7 +37,7 @@ int Logic::notifyAndGetThisRoundsWinner() {
 			index = i;
 		}
 	}
-    ServerPlayerInGame *this_rounds_winner = players[(this_rounds_first + index) % number_of_players];
+	ServerPlayerInGame *this_rounds_winner = players[(this_rounds_first + index) % number_of_players];
 	this_rounds_winner->setRoundsWon(this_rounds_winner->getRoundsWon() + 1);
 	return index;
 
@@ -45,40 +45,40 @@ int Logic::notifyAndGetThisRoundsWinner() {
 
 //lots of if s here :]
 int Logic::Greater(ServerCard card1, ServerCard card2) {
-    ServerCard::CardType type1 = card1.GetType();
-    ServerCard::CardType type2 = card2.GetType();
+	ServerCard::CardType type1 = card1.GetType();
+	ServerCard::CardType type2 = card2.GetType();
 	int number1 = card1.GetNumber();
 	int number2 = card2.GetNumber();
 
-    auto IsRole = [] (ServerCard::CardType type)->bool {return(type == ServerCard::queen || type == ServerCard::king || type == ServerCard::pirate); };
+	auto IsRole = [] (ServerCard::CardType type)->bool {return(type == ServerCard::queen || type == ServerCard::king || type == ServerCard::pirate); };
 	if ( IsRole(type1) && !IsRole(type2) )return -1;
 	else if ( IsRole(type2) && !IsRole(type1) )return 1;
 	else if ( IsRole(type2) && IsRole(type1) ) {
-        if ( type1 == ServerCard::king ) {
-            if ( type2 == ServerCard::pirate ) {
+		if ( type1 == ServerCard::king ) {
+			if ( type2 == ServerCard::pirate ) {
 				return -1;
 			}
-            if ( type2 == ServerCard::queen ) {
+			if ( type2 == ServerCard::queen ) {
 				return 1;
 			}
 			return 0;
 
 		}
-        else if ( type1 == ServerCard::queen ) {
-            if ( type2 == ServerCard::pirate ) {
+		else if ( type1 == ServerCard::queen ) {
+			if ( type2 == ServerCard::pirate ) {
 				return 1;
 			}
-            if ( type2 == ServerCard::king ) {
+			if ( type2 == ServerCard::king ) {
 				return 1;
 			}
 			return 0;
 
 		}
-        else if ( type1 == ServerCard::pirate ) {//there is just one choice for else but I put else if for readabality
-            if ( type2 == ServerCard::queen ) {
+		else if ( type1 == ServerCard::pirate ) {//there is just one choice for else but I put else if for readabality
+			if ( type2 == ServerCard::queen ) {
 				return -1;
 			}
-            if ( type2 == ServerCard::king ) {
+			if ( type2 == ServerCard::king ) {
 				return 1;
 			}
 			return 0;
@@ -90,15 +90,15 @@ int Logic::Greater(ServerCard card1, ServerCard card2) {
 
 
 
-        if ( type1 == ServerCard::flag && type2 != ServerCard::flag ) {
-            return -1;
+		if ( type1 == ServerCard::flag && type2 != ServerCard::flag ) {
+			return -1;
 
 		}
-        if ( type1 != ServerCard::flag && type2 == ServerCard::flag ) {
+		if ( type1 != ServerCard::flag && type2 == ServerCard::flag ) {
 			return 1;
 
 		}
-        if ( type1 == ServerCard::flag && type2 == ServerCard::flag ) {
+		if ( type1 == ServerCard::flag && type2 == ServerCard::flag ) {
 
 			if ( number1 > number2 )
 				return -1;
@@ -181,13 +181,13 @@ void Logic::FillAllCards() {
 		number_of_ordainary_cards = 11;
 	}
 	for ( int i = 1; i < number_of_ordainary_cards + 1; i++ ) {
-        ServerCard card1(ServerCard::treasure, i);
+		ServerCard card1(ServerCard::treasure, i);
 		all_cards.push_back(card1);
-        ServerCard card2(ServerCard::map, i);
+		ServerCard card2(ServerCard::map, i);
 		all_cards.push_back(card2);
-        ServerCard card3(ServerCard::flag, i);
+		ServerCard card3(ServerCard::flag, i);
 		all_cards.push_back(card3);
-        ServerCard card4(ServerCard::parrot, i);
+		ServerCard card4(ServerCard::parrot, i);
 		all_cards.push_back(card4);
 	}
 	int pirates = 4;
@@ -195,17 +195,17 @@ void Logic::FillAllCards() {
 	int queens = number_of_ordainary_cards == 4 ? 4 : 3;
 
 	for ( int i = 0; i < pirates; i++ ) {
-        ServerCard card(ServerCard::pirate, -1);
+		ServerCard card(ServerCard::pirate, -1);
 		all_cards.push_back(card);
 
 	}
 	for ( int i = 0; i < kings; i++ ) {
-        ServerCard card(ServerCard::queen, -1);
+		ServerCard card(ServerCard::queen, -1);
 		all_cards.push_back(card);
 
 	}
 	for ( int i = 0; i < queens; i++ ) {
-        ServerCard card(ServerCard::king, -1);
+		ServerCard card(ServerCard::king, -1);
 
 		all_cards.push_back(card);
 
@@ -233,6 +233,7 @@ void Logic::handle(char *code, int who) {
 }
 
 void Logic::StartGame() {
+	qDebug() << "GAME STARTED_______________________";
 	DataPacket dummy;
 
 	FillAllCards();
@@ -242,8 +243,9 @@ void Logic::StartGame() {
 
 
 		//get the predicted_rounds here for each player
+		qDebug() << "trying to read the predictions____________________________";
 		QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server();
-
+		qDebug() << "read the predictions____________________________";
 		char *code2;
 		for ( int i = 0; i < number_of_players; i++ ) {
 			code2 = data_vector[i].first;
@@ -251,7 +253,7 @@ void Logic::StartGame() {
 			int prediction;
 
 			while ( true )
-				if ( Code::get_code(code2) == Code::fromClient_Sent_Predictions || i == 0 ) {
+				if ( Code::get_code(code2) == Code::fromClient_Sent_Predictions ) {
 					prediction = code2[3] - '0';//set this
 					break;
 				}
@@ -276,15 +278,16 @@ void Logic::StartGame() {
 
 			for ( int i = this_rounds_first; i < number_of_players + this_rounds_first; i++ ) {
 				int turn = i % number_of_players;
-                ServerCard::CardType type;
+				ServerCard::CardType type;
 				int number;
+				qDebug() << "trying to read the cards____________________________";
 				//Wait For the i-th player to move here and set the type and number(if it is role card set to -1)
 				QVector<QPair<char *, DataPacket *>> data_vector2 = server->read_data_as_server(turn);
-
+				qDebug() << "read the moved card from client number: " << QString::number(turn) << "________________________";
 				char *code4;
 				code4 = data_vector2[turn].first;
 				while ( true )
-					if ( Code::get_code(code4) == Code::fromClient_Sent_PlayedCard || turn == 0 ) {
+					if ( Code::get_code(code4) == Code::fromClient_Sent_PlayedCard ) {
 
 						type = code4[3] - '0';//set this
 
@@ -299,7 +302,7 @@ void Logic::StartGame() {
 					}
 
 				//-----------------
-                cards_on_deck.push_back(ServerCard(type, number));
+				cards_on_deck.push_back(ServerCard(type, number));
 
 				//informing all:
 				char *code5 = Code::set_code('0', Code::fromServer_Sent_AnotherPlayerPlayedCard);
@@ -313,9 +316,9 @@ void Logic::StartGame() {
 
 
 
-                if ( type == ServerCard::king )rounds_score += 15;
-                else if ( type == ServerCard::queen )rounds_score += 20;
-                else if ( type == ServerCard::pirate )rounds_score += 10;
+				if ( type == ServerCard::king )rounds_score += 15;
+				else if ( type == ServerCard::queen )rounds_score += 20;
+				else if ( type == ServerCard::pirate )rounds_score += 10;
 			}
 			int winner_index = notifyAndGetThisRoundsWinner();
 			players[winner_index]->SetPoints(players[winner_index]->GetPoints() + rounds_score);
@@ -386,7 +389,7 @@ void Logic::StartGame() {
 void Logic::DealCard() {
 	int index = 0;
 	for ( int i = 0; i < number_of_players; i++ ) {
-        QVector<ServerCard *> vec;
+		QVector<ServerCard *> vec;
 		for ( int i = index; i < index + set * 2; i++ ) {
 			vec.push_back(&all_cards[i]);
 		}
@@ -405,7 +408,7 @@ void Logic::shuffle() {
 void Logic::SwapCard(int player_index1, int player_index2, ServerCard::CardType type1, ServerCard::CardType type2, int num1, int num2) {
 	auto players1_cards = players[player_index1]->get_cards();
 	auto players2_cards = players[player_index2]->get_cards();
-    for ( ServerCard *card : players1_cards ) {
+	for ( ServerCard *card : players1_cards ) {
 		if ( card->GetType() == type1, card->GetNumber() == num1 ) {
 			card->ChangeCard(type2, num2);
 
@@ -416,7 +419,7 @@ void Logic::SwapCard(int player_index1, int player_index2, ServerCard::CardType 
 		}
 	}
 
-    for ( ServerCard *card : players2_cards ) {
+	for ( ServerCard *card : players2_cards ) {
 		if ( card->GetType() == type2, card->GetNumber() == num2 ) {
 			card->ChangeCard(type1, num2);
 
@@ -440,9 +443,9 @@ int Logic::CardVectorToArray(QVector<ServerCard *> cards, int array[2][14]) {
 
 }
 QVector<ServerCard *> Logic::CardArrayToVectorOf(int array[2][14], int size) {
-    QVector<ServerCard *> cards;
+	QVector<ServerCard *> cards;
 	for ( int i = 0; i < size; i++ ) {
-        cards.push_back(new ServerCard(array[0][i], array[1][i]));
+		cards.push_back(new ServerCard(array[0][i], array[1][i]));
 
 	}
 	return cards;
