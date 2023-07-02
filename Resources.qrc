@@ -70,6 +70,7 @@
         <file>images/cloud.png</file>
         <file>images/dino.png</file>
         <file>images/dino2.png</file>
+        <file>images/arrow.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/laugh.wav</file>

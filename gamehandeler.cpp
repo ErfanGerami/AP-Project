@@ -7,10 +7,13 @@
 //1 predict
 
 GameHandeler::GameHandeler() {}
-GameHandeler::GameHandeler(QWidget *parent, QLabel *score_label, QLabel *stars[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3, Player p4) {
+GameHandeler::GameHandeler(QWidget *parent, QLabel *score_label, QLabel *stars[4], QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3, Player p4) {
 	for ( int i = 0; i < 4; i++ ) {
 		this->stars[i] = stars[i];
 	}
+    for ( int i = 0; i < 4; i++ ) {
+        this->arrows[i] = arrows[i];
+    }
 	this->number_of_players = number_of_players;
 	this->sticker_scene = sticker_scene;
 	this->sticker_view = sticker_view;
@@ -165,15 +168,20 @@ void GameHandeler::GetOthersPushedCard(Card::CardType type, int number) {
 
 	if ( me == GetWhoseTurn() ) {
 		//just pass
+
+
 		qDebug() << "awdjadajwdjuajwiduajjdoajuodjaiwdjoamdo";
 	}
 	else {
+
 		Card *card = players[GetWhoseTurn()]->PushCard(type, number, true);
 		turn++;
 		card->ChangeCard(type, number);
 		card->PushCard();
 		card->SetDisabled(true);
-		cards_on_deck.push_back(card);
+        cards_on_deck.push_back(card);
+        PlaceArrow();
+
 
 
 	}
@@ -243,7 +251,10 @@ void GameHandeler::StartSet() {
 				Q_ASSERT(false);
 			}
 		}
+    PlaceArrow();
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
+
+    connect(anim, &QPropertyAnimation::finished, [this] () {});
 
 	//connect(anim, &QPropertyAnimation::finished, [this] () {});
 	GetMyCards();
@@ -461,6 +472,14 @@ void GameHandeler::Predict() {
 }
 
 
+void GameHandeler::PlaceArrow(){
+    for (int i=0;i<4;i++){
+        this->arrows[i]->hide();
+
+    }
+    this->arrows[players[GetWhoseTurn()]->GetPlace()]->show();
+
+}
 void GameHandeler::PushCard() {
 	if ( GetWhoseTurn() == me ) {
 
@@ -474,11 +493,15 @@ void GameHandeler::PushCard() {
 				type = cards[i]->GetType();
 				number = cards[i]->GetNumber();
 				if ( isValid(Card(type, number), turn) ) {
-					turn++;
+
+                    turn++;
 					Card *card = players[me]->PushCard(type, number, false);
 					cards_on_deck.push_back(card);
 					card->PushCard();
 					card->SetDisabled(true);
+                    PlaceArrow();
+
+
 
 					if ( swap_card_answer_stat.first == true ) {
 						//first notify the server that the answer is yes;and the type
@@ -538,7 +561,9 @@ void GameHandeler::GetTheWinnerOfTheRound(int player_index) {
 	}
 	first_this_round = player_index;
 	stars[players[player_index]->GetPlace()]->show();
+    PlaceArrow();
 	collect(players[player_index]);
+
 
 
 
