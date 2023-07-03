@@ -27,7 +27,7 @@ class Ui_SignUp
 {
 public:
     QPushButton *start;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
@@ -65,23 +65,23 @@ public:
         font.setPointSize(15);
         start->setFont(font);
         start->setStyleSheet(QString::fromUtf8("#start{border-image:url(:/images/images/ship.jpg);border-radius:10px;text-align:left;}"));
-        widget = new QWidget(SignUp);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 20, 260, 414));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(SignUp);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 20, 260, 414));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        user = new QLabel(widget);
+        user = new QLabel(layoutWidget);
         user->setObjectName(QString::fromUtf8("user"));
         user->setStyleSheet(QString::fromUtf8("#user{color:white;}"));
 
         horizontalLayout->addWidget(user);
 
-        userL = new QLineEdit(widget);
+        userL = new QLineEdit(layoutWidget);
         userL->setObjectName(QString::fromUtf8("userL"));
         QFont font1;
         font1.setItalic(true);
@@ -100,14 +100,14 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        Pass = new QLabel(widget);
+        Pass = new QLabel(layoutWidget);
         Pass->setObjectName(QString::fromUtf8("Pass"));
         Pass->setStyleSheet(QString::fromUtf8("#Pass\n"
 "{color:white;}"));
 
         horizontalLayout_2->addWidget(Pass);
 
-        passL = new QLineEdit(widget);
+        passL = new QLineEdit(layoutWidget);
         passL->setObjectName(QString::fromUtf8("passL"));
         passL->setFont(font1);
         passL->setStyleSheet(QString::fromUtf8("#passL{border-image:\n"
@@ -125,14 +125,14 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        confirm = new QLabel(widget);
+        confirm = new QLabel(layoutWidget);
         confirm->setObjectName(QString::fromUtf8("confirm"));
         confirm->setStyleSheet(QString::fromUtf8("#confirm\n"
 "{color:white;}"));
 
         horizontalLayout_4->addWidget(confirm);
 
-        ConfirmL = new QLineEdit(widget);
+        ConfirmL = new QLineEdit(layoutWidget);
         ConfirmL->setObjectName(QString::fromUtf8("ConfirmL"));
         ConfirmL->setFont(font1);
         ConfirmL->setStyleSheet(QString::fromUtf8("#ConfirmL{border-image:\n"
@@ -150,14 +150,14 @@ public:
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        phone = new QLabel(widget);
+        phone = new QLabel(layoutWidget);
         phone->setObjectName(QString::fromUtf8("phone"));
         phone->setStyleSheet(QString::fromUtf8("#phone\n"
 "{color:white;}"));
 
         horizontalLayout_5->addWidget(phone);
 
-        phoneL = new QLineEdit(widget);
+        phoneL = new QLineEdit(layoutWidget);
         phoneL->setObjectName(QString::fromUtf8("phoneL"));
         phoneL->setFont(font1);
         phoneL->setStyleSheet(QString::fromUtf8("#phoneL{border-image:\n"
@@ -175,14 +175,14 @@ public:
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        adr = new QLabel(widget);
+        adr = new QLabel(layoutWidget);
         adr->setObjectName(QString::fromUtf8("adr"));
         adr->setStyleSheet(QString::fromUtf8("#adr\n"
 "{color:white;}"));
 
         horizontalLayout_6->addWidget(adr);
 
-        adrL = new QLineEdit(widget);
+        adrL = new QLineEdit(layoutWidget);
         adrL->setObjectName(QString::fromUtf8("adrL"));
         adrL->setFont(font1);
         adrL->setStyleSheet(QString::fromUtf8("#adrL{border-image:\n"
@@ -200,14 +200,14 @@ public:
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        email = new QLabel(widget);
+        email = new QLabel(layoutWidget);
         email->setObjectName(QString::fromUtf8("email"));
         email->setStyleSheet(QString::fromUtf8("#email\n"
 "{color:white;}"));
 
         horizontalLayout_7->addWidget(email);
 
-        emailL = new QLineEdit(widget);
+        emailL = new QLineEdit(layoutWidget);
         emailL->setObjectName(QString::fromUtf8("emailL"));
         emailL->setFont(font1);
         emailL->setStyleSheet(QString::fromUtf8("#emailL{border-image:\n"
@@ -223,12 +223,13 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_7);
 
-        textEdit = new QTextEdit(widget);
+        textEdit = new QTextEdit(layoutWidget);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setReadOnly(true);
 
         verticalLayout->addWidget(textEdit);
 
-        agree = new QCheckBox(widget);
+        agree = new QCheckBox(layoutWidget);
         agree->setObjectName(QString::fromUtf8("agree"));
         agree->setStyleSheet(QString::fromUtf8("#agree{color:red;font-size:20px;}"));
 
