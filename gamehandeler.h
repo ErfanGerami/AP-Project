@@ -44,6 +44,7 @@ public:
 	void MyPause();
 	void SwapCard(int player_index);
 private:
+
 	void collect(PlayerInGame *player);
 	void StartRound();
 	void SwitchCardShow(Card::CardType typpe, int number, Card::CardType type2, int number2);
@@ -101,8 +102,8 @@ private:
 signals:
 	void GetOthersPushedCard_S();
 	void others_pause_ended();
-    void my_unpause();
-    void show_main_menu();
+	void my_unpause();
+	void show_main_menu();
 
 
 public slots:
@@ -112,7 +113,6 @@ public slots:
 	void Predict();
 	void Read();
 	void MyUnpause();
-
 	void PushCard();
 
 

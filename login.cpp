@@ -17,30 +17,41 @@ Login::Login(QWidget *parent)
 	QSound::play(":/sounds/sounds/laugh.wav");
 	media = new QMediaPlayer();
 	QMediaPlaylist *playlist = new QMediaPlaylist;
+
+
 	playlist->addMedia(QUrl("qrc:/sounds/sounds/UiBackSound.mp3"));
+
+	/*playlist->addMedia(QUrl("qrc:/sounds/sounds/Skull_King_Start.wav"));
+	playlist->addMedia(QUrl("qrc:/sounds/sounds/Skull_King_Loop.wav"));
+	playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+
+	media->setPlaylist(playlist);
+	media->setVolume(30);
+	ui->horizontalSlider->setValue(30);
+	media->play();
+
+	QObject::connect(media, &QMediaPlayer::mediaStatusChanged, [=] (QMediaPlayer::MediaStatus status) {
+		if ( status == QMediaPlayer::EndOfMedia ) {
+			playlist->setCurrentIndex(1);
+			media->play();
+		}
+		});*/
+
+
 	media->setPlaylist(playlist);
 	media->setVolume(30);
 	ui->horizontalSlider->setValue(30);
 	media->play();
 	connect(media, &QMediaPlayer::stateChanged, [this] () {media->play(); });
 
+
+
+
+
+
+
 }
 
-void Login::on_pushButton_3_clicked() {
-	s = new SocketHandeling();
-	s->server_run("myserver", "laptop_server", 6);
-	t = new SocketHandeling();
-	//t->client_run("mmd hastam");
-	t->client_run_fast_connect("mmd hastam");
-}
-
-void Login::on_pushButton_clicked() {
-	DataPacket *data = new DataPacket();
-	data->player_name[0] = "ahwduhuh";
-	char *code = new char[6];
-	code[0] = '0'; code[1] = '2'; code[2] = '9'; code[4] = '0'; code[5] = '0';
-	s->send_data(code, data);
-}
 
 
 Login::~Login() {
