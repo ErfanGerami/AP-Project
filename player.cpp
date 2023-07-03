@@ -46,6 +46,8 @@ Player::Player(const string &username, const string &password):username(username
 bool Player::is_password_correct(string password) {
 	return hash(password, this->username) == password_hash;
 }
+bool Player::GetEarnedCoins()const{return this->earned_coins;}
+
 unsigned long Player::GetPassWord()const { return this->password_hash; };
 string Player::GetUserName()const { return this->username; };
 int Player::GetRank()const { return rank; }
@@ -57,6 +59,7 @@ string Player::GetEmail()const { return email; }
 int Player::GettCoins()const { return coins; }
 Game Player::GetPrevGame()const { return prev_game; };
 
+void Player::SetEarnedCoins(bool earned_coins){this->earned_coins=earned_coins;}
 void Player::SetUsername(string username) { this->username = username; }
 void Player::SetPasswordAlreadyHashed(unsigned long password_hash) { this->password_hash = password_hash; }
 void Player::SetRank(int rank) { this->rank = rank; }

@@ -22,10 +22,11 @@
 #include <thread>
 #include <QDateTime>
 #include <QApplication>
+#include "filehandeling.h"
 
 
 #include <QTimer>
-
+extern Player* MainPlayer;
 class GameHandeler:public QObject {
 	Q_OBJECT
 public:

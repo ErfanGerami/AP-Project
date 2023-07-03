@@ -447,8 +447,15 @@ void GameHandeler::Read() {
 				//handle(pair);
 				pair = client->reading_data_socket();
 			}
+        if(Game_Winner==me){
+            MainPlayer->SettCoins(MainPlayer->GettCoins()+number_of_players*50);
+            FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(),MainPlayer);
+            parent->close();
+        }
+
 
 	}
+
 }
 
 void GameHandeler::GetMyCards() {

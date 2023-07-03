@@ -220,8 +220,9 @@ void DinoGame::Collide(){
         barriers[i]->hide();
         clouds[i]->hide();
     }
-    QMessageBox::critical(this,"LOST","youve earned "+QString::number(coins_achieved)+" coins");
-    MainPlayer->SettCoins(MainPlayer->GettCoins()+coins_achieved);
+    QMessageBox::critical(this,"LOST","youve earned "+ui->coins->text()+" coins");
+    MainPlayer->SettCoins(MainPlayer->GettCoins()+ui->coins->text().toInt());
+    MainPlayer->SetEarnedCoins(true);
     FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(),MainPlayer);
     emit show_parent();
     this->close();

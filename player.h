@@ -19,10 +19,12 @@ protected:
 	string address;
 	string email;
 	Game prev_game;
+    bool earned_coins;
 
 
 
 public:
+
 	Player() = default;
 
 
@@ -44,7 +46,7 @@ public:
 	bool is_password_correct(string password);
 
 
-
+    bool GetEarnedCoins()const;
 	int GetRank()const;
 	int GettCoins()const;
 	int GetGamesWon()const;
@@ -58,6 +60,7 @@ public:
 
 	void SetUsername(string username);
 
+    void SetEarnedCoins(bool earned_coins);
 	void SetPassword(string password);
 	void SetPasswordAlreadyHashed(unsigned long password_hash);
 	void SetRank(int rank);

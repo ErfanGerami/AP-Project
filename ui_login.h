@@ -154,9 +154,9 @@ public:
         layoutWidget->raise();
         forgot->raise();
         start->raise();
-        label->raise();
         horizontalSlider->raise();
         PassL_2->raise();
+        label->raise();
         menubar = new QMenuBar(Login);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 26));

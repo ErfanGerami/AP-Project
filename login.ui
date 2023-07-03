@@ -220,9 +220,9 @@ color:black}</string>
    <zorder>layoutWidget</zorder>
    <zorder>forgot</zorder>
    <zorder>start</zorder>
-   <zorder>label</zorder>
    <zorder>horizontalSlider</zorder>
    <zorder>PassL_2</zorder>
+   <zorder>label</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
