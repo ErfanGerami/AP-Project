@@ -512,7 +512,7 @@ void GameHandeler::PlaceArrow() {
 }
 
 void GameHandeler::PushCard() {
-    if ( GetWhoseTurn() == me&&is_pause ) {
+    if ( GetWhoseTurn() == me&&!is_pause ) {
         QObject::disconnect(&timer,&QTimer::timeout,this,&GameHandeler::PushCard);
         timer.stop();
 

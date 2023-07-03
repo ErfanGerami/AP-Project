@@ -10,10 +10,12 @@ void ServerPlayerInGame::NewCards(QVector<ServerCard *> cards) {
 }
 ServerPlayerInGame::ServerPlayerInGame(string user, string password):Player(user, password) {
 	this->points = 0;
+    this->rounds_won=0;
 
 }
 void ServerPlayerInGame::operator=(const ServerPlayerInGame &other) {
 	this->points = 0;
+    this->rounds_won=other.rounds_won;
 	int place = other.place;
 	QVector<ServerCard *> cards = other.cards;
 	int rounds_won = other.rounds_won;

@@ -52,6 +52,7 @@ PlayerInGame::PlayerInGame(QObject *parent, const string &username, const string
 	this->predicted_rounds = predicted_rounds;
 	this->points = points;
 	this->parent = parent;
+    this->rounds_won=round_won;
 	CalculateWonCardPosition();
 
 
@@ -61,7 +62,7 @@ PlayerInGame::PlayerInGame(const Player &player, QObject *parent, int place, QVe
 	//fix thiss later;
 	this->cards = cards;
 	this->place = place;
-	this->rounds_won = 0;
+    this->rounds_won = rounds_won;
 	this->points = 0;
 	this->parent = parent;
 
