@@ -7,7 +7,7 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 	QDialog(parent),
 	ui(new Ui::MainGameWindow) {
 	ui->setupUi(this);
-    connect(this,SIGNAL(show_main_menu()),parent,SIGNAL(show_me()));
+	connect(this, SIGNAL(show_main_menu()), parent, SIGNAL(show_me()));
 
 	setFixedSize(size());
 	ui->Graphics->setAlignment(Qt::Alignment(0));
@@ -24,7 +24,7 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 	ui->sticker_graphics->setScene(sticker_scene);
 
 
-	int player_count = name_vec.size();
+	player_count = name_vec.size();
 
 	while ( name_vec.size() < 4 )
 		name_vec.push_back("");
@@ -133,7 +133,11 @@ void MainGameWindow::on_pushButton_6_clicked() {
 
 
 void MainGameWindow::on_pushButton_7_clicked() {
-	game_handeler->SwapCard(me + ui->comboBox->currentIndex());
+	int a = ui->comboBox->currentIndex();
+	if ( a >= me )
+		a++;
+
+	game_handeler->SwapCard(a);
 }
 
 
@@ -146,8 +150,8 @@ void MainGameWindow::on_pause_clicked() {
 	game_handeler->MyPause();
 }
 
-void MainGameWindow::ShowMainMenu(){
-    emit show_main_menu();
-    this->close();
+void MainGameWindow::ShowMainMenu() {
+	emit show_main_menu();
+	this->close();
 }
 

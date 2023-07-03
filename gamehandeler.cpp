@@ -288,6 +288,26 @@ void GameHandeler::StartSet() {
 
 }
 
+void GameHandeler::SwapCard(int player_index) {
+	if ( GetWhoseTurn() == me && !is_pause && players[me]->get_cards().size() != 0 ) {
+		//notify the targeted index player if he wants to swap
+		char *code = Code::set_code(me + '0', Code::Requested_SwapCard);
+		code[0] = me + '0';
+		code[1] = player_index + '0';
+		int size = players[me]->get_cards().size();
+		int cards_index = rand() % size;
+
+		Card *card = players[me]->get_cards()[cards_index];
+		code[3] = card->GetType() + '0';
+		code[4] = card->GetNumber() + '0';
+		swap_candidate.first = card->GetType();
+		swap_candidate.second = card->GetNumber();
+		DataPacket dummy;
+		client->send_data(code, &dummy);
+
+	}
+}
+
 void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 	char *code = pair.first;
 
@@ -304,23 +324,25 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 
 		int index_of_the_requested_player = code[0] - '0';
 
-
 		QMessageBox::StandardButton response;
-		response = QMessageBox::question(nullptr, "Swap Request"
-			, "would you swapa a card with " + QString(players[index_of_the_requested_player]->GetUserName().c_str())
-			, QMessageBox::Yes | QMessageBox::No);
+		if ( players[me]->get_cards().size() != 0 ) {
 
+			response = QMessageBox::question(nullptr, "Swap Request"
+				, "would you swapa a card with " + QString(players[index_of_the_requested_player]->GetUserName().c_str())
+				, QMessageBox::Yes | QMessageBox::No);
+		}
+		else {
+			response = QMessageBox::No;
+		}
 		if ( response == QMessageBox::Yes ) {
 
 			char *new_code = Code::set_code(me + '0', Code::Accepted_SwapCard);
 			new_code[0] = me + '0';
 			new_code[1] = index_of_the_requested_player + '0';
 			int size = players[me]->get_cards().size();
-			int cards_index;
-			if ( size )
-				cards_index = rand() % size;
-			else
-				cards_index = 0;
+			int cards_index = rand() % size;
+
+
 			Card *card = players[me]->get_cards()[cards_index];
 			new_code[3] = card->GetType() + '0';
 			new_code[4] = card->GetNumber() + '0';
@@ -696,28 +718,6 @@ QVector<Card *> GameHandeler::CardArrayToVectorOf(int array[2][14], int size, QG
 
 }
 
-void GameHandeler::SwapCard(int player_index) {
-	if ( GetWhoseTurn() == me && !is_pause ) {
-		//notify the targeted index player if he wants to swap
-		char *code = Code::set_code(me + '0', Code::Requested_SwapCard);
-		code[0] = me + '0';
-		code[1] = player_index + '0';
-		int size = players[me]->get_cards().size();
-		int cards_index;
-		if ( size )
-			cards_index = rand() % size;
-		else
-			cards_index = 0;
-		Card *card = players[me]->get_cards()[cards_index];
-		code[3] = card->GetType() + '0';
-		code[4] = card->GetNumber() + '0';
-		swap_candidate.first = card->GetType();
-		swap_candidate.second = card->GetNumber();
-		DataPacket dummy;
-		client->send_data(code, &dummy);
-
-	}
-}
 
 
 void GameHandeler::OthersPause(int who_paused) {
