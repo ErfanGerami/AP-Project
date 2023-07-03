@@ -1,11 +1,5 @@
-<head><style>
-  .rotate {
-  width: 100px;
-  animation: rotation 2s infinite linear;
-}
-</style>
-</head>
-<img class="rotate" src="https://github.com/ErfanGerami/AP-Project/blob/master/images/logo.png" style="width:70px;height:50px;">
+
+<img class="rotate" src="/images/name.png" style="width:140px;height:100px;">
 <h1>Ap Project(SkullKing)</h1>
 <h3> By Shafagh Sepehr and Erfan Geramizadeh </h3>
 <h5>1401-1402(2022-2023) semester2</h5>
