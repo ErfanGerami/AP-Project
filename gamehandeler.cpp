@@ -181,6 +181,13 @@ void GameHandeler::GetOthersPushedCard(Card::CardType type, int number) {
 		card->SetDisabled(true);
 		cards_on_deck.push_back(card);
 		PlaceArrow();
+        if(GetWhoseTurn()==me){
+            start_point=QDateTime::currentDateTime();
+            QObject::connect(&timer,&QTimer::timeout,this,&GameHandeler::PushCard);
+            timer.start(20000);
+            //20seconds to push
+
+        }
 
 
 
@@ -251,6 +258,13 @@ void GameHandeler::StartSet() {
 				Q_ASSERT(false);
 			}
 		}
+    if(first_this_round==me){
+        start_point=QDateTime::currentDateTime();
+        QObject::connect(&timer,&QTimer::timeout,this,&GameHandeler::PushCard);
+        timer.start(20000);
+        //20seconds to push
+
+    }
 	PlaceArrow();
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
 
@@ -497,69 +511,67 @@ void GameHandeler::PlaceArrow() {
 
 void GameHandeler::PushCard() {
 	if ( GetWhoseTurn() == me ) {
+        QObject::disconnect(&timer,&QTimer::timeout,this,&GameHandeler::PushCard);
 
 		Card::CardType type;
 		int number;
 		//inform the client
 		auto cards = players[me]->get_cards();
 		QPushButton *clickedButton = qobject_cast<QPushButton *>(sender());
-		for ( int i = 0; i < cards.size(); i++ ) {
-			if ( cards[i]->GetButton() == clickedButton ) {
-				type = cards[i]->GetType();
-				number = cards[i]->GetNumber();
-				if ( isValid(Card(type, number), turn) ) {
+        Card* card;
+        if(clickedButton==nullptr){
+            for ( int i = 0; i < cards.size(); i++ ) {
+                if(  isValid(*(cards[i]), turn) ){
 
-					turn++;
-					Card *card = players[me]->PushCard(type, number, false);
-					cards_on_deck.push_back(card);
-					card->PushCard();
-					card->SetDisabled(true);
-					PlaceArrow();
+                    card = players[me]->PushCard(cards[i]->GetType(), cards[i]->GetNumber(), false);
 
 
+                }
 
-					//if ( swap_card_answer_stat.first == true ) {
-					//	//first notify the server that the answer is yes;and the type
-					//	int index_of_card = rand() % players[me]->get_cards().size();
-					//	Card::CardType type = players[me]->get_cards()[index_of_card]->GetType();
-					//	int number = players[me]->get_cards()[index_of_card]->GetNumber();
-					//	swap_candidate.first = type;
-					//	swap_candidate.second = number;
-
-					//	//-----------------------------------------------
-
-					//	swap_card_answer_stat.first = false;
-
-					//}
-					//if ( swap_card_stat.first ) {
-					//	//send to the server the targeted player and the type and the number
-					//	int index_of_targeted = swap_card_stat.second;
-					//	int index_of_card = rand() % players[me]->get_cards().size();
-					//	Card::CardType type = players[me]->get_cards()[index_of_card]->GetType();
-					//	int number = players[me]->get_cards()[index_of_card]->GetNumber();
-					//	//send the
-					//}
+            }
 
 
-					//notify the server of what card is pushed here
-					char *code = Code::set_code(me + '0', Code::fromClient_Sent_PlayedCard);
-					code[3] = type + '0';
-					code[4] = number + '0';
-					DataPacket dummy;
-					client->send_data(code, &dummy);
-					//---------------------------------------------
+        }
+        else{
+            for ( int i = 0; i < cards.size(); i++ ) {
+                if ( cards[i]->GetButton() == clickedButton ) {
+                    type = cards[i]->GetType();
+                    number = cards[i]->GetNumber();
+                    if ( isValid(Card(type, number), turn) ) {
+                        card = players[me]->PushCard(type, number, false);
 
-					if ( turn == number_of_players ) {
 
-						curr_state = 3;
 
-					}
+                    }
+                    break;
+                }
+            }
 
-				}
-				break;
-			}
+        }
 
-		}
+        turn++;
+        cards_on_deck.push_back(card);
+        card->PushCard();
+        card->SetDisabled(true);
+        PlaceArrow();
+
+
+
+
+
+        //notify the server of what card is pushed here
+        char *code = Code::set_code(me + '0', Code::fromClient_Sent_PlayedCard);
+        code[3] = type + '0';
+        code[4] = number + '0';
+        DataPacket dummy;
+        client->send_data(code, &dummy);
+        //---------------------------------------------
+
+        if ( turn == number_of_players ) {
+
+            curr_state = 3;
+
+        }
 	}
 	else {
 		//just do nothing;

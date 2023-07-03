@@ -20,6 +20,7 @@
 #include "SocketHandeling.h"
 #include "Code.h"
 #include <thread>
+#include <QDateTime>
 
 #include <QTimer>
 
@@ -52,6 +53,8 @@ public:
 	void PlaceArrow();
 
 private:
+    QDateTime start_point;
+    QTimer timer;
 	std::pair<Card::CardType, int> swap_candidate;
 
 
