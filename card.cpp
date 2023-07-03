@@ -19,7 +19,7 @@ Card::Card() {
 	this->number = 0;
 	this->type = Card::unknown;
 	this->button = nullptr;
-    this->parent = nullptr;
+	this->parent = nullptr;
 	this->scene = nullptr;
 }
 Card::Card(CardType type, int number = -1) {
@@ -55,9 +55,9 @@ void Card::operator=(const Card &other) {
 	this->type = other.type;
 	this->number = other.number;
 	if ( other.scene != nullptr ) {
-        this->view = other.view;
-        this->button = other.button;
-        this->scene = other.scene;
+		this->view = other.view;
+		this->button = other.button;
+		this->scene = other.scene;
 
 
 		button = new QPushButton();

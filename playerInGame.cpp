@@ -52,7 +52,7 @@ PlayerInGame::PlayerInGame(QObject *parent, const string &username, const string
 	this->predicted_rounds = predicted_rounds;
 	this->points = points;
 	this->parent = parent;
-    this->rounds_won=round_won;
+	this->rounds_won = round_won;
 	CalculateWonCardPosition();
 
 
@@ -62,7 +62,7 @@ PlayerInGame::PlayerInGame(const Player &player, QObject *parent, int place, QVe
 	//fix thiss later;
 	this->cards = cards;
 	this->place = place;
-    this->rounds_won = rounds_won;
+	this->rounds_won = rounds_won;
 	this->points = 0;
 	this->parent = parent;
 
@@ -112,7 +112,9 @@ int PlayerInGame::GetPoints() { return points; }
 
 int PlayerInGame::GetPlace() { return place; }
 
-QVector<Card *> PlayerInGame::get_cards() { return cards; }
+QVector<Card *> PlayerInGame::get_cards() {
+	return cards;
+}
 
 std::pair<int, int> PlayerInGame::GetCardsWonPos() { return cards_won_pos; }
 

@@ -277,9 +277,9 @@ void GameHandeler::StartSet() {
 	PlaceArrow();
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
 
-    connect(anim, &QPropertyAnimation::finished, [this] () {_sleep(1000);GetMyCards();
-        curr_state = 2;
-        connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));});
+	connect(anim, &QPropertyAnimation::finished, [this] () {_sleep(1000); GetMyCards();
+	curr_state = 2;
+	connect(client, SIGNAL(main_game_read()), this, SLOT(Read())); });
 
 	//connect(anim, &QPropertyAnimation::finished, [this] () {});
 
@@ -315,8 +315,12 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 			char *new_code = Code::set_code(me + '0', Code::Accepted_SwapCard);
 			new_code[0] = me + '0';
 			new_code[1] = index_of_the_requested_player + '0';
-
-			int cards_index = rand() % players[me]->get_cards().size();
+			int size = players[me]->get_cards().size();
+			int cards_index;
+			if ( size )
+				cards_index = rand() % size;
+			else
+				cards_index = 0;
 			Card *card = players[me]->get_cards()[cards_index];
 			new_code[3] = card->GetType() + '0';
 			new_code[4] = card->GetNumber() + '0';
@@ -662,10 +666,11 @@ void GameHandeler::SwitchCardShow(Card::CardType type, int number, Card::CardTyp
 	for ( Card *card : cards ) {
 		if ( card->GetType() == type, card->GetNumber() == number ) {
 			int width = card->GetButton()->width();
-			QPropertyAnimation *anim = card->PushTo({ card->GetProxy()->x(), card->GetProxy()->y() }, { 0, card->GetButton()->height() }, card->GetProxy()->rotation());
+			//QPropertyAnimation *anim = card->PushTo({ card->GetProxy()->x(), card->GetProxy()->y() }, { 0, card->GetButton()->height() }, card->GetProxy()->rotation());
 
 
-			connect(anim, &QPropertyAnimation::finished, [this, width, card, type, number, type2, number2] () {card->ChangeCard(type2, number2); card->PushTo({ card->GetProxy()->pos().x(), card->GetProxy()->pos().y() }, { width, card->GetButton()->height() }, card->GetProxy()->rotation()); });
+			//connect(anim, &QPropertyAnimation::finished, [this, width, card, type, number, type2, number2] () {card->ChangeCard(type2, number2); card->PushTo({ card->GetProxy()->pos().x(), card->GetProxy()->pos().y() }, { width, card->GetButton()->height() }, card->GetProxy()->rotation()); });
+			card->ChangeCard(type2, number2);
 			return;
 		}
 	}
@@ -697,7 +702,12 @@ void GameHandeler::SwapCard(int player_index) {
 		char *code = Code::set_code(me + '0', Code::Requested_SwapCard);
 		code[0] = me + '0';
 		code[1] = player_index + '0';
-		int cards_index = rand() % players[me]->get_cards().size();
+		int size = players[me]->get_cards().size();
+		int cards_index;
+		if ( size )
+			cards_index = rand() % size;
+		else
+			cards_index = 0;
 		Card *card = players[me]->get_cards()[cards_index];
 		code[3] = card->GetType() + '0';
 		code[4] = card->GetNumber() + '0';
