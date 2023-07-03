@@ -53,8 +53,7 @@ public:
 
 private:
 	std::pair<Card::CardType, int> swap_candidate;
-	std::pair<bool, int> swap_card_stat = { false, -1 };
-	std::pair<bool, int> swap_card_answer_stat = { false, -1 };
+
 
 	void handle(QPair<char *, DataPacket *>pair);
 	bool is_pause = false;

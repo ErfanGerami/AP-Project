@@ -286,13 +286,21 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 
 		if ( response == QMessageBox::Yes ) {
 
-			char *code = Code::set_code(me + '0', Code::Accepted_SwapCard);
-			code[0] = me + '0';
-			code[1] = index_of_the_requested_player + '0';
-			//code[3] = type + '0';
-			//code[4] = number + '0';
+			char *new_code = Code::set_code(me + '0', Code::Accepted_SwapCard);
+			new_code[0] = me + '0';
+			new_code[1] = index_of_the_requested_player + '0';
+
+			int cards_index = rand() % players[me]->get_cards().size();
+			Card *card = players[me]->get_cards()[cards_index];
+			new_code[3] = card->GetType() + '0';
+			new_code[4] = card->GetNumber() + '0';
 			DataPacket dummy;
-			client->send_data(code, &dummy);
+			client->send_data(new_code, &dummy);
+
+			Card::CardType type = code[3] - '0';
+			int number = code[4] - '0';
+
+			SwitchCardShow(card->GetType(), card->GetNumber(), type, number);
 		}
 		else {
 			char *code = Code::set_code(me + '0', Code::Denied_SwapCard);
@@ -305,7 +313,7 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 	else if ( Code::get_code(code) == Code::Accepted_SwapCard ) {
 		Card::CardType type = code[3] - '0';
 		int number = code[4] - '0';
-		SwitchCardShow(type, number, swap_candidate.first, swap_candidate.second);
+		SwitchCardShow(swap_candidate.first, swap_candidate.second, type, type);
 	}
 	else if ( Code::get_code(code) == Code::Denied_SwapCard ) {
 		//denied lol
@@ -510,27 +518,27 @@ void GameHandeler::PushCard() {
 
 
 
-					if ( swap_card_answer_stat.first == true ) {
-						//first notify the server that the answer is yes;and the type
-						int index_of_card = rand() % players[me]->get_cards().size();
-						Card::CardType type = players[me]->get_cards()[index_of_card]->GetType();
-						int number = players[me]->get_cards()[index_of_card]->GetNumber();
-						swap_candidate.first = type;
-						swap_candidate.second = number;
+					//if ( swap_card_answer_stat.first == true ) {
+					//	//first notify the server that the answer is yes;and the type
+					//	int index_of_card = rand() % players[me]->get_cards().size();
+					//	Card::CardType type = players[me]->get_cards()[index_of_card]->GetType();
+					//	int number = players[me]->get_cards()[index_of_card]->GetNumber();
+					//	swap_candidate.first = type;
+					//	swap_candidate.second = number;
 
-						//-----------------------------------------------
+					//	//-----------------------------------------------
 
-						swap_card_answer_stat.first = false;
+					//	swap_card_answer_stat.first = false;
 
-					}
-					if ( swap_card_stat.first ) {
-						//send to the server the targeted player and the type and the number
-						int index_of_targeted = swap_card_stat.second;
-						int index_of_card = rand() % players[me]->get_cards().size();
-						Card::CardType type = players[me]->get_cards()[index_of_card]->GetType();
-						int number = players[me]->get_cards()[index_of_card]->GetNumber();
-						//send the
-					}
+					//}
+					//if ( swap_card_stat.first ) {
+					//	//send to the server the targeted player and the type and the number
+					//	int index_of_targeted = swap_card_stat.second;
+					//	int index_of_card = rand() % players[me]->get_cards().size();
+					//	Card::CardType type = players[me]->get_cards()[index_of_card]->GetType();
+					//	int number = players[me]->get_cards()[index_of_card]->GetNumber();
+					//	//send the
+					//}
 
 
 					//notify the server of what card is pushed here
@@ -616,8 +624,12 @@ void GameHandeler::SwapCard(int player_index) {
 		char *code = Code::set_code(me + '0', Code::Requested_SwapCard);
 		code[0] = me + '0';
 		code[1] = player_index + '0';
-		//code[3] = type; //set this
-		//code[4] = number; //set this
+		int cards_index = rand() % players[me]->get_cards().size();
+		Card *card = players[me]->get_cards()[cards_index];
+		code[3] = card->GetType() + '0';
+		code[4] = card->GetNumber() + '0';
+		swap_candidate.first = card->GetType();
+		swap_candidate.second = card->GetNumber();
 		DataPacket dummy;
 		client->send_data(code, &dummy);
 
