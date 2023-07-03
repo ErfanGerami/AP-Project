@@ -64,6 +64,7 @@ SOURCES       = card.cpp \
 		player.cpp \
 		servercard.cpp \
 		serverplayeringame.cpp \
+		shootinggame.cpp \
 		signup.cpp \
 		test.cpp \
 		mainmenu.cpp \
@@ -83,6 +84,7 @@ SOURCES       = card.cpp \
 		release\moc_login.cpp \
 		release\moc_maingamewindow.cpp \
 		release\moc_mainmenu.cpp \
+		release\moc_shootinggame.cpp \
 		release\moc_signup.cpp \
 		release\moc_test.cpp \
 		release\moc_waitmenu.cpp \
@@ -105,6 +107,7 @@ OBJECTS       = release\card.obj \
 		release\player.obj \
 		release\servercard.obj \
 		release\serverplayeringame.obj \
+		release\shootinggame.obj \
 		release\signup.obj \
 		release\test.obj \
 		release\mainmenu.obj \
@@ -125,6 +128,7 @@ OBJECTS       = release\card.obj \
 		release\moc_login.obj \
 		release\moc_maingamewindow.obj \
 		release\moc_mainmenu.obj \
+		release\moc_shootinggame.obj \
 		release\moc_signup.obj \
 		release\moc_test.obj \
 		release\moc_waitmenu.obj \
@@ -147,6 +151,7 @@ DIST          =  card.h \
 		player.h \
 		servercard.h \
 		serverplayeringame.h \
+		shootinggame.h \
 		signup.h \
 		test.h \
 		mainmenu.h \
@@ -174,6 +179,7 @@ DIST          =  card.h \
 		player.cpp \
 		servercard.cpp \
 		serverplayeringame.cpp \
+		shootinggame.cpp \
 		signup.cpp \
 		test.cpp \
 		mainmenu.cpp \
@@ -239,10 +245,10 @@ DESTDIR_TARGET = release\ApProject.exe
 first: all
 all: Makefile.Release  release\ApProject.exe
 
-release\ApProject.exe: C:\Qt\5.12.12\msvc2017_64\lib\Qt5Multimedia.lib C:\Qt\5.12.12\msvc2017_64\lib\Qt5Widgets.lib C:\Qt\5.12.12\msvc2017_64\lib\Qt5Gui.lib C:\Qt\5.12.12\msvc2017_64\lib\Qt5Network.lib C:\Qt\5.12.12\msvc2017_64\lib\Qt5Core.lib C:\Qt\5.12.12\msvc2017_64\lib\qtmain.lib ui_changeinfo.h ui_dinogame.h ui_forgotmypassword.h ui_getserversinformation.h ui_login.h ui_maingamewindow.h ui_mainmenu.h ui_signup.h ui_test.h ui_waitmenu.h ui_serverselection.h $(OBJECTS) 
+release\ApProject.exe: C:\Qt\5.12.12\msvc2017_64\lib\Qt5Multimedia.lib C:\Qt\5.12.12\msvc2017_64\lib\Qt5Widgets.lib C:\Qt\5.12.12\msvc2017_64\lib\Qt5Gui.lib C:\Qt\5.12.12\msvc2017_64\lib\Qt5Network.lib C:\Qt\5.12.12\msvc2017_64\lib\Qt5Core.lib C:\Qt\5.12.12\msvc2017_64\lib\qtmain.lib ui_changeinfo.h ui_dinogame.h ui_forgotmypassword.h ui_getserversinformation.h ui_login.h ui_maingamewindow.h ui_mainmenu.h ui_shootinggame.h ui_signup.h ui_test.h ui_waitmenu.h ui_serverselection.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\card.obj release\changeinfo.obj release\dinogame.obj release\errors.obj release\filehandeling.obj release\forgotmypassword.obj release\game.obj release\gamehandeler.obj release\getserversinformation.obj release\logic.obj release\main.obj release\login.obj release\maingamewindow.obj release\mainmenu.obj release\player.obj release\servercard.obj release\serverplayeringame.obj release\signup.obj release\test.obj release\mainmenu.obj release\waitmenu.obj release\PlayerInGame.obj release\DataPacket.obj release\serverselection.obj release\SocketHandeling.obj release\channel.obj release\Code.obj release\dinogame.obj release\qrc_Resources.obj release\moc_changeinfo.obj release\moc_dinogame.obj release\moc_forgotmypassword.obj release\moc_gamehandeler.obj release\moc_getserversinformation.obj release\moc_login.obj release\moc_maingamewindow.obj release\moc_mainmenu.obj release\moc_signup.obj release\moc_test.obj release\moc_waitmenu.obj release\moc_SocketHandeling.obj
-release\moc_channel.obj
+release\card.obj release\changeinfo.obj release\dinogame.obj release\errors.obj release\filehandeling.obj release\forgotmypassword.obj release\game.obj release\gamehandeler.obj release\getserversinformation.obj release\logic.obj release\main.obj release\login.obj release\maingamewindow.obj release\mainmenu.obj release\player.obj release\servercard.obj release\serverplayeringame.obj release\shootinggame.obj release\signup.obj release\test.obj release\mainmenu.obj release\waitmenu.obj release\PlayerInGame.obj release\DataPacket.obj release\serverselection.obj release\SocketHandeling.obj release\channel.obj release\Code.obj release\dinogame.obj release\qrc_Resources.obj release\moc_changeinfo.obj release\moc_dinogame.obj release\moc_forgotmypassword.obj release\moc_gamehandeler.obj release\moc_getserversinformation.obj release\moc_login.obj release\moc_maingamewindow.obj release\moc_mainmenu.obj release\moc_shootinggame.obj release\moc_signup.obj release\moc_test.obj
+release\moc_waitmenu.obj release\moc_SocketHandeling.obj release\moc_channel.obj
 $(LIBS)
 <<
 
@@ -252,10 +258,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) ApProject.zip $(SOURCES) $(DIST) ApProject.pro C:\Qt\5.12.12\msvc2017_64\mkspecs\features\spec_pre.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\common\angle.conf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.12.12\msvc2017_64\mkspecs\common\msvc-desktop.conf C:\Qt\5.12.12\msvc2017_64\mkspecs\qconfig.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_script.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\features\qt_functions.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\qt_config.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\win32-msvc\qmake.conf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.12.12\msvc2017_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\common\msvc-version.conf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\toolchain.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\default_pre.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\resolve_config.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\default_post.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\build_pass.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\qml_debug.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\precompile_header.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\warn_on.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\qt.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\resources.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\moc.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\win32\opengl.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\uic.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\qmake_use.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\file_copies.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\win32\windows.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\testcase_targets.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\exceptions.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\yacc.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\lex.prf ApProject.pro Resources.qrc C:\Qt\5.12.12\msvc2017_64\lib\Qt5Multimedia.prl C:\Qt\5.12.12\msvc2017_64\lib\Qt5Widgets.prl C:\Qt\5.12.12\msvc2017_64\lib\Qt5Gui.prl C:\Qt\5.12.12\msvc2017_64\lib\Qt5Network.prl C:\Qt\5.12.12\msvc2017_64\lib\Qt5Core.prl C:\Qt\5.12.12\msvc2017_64\lib\qtmain.prl   Resources.qrc C:\Qt\5.12.12\msvc2017_64\mkspecs\features\data\dummy.cpp card.h changeinfo.h dinogame.h errors.h filehandeling.h forgotmypassword.h game.h gamehandeler.h getserversinformation.h logic.h login.h maingamewindow.h mainmenu.h player.h servercard.h serverplayeringame.h signup.h test.h mainmenu.h waitmenu.h PlayerInGame.h DataPacket.h serverselection.h SocketHandeling.h channel.h Code.h dinogame.h  card.cpp changeinfo.cpp dinogame.cpp errors.cpp filehandeling.cpp forgotmypassword.cpp game.cpp gamehandeler.cpp getserversinformation.cpp logic.cpp main.cpp login.cpp maingamewindow.cpp mainmenu.cpp player.cpp servercard.cpp serverplayeringame.cpp signup.cpp test.cpp mainmenu.cpp waitmenu.cpp PlayerInGame.cpp DataPacket.cpp serverselection.cpp SocketHandeling.cpp channel.cpp Code.cpp dinogame.cpp changeinfo.ui dinogame.ui forgotmypassword.ui getserversinformation.ui login.ui maingamewindow.ui mainmenu.ui signup.ui test.ui mainmenu.ui waitmenu.ui serverselection.ui dinogame.ui    
+	$(ZIP) ApProject.zip $(SOURCES) $(DIST) ApProject.pro C:\Qt\5.12.12\msvc2017_64\mkspecs\features\spec_pre.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\common\angle.conf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.12.12\msvc2017_64\mkspecs\common\msvc-desktop.conf C:\Qt\5.12.12\msvc2017_64\mkspecs\qconfig.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_script.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.12.12\msvc2017_64\mkspecs\features\qt_functions.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\qt_config.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\win32-msvc\qmake.conf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.12.12\msvc2017_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\common\msvc-version.conf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\toolchain.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\default_pre.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\resolve_config.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\default_post.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\build_pass.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\qml_debug.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\precompile_header.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\warn_on.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\qt.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\resources.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\moc.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\win32\opengl.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\uic.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\qmake_use.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\file_copies.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\win32\windows.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\testcase_targets.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\exceptions.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\yacc.prf C:\Qt\5.12.12\msvc2017_64\mkspecs\features\lex.prf ApProject.pro Resources.qrc C:\Qt\5.12.12\msvc2017_64\lib\Qt5Multimedia.prl C:\Qt\5.12.12\msvc2017_64\lib\Qt5Widgets.prl C:\Qt\5.12.12\msvc2017_64\lib\Qt5Gui.prl C:\Qt\5.12.12\msvc2017_64\lib\Qt5Network.prl C:\Qt\5.12.12\msvc2017_64\lib\Qt5Core.prl C:\Qt\5.12.12\msvc2017_64\lib\qtmain.prl   Resources.qrc C:\Qt\5.12.12\msvc2017_64\mkspecs\features\data\dummy.cpp card.h changeinfo.h dinogame.h errors.h filehandeling.h forgotmypassword.h game.h gamehandeler.h getserversinformation.h logic.h login.h maingamewindow.h mainmenu.h player.h servercard.h serverplayeringame.h shootinggame.h signup.h test.h mainmenu.h waitmenu.h PlayerInGame.h DataPacket.h serverselection.h SocketHandeling.h channel.h Code.h dinogame.h  card.cpp changeinfo.cpp dinogame.cpp errors.cpp filehandeling.cpp forgotmypassword.cpp game.cpp gamehandeler.cpp getserversinformation.cpp logic.cpp main.cpp login.cpp maingamewindow.cpp mainmenu.cpp player.cpp servercard.cpp serverplayeringame.cpp shootinggame.cpp signup.cpp test.cpp mainmenu.cpp waitmenu.cpp PlayerInGame.cpp DataPacket.cpp serverselection.cpp SocketHandeling.cpp channel.cpp Code.cpp dinogame.cpp changeinfo.ui dinogame.ui forgotmypassword.ui getserversinformation.ui login.ui maingamewindow.ui mainmenu.ui shootinggame.ui signup.ui test.ui mainmenu.ui waitmenu.ui serverselection.ui dinogame.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\card.obj release\changeinfo.obj release\dinogame.obj release\errors.obj release\filehandeling.obj release\forgotmypassword.obj release\game.obj release\gamehandeler.obj release\getserversinformation.obj release\logic.obj release\main.obj release\login.obj release\maingamewindow.obj release\mainmenu.obj release\player.obj release\servercard.obj release\serverplayeringame.obj release\signup.obj release\test.obj release\mainmenu.obj release\waitmenu.obj release\PlayerInGame.obj release\DataPacket.obj release\serverselection.obj release\SocketHandeling.obj release\channel.obj release\Code.obj release\dinogame.obj release\qrc_Resources.obj release\moc_changeinfo.obj release\moc_dinogame.obj release\moc_forgotmypassword.obj release\moc_gamehandeler.obj release\moc_getserversinformation.obj release\moc_login.obj release\moc_maingamewindow.obj release\moc_mainmenu.obj release\moc_signup.obj release\moc_test.obj release\moc_waitmenu.obj release\moc_SocketHandeling.obj release\moc_channel.obj
+	-$(DEL_FILE) release\card.obj release\changeinfo.obj release\dinogame.obj release\errors.obj release\filehandeling.obj release\forgotmypassword.obj release\game.obj release\gamehandeler.obj release\getserversinformation.obj release\logic.obj release\main.obj release\login.obj release\maingamewindow.obj release\mainmenu.obj release\player.obj release\servercard.obj release\serverplayeringame.obj release\shootinggame.obj release\signup.obj release\test.obj release\mainmenu.obj release\waitmenu.obj release\PlayerInGame.obj release\DataPacket.obj release\serverselection.obj release\SocketHandeling.obj release\channel.obj release\Code.obj release\dinogame.obj release\qrc_Resources.obj release\moc_changeinfo.obj release\moc_dinogame.obj release\moc_forgotmypassword.obj release\moc_gamehandeler.obj release\moc_getserversinformation.obj release\moc_login.obj release\moc_maingamewindow.obj release\moc_mainmenu.obj release\moc_shootinggame.obj release\moc_signup.obj release\moc_test.obj release\moc_waitmenu.obj release\moc_SocketHandeling.obj release\moc_channel.obj
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -277,7 +283,9 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_Resources.cpp
 release\qrc_Resources.cpp: Resources.qrc \
 		C:\Qt\5.12.12\msvc2017_64\bin\rcc.exe \
+		images\aim.png \
 		images\bird1.png \
+		images\target.png \
 		images\coin.png \
 		images\cloud.png \
 		images\map5.png \
@@ -296,6 +304,7 @@ release\qrc_Resources.cpp: Resources.qrc \
 		images\happy.png \
 		images\treasure7.png \
 		images\cry.png \
+		images\arrow_down.png \
 		images\map4.png \
 		images\parrot8.png \
 		images\parrot11.png \
@@ -321,6 +330,7 @@ release\qrc_Resources.cpp: Resources.qrc \
 		images\parrot2.png \
 		images\barrier.png \
 		images\map7.png \
+		images\arrow_left.png \
 		images\flag9.png \
 		images\dino.png \
 		images\skullsign.png \
@@ -343,9 +353,11 @@ release\qrc_Resources.cpp: Resources.qrc \
 		images\gameground.png \
 		images\treasure4.png \
 		images\WhiteSkull.jpg \
+		images\arrow_up.png \
 		images\parrot5.png \
 		images\map1.png \
 		images\flag3.png \
+		images\arrow.png \
 		images\treasure8.png \
 		sounds\UiBackSound.mp3 \
 		sounds\laugh.wav \
@@ -358,9 +370,9 @@ compiler_moc_predefs_clean:
 release\moc_predefs.h: C:\Qt\5.12.12\msvc2017_64\mkspecs\features\data\dummy.cpp
 	cl -BxC:\Qt\5.12.12\msvc2017_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E C:\Qt\5.12.12\msvc2017_64\mkspecs\features\data\dummy.cpp 2>NUL >release\moc_predefs.h
 
-compiler_moc_header_make_all: release\moc_changeinfo.cpp release\moc_dinogame.cpp release\moc_forgotmypassword.cpp release\moc_gamehandeler.cpp release\moc_getserversinformation.cpp release\moc_login.cpp release\moc_maingamewindow.cpp release\moc_mainmenu.cpp release\moc_signup.cpp release\moc_test.cpp release\moc_mainmenu.cpp release\moc_waitmenu.cpp release\moc_SocketHandeling.cpp release\moc_channel.cpp release\moc_dinogame.cpp
+compiler_moc_header_make_all: release\moc_changeinfo.cpp release\moc_dinogame.cpp release\moc_forgotmypassword.cpp release\moc_gamehandeler.cpp release\moc_getserversinformation.cpp release\moc_login.cpp release\moc_maingamewindow.cpp release\moc_mainmenu.cpp release\moc_shootinggame.cpp release\moc_signup.cpp release\moc_test.cpp release\moc_mainmenu.cpp release\moc_waitmenu.cpp release\moc_SocketHandeling.cpp release\moc_channel.cpp release\moc_dinogame.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_changeinfo.cpp release\moc_dinogame.cpp release\moc_forgotmypassword.cpp release\moc_gamehandeler.cpp release\moc_getserversinformation.cpp release\moc_login.cpp release\moc_maingamewindow.cpp release\moc_mainmenu.cpp release\moc_signup.cpp release\moc_test.cpp release\moc_mainmenu.cpp release\moc_waitmenu.cpp release\moc_SocketHandeling.cpp release\moc_channel.cpp release\moc_dinogame.cpp
+	-$(DEL_FILE) release\moc_changeinfo.cpp release\moc_dinogame.cpp release\moc_forgotmypassword.cpp release\moc_gamehandeler.cpp release\moc_getserversinformation.cpp release\moc_login.cpp release\moc_maingamewindow.cpp release\moc_mainmenu.cpp release\moc_shootinggame.cpp release\moc_signup.cpp release\moc_test.cpp release\moc_mainmenu.cpp release\moc_waitmenu.cpp release\moc_SocketHandeling.cpp release\moc_channel.cpp release\moc_dinogame.cpp
 release\moc_changeinfo.cpp: changeinfo.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QDialog \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdialog.h \
@@ -891,6 +903,16 @@ release\moc_gamehandeler.cpp: gamehandeler.h \
 		DataPacket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
 		Code.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
+		filehandeling.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -1266,6 +1288,15 @@ release\moc_login.cpp: login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QInputDialog \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -1276,6 +1307,8 @@ release\moc_login.cpp: login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qthread.h \
 		dinogame.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMutex \
+		shootinggame.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QMouseEvent \
 		release\moc_predefs.h \
 		C:\Qt\5.12.12\msvc2017_64\bin\moc.exe
 	C:\Qt\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/Geramizade/Desktop/main/AP-Project/release/moc_predefs.h -IC:/Qt/5.12.12/msvc2017_64/mkspecs/win32-msvc -IC:/Users/Geramizade/Desktop/main/AP-Project -IC:/Qt/5.12.12/msvc2017_64/include -IC:/Qt/5.12.12/msvc2017_64/include/QtMultimedia -IC:/Qt/5.12.12/msvc2017_64/include/QtWidgets -IC:/Qt/5.12.12/msvc2017_64/include/QtGui -IC:/Qt/5.12.12/msvc2017_64/include/QtANGLE -IC:/Qt/5.12.12/msvc2017_64/include/QtNetwork -IC:/Qt/5.12.12/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" login.h -o release\moc_login.cpp
@@ -1454,6 +1487,16 @@ release\moc_maingamewindow.cpp: maingamewindow.h \
 		DataPacket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
 		Code.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
+		filehandeling.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -1655,6 +1698,15 @@ release\moc_mainmenu.cpp: mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QInputDialog \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -1670,9 +1722,132 @@ release\moc_mainmenu.cpp: mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qthread.h \
 		dinogame.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMutex \
+		shootinggame.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QMouseEvent \
 		release\moc_predefs.h \
 		C:\Qt\5.12.12\msvc2017_64\bin\moc.exe
 	C:\Qt\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/Geramizade/Desktop/main/AP-Project/release/moc_predefs.h -IC:/Qt/5.12.12/msvc2017_64/mkspecs/win32-msvc -IC:/Users/Geramizade/Desktop/main/AP-Project -IC:/Qt/5.12.12/msvc2017_64/include -IC:/Qt/5.12.12/msvc2017_64/include/QtMultimedia -IC:/Qt/5.12.12/msvc2017_64/include/QtWidgets -IC:/Qt/5.12.12/msvc2017_64/include/QtGui -IC:/Qt/5.12.12/msvc2017_64/include/QtANGLE -IC:/Qt/5.12.12/msvc2017_64/include/QtNetwork -IC:/Qt/5.12.12/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" mainmenu.h -o release\moc_mainmenu.cpp
+
+release\moc_shootinggame.cpp: shootinggame.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QDialog \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdialog.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpaintdevice.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpalette.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qbrush.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qmatrix.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpolygon.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qline.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtransform.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpainterpath.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qimage.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpixelformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpixmap.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qfontmetrics.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qfontinfo.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qcursor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVector \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLabel \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlabel.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QMouseEvent \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QMessageBox \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		player.h \
+		game.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QString \
+		filehandeling.h \
+		errors.h \
+		release\moc_predefs.h \
+		C:\Qt\5.12.12\msvc2017_64\bin\moc.exe
+	C:\Qt\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/Geramizade/Desktop/main/AP-Project/release/moc_predefs.h -IC:/Qt/5.12.12/msvc2017_64/mkspecs/win32-msvc -IC:/Users/Geramizade/Desktop/main/AP-Project -IC:/Qt/5.12.12/msvc2017_64/include -IC:/Qt/5.12.12/msvc2017_64/include/QtMultimedia -IC:/Qt/5.12.12/msvc2017_64/include/QtWidgets -IC:/Qt/5.12.12/msvc2017_64/include/QtGui -IC:/Qt/5.12.12/msvc2017_64/include/QtANGLE -IC:/Qt/5.12.12/msvc2017_64/include/QtNetwork -IC:/Qt/5.12.12/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" shootinggame.h -o release\moc_shootinggame.cpp
 
 release\moc_signup.cpp: signup.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QDialog \
@@ -2113,6 +2288,15 @@ release\moc_mainmenu.cpp: mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QInputDialog \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -2128,6 +2312,8 @@ release\moc_mainmenu.cpp: mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qthread.h \
 		dinogame.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMutex \
+		shootinggame.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QMouseEvent \
 		release\moc_predefs.h \
 		C:\Qt\5.12.12\msvc2017_64\bin\moc.exe
 	C:\Qt\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/Geramizade/Desktop/main/AP-Project/release/moc_predefs.h -IC:/Qt/5.12.12/msvc2017_64/mkspecs/win32-msvc -IC:/Users/Geramizade/Desktop/main/AP-Project -IC:/Qt/5.12.12/msvc2017_64/include -IC:/Qt/5.12.12/msvc2017_64/include/QtMultimedia -IC:/Qt/5.12.12/msvc2017_64/include/QtWidgets -IC:/Qt/5.12.12/msvc2017_64/include/QtGui -IC:/Qt/5.12.12/msvc2017_64/include/QtANGLE -IC:/Qt/5.12.12/msvc2017_64/include/QtNetwork -IC:/Qt/5.12.12/msvc2017_64/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.20.27508\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" mainmenu.h -o release\moc_mainmenu.cpp
@@ -2308,6 +2494,16 @@ release\moc_waitmenu.cpp: waitmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QInputDialog \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
+		filehandeling.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -2727,9 +2923,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_changeinfo.h ui_dinogame.h ui_forgotmypassword.h ui_getserversinformation.h ui_login.h ui_maingamewindow.h ui_mainmenu.h ui_signup.h ui_test.h ui_mainmenu.h ui_waitmenu.h ui_serverselection.h ui_dinogame.h
+compiler_uic_make_all: ui_changeinfo.h ui_dinogame.h ui_forgotmypassword.h ui_getserversinformation.h ui_login.h ui_maingamewindow.h ui_mainmenu.h ui_shootinggame.h ui_signup.h ui_test.h ui_mainmenu.h ui_waitmenu.h ui_serverselection.h ui_dinogame.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_changeinfo.h ui_dinogame.h ui_forgotmypassword.h ui_getserversinformation.h ui_login.h ui_maingamewindow.h ui_mainmenu.h ui_signup.h ui_test.h ui_mainmenu.h ui_waitmenu.h ui_serverselection.h ui_dinogame.h
+	-$(DEL_FILE) ui_changeinfo.h ui_dinogame.h ui_forgotmypassword.h ui_getserversinformation.h ui_login.h ui_maingamewindow.h ui_mainmenu.h ui_shootinggame.h ui_signup.h ui_test.h ui_mainmenu.h ui_waitmenu.h ui_serverselection.h ui_dinogame.h
 ui_changeinfo.h: changeinfo.ui \
 		C:\Qt\5.12.12\msvc2017_64\bin\uic.exe
 	C:\Qt\5.12.12\msvc2017_64\bin\uic.exe changeinfo.ui -o ui_changeinfo.h
@@ -2757,6 +2953,10 @@ ui_maingamewindow.h: maingamewindow.ui \
 ui_mainmenu.h: mainmenu.ui \
 		C:\Qt\5.12.12\msvc2017_64\bin\uic.exe
 	C:\Qt\5.12.12\msvc2017_64\bin\uic.exe mainmenu.ui -o ui_mainmenu.h
+
+ui_shootinggame.h: shootinggame.ui \
+		C:\Qt\5.12.12\msvc2017_64\bin\uic.exe
+	C:\Qt\5.12.12\msvc2017_64\bin\uic.exe shootinggame.ui -o ui_shootinggame.h
 
 ui_signup.h: signup.ui \
 		C:\Qt\5.12.12\msvc2017_64\bin\uic.exe
@@ -3634,6 +3834,16 @@ release\gamehandeler.obj: gamehandeler.cpp gamehandeler.h \
 		DataPacket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
 		Code.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
+		filehandeling.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h
@@ -3824,9 +4034,11 @@ release\getserversinformation.obj: getserversinformation.cpp getserversinformati
 release\logic.obj: logic.cpp logic.h \
 		servercard.h \
 		serverplayeringame.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVector \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvector.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qalgorithms.h \
+		player.h \
+		game.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QString \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qchar.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qglobal.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qconfig.h \
@@ -3848,19 +4060,20 @@ release\logic.obj: logic.cpp logic.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qmutex.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qnumeric.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qversiontagging.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qiterator.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qlist.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qrefcount.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qarraydata.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qhashfunctions.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstring.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qchar.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qrefcount.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qarraydata.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringliteral.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringalgorithms.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringview.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVector \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qhashfunctions.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpair.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbytearraylist.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringlist.h \
@@ -3904,7 +4117,6 @@ release\logic.obj: logic.cpp logic.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatastream.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QbyteArray \
 		errors.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QString \
 		channel.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QTextBrowser \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtextbrowser.h \
@@ -4179,6 +4391,15 @@ release\main.obj: main.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QInputDialog \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -4189,13 +4410,8 @@ release\main.obj: main.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qthread.h \
 		dinogame.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMutex \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
+		shootinggame.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QMouseEvent \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QtDebug \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDir \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdir.h \
@@ -4419,6 +4635,15 @@ release\login.obj: login.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QInputDialog \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -4429,14 +4654,9 @@ release\login.obj: login.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qthread.h \
 		dinogame.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMutex \
+		shootinggame.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QMouseEvent \
 		ui_login.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QHBoxLayout \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLineEdit \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QMenuBar \
@@ -4444,6 +4664,9 @@ release\login.obj: login.cpp login.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qaction.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QSlider \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qslider.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractslider.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QStatusBar \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qstatusbar.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QWidget
@@ -4622,6 +4845,16 @@ release\maingamewindow.obj: maingamewindow.cpp maingamewindow.h \
 		DataPacket.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QByteArray \
 		Code.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
+		filehandeling.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -4637,13 +4870,6 @@ release\maingamewindow.obj: maingamewindow.cpp maingamewindow.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qthread.h \
 		ui_maingamewindow.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVariant \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QComboBox \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qcombobox.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
@@ -4844,6 +5070,15 @@ release\mainmenu.obj: mainmenu.cpp mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QInputDialog \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -4859,15 +5094,10 @@ release\mainmenu.obj: mainmenu.cpp mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qthread.h \
 		dinogame.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMutex \
+		shootinggame.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QMouseEvent \
 		ui_mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVariant \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QFrame \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QHBoxLayout \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLineEdit \
@@ -4917,9 +5147,11 @@ release\servercard.obj: servercard.cpp servercard.h
 
 release\serverplayeringame.obj: serverplayeringame.cpp serverplayeringame.h \
 		servercard.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVector \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvector.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qalgorithms.h \
+		player.h \
+		game.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QString \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qchar.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qglobal.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qconfig.h \
@@ -4941,25 +5173,145 @@ release\serverplayeringame.obj: serverplayeringame.cpp serverplayeringame.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qmutex.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qnumeric.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qversiontagging.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qiterator.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qlist.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qrefcount.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qarraydata.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qhashfunctions.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstring.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qchar.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qrefcount.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qarraydata.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringliteral.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringalgorithms.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringview.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVector \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qhashfunctions.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpair.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbytearraylist.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringlist.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qregexp.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringmatcher.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpoint.h
+
+release\shootinggame.obj: shootinggame.cpp shootinggame.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QDialog \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdialog.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpaintdevice.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpalette.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qbrush.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qmatrix.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpolygon.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qline.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtransform.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpainterpath.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qimage.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpixelformat.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qpixmap.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qfontmetrics.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qfontinfo.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qcursor.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVector \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLabel \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlabel.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QMouseEvent \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QMessageBox \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		player.h \
+		game.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QString \
+		filehandeling.h \
+		errors.h \
+		ui_shootinggame.h
 
 release\signup.obj: signup.cpp signup.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QDialog \
@@ -5447,6 +5799,15 @@ release\mainmenu.obj: mainmenu.cpp mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QInputDialog \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -5462,15 +5823,10 @@ release\mainmenu.obj: mainmenu.cpp mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qthread.h \
 		dinogame.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QMutex \
+		shootinggame.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\QMouseEvent \
 		ui_mainmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVariant \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QFrame \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QHBoxLayout \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QLineEdit \
@@ -5657,6 +6013,16 @@ release\waitmenu.obj: waitmenu.cpp waitmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QInputDialog \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qinputdialog.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
+		filehandeling.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qbasictimer.h \
@@ -5672,13 +6038,6 @@ release\waitmenu.obj: waitmenu.cpp waitmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qthread.h \
 		ui_waitmenu.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtCore\QVariant \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QApplication \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.12.12\msvc2017_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\QListWidget \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlistwidget.h \
 		C:\Qt\5.12.12\msvc2017_64\include\QtWidgets\qlistview.h \
@@ -6379,6 +6738,8 @@ release\moc_login.obj: release\moc_login.cpp
 release\moc_maingamewindow.obj: release\moc_maingamewindow.cpp 
 
 release\moc_mainmenu.obj: release\moc_mainmenu.cpp 
+
+release\moc_shootinggame.obj: release\moc_shootinggame.cpp 
 
 release\moc_signup.obj: release\moc_signup.cpp 
 

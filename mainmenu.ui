@@ -743,15 +743,17 @@ color:black;
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-radius:0px;background-color:rgb(70,50,50);color:red;
+    <string notr="true">border-radius:0px;background-color:rgb(70,50,50);color:red;font-size:30px;
+border-style: solid;border-radius:45px;
+
 
 ;</string>
    </property>
    <property name="text">
-    <string>Earn Coins While You Wait With a Wide Game</string>
+    <string>First MiniGame</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -772,6 +774,28 @@ color:black;
      <widget class="QLineEdit" name="ip"/>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="join_server_3">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>310</y>
+     <width>291</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:0px;background-color:rgb(70,50,50);color:red;font-size:30px;
+border-style: solid;border-radius:45px;
+
+;</string>
+   </property>
+   <property name="text">
+    <string>Second MiniGame</string>
+   </property>
   </widget>
  </widget>
  <resources/>

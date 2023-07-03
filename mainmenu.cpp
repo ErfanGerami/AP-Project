@@ -225,3 +225,12 @@ void MainMenu::on_join_server_2_clicked() {
 
 }
 
+
+void MainMenu::on_join_server_3_clicked()
+{
+    ShootingGame *shoot = new ShootingGame(this);
+    shoot->show();
+    this->hide();
+
+}
+

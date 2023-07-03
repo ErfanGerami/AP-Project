@@ -9,6 +9,8 @@
 GameHandeler::GameHandeler() {}
 GameHandeler::GameHandeler(QWidget *parent,QPushButton* pause_btn, QLabel *score_label, QLabel *stars[4], QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3, Player p4) {
     connect(this,&GameHandeler::my_unpause,this,&GameHandeler::MyUnpause);
+    connect(this,SIGNAL(show_main_menu()),parent,SIGNAL(ShowMainMenu()));
+
     for ( int i = 0; i < 4; i++ ) {
 		this->stars[i] = stars[i];
 	}
@@ -449,8 +451,22 @@ void GameHandeler::Read() {
 			}
         if(Game_Winner==me){
             MainPlayer->SettCoins(MainPlayer->GettCoins()+number_of_players*50);
+            MainPlayer->SetPrevGame(Game(players[Game_Winner]->GetUserName().c_str(),
+                                         QDateTime::currentDateTime().toString("MM/dd/yyyy hh:mm:ss").toStdString().c_str()
+                                         ,0,0,0,players[me]->GetPoints(),true));
+            MainPlayer->SetEarnedCoins(true);
+
             FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(),MainPlayer);
-            parent->close();
+            QString message;
+            if(Game_Winner==me){
+                message="Congrats you won.enjoy that it may not last.";
+
+            }else{
+                message="sorry youve lost.shame on you.really how bad a player can get?";
+
+            }
+            QMessageBox::information(parent,"winning stat",message);
+            emit show_main_menu();
         }
 
 

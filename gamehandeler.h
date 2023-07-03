@@ -95,6 +95,7 @@ signals:
 	void GetOthersPushedCard_S();
 	void others_pause_ended();
     void my_unpause();
+    void show_main_menu();
 
 
 public slots:
