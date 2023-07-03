@@ -71,12 +71,12 @@ SocketHandeling::~SocketHandeling() {
 }
 
 void SocketHandeling::client_bytesAvailabe() {
-	qDebug() << "++++++++++++++++++++++++++++thread initialized";
+
 	while ( true ) {
 		if ( data_vector_mutex.try_lock() ) {
 			if ( tcp_socket->bytesAvailable() ) {
 				emit main_game_read();
-				qDebug() << "+++++++++++++++++++++++++ has unread data";
+
 
 			}
 			data_vector_mutex.unlock();

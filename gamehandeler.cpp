@@ -161,7 +161,7 @@ void GameHandeler::AddStickers(QString name, int player_index) {
 int GameHandeler::GetMe() { return me; };
 
 int GameHandeler::GetWhoseTurn() {
-	qDebug() << turn + first_this_round;
+
 	return (turn + first_this_round) % number_of_players;
 }
 
@@ -261,8 +261,8 @@ void GameHandeler::StartSet() {
 			}
 		}
 	//freeing data
-	delete[] pair.first;
-	delete pair.second;
+	//delete[] pair.first;
+	//delete pair.second;
 	//--
 
 	if ( first_this_round == me ) {
@@ -290,9 +290,12 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 	char *code = pair.first;
 
 	if ( Code::get_code(code) == Code::Sent_Pause ) {
-		disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
-		if ( !is_pause )
-			OthersPause(code[0]);
+		//disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
+		if ( !is_pause ) {
+			is_pause = true;
+			pause_btn->setStyleSheet("font-size:30px;background-color:red");
+		}
+		//OthersPause(code[0]);
 	}
 	else if ( Code::get_code(code) == Code::Requested_SwapCard ) {
 
@@ -339,6 +342,13 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 	else if ( Code::get_code(code) == Code::Denied_SwapCard ) {
 		//denied lol
 	}
+	else if ( Code::get_code(code) == Code::Sent_UnPause ) {
+		if ( !my_pause ) {
+			is_pause = false;
+			pause_btn->setStyleSheet("font-size:30px;");
+
+		}
+	}
 }
 
 void GameHandeler::Read() {
@@ -354,20 +364,20 @@ void GameHandeler::Read() {
 
 		char *code = pair.first;
 
-		while ( true )
-			if ( Code::get_code(code) == Code::fromServer_Sent_AnotherPlayerPlayedCard ) {
-				type = code[3] - '0';
-				number = code[4] - '0';
-				break;
-			}
-			else {
-				//check if the code is pause do this
-				handle(pair);
-				delete[] pair.first;
-				delete pair.second;
-				pair = client->reading_data_socket();
-				code = pair.first;
-			}
+
+		if ( Code::get_code(code) == Code::fromServer_Sent_AnotherPlayerPlayedCard ) {
+			type = code[3] - '0';
+			number = code[4] - '0';
+
+		}
+		else {
+			//check if the code is pause do this
+			handle(pair);
+			//delete[] pair.first;
+			//delete pair.second;
+
+			return;
+		}
 
 
 
@@ -385,18 +395,18 @@ void GameHandeler::Read() {
 		int player_index;
 
 
-		while ( true )
-			if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner ) {
-				player_index = pair.first[3] - '0';
-				break;
-			}
-			else {
-				handle(pair);
-				delete[] pair.first;
-				delete pair.second;
-				pair = client->reading_data_socket();
 
-			}
+		if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner ) {
+			player_index = pair.first[3] - '0';
+
+		}
+		else {
+			handle(pair);
+			//delete[] pair.first;
+			//delete pair.second;
+
+			return;
+		}
 
 		//-----------------------------------
 		GetTheWinnerOfTheRound(player_index);
@@ -424,20 +434,20 @@ void GameHandeler::Read() {
 
 		int points;
 
-		while ( true )
-			if ( Code::get_code(pair.first) == Code::fromServer_Sent_YourScore ) {
 
-				points = pair.second->your_points;
-				score_label->setText(QString::number(points));
-				break;
-			}
-			else {
-				handle(pair);
-				delete[] pair.first;
-				delete pair.second;
-				pair = client->reading_data_socket();
+		if ( Code::get_code(pair.first) == Code::fromServer_Sent_YourScore ) {
 
-			}
+			points = pair.second->your_points;
+			score_label->setText(QString::number(points));
+
+		}
+		else {
+			handle(pair);
+			//delete[] pair.first;
+			//delete pair.second;
+
+			return;
+		}
 
 
 
@@ -449,18 +459,20 @@ void GameHandeler::Read() {
 		disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
 
 		int Game_Winner;
-		while ( true )
-			if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameWinner ) {
 
-				Game_Winner = pair.first[3];
-				break;
-			}
-			else {
-				//handle(pair);
-				delete[] pair.first;
-				delete pair.second;
-				pair = client->reading_data_socket();
-			}
+
+		if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameWinner ) {
+
+			Game_Winner = pair.first[3];
+
+		}
+		else {
+			//handle(pair);
+			//delete[] pair.first;
+			//delete pair.second;
+			return;
+		}
+
 		if ( Game_Winner == me ) {
 			MainPlayer->SettCoins(MainPlayer->GettCoins() + number_of_players * 50);
 			FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(), MainPlayer);
@@ -491,8 +503,8 @@ void GameHandeler::GetMyCards() {
 		Q_ASSERT(false);
 	}
 	//------------------------------
-	delete[] pair.first;
-	delete pair.second;
+	//delete[] pair.first;
+	//delete pair.second;
 
 	//wait for server to send data that wants the prediction
 	QPropertyAnimation *last_anim = Deal();
@@ -535,6 +547,7 @@ void GameHandeler::PlaceArrow() {
 }
 
 void GameHandeler::PushCard() {
+
 	if ( GetWhoseTurn() == me && !is_pause ) {
 		QObject::disconnect(&timer, &QTimer::timeout, this, &GameHandeler::PushCard);
 		timer.stop();
@@ -602,15 +615,12 @@ void GameHandeler::PushCard() {
 		}
 
 
-
-
-
-
 	}
 	else {
 		//just do nothing;
 	}
-
+	if ( this_turn_pause )
+		this_turn_pause = false;
 }
 
 void GameHandeler::GetTheWinnerOfTheRound(int player_index) {
@@ -665,7 +675,7 @@ QVector<Card *> GameHandeler::CardArrayToVectorOf(int array[2][14], int size, QG
 }
 
 void GameHandeler::SwapCard(int player_index) {
-	if ( GetWhoseTurn() == me ) {
+	if ( GetWhoseTurn() == me && !is_pause ) {
 		//notify the targeted index player if he wants to swap
 		char *code = Code::set_code(me + '0', Code::Requested_SwapCard);
 		code[0] = me + '0';
@@ -687,7 +697,7 @@ void GameHandeler::OthersPause(int who_paused) {
 	qDebug() << "someone paused";
 
 	is_pause = true;
-	for ( int i = 0; i < 20; i++ ) {
+	/*for ( int i = 0; i < 20; i++ ) {
 		_sleep(1000);
 		if ( client->get_tcp_socket()->bytesAvailable() ) {
 			QPair<char *, DataPacket *>pair = client->reading_data_socket();
@@ -700,21 +710,20 @@ void GameHandeler::OthersPause(int who_paused) {
 			}
 		}
 	}
-	emit others_pause_ended();
+	emit others_pause_ended();*/
 
 
-
-
-
-
-	connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
-	is_pause = false;
+	//connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
+	//is_pause = false;
 }
 
 
 void GameHandeler::MyPause() {
-	if ( !is_pause && GetWhoseTurn() == me ) {
+	if ( !is_pause && (GetWhoseTurn() == me) && (my_pause_count < 2) && !this_turn_pause ) {
+		my_pause_count++;
 		is_pause = true;
+		my_pause = true;
+		this_turn_pause = true;
 		//notify the server and the other clients of the pause
 		//remember to check code in server in order to check if the cards are played or it is paused
 		char *code = Code::set_code(me + '0', Code::Sent_Pause);
@@ -725,27 +734,42 @@ void GameHandeler::MyPause() {
 		time_elapsed_since_start = start_point.msecsTo((QDateTime::currentDateTime()));
 
 		pause_btn->setStyleSheet("font-size:30px;background-color:red");
+		disconnect(pause_btn, &QPushButton::clicked, this, &GameHandeler::MyPause);
 		connect(pause_btn, &QPushButton::clicked, this, &GameHandeler::MyUnpause);
-		QTimer::singleShot(20000, [this] () {emit my_unpause(); });
+		//QTimer::singleShot(20000, [this] () { emit my_unpause();  });
 
 
-
+		my_pause_qtimer.start(20000);
+		connect(&my_pause_qtimer, &QTimer::timeout, this, &GameHandeler::MyUnpause);
 	}
+
 
 }
 
 void GameHandeler::MyUnpause() {
-	pause_btn->setStyleSheet("font-size:30px;");
-	timer.start(time_for_pushing_card - time_elapsed_since_start);
+	if ( is_pause && my_pause ) {
+		disconnect(&my_pause_qtimer, &QTimer::timeout, this, &GameHandeler::MyUnpause);
+		my_pause_qtimer.stop();
 
 
 
-	//---------
-	char *code2 = Code::set_code(me + '0', Code::Sent_UnPause);
-	DataPacket dummy2;
-	client->send_data(code2, &dummy2);
-	//---------
-	is_pause = false;
+		is_pause = false;
+		my_pause = false;
 
+		pause_btn->setStyleSheet("font-size:30px;");
+		timer.start(time_for_pushing_card - time_elapsed_since_start);
+
+
+
+		//---------
+		char *code2 = Code::set_code(me + '0', Code::Sent_UnPause);
+		DataPacket dummy2;
+		client->send_data(code2, &dummy2);
+		//---------
+
+		disconnect(pause_btn, &QPushButton::clicked, this, &GameHandeler::MyUnpause);
+		connect(pause_btn, &QPushButton::clicked, this, &GameHandeler::MyPause);
+
+	}
 }
 

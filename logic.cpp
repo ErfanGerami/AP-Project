@@ -221,6 +221,7 @@ void Logic::handle(char *code, int who) {
 
 
 		QVector<QPair<char *, DataPacket *>> pair_vec = server->read_data_as_server(who);
+
 		char *new_code = pair_vec[who].first;
 		for ( int i = 0; i < number_of_players; i++ )
 			if ( i != who )
@@ -268,18 +269,18 @@ void Logic::StartGame() {
 					handle(code2, i);
 					QVector<QPair<char *, DataPacket *>> new_data_vector = server->read_data_as_server(i);
 
-					delete[] data_vector[i].first;
-					delete data_vector[i].second;
+					//delete[] data_vector[i].first;
+					//delete data_vector[i].second;
 
 					data_vector[i] = new_data_vector[i];
 
-					delete[] code2;
+					//delete[] code2;
 
 					code2 = data_vector[i].first;
 
 					for ( auto i : new_data_vector ) {
-						delete[] i.first;
-						delete i.second;
+						//delete[] i.first;
+						//delete i.second;
 					}
 				}
 
@@ -290,8 +291,8 @@ void Logic::StartGame() {
 		}
 		//feeing data
 		for ( auto i : data_vector ) {
-			delete[] i.first;
-			delete i.second;
+			//delete[] i.first;
+			//delete i.second;
 		}
 		//
 
@@ -322,24 +323,24 @@ void Logic::StartGame() {
 					else {
 						handle(code4, turn);
 						QVector<QPair<char *, DataPacket *>> new_data_vector2 = server->read_data_as_server(turn);
-						delete[] data_vector[turn].first;
-						delete data_vector[turn].second;
+						//delete[] data_vector[turn].first;
+						//delete data_vector[turn].second;
 
 						data_vector2[turn] = new_data_vector2[turn];
 
-						delete[] code4;
+						//delete[] code4;
 
 						code4 = data_vector2[turn].first;
 
 						for ( auto i : new_data_vector2 ) {
-							delete[] i.first;
-							delete i.second;
+							//delete[] i.first;
+							//delete i.second;
 						}
 					}
 				//freeing data
 				for ( auto i : data_vector2 ) {
-					delete[] i.first;
-					delete i.second;
+					//delete[] i.first;
+					//delete i.second;
 				}
 				//-----------------
 				cards_on_deck.push_back(ServerCard(type, number));
@@ -363,7 +364,7 @@ void Logic::StartGame() {
 			int winner_index = notifyAndGetThisRoundsWinner();
 			players[winner_index]->SetPoints(players[winner_index]->GetPoints() + rounds_score);
 			this_rounds_first = winner_index;
-			qDebug() << "--------winner: " << this_rounds_first;
+
 			//notify the round winner here;send winner_index
 			char *code6 = Code::set_code('0', Code::fromServer_Sent_RoundWinner);
 			code6[3] = this_rounds_first + '0';
