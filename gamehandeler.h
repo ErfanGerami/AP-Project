@@ -26,7 +26,7 @@ class GameHandeler:public QObject {
 	Q_OBJECT
 public:
 	GameHandeler();
-    GameHandeler(QWidget *parent,QLabel* score_label,QLabel* stars[4],QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
+	GameHandeler(QWidget *parent, QLabel *score_label, QLabel *stars[4], QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
 	QPropertyAnimation *TellTheFirst(int index);
 	QPropertyAnimation *Deal();
 	void collect(PlayerInGame *player);
@@ -39,23 +39,28 @@ public:
 	Card *turn_card[4];
 	void SwapCard(int player_index);
 
-    void OthersPause();
 
 	void StartSet();
-    void MyPause();
+
+
+	void OthersPause(int who_paused);
+	void MyPause();
+
+
+
 	SocketHandeling *client;
-    void PlaceArrow();
+	void PlaceArrow();
 
 private:
-    std::pair<Card::CardType,int> swap_candidate;
-    std::pair<bool,int> swap_card_stat={false,-1};
-    std::pair<bool,int> swap_card_answer_stat={false,-1};
+	std::pair<Card::CardType, int> swap_candidate;
+	std::pair<bool, int> swap_card_stat = { false, -1 };
+	std::pair<bool, int> swap_card_answer_stat = { false, -1 };
 
-    bool is_pause=false;
-    QLabel* stars[4];
-    QLabel *arrows[4];
+	bool is_pause = false;
+	QLabel *stars[4];
+	QLabel *arrows[4];
 	int curr_state;
-    QLabel* score_label;
+	QLabel *score_label;
 	QWidget *parent;
 	int number_of_players;
 	int me;

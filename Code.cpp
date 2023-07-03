@@ -1,7 +1,7 @@
 #include "Code.h"
 #include <qdebug.h>
 
-const  int Code::undefined = -1;
+const int Code::undefined = -1;
 const int Code::fromServer_Sent_YourCards = 0;
 const int Code::fromServer_Sent_YourTurn = 1;
 const int Code::fromClient_Sent_Predictions = 2;
@@ -17,6 +17,7 @@ const int Code::Sent_Pause = 11;
 const int Code::Requested_SwapCard = 12;
 const int Code::Accepted_SwapCard = 13;
 const int Code::Denied_SwapCard = 14;
+const int Code::Sent_UnPause = 15;
 
 int Code::get_code(char *code) {
 	//qDebug() << "recived code:";
@@ -68,6 +69,8 @@ int Code::get_code(char *code) {
 	if ( code[1] == '0' && code[2] == 'e' )
 		return Denied_SwapCard;
 
+	if ( code[1] == '0' && code[2] == 'f' )
+		return Sent_UnPause;
 	return undefined;
 }
 
@@ -138,6 +141,10 @@ char *Code::set_code(char sender, int code) {
 
 	if ( code == Denied_SwapCard ) {
 		c[2] = 'e';
+	}
+
+	if ( code == Sent_UnPause ) {
+		c[2] = 'f';
 	}
 
 	//qDebug() << "created code:";

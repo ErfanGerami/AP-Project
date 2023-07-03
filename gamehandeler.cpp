@@ -294,8 +294,10 @@ void GameHandeler::Read() {
 		}
 		else {
 			//check if the code is pause do this
-			if ( Code::get_code(code) == Code::Sent_Pause )
-				OthersPause();
+			if ( Code::get_code(code) == Code::Sent_Pause ) {
+				disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
+				OthersPause(pair.first[0]);
+			}
 			//-----------------------------------
 
 			//check if somone has sent a swap card then if yes do this
@@ -613,11 +615,31 @@ void GameHandeler::SwapCard(int player_index) {
 }
 
 
-void GameHandeler::OthersPause() {
+void GameHandeler::OthersPause(int who_paused) {
+
+	is_pause = true;
+
+	for ( int i = 0; i < 20; i++ ) {
+		_sleep(1000);
+		if ( client->get_tcp_socket()->bytesAvailable() ) {
+			QPair<char *, DataPacket>pair = client->reading_data_socket();
+			if ( Code::get_code(pair.first) == Code::Sent_UnPause ) {
+				break;
+			}
+			else {
+				Q_ASSERT(false);
+			}
+		}
+	}
+
 	QMessageBox messageBox(parent);
 	messageBox.setText("game has been paused");
 	messageBox.setStandardButtons(0);
-	QTimer::singleShot(30000, &messageBox, &QMessageBox::close);
+	QTimer::singleShot(20000, &messageBox, &QMessageBox::close);
+
+
+	connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
+	is_pause = false;
 }
 
 
@@ -626,26 +648,33 @@ void GameHandeler::MyPause() {
 		is_pause = true;
 		//notify the server and the other clients of the pause
 		//remember to check code in server in order to check if the cards are played or it is paused
-
-
+		char *code = Code::set_code(me + '0', Code::Sent_Pause);
+		DataPacket dummy;
+		client->send_data(code, &dummy);
 		//--------------------------------------
-		QMessageBox messageBox(parent);
-		messageBox.setText("game has been paused");
-		messageBox.setStandardButtons(0);
-		QTimer::singleShot(30000, &messageBox, &QMessageBox::close);
 
+		QMessageBox messageBox;
+		messageBox.setText("This is a message box.");
+
+		QPushButton *resumeButton = new QPushButton("Resume");
+		messageBox.addButton(resumeButton, QMessageBox::AcceptRole);
+		messageBox.setWindowModality(Qt::ApplicationModal);
+		QTimer timer;
+		timer.setSingleShot(true);
+		QObject::connect(resumeButton, &QPushButton::clicked, &messageBox, &QMessageBox::close);
+		QObject::connect(&timer, &QTimer::timeout, &messageBox, &QMessageBox::accept);
+		QObject::connect(&messageBox, &QMessageBox::accepted, &timer, &QTimer::stop);
+
+		timer.start(20000);
+		messageBox.exec();
+		//---------
+		char *code = Code::set_code(me + '0', Code::Sent_UnPause);
+		DataPacket dummy;
+		client->send_data(code, &dummy);
+		//---------
 		is_pause = false;
 	}
 
 }
-
-
-
-
-
-
-
-
-
 
 

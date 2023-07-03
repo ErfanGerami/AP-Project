@@ -20,6 +20,7 @@ public:
 	const static int Requested_SwapCard;
 	const static int Accepted_SwapCard;
 	const static int Denied_SwapCard;
+	const static int Sent_UnPause;
 
 	static int get_code(char *code);
 	static char *set_code(char sender, int code);

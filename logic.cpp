@@ -215,7 +215,16 @@ void Logic::FillAllCards() {
 void Logic::handle(char *code, int who) {
 	DataPacket dummy;
 	if ( Code::get_code(code) == Code::Sent_Pause ) {
-		server->send_data(code, &dummy);
+		for ( int i = 0; i < number_of_players; i++ )
+			if ( i != who )
+				server->send_data(code, &dummy);
+
+		QVector<QPair<char *, DataPacket *>> pair_vec = server->read_data_as_server(who);
+		char *new_code = pair_vec[who].first;
+		for ( int i = 0; i < number_of_players; i++ )
+			if ( i != who )
+				server->send_data(code, &dummy);
+
 	}
 	else if ( Code::get_code(code) == Code::Requested_SwapCard ) {
 		server->send_data(code, &dummy);
@@ -345,7 +354,7 @@ void Logic::StartGame() {
 				}
 			}
 			else {
-				if ( players[i]->getRoundsWon() == players[i]->GetRoundsPredicted() == 0 ) {
+				if ( players[i]->getRoundsWon() == players[i]->GetRoundsPredicted() ) {
 					players[i]->SetPoints(players[i]->GetPoints() + players[i]->GetRoundsPredicted() * 10);
 				}
 				else {
