@@ -7,15 +7,15 @@
 //1 predict
 
 GameHandeler::GameHandeler() {}
-GameHandeler::GameHandeler(QWidget *parent,QPushButton* pause_btn, QLabel *score_label, QLabel *stars[4], QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3, Player p4) {
-    connect(this,&GameHandeler::my_unpause,this,&GameHandeler::MyUnpause);
-    for ( int i = 0; i < 4; i++ ) {
+GameHandeler::GameHandeler(QWidget *parent, QPushButton *pause_btn, QLabel *score_label, QLabel *stars[4], QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3, Player p4) {
+	connect(this, &GameHandeler::my_unpause, this, &GameHandeler::MyUnpause);
+	for ( int i = 0; i < 4; i++ ) {
 		this->stars[i] = stars[i];
 	}
 	for ( int i = 0; i < 4; i++ ) {
 		this->arrows[i] = arrows[i];
 	}
-    this->pause_btn=pause_btn;
+	this->pause_btn = pause_btn;
 	this->number_of_players = number_of_players;
 	this->sticker_scene = sticker_scene;
 	this->sticker_view = sticker_view;
@@ -183,13 +183,13 @@ void GameHandeler::GetOthersPushedCard(Card::CardType type, int number) {
 		card->SetDisabled(true);
 		cards_on_deck.push_back(card);
 		PlaceArrow();
-        if(GetWhoseTurn()==me){
-            start_point=QDateTime::currentDateTime();
-            QObject::connect(&timer,&QTimer::timeout,this,&GameHandeler::PushCard);
-            timer.start(time_for_pushing_card);
-            //20seconds to push
+		if ( GetWhoseTurn() == me ) {
+			start_point = QDateTime::currentDateTime();
+			QObject::connect(&timer, &QTimer::timeout, this, &GameHandeler::PushCard);
+			timer.start(time_for_pushing_card);
+			//20seconds to push
 
-        }
+		}
 
 
 
@@ -260,13 +260,18 @@ void GameHandeler::StartSet() {
 				Q_ASSERT(false);
 			}
 		}
-    if(first_this_round==me){
-        start_point=QDateTime::currentDateTime();
-        QObject::connect(&timer,&QTimer::timeout,this,&GameHandeler::PushCard);
-        timer.start(time_for_pushing_card);
-        //20seconds to push
+	//freeing data
+	delete[] pair.first;
+	delete pair.second;
+	//--
 
-    }
+	if ( first_this_round == me ) {
+		start_point = QDateTime::currentDateTime();
+		QObject::connect(&timer, &QTimer::timeout, this, &GameHandeler::PushCard);
+		timer.start(time_for_pushing_card);
+		//20seconds to push
+
+	}
 	PlaceArrow();
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
 
@@ -337,6 +342,7 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 }
 
 void GameHandeler::Read() {
+	QPair<char *, DataPacket *> pair = client->reading_data_socket();
 
 	if ( curr_state == 2 ) {
 
@@ -345,7 +351,7 @@ void GameHandeler::Read() {
 		Card::CardType type;
 		int number;
 
-		QPair<char *, DataPacket *>pair = client->reading_data_socket();
+
 		char *code = pair.first;
 
 		while ( true )
@@ -357,6 +363,8 @@ void GameHandeler::Read() {
 			else {
 				//check if the code is pause do this
 				handle(pair);
+				delete[] pair.first;
+				delete pair.second;
 				pair = client->reading_data_socket();
 				code = pair.first;
 			}
@@ -375,7 +383,7 @@ void GameHandeler::Read() {
 
 		//get the player that has won the round;
 		int player_index;
-		QPair<char *, DataPacket *> pair = client->reading_data_socket();
+
 
 		while ( true )
 			if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner ) {
@@ -384,6 +392,8 @@ void GameHandeler::Read() {
 			}
 			else {
 				handle(pair);
+				delete[] pair.first;
+				delete pair.second;
 				pair = client->reading_data_socket();
 
 			}
@@ -411,7 +421,7 @@ void GameHandeler::Read() {
 		disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
 
 
-		QPair<char *, DataPacket *> pair = client->reading_data_socket();
+
 		int points;
 
 		while ( true )
@@ -423,6 +433,8 @@ void GameHandeler::Read() {
 			}
 			else {
 				handle(pair);
+				delete[] pair.first;
+				delete pair.second;
 				pair = client->reading_data_socket();
 
 			}
@@ -435,7 +447,7 @@ void GameHandeler::Read() {
 	}
 	else if ( curr_state == 5 ) {
 		disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
-		QPair<char *, DataPacket *>pair = client->reading_data_socket();
+
 		int Game_Winner;
 		while ( true )
 			if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameWinner ) {
@@ -445,13 +457,15 @@ void GameHandeler::Read() {
 			}
 			else {
 				//handle(pair);
+				delete[] pair.first;
+				delete pair.second;
 				pair = client->reading_data_socket();
 			}
-        if(Game_Winner==me){
-            MainPlayer->SettCoins(MainPlayer->GettCoins()+number_of_players*50);
-            FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(),MainPlayer);
-            parent->close();
-        }
+		if ( Game_Winner == me ) {
+			MainPlayer->SettCoins(MainPlayer->GettCoins() + number_of_players * 50);
+			FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(), MainPlayer);
+			parent->close();
+		}
 
 
 	}
@@ -474,9 +488,11 @@ void GameHandeler::GetMyCards() {
 	}
 	else {
 		//handle
+		Q_ASSERT(false);
 	}
 	//------------------------------
-
+	delete[] pair.first;
+	delete pair.second;
 
 	//wait for server to send data that wants the prediction
 	QPropertyAnimation *last_anim = Deal();
@@ -519,70 +535,71 @@ void GameHandeler::PlaceArrow() {
 }
 
 void GameHandeler::PushCard() {
-    if ( GetWhoseTurn() == me&&!is_pause ) {
-        QObject::disconnect(&timer,&QTimer::timeout,this,&GameHandeler::PushCard);
-        timer.stop();
+	if ( GetWhoseTurn() == me && !is_pause ) {
+		QObject::disconnect(&timer, &QTimer::timeout, this, &GameHandeler::PushCard);
+		timer.stop();
 
 		Card::CardType type;
 		int number;
 		//inform the client
 		auto cards = players[me]->get_cards();
 		QPushButton *clickedButton = qobject_cast<QPushButton *>(sender());
-        Card* card;
-        bool valid=true;
-        if(clickedButton==nullptr){
-            for ( int i = 0; i < cards.size(); i++ ) {
-                if(  isValid(*(cards[i]), turn) ){
+		Card *card;
+		bool valid = true;
+		if ( clickedButton == nullptr ) {
+			for ( int i = 0; i < cards.size(); i++ ) {
+				if ( isValid(*(cards[i]), turn) ) {
 
-                    card = players[me]->PushCard(cards[i]->GetType(), cards[i]->GetNumber(), false);
-
-
-                }
-
-            }
+					card = players[me]->PushCard(cards[i]->GetType(), cards[i]->GetNumber(), false);
 
 
-        }
-        else{
-            for ( int i = 0; i < cards.size(); i++ ) {
-                if ( cards[i]->GetButton() == clickedButton ) {
-                    type = cards[i]->GetType();
-                    number = cards[i]->GetNumber();
-                    if ( isValid(Card(type, number), turn) ) {
-                        card = players[me]->PushCard(type, number, false);
+				}
+
+			}
+
+
+		}
+		else {
+			for ( int i = 0; i < cards.size(); i++ ) {
+				if ( cards[i]->GetButton() == clickedButton ) {
+					type = cards[i]->GetType();
+					number = cards[i]->GetNumber();
+					if ( isValid(Card(type, number), turn) ) {
+						card = players[me]->PushCard(type, number, false);
 
 
 
-                    }else{
-                        QApplication::beep();
-                        valid=false;
-                    }
-                    break;
-                }
-            }
+					}
+					else {
+						QApplication::beep();
+						valid = false;
+					}
+					break;
+				}
+			}
 
-        }
+		}
 
-        if(valid){
-            turn++;
-            cards_on_deck.push_back(card);
-            card->PushCard();
-            card->SetDisabled(true);
-            PlaceArrow();
-            //notify the server of what card is pushed here
-            char *code = Code::set_code(me + '0', Code::fromClient_Sent_PlayedCard);
-            code[3] = type + '0';
-            code[4] = number + '0';
-            DataPacket dummy;
-            client->send_data(code, &dummy);
-            //---------------------------------------------
+		if ( valid ) {
+			turn++;
+			cards_on_deck.push_back(card);
+			card->PushCard();
+			card->SetDisabled(true);
+			PlaceArrow();
+			//notify the server of what card is pushed here
+			char *code = Code::set_code(me + '0', Code::fromClient_Sent_PlayedCard);
+			code[3] = type + '0';
+			code[4] = number + '0';
+			DataPacket dummy;
+			client->send_data(code, &dummy);
+			//---------------------------------------------
 
-            if ( turn == number_of_players ) {
+			if ( turn == number_of_players ) {
 
-                curr_state = 3;
+				curr_state = 3;
 
-            }
-        }
+			}
+		}
 
 
 
@@ -667,23 +684,23 @@ void GameHandeler::SwapCard(int player_index) {
 
 
 void GameHandeler::OthersPause(int who_paused) {
-    qDebug()<<"someone paused";
+	qDebug() << "someone paused";
 
 	is_pause = true;
-    for ( int i = 0; i < 20; i++ ) {
-        _sleep(1000);
-        if ( client->get_tcp_socket()->bytesAvailable() ) {
-            QPair<char *, DataPacket *>pair = client->reading_data_socket();
-            if ( Code::get_code(pair.first) == Code::Sent_UnPause ) {
-                emit others_pause_ended();
-                break;
-            }
-            else {
-                Q_ASSERT(false);
-            }
-        }
-    }
-    emit others_pause_ended();
+	for ( int i = 0; i < 20; i++ ) {
+		_sleep(1000);
+		if ( client->get_tcp_socket()->bytesAvailable() ) {
+			QPair<char *, DataPacket *>pair = client->reading_data_socket();
+			if ( Code::get_code(pair.first) == Code::Sent_UnPause ) {
+				emit others_pause_ended();
+				break;
+			}
+			else {
+				Q_ASSERT(false);
+			}
+		}
+	}
+	emit others_pause_ended();
 
 
 
@@ -705,11 +722,11 @@ void GameHandeler::MyPause() {
 		client->send_data(code, &dummy);
 		//--------------------------------------
 
-        time_elapsed_since_start=start_point.msecsTo((QDateTime::currentDateTime()));
+		time_elapsed_since_start = start_point.msecsTo((QDateTime::currentDateTime()));
 
-        pause_btn->setStyleSheet("font-size:30px;background-color:red");
-        connect(pause_btn,&QPushButton::clicked,this,&GameHandeler::MyUnpause);
-        QTimer::singleShot(20000,[this](){emit my_unpause();});
+		pause_btn->setStyleSheet("font-size:30px;background-color:red");
+		connect(pause_btn, &QPushButton::clicked, this, &GameHandeler::MyUnpause);
+		QTimer::singleShot(20000, [this] () {emit my_unpause(); });
 
 
 
@@ -717,18 +734,18 @@ void GameHandeler::MyPause() {
 
 }
 
-void GameHandeler::MyUnpause(){
-    pause_btn->setStyleSheet("font-size:30px;");
-    timer.start(time_for_pushing_card-time_elapsed_since_start);
+void GameHandeler::MyUnpause() {
+	pause_btn->setStyleSheet("font-size:30px;");
+	timer.start(time_for_pushing_card - time_elapsed_since_start);
 
 
 
-    //---------
-    char *code2 = Code::set_code(me + '0', Code::Sent_UnPause);
-    DataPacket dummy2;
-    client->send_data(code2, &dummy2);
-    //---------
-    is_pause = false;
+	//---------
+	char *code2 = Code::set_code(me + '0', Code::Sent_UnPause);
+	DataPacket dummy2;
+	client->send_data(code2, &dummy2);
+	//---------
+	is_pause = false;
 
 }
 

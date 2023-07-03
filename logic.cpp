@@ -267,8 +267,20 @@ void Logic::StartGame() {
 				else {
 					handle(code2, i);
 					QVector<QPair<char *, DataPacket *>> new_data_vector = server->read_data_as_server(i);
+
+					delete[] data_vector[i].first;
+					delete data_vector[i].second;
+
 					data_vector[i] = new_data_vector[i];
+
+					delete[] code2;
+
 					code2 = data_vector[i].first;
+
+					for ( auto i : new_data_vector ) {
+						delete[] i.first;
+						delete i.second;
+					}
 				}
 
 
@@ -276,6 +288,12 @@ void Logic::StartGame() {
 
 			players[i]->SetRoundsPredicted(prediction);
 		}
+		//feeing data
+		for ( auto i : data_vector ) {
+			delete[] i.first;
+			delete i.second;
+		}
+		//
 
 		for ( int round_number = 0; round_number < set * 2; round_number++ ) {
 			int rounds_score = 0;
@@ -304,10 +322,25 @@ void Logic::StartGame() {
 					else {
 						handle(code4, turn);
 						QVector<QPair<char *, DataPacket *>> new_data_vector2 = server->read_data_as_server(turn);
-						data_vector2[turn] = new_data_vector2[turn];
-						code4 = data_vector2[turn].first;
-					}
+						delete[] data_vector[turn].first;
+						delete data_vector[turn].second;
 
+						data_vector2[turn] = new_data_vector2[turn];
+
+						delete[] code4;
+
+						code4 = data_vector2[turn].first;
+
+						for ( auto i : new_data_vector2 ) {
+							delete[] i.first;
+							delete i.second;
+						}
+					}
+				//freeing data
+				for ( auto i : data_vector2 ) {
+					delete[] i.first;
+					delete i.second;
+				}
 				//-----------------
 				cards_on_deck.push_back(ServerCard(type, number));
 
