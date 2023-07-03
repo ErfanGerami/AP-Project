@@ -34,28 +34,28 @@ public:
 	GameHandeler(QWidget *parent, QPushButton *pause_btn, QLabel *score_label, QLabel *stars[4], QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
 	QPropertyAnimation *TellTheFirst(int index);
 	QPropertyAnimation *Deal();
-	void collect(PlayerInGame *player);
-	void StartRound();
-	void AddStickers(QString name, int index);
-	int GetMe();
-	void SwitchCardShow(Card::CardType typpe, int number, Card::CardType type2, int number2);
-	int CardVectorToArray(QVector<Card *> cards, int array[2][14]);
-	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size, QGraphicsView *view, QGraphicsScene *scene);
-	Card *turn_card[4];
-	void SwapCard(int player_index);
-
 
 	void StartSet();
 
 
-	void OthersPause(int who_paused);
+	int GetMe();
+
+	void AddStickers(QString name, int index);
 	void MyPause();
+	void SwapCard(int player_index);
+private:
+	void collect(PlayerInGame *player);
+	void StartRound();
+	void SwitchCardShow(Card::CardType typpe, int number, Card::CardType type2, int number2);
+	int CardVectorToArray(QVector<Card *> cards, int array[2][14]);
+	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size, QGraphicsView *view, QGraphicsScene *scene);
+	Card *turn_card[4];
+
+	void OthersPause(int who_paused);
 
 
 	SocketHandeling *client;
 	void PlaceArrow();
-
-private:
 	int time_elapsed_since_start;
 	QPushButton *pause_btn;
 	const int time_for_pushing_card = 20000;
