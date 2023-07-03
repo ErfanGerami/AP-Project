@@ -21,6 +21,8 @@
 #include "Code.h"
 #include <thread>
 #include <QDateTime>
+#include <QApplication>
+
 
 #include <QTimer>
 
@@ -28,7 +30,7 @@ class GameHandeler:public QObject {
 	Q_OBJECT
 public:
 	GameHandeler();
-	GameHandeler(QWidget *parent, QLabel *score_label, QLabel *stars[4], QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
+    GameHandeler(QWidget *parent,QPushButton* pause_btn, QLabel *score_label, QLabel *stars[4], QLabel *arrows[4], SocketHandeling *client, int number_of_players, QGraphicsView *view, QGraphicsScene *scene, QGraphicsView *sticker_view, QGraphicsScene *sticker_scene, int me, Player p1, Player p2, Player p3 = Player(), Player p4 = Player());
 	QPropertyAnimation *TellTheFirst(int index);
 	QPropertyAnimation *Deal();
 	void collect(PlayerInGame *player);
@@ -53,6 +55,9 @@ public:
 	void PlaceArrow();
 
 private:
+    int time_elapsed_since_start;
+    QPushButton* pause_btn;
+    const int time_for_pushing_card=20000;
     QDateTime start_point;
     QTimer timer;
 	std::pair<Card::CardType, int> swap_candidate;
@@ -88,6 +93,7 @@ private:
 signals:
 	void GetOthersPushedCard_S();
 	void others_pause_ended();
+    void my_unpause();
 
 
 public slots:
@@ -96,6 +102,7 @@ public slots:
 	void GetMyCards();
 	void Predict();
 	void Read();
+    void MyUnpause();
 
 	void PushCard();
 
