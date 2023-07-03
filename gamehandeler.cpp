@@ -618,24 +618,31 @@ void GameHandeler::SwapCard(int player_index) {
 void GameHandeler::OthersPause(int who_paused) {
 
 	is_pause = true;
+    QMessageBox pause(parent);
+    pause.setText("game has been paused");
+    pause.setStandardButtons(0);
+    QObject::connect(this, &GameHandeler::others_pause_ended,&pause, &QMessageBox::close);
+    std::thread th([this](){
+        for ( int i = 0; i < 20; i++ ) {
+            _sleep(1000);
+            if ( client->get_tcp_socket()->bytesAvailable() ) {
+                QPair<char *, DataPacket>pair = client->reading_data_socket();
+                if ( Code::get_code(pair.first) == Code::Sent_UnPause ) {
+                    break;
+                    emit others_pause_ended();
+                }
+                else {
+                    Q_ASSERT(false);
+                }
+            }
+        }
 
-	for ( int i = 0; i < 20; i++ ) {
-		_sleep(1000);
-		if ( client->get_tcp_socket()->bytesAvailable() ) {
-			QPair<char *, DataPacket>pair = client->reading_data_socket();
-			if ( Code::get_code(pair.first) == Code::Sent_UnPause ) {
-				break;
-			}
-			else {
-				Q_ASSERT(false);
-			}
-		}
-	}
+    });
+    pause.exec();
 
-	QMessageBox messageBox(parent);
-	messageBox.setText("game has been paused");
-	messageBox.setStandardButtons(0);
-	QTimer::singleShot(20000, &messageBox, &QMessageBox::close);
+
+
+
 
 
 	connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));

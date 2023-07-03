@@ -19,6 +19,7 @@
 #include <QPushButton>
 #include "SocketHandeling.h"
 #include "Code.h"
+#include <thread>
 
 #include <QTimer>
 
@@ -84,6 +85,7 @@ private:
 
 signals:
 	void GetOthersPushedCard_S();
+    void others_pause_ended();
 
 
 public slots:
