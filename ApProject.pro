@@ -26,6 +26,7 @@ SOURCES += \
 	player.cpp \
 	servercard.cpp \
 	serverplayeringame.cpp \
+	shootinggame.cpp \
 	signup.cpp \
 	test.cpp\
 	mainmenu.cpp \
@@ -55,6 +56,7 @@ HEADERS += \
 	player.h \
 	servercard.h \
 	serverplayeringame.h \
+	shootinggame.h \
 	signup.h \
 	test.h\
 	mainmenu.h \
@@ -75,6 +77,7 @@ FORMS += \
 	login.ui \
 	maingamewindow.ui \
 	mainmenu.ui \
+	shootinggame.ui \
 	signup.ui \
 	test.ui\
 	mainmenu.ui \

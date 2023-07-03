@@ -9,6 +9,7 @@
 #include "SocketHandeling.h"
 #include "waitmenu.h"
 #include "dinogame.h"
+#include <shootinggame.h>
 
 
 namespace Ui {
@@ -35,6 +36,8 @@ private slots:
 	void on_pushButton_clicked();
 
 	void on_join_server_2_clicked();
+
+    void on_join_server_3_clicked();
 
 public slots:
 	void show_me();

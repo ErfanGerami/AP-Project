@@ -7,6 +7,8 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 	QDialog(parent),
 	ui(new Ui::MainGameWindow) {
 	ui->setupUi(this);
+    connect(this,SIGNAL(show_main_menu()),parent,SIGNAL(show_me()));
+
 	setFixedSize(size());
 	ui->Graphics->setAlignment(Qt::Alignment(0));
 
@@ -142,5 +144,10 @@ void MainGameWindow::on_pushButton_8_clicked() {
 
 void MainGameWindow::on_pause_clicked() {
 	game_handeler->MyPause();
+}
+
+void MainGameWindow::ShowMainMenu(){
+    emit show_main_menu();
+    this->close();
 }
 

@@ -68,10 +68,11 @@ public:
     QSpinBox *player_count;
     QPushButton *pushButton;
     QPushButton *join_server_2;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *ip_connect;
     QLineEdit *ip;
+    QPushButton *join_server_3;
 
     void setupUi(QDialog *MainMenu)
     {
@@ -312,25 +313,35 @@ public:
         join_server_2->setObjectName(QString::fromUtf8("join_server_2"));
         join_server_2->setGeometry(QRect(620, 190, 291, 91));
         join_server_2->setCursor(QCursor(Qt::PointingHandCursor));
-        join_server_2->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:rgb(70,50,50);color:red;\n"
+        join_server_2->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:rgb(70,50,50);color:red;font-size:30px;\n"
+"border-style: solid;border-radius:45px;\n"
+"\n"
 "\n"
 ";"));
-        widget = new QWidget(MainMenu);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(260, 680, 239, 30));
-        horizontalLayout_2 = new QHBoxLayout(widget);
+        layoutWidget1 = new QWidget(MainMenu);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(260, 680, 239, 30));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        ip_connect = new QPushButton(widget);
+        ip_connect = new QPushButton(layoutWidget1);
         ip_connect->setObjectName(QString::fromUtf8("ip_connect"));
 
         horizontalLayout_2->addWidget(ip_connect);
 
-        ip = new QLineEdit(widget);
+        ip = new QLineEdit(layoutWidget1);
         ip->setObjectName(QString::fromUtf8("ip"));
 
         horizontalLayout_2->addWidget(ip);
 
+        join_server_3 = new QPushButton(MainMenu);
+        join_server_3->setObjectName(QString::fromUtf8("join_server_3"));
+        join_server_3->setGeometry(QRect(620, 310, 291, 91));
+        join_server_3->setCursor(QCursor(Qt::PointingHandCursor));
+        join_server_3->setStyleSheet(QString::fromUtf8("border-radius:0px;background-color:rgb(70,50,50);color:red;font-size:30px;\n"
+"border-style: solid;border-radius:45px;\n"
+"\n"
+";"));
 
         retranslateUi(MainMenu);
 
@@ -368,8 +379,9 @@ public:
         label_2->setText(QApplication::translate("MainMenu", "server name:", nullptr));
         label_3->setText(QApplication::translate("MainMenu", "player count:", nullptr));
         pushButton->setText(QApplication::translate("MainMenu", "log out", nullptr));
-        join_server_2->setText(QApplication::translate("MainMenu", "Earn Coins While You Wait With a Wide Game", nullptr));
+        join_server_2->setText(QApplication::translate("MainMenu", "First MiniGame", nullptr));
         ip_connect->setText(QApplication::translate("MainMenu", "connect via ip:", nullptr));
+        join_server_3->setText(QApplication::translate("MainMenu", "Second MiniGame", nullptr));
     } // retranslateUi
 
 };
