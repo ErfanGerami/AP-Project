@@ -265,21 +265,56 @@ void GameHandeler::StartSet() {
 
 }
 
+void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
+	char *code = pair.first;
+
+	if ( Code::get_code(code) == Code::Sent_Pause ) {
+		disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
+		if ( !is_pause )
+			OthersPause(code[0]);
+	}
+	else if ( Code::get_code(code) == Code::Requested_SwapCard ) {
+
+
+		int index_of_the_requested_player = code[0] - '0';
+
+
+		QMessageBox::StandardButton response;
+		response = QMessageBox::question(nullptr, "Swap Request"
+			, "would you swapa a card with " + QString(players[index_of_the_requested_player]->GetUserName().c_str())
+			, QMessageBox::Yes | QMessageBox::No);
+
+		if ( response == QMessageBox::Yes ) {
+
+			char *code = Code::set_code(me + '0', Code::Accepted_SwapCard);
+			code[0] = me + '0';
+			code[1] = index_of_the_requested_player + '0';
+			//code[3] = type + '0';
+			//code[4] = number + '0';
+			DataPacket dummy;
+			client->send_data(code, &dummy);
+		}
+		else {
+			char *code = Code::set_code(me + '0', Code::Denied_SwapCard);
+			code[1] = index_of_the_requested_player + '0';
+			DataPacket dummy;
+			client->send_data(code, &dummy);
+		}
+
+	}
+	else if ( Code::get_code(code) == Code::Accepted_SwapCard ) {
+		Card::CardType type = code[3] - '0';
+		int number = code[4] - '0';
+		SwitchCardShow(type, number, swap_candidate.first, swap_candidate.second);
+	}
+	else if ( Code::get_code(code) == Code::Denied_SwapCard ) {
+		//denied lol
+	}
+}
 
 void GameHandeler::Read() {
-	if ( curr_state == -1 ) {
-		//get who is first
 
-	}
-	else if ( curr_state == 0 ) {
-		//this is connected to the predic so the prediction is after
-
-	}
-	else if ( curr_state == 1 ) {
-		//just pass it is for further matters
-
-	}
-	else if ( curr_state == 2 ) {
+	if ( curr_state == 2 ) {
 
 
 
@@ -288,64 +323,19 @@ void GameHandeler::Read() {
 
 		QPair<char *, DataPacket *>pair = client->reading_data_socket();
 		char *code = pair.first;
-		if ( Code::get_code(code) == Code::fromServer_Sent_AnotherPlayerPlayedCard ) {
-			type = code[3] - '0';
-			number = code[4] - '0';
-		}
-		else {
-			//check if the code is pause do this
-			if ( Code::get_code(code) == Code::Sent_Pause ) {
-				disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
-				OthersPause(pair.first[0]);
+
+		while ( true )
+			if ( Code::get_code(code) == Code::fromServer_Sent_AnotherPlayerPlayedCard ) {
+				type = code[3] - '0';
+				number = code[4] - '0';
+				break;
 			}
-			//-----------------------------------
-
-			//check if somone has sent a swap card then if yes do this
-
-			if ( Code::get_code(code) == Code::Requested_SwapCard ) {
-
-
-				int index_of_the_requested_player = pair.first[3] - '0';
-
-
-				QMessageBox::StandardButton response;
-				response = QMessageBox::question(nullptr, "Swap Request"
-					, "would you swapa a card with " + QString(players[index_of_the_requested_player]->GetUserName().c_str())
-					, QMessageBox::Yes | QMessageBox::No);
-
-				if ( response == QMessageBox::Yes ) {
-					std::pair<bool, int> swap_card_answer_stat = { true, index_of_the_requested_player };
-
-
-					char *code = Code::set_code(me + '0', Code::Accepted_SwapCard);
-					code[3] = index_of_the_requested_player + '0';
-					DataPacket dummy;
-					client->send_data(code, &dummy);
-				}
-				else {
-					char *code = Code::set_code(me + '0', Code::Denied_SwapCard);
-					DataPacket dummy;
-					client->send_data(code, &dummy);
-				}
-				//------
-
-				//---------------------------------------------
+			else {
+				//check if the code is pause do this
+				handle(pair);
+				pair = client->reading_data_socket();
+				code = pair.first;
 			}
-
-
-			//check if someone has accepted our swapcard reqeust and if yes get the type and number and call ths
-			Card::CardType type;//set this
-			int number;//set this
-			if ( Code::get_code(code) == Code::Accepted_SwapCard ) {
-				type = pair.first[3] - '0';
-				number = pair.first[4] - '0';
-				SwitchCardShow(type, number, swap_candidate.first, swap_candidate.second);
-			}
-			else if ( Code::get_code(code) == Code::Denied_SwapCard ) {
-				//denied
-			}
-
-		}
 
 
 
@@ -362,10 +352,17 @@ void GameHandeler::Read() {
 		//get the player that has won the round;
 		int player_index;
 		QPair<char *, DataPacket *> pair = client->reading_data_socket();
-		if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner )
-			player_index = pair.first[3] - '0';
-		else
-			qDebug() << "false read------------------------------------------";
+
+		while ( true )
+			if ( Code::get_code(pair.first) == Code::fromServer_Sent_RoundWinner ) {
+				player_index = pair.first[3] - '0';
+				break;
+			}
+			else {
+				handle(pair);
+				pair = client->reading_data_socket();
+
+			}
 
 		//-----------------------------------
 		GetTheWinnerOfTheRound(player_index);
@@ -392,15 +389,19 @@ void GameHandeler::Read() {
 
 		QPair<char *, DataPacket *> pair = client->reading_data_socket();
 		int points;
-		if ( Code::get_code(pair.first) == Code::fromServer_Sent_YourScore ) {
 
-			points = pair.second->your_points;
-			score_label->setText(QString::number(points));
-		}
-		else {
-			//handle
+		while ( true )
+			if ( Code::get_code(pair.first) == Code::fromServer_Sent_YourScore ) {
 
-		}
+				points = pair.second->your_points;
+				score_label->setText(QString::number(points));
+				break;
+			}
+			else {
+				handle(pair);
+				pair = client->reading_data_socket();
+
+			}
 
 
 
@@ -412,13 +413,16 @@ void GameHandeler::Read() {
 		disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
 		QPair<char *, DataPacket *>pair = client->reading_data_socket();
 		int Game_Winner;
-		if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameWinner ) {
+		while ( true )
+			if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameWinner ) {
 
-			Game_Winner = pair.first[3];
-		}
-		else {
-			//handle
-		}
+				Game_Winner = pair.first[3];
+				break;
+			}
+			else {
+				//handle(pair);
+				pair = client->reading_data_socket();
+			}
 
 	}
 }
@@ -482,6 +486,7 @@ void GameHandeler::PlaceArrow() {
 	this->arrows[players[GetWhoseTurn()]->GetPlace()]->show();
 
 }
+
 void GameHandeler::PushCard() {
 	if ( GetWhoseTurn() == me ) {
 
@@ -604,43 +609,48 @@ QVector<Card *> GameHandeler::CardArrayToVectorOf(int array[2][14], int size, QG
 
 
 }
+
 void GameHandeler::SwapCard(int player_index) {
 	if ( GetWhoseTurn() == me ) {
 		//notify the targeted index player if he wants to swap
-		swap_card_stat = { true, player_index };
-
+		char *code = Code::set_code(me + '0', Code::Requested_SwapCard);
+		code[0] = me + '0';
+		code[1] = player_index + '0';
+		//code[3] = type; //set this
+		//code[4] = number; //set this
+		DataPacket dummy;
+		client->send_data(code, &dummy);
 
 	}
-
 }
 
 
 void GameHandeler::OthersPause(int who_paused) {
 
 	is_pause = true;
-    QMessageBox pause(parent);
-    pause.setText("game has been paused");
-    pause.setStandardButtons(0);
-    QObject::connect(this, &GameHandeler::others_pause_ended,&pause, &QMessageBox::close);
-    std::thread th([this](){
-        for ( int i = 0; i < 20; i++ ) {
-            _sleep(1000);
-            if ( client->get_tcp_socket()->bytesAvailable() ) {
-                QPair<char *, DataPacket>pair = client->reading_data_socket();
-                if ( Code::get_code(pair.first) == Code::Sent_UnPause ) {
-                    break;
-                    emit others_pause_ended();
-                }
-                else {
-                    Q_ASSERT(false);
-                }
-            }
-        }
+	QMessageBox pause(parent);
+	pause.setText("game has been paused");
+	pause.setStandardButtons(0);
+	QObject::connect(this, &GameHandeler::others_pause_ended, &pause, &QMessageBox::close);
+	std::thread th([this] () {
+		for ( int i = 0; i < 20; i++ ) {
+			_sleep(1000);
+			if ( client->get_tcp_socket()->bytesAvailable() ) {
+				QPair<char *, DataPacket *>pair = client->reading_data_socket();
+				if ( Code::get_code(pair.first) == Code::Sent_UnPause ) {
+					emit others_pause_ended();
+					break;
+				}
+				else {
+					Q_ASSERT(false);
+				}
+			}
+		}
+		emit others_pause_ended();
+		});
+	pause.exec();
 
-    });
-    pause.exec();
-
-
+	th.join();
 
 
 
@@ -660,7 +670,7 @@ void GameHandeler::MyPause() {
 		client->send_data(code, &dummy);
 		//--------------------------------------
 
-		QMessageBox messageBox;
+		QMessageBox messageBox(parent);
 		messageBox.setText("This is a message box.");
 
 		QPushButton *resumeButton = new QPushButton("Resume");
@@ -675,9 +685,9 @@ void GameHandeler::MyPause() {
 		timer.start(20000);
 		messageBox.exec();
 		//---------
-		char *code = Code::set_code(me + '0', Code::Sent_UnPause);
-		DataPacket dummy;
-		client->send_data(code, &dummy);
+		char *code2 = Code::set_code(me + '0', Code::Sent_UnPause);
+		DataPacket dummy2;
+		client->send_data(code2, &dummy2);
 		//---------
 		is_pause = false;
 	}

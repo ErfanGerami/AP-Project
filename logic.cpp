@@ -219,30 +219,28 @@ void Logic::handle(char *code, int who) {
 			if ( i != who )
 				server->send_data(code, &dummy);
 
+
 		QVector<QPair<char *, DataPacket *>> pair_vec = server->read_data_as_server(who);
 		char *new_code = pair_vec[who].first;
 		for ( int i = 0; i < number_of_players; i++ )
 			if ( i != who )
-				server->send_data(code, &dummy);
+				server->send_data(new_code, &dummy);
 
 	}
 	else if ( Code::get_code(code) == Code::Requested_SwapCard ) {
-		server->send_data(code, &dummy);
-		code[3] = who + '0';
+		server->send_data(code, &dummy, code[1] - '0');
 	}
 	else if ( Code::get_code(code) == Code::Accepted_SwapCard ) {
-		//code[3] = type;
-		//code[4] = number;
-		server->send_data(code, &dummy);
+		server->send_data(code, &dummy, code[1] - '0');
 
 	}
 	else if ( Code::get_code(code) == Code::Denied_SwapCard ) {
-		server->send_data(code, &dummy);
+		server->send_data(code, &dummy, code[1] - '0');
 	}
 }
 
 void Logic::StartGame() {
-	qDebug() << "GAME STARTED_______________________";
+
 	DataPacket dummy;
 
 	FillAllCards();
@@ -252,9 +250,9 @@ void Logic::StartGame() {
 
 
 		//get the predicted_rounds here for each player
-		qDebug() << "trying to read the predictions____________________________";
+
 		QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server();
-		qDebug() << "read the predictions____________________________";
+
 		char *code2;
 		for ( int i = 0; i < number_of_players; i++ ) {
 			code2 = data_vector[i].first;
@@ -289,10 +287,10 @@ void Logic::StartGame() {
 				int turn = i % number_of_players;
 				ServerCard::CardType type;
 				int number;
-				qDebug() << "trying to read the cards____________________________";
+
 				//Wait For the i-th player to move here and set the type and number(if it is role card set to -1)
 				QVector<QPair<char *, DataPacket *>> data_vector2 = server->read_data_as_server(turn);
-				qDebug() << "read the moved card from client number: " << QString::number(turn) << "________________________";
+
 				char *code4;
 				code4 = data_vector2[turn].first;
 				while ( true )

@@ -48,7 +48,6 @@ public:
 	void MyPause();
 
 
-
 	SocketHandeling *client;
 	void PlaceArrow();
 
@@ -57,6 +56,7 @@ private:
 	std::pair<bool, int> swap_card_stat = { false, -1 };
 	std::pair<bool, int> swap_card_answer_stat = { false, -1 };
 
+	void handle(QPair<char *, DataPacket *>pair);
 	bool is_pause = false;
 	QLabel *stars[4];
 	QLabel *arrows[4];
@@ -85,7 +85,7 @@ private:
 
 signals:
 	void GetOthersPushedCard_S();
-    void others_pause_ended();
+	void others_pause_ended();
 
 
 public slots:

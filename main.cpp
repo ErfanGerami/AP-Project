@@ -27,16 +27,16 @@ Player *MainPlayer = nullptr;
 
 
 int main(int argc, char *argv[]) {
-    //srand(time(NULL));
-    ////to create the file if it doesn't already exist
-    //FILE *temp = fopen("players.bin", "ab+");
-    //fclose(temp);
-    //
-    //QApplication a(argc, argv);
-    I;
-    REALLY;
-    HATE;
-    QTFRAMEWORK;
+	//srand(time(NULL));
+	////to create the file if it doesn't already exist
+	//FILE *temp = fopen("players.bin", "ab+");
+	//fclose(temp);
+	//
+	//QApplication a(argc, argv);
+	I;
+	REALLY;
+	HATE;
+	QTFRAMEWORK;
 
 
 
@@ -60,12 +60,12 @@ int main(int argc, char *argv[]) {
 
 
 
-    Login *l = new Login();
-    l->show();
-    QString name = "mmd" + QString::number(rand() % 10) + QString::number(rand() % 10);
+	//Login *l = new Login();
+	//l->show();
+	QString name = "mmd" + QString::number(rand() % 10) + QString::number(rand() % 10);
 	MainPlayer = new Player(name.toStdString(), "461");
-    //MainMenu *m = new MainMenu();
-    //m->show();
+	MainMenu *m = new MainMenu();
+	m->show();
 
 	//GetServersInformation *m = new GetServersInformation(client, "shafagh");
 	//m->show();

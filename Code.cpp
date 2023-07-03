@@ -60,16 +60,16 @@ int Code::get_code(char *code) {
 	if ( code[1] == '0' && code[2] == 'b' )
 		return Sent_Pause;
 
-	if ( code[1] == '0' && code[2] == 'c' )
+	if ( code[2] == 'c' )
 		return Requested_SwapCard;
 
-	if ( code[1] == '0' && code[2] == 'd' )
+	if ( code[2] == 'd' )
 		return Accepted_SwapCard;
 
-	if ( code[1] == '0' && code[2] == 'e' )
+	if ( code[2] == 'e' )
 		return Denied_SwapCard;
 
-	if ( code[1] == '0' && code[2] == 'f' )
+	if ( code[2] == 'f' )
 		return Sent_UnPause;
 	return undefined;
 }
