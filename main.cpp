@@ -27,50 +27,18 @@ Player *MainPlayer = nullptr;
 
 
 int main(int argc, char *argv[]) {
-	//srand(time(NULL));
-	////to create the file if it doesn't already exist
-	//FILE *temp = fopen("players.bin", "ab+");
-	//fclose(temp);
-	//
-	//QApplication a(argc, argv);
+
 	I;
 	REALLY;
 	HATE;
 	QTFRAMEWORK;
 
 
-
-	qDebug() << sizeof(DataPacket);
-
-	//MainGameWindow *g = new MainGameWindow();
-	//g->show();
-
-
-	//SocketHandeling *server = new SocketHandeling();
-	//SocketHandeling *client = new SocketHandeling();
-	//server->server_run("server_name", "creator_name", 2);
-	//
-	//client->client_run_fast_connect("wdijad");
-	//client->client_run_fast_connect("wdijad");
-	//client->client_run_fast_connect("wdijad");
-	//client->client_run_fast_connect("wdijad");
+	Login *login = new Login();
+	login->show();
 
 
 
-
-
-
-	//Login *l = new Login();
-	//l->show();
-
-
-	QString name = "mmd" + QString::number(rand() % 10) + QString::number(rand() % 10);
-	MainPlayer = new Player(name.toStdString(), "461");
-	MainMenu *m = new MainMenu();
-	m->show();
-
-	//GetServersInformation *m = new GetServersInformation(client, "shafagh");
-	//m->show();
 
 	return a.exec();
 }
