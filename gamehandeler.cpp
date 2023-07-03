@@ -277,12 +277,12 @@ void GameHandeler::StartSet() {
 	PlaceArrow();
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
 
-	connect(anim, &QPropertyAnimation::finished, [this] () {});
+    connect(anim, &QPropertyAnimation::finished, [this] () {_sleep(1000);GetMyCards();
+        curr_state = 2;
+        connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));});
 
 	//connect(anim, &QPropertyAnimation::finished, [this] () {});
-	GetMyCards();
-	curr_state = 2;
-	connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
+
 	//----------------------------------
 
 
@@ -466,11 +466,12 @@ void GameHandeler::Read() {
 		if ( Code::get_code(pair.first) == Code::fromServer_Sent_GameWinner ) {
 
 				Game_Winner = pair.first[3];
-				break;
+
 			}
 			else {
 				//handle(pair);
-				pair = client->reading_data_socket();
+
+                return;
 			}
         if(Game_Winner==me){
             MainPlayer->SettCoins(MainPlayer->GettCoins()+number_of_players*50);
