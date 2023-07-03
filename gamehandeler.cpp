@@ -277,12 +277,12 @@ void GameHandeler::StartSet() {
 	PlaceArrow();
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
 
-	connect(anim, &QPropertyAnimation::finished, [this] () {});
+    connect(anim, &QPropertyAnimation::finished, [this] () {_sleep(1000);GetMyCards();
+        curr_state = 2;
+        connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));});
 
 	//connect(anim, &QPropertyAnimation::finished, [this] () {});
-	GetMyCards();
-	curr_state = 2;
-	connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
+
 	//----------------------------------
 
 
