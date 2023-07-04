@@ -28,12 +28,10 @@ SOURCES += \
 	serverplayeringame.cpp \
 	shootinggame.cpp \
 	signup.cpp \
-	test.cpp\
 	mainmenu.cpp \
 	waitmenu.cpp \
 	PlayerInGame.cpp \
 	DataPacket.cpp \
-	serverselection.cpp \
 	SocketHandeling.cpp	\
 	channel.cpp \
 	Code.cpp 
@@ -58,12 +56,10 @@ HEADERS += \
 	serverplayeringame.h \
 	shootinggame.h \
 	signup.h \
-	test.h\
 	mainmenu.h \
 	waitmenu.h \
 	PlayerInGame.h \
 	DataPacket.h \
-	serverselection.h \
 	SocketHandeling.h \
 	channel.h \
 	Code.h 
@@ -82,7 +78,6 @@ FORMS += \
 	test.ui\
 	mainmenu.ui \
 	waitmenu.ui \
-	serverselection.ui 
 	
 
 # Default rules for deployment.

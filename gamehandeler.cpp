@@ -272,19 +272,14 @@ void GameHandeler::StartSet() {
 	if ( pair.second != nullptr ) delete pair.second;
 	//--
 
-	if ( first_this_round == me ) {
-		start_point = QDateTime::currentDateTime();
-		QObject::connect(&timer, &QTimer::timeout, this, &GameHandeler::PushCard);
-		timer.start(time_for_pushing_card);
-		//20seconds to push
 
-	}
 	PlaceArrow();
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
 
 	connect(anim, &QPropertyAnimation::finished, [this] () {_sleep(1000); GetMyCards();
 	curr_state = 2;
 	connect(client, SIGNAL(main_game_read()), this, SLOT(Read())); });
+
 
 	//connect(anim, &QPropertyAnimation::finished, [this] () {});
 
@@ -577,12 +572,14 @@ void GameHandeler::GetMyCards() {
 	connect(last_anim, &QPropertyAnimation::finished, this, &GameHandeler::Predict);
 
 
+
 }
 
 
 
 
 void GameHandeler::Predict() {
+
 
 	bool okay = false;
 	int prediction;
@@ -593,6 +590,13 @@ void GameHandeler::Predict() {
 	code1[3] = '0' + prediction;
 	DataPacket dummy;
 	client->send_data(code1, &dummy);
+    if ( first_this_round == me ) {
+        start_point = QDateTime::currentDateTime();
+        QObject::connect(&timer, &QTimer::timeout, this, &GameHandeler::PushCard);
+        timer.start(time_for_pushing_card);
+        //20seconds to push
+
+    }
 	//--------------------
 
 
