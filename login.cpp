@@ -2,7 +2,7 @@
 #include "ui_login.h"
 
 
-
+QMediaPlayer *media;
 
 Login::Login(QWidget *parent)
 	: QMainWindow(parent)
@@ -14,35 +14,31 @@ Login::Login(QWidget *parent)
 	anim->setStartValue(QRect(-110, -110, 911, 720));
 	anim->setEndValue(QRect(0, 0, 160, 100));
 	anim->start();
+
 	QSound::play(":/sounds/sounds/laugh.wav");
 	media = new QMediaPlayer();
-	QMediaPlaylist *playlist = new QMediaPlaylist;
+	QMediaPlaylist *playlist = new QMediaPlaylist();
 
 
-	playlist->addMedia(QUrl("qrc:/sounds/sounds/UiBackSound.mp3"));
 
-	/*playlist->addMedia(QUrl("qrc:/sounds/sounds/Skull_King_Start.wav"));
-	playlist->addMedia(QUrl("qrc:/sounds/sounds/Skull_King_Loop.wav"));
+
+	playlist->addMedia(QUrl("qrc:/sounds/sounds/SkullKingStart.mp3"));
+	playlist->addMedia(QUrl("qrc:/sounds/sounds/SkullKingEnd.mp3"));
 	playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
 
 	media->setPlaylist(playlist);
-	media->setVolume(30);
-	ui->horizontalSlider->setValue(30);
-	media->play();
 
-	QObject::connect(media, &QMediaPlayer::mediaStatusChanged, [=] (QMediaPlayer::MediaStatus status) {
+	media->play();
+	media->setVolume(20);
+	ui->horizontalSlider->setValue(20);
+	QObject::connect(media, &QMediaPlayer::mediaStatusChanged, [&, this, playlist] (QMediaPlayer::MediaStatus status) {
 		if ( status == QMediaPlayer::EndOfMedia ) {
 			playlist->setCurrentIndex(1);
 			media->play();
 		}
-		});*/
+		});
 
 
-	media->setPlaylist(playlist);
-	media->setVolume(30);
-	ui->horizontalSlider->setValue(30);
-	media->play();
-	connect(media, &QMediaPlayer::stateChanged, [this] () {media->play(); });
 
 
 

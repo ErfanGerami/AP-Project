@@ -14,7 +14,8 @@
 #include <qthread.h>
 #include "servercard.h"
 #include "serverplayeringame.h"
-
+#include <QMediaPlayer>
+extern QMediaPlayer *media;
 extern Player *MainPlayer;
 
 namespace Ui {
@@ -49,10 +50,10 @@ private slots:
 	void on_pushButton_8_clicked();
 
 	void on_pause_clicked();
-    void ShowMainMenu();
+	void ShowMainMenu();
 
 signals:
-    void show_main_menu();
+	void show_main_menu();
 
 private:
 	int me;

@@ -14,7 +14,7 @@ MainMenu::MainMenu(QWidget *parent):
 	setFixedSize(size());
 	ui->name->setText(QString(MainPlayer->GetUserName().c_str()));
 	coins_first_place = ui->coin_pic->x();
-    //there are diffrences with show me so they are not one
+	//there are diffrences with show me so they are not one
 	if ( MainPlayer->GetPrevGame().GetIsPlayed() ) {
 		ui->no_games1->hide();
 		ui->no_games2->hide();
@@ -41,16 +41,17 @@ MainMenu::MainMenu(QWidget *parent):
 		ui->lost->setText("0");
 
 	}
-    if(MainPlayer->GetEarnedCoins()){
-        ui->coin->setText(QString::number(MainPlayer->GettCoins()));
-        ui->coin_pic->move(coins_first_place + QString::number(MainPlayer->GettCoins()).length() * 15, ui->coin_pic->y());
+	if ( MainPlayer->GetEarnedCoins() ) {
+		ui->coin->setText(QString::number(MainPlayer->GettCoins()));
+		ui->coin_pic->move(coins_first_place + QString::number(MainPlayer->GettCoins()).length() * 15, ui->coin_pic->y());
 
 
-    }else{
-        ui->coin->setText("1000");
-        ui->coin_pic->move(coins_first_place + QString::number(1000).length() * 15, ui->coin_pic->y());
-        FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(),MainPlayer);
-    }
+	}
+	else {
+		ui->coin->setText("1000");
+		ui->coin_pic->move(coins_first_place + QString::number(1000).length() * 15, ui->coin_pic->y());
+		FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(), MainPlayer);
+	}
 
 	ui->ip->hide();
 	ui->ip->setDisabled(true);
@@ -63,12 +64,11 @@ MainMenu::~MainMenu() {
 	delete ui;
 
 }
-void MainMenu::SetTexts(){
+void MainMenu::SetTexts() {
 
 }
 void MainMenu::on_create_server_clicked() {
-    MainPlayer->SettCoins(MainPlayer->GettCoins()-50);
-    FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(),MainPlayer);
+
 
 
 	try {
@@ -118,8 +118,8 @@ void MainMenu::on_join_server_clicked() {
 	//c.client_run_fast_connect("asd");
 	//c.client_run_fast_connect("asd");
 	//c.client_run_fast_connect("asd");
-    MainPlayer->SettCoins(MainPlayer->GettCoins()-50);
-    FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(),MainPlayer);
+
+
 	try {
 		//client->get_udp_socket()->waitForReadyRead(250);
 
@@ -167,43 +167,44 @@ void MainMenu::on_change_info_clicked() {
 
 void MainMenu::show_me() {
 	this->show();
-    ui->name->setText(QString(MainPlayer->GetUserName().c_str()));
-    if ( MainPlayer->GetPrevGame().GetIsPlayed() ) {
-        ui->no_games1->hide();
-        ui->no_games2->hide();
-        ui->score_show->setText(QString::number(MainPlayer->GetPrevGame().GetScore()));
-        ui->winner_show->setText(QString(MainPlayer->GetPrevGame().GetWinner().c_str()));
-        ui->time_show->setText(QString(MainPlayer->GetPrevGame().GetTime().c_str()));
-        ui->won->setText(QString::number(MainPlayer->GetGamesWon()));
-        ui->lost->setText(QString::number(MainPlayer->GetGamesLoose()));
+	ui->name->setText(QString(MainPlayer->GetUserName().c_str()));
+	if ( MainPlayer->GetPrevGame().GetIsPlayed() ) {
+		ui->no_games1->hide();
+		ui->no_games2->hide();
+		ui->score_show->setText(QString::number(MainPlayer->GetPrevGame().GetScore()));
+		ui->winner_show->setText(QString(MainPlayer->GetPrevGame().GetWinner().c_str()));
+		ui->time_show->setText(QString(MainPlayer->GetPrevGame().GetTime().c_str()));
+		ui->won->setText(QString::number(MainPlayer->GetGamesWon()));
+		ui->lost->setText(QString::number(MainPlayer->GetGamesLoose()));
 
-    }
-    else {
-        ui->time->hide();
-        ui->time_show->hide();
-        ui->prev->hide();
-        ui->score->hide();
-        ui->score_show->hide();
-        ui->winner->hide();
-        ui->winner_show->hide();
-        ui->line_4->hide();
-        ui->line_10->hide();
-        ui->line_9->hide();
-        ui->line_7->hide();
-        ui->line_1->hide();
-        ui->won->setText("0");
-        ui->lost->setText("0");
-    }
-    if(MainPlayer->GetEarnedCoins()){
-        ui->coin->setText(QString::number(MainPlayer->GettCoins()));
-        ui->coin_pic->move(coins_first_place + QString::number(MainPlayer->GettCoins()).length() * 15, ui->coin_pic->y());
+	}
+	else {
+		ui->time->hide();
+		ui->time_show->hide();
+		ui->prev->hide();
+		ui->score->hide();
+		ui->score_show->hide();
+		ui->winner->hide();
+		ui->winner_show->hide();
+		ui->line_4->hide();
+		ui->line_10->hide();
+		ui->line_9->hide();
+		ui->line_7->hide();
+		ui->line_1->hide();
+		ui->won->setText("0");
+		ui->lost->setText("0");
+	}
+	if ( MainPlayer->GetEarnedCoins() ) {
+		ui->coin->setText(QString::number(MainPlayer->GettCoins()));
+		ui->coin_pic->move(coins_first_place + QString::number(MainPlayer->GettCoins()).length() * 15, ui->coin_pic->y());
 
 
-    }else{
-        ui->coin->setText("1000");
-        ui->coin_pic->move(coins_first_place + QString::number(1000).length() * 15, ui->coin_pic->y());
-        FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(),MainPlayer);
-    }
+	}
+	else {
+		ui->coin->setText("1000");
+		ui->coin_pic->move(coins_first_place + QString::number(1000).length() * 15, ui->coin_pic->y());
+		FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(), MainPlayer);
+	}
 
 
 }
@@ -226,11 +227,10 @@ void MainMenu::on_join_server_2_clicked() {
 }
 
 
-void MainMenu::on_join_server_3_clicked()
-{
-    ShootingGame *shoot = new ShootingGame(this);
-    shoot->show();
-    this->hide();
+void MainMenu::on_join_server_3_clicked() {
+	ShootingGame *shoot = new ShootingGame(this);
+	shoot->show();
+	this->hide();
 
 }
 

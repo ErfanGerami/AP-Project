@@ -85,7 +85,7 @@ QPair<char *, DataPacket *> channel::reading_data() {
 
 				block.remove(0, 5);
 
-				logWriteServer("code: " + std::string(code));
+				//logWriteServer("code: " + std::string(code));
 
 				QDataStream in(&block, QIODevice::ReadOnly);
 				in >> *data_packet;

@@ -163,7 +163,7 @@ void FileHandeling::change_password(QString username, QString password) {
 
 	temp_player->change_password(password.toStdString());
 
-    fseek(players, -long long(sizeof(Player)), SEEK_CUR);
+	fseek(players, -long long(sizeof(Player)), SEEK_CUR);
 
 	fwrite(temp_player, sizeof(Player), 1, players);
 

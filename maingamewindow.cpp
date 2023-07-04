@@ -9,6 +9,12 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 	ui->setupUi(this);
 	connect(this, SIGNAL(show_main_menu()), parent, SIGNAL(show_me()));
 
+	media->setVolume(media->volume() / 2);
+
+	MainPlayer->SettCoins(MainPlayer->GettCoins() - 50);
+	MainPlayer->SetEarnedCoins(true);
+	FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(), MainPlayer);
+
 	setFixedSize(size());
 	ui->Graphics->setAlignment(Qt::Alignment(0));
 
@@ -90,6 +96,9 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 	for ( int i = me + 1; i < player_count + me; i++ ) {
 		ui->comboBox->addItem(name_vec[i % player_count]);
 	}
+
+	QSound::play(":/sounds/sounds/SkullKingStartMatch.wav");
+
 }
 
 MainGameWindow::~MainGameWindow() {

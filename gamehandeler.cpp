@@ -11,6 +11,11 @@ GameHandeler::GameHandeler(QWidget *parent, QPushButton *pause_btn, QLabel *scor
 	connect(this, &GameHandeler::my_unpause, this, &GameHandeler::MyUnpause);
 	connect(this, SIGNAL(show_main_menu()), parent, SIGNAL(ShowMainMenu()));
 
+
+	pause_media = new QMediaPlayer();
+	//playlist = new QMediaPlaylist();
+
+
 	for ( int i = 0; i < 4; i++ ) {
 		this->stars[i] = stars[i];
 	}
@@ -312,12 +317,18 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 	char *code = pair.first;
 
 	if ( Code::get_code(code) == Code::Sent_Pause ) {
-		//disconnect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
+
 		if ( !is_pause ) {
+			QMediaPlaylist *playlist = new QMediaPlaylist();
+			playlist->addMedia(QUrl("qrc:/sounds/sounds/SkullKingPause.mp3"));
+			playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+
+			pause_media->setPlaylist(playlist);
+			pause_media->play();
 			is_pause = true;
 			pause_btn->setStyleSheet("font-size:30px;background-color:red");
 		}
-		//OthersPause(code[0]);
+
 	}
 	else if ( Code::get_code(code) == Code::Requested_SwapCard ) {
 
@@ -371,7 +382,13 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 		//denied lol
 	}
 	else if ( Code::get_code(code) == Code::Sent_UnPause ) {
-		if ( !my_pause ) {
+		if ( !my_pause && is_pause ) {
+			QMediaPlaylist *playlist = new QMediaPlaylist();
+			playlist->addMedia(QUrl("qrc:/sounds/sounds/SkullKingUnpause.mp3"));
+			playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+
+			pause_media->setPlaylist(playlist);
+			pause_media->play();
 			is_pause = false;
 			pause_btn->setStyleSheet("font-size:30px;");
 
@@ -500,28 +517,25 @@ void GameHandeler::Read() {
 			return;
 		}
 
-
+		QString message;
 		if ( Game_Winner == me ) {
+			QSound::play(":/sounds/sounds/SkullKingWin.mp3");
 			MainPlayer->SettCoins(MainPlayer->GettCoins() + number_of_players * 50);
-			MainPlayer->SetPrevGame(Game(players[Game_Winner]->GetUserName().c_str(),
-				QDateTime::currentDateTime().toString("MM/dd/yyyy hh:mm:ss").toStdString().c_str()
-				, 0, 0, 0, players[me]->GetPoints(), true));
-			MainPlayer->SetEarnedCoins(true);
+			message = "Congrats you won.enjoy that it may not last.";
+		}
+		else {
+			QSound::play(":/sounds/sounds/SkullKingLoose.mp3");
+			message = "sorry youve lost.shame on you.really how bad a player can get?";
 
-			FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(), MainPlayer);
-			QString message;
-			if ( Game_Winner == me ) {
-				message = "Congrats you won.enjoy that it may not last.";
-
-			}
-			else {
-				message = "sorry youve lost.shame on you.really how bad a player can get?";
-
-			}
-			QMessageBox::information(parent, "winning stat", message);
-			emit show_main_menu();
 		}
 
+		MainPlayer->SetPrevGame(Game(players[Game_Winner]->GetUserName().c_str(),
+			QDateTime::currentDateTime().toString("MM/dd/yyyy hh:mm:ss").toStdString().c_str()
+			, 0, 0, 0, players[me]->GetPoints(), true));
+		MainPlayer->SetEarnedCoins(true);
+		FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(), MainPlayer);
+		QMessageBox::information(parent, "winning stat", message);
+		emit show_main_menu();
 
 	}
 
@@ -571,9 +585,7 @@ void GameHandeler::Predict() {
 	DataPacket dummy;
 	client->send_data(code1, &dummy);
 	//--------------------
-	//connect the socket when sends data that someone pushed card to GetOthersPushedCard
 
-	//SIGNAL(bytesAvailable())
 
 
 
@@ -720,33 +732,19 @@ QVector<Card *> GameHandeler::CardArrayToVectorOf(int array[2][14], int size, QG
 
 
 
-void GameHandeler::OthersPause(int who_paused) {
-	qDebug() << "someone paused";
 
-	is_pause = true;
-	/*for ( int i = 0; i < 20; i++ ) {
-		_sleep(1000);
-		if ( client->get_tcp_socket()->bytesAvailable() ) {
-			QPair<char *, DataPacket *>pair = client->reading_data_socket();
-			if ( Code::get_code(pair.first) == Code::Sent_UnPause ) {
-				emit others_pause_ended();
-				break;
-			}
-			else {
-				Q_ASSERT(false);
-			}
-		}
-	}
-	emit others_pause_ended();*/
-
-
-	//connect(client, SIGNAL(main_game_read()), this, SLOT(Read()));
-	//is_pause = false;
-}
 
 
 void GameHandeler::MyPause() {
 	if ( !is_pause && (GetWhoseTurn() == me) && (my_pause_count < 2) && !this_turn_pause ) {
+		//QSound::play(":/sounds/sounds/SkullKingPause.mp3");
+		QMediaPlaylist *playlist = new QMediaPlaylist();
+		playlist->addMedia(QUrl("qrc:/sounds/sounds/SkullKingPause.mp3"));
+		playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+
+		pause_media->setPlaylist(playlist);
+		pause_media->play();
+
 		my_pause_count++;
 		is_pause = true;
 		my_pause = true;
@@ -763,7 +761,7 @@ void GameHandeler::MyPause() {
 		pause_btn->setStyleSheet("font-size:30px;background-color:red");
 		disconnect(pause_btn, &QPushButton::clicked, this, &GameHandeler::MyPause);
 		connect(pause_btn, &QPushButton::clicked, this, &GameHandeler::MyUnpause);
-		//QTimer::singleShot(20000, [this] () { emit my_unpause();  });
+
 
 
 		my_pause_qtimer.start(20000);
@@ -775,6 +773,15 @@ void GameHandeler::MyPause() {
 
 void GameHandeler::MyUnpause() {
 	if ( is_pause && my_pause ) {
+		//QSound::play(":/sounds/sounds/SkullKingUnpause.mp3");
+		QMediaPlaylist *playlist = new QMediaPlaylist();
+		playlist->addMedia(QUrl("qrc:/sounds/sounds/SkullKingUnpause.mp3"));
+		playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+
+		pause_media->setPlaylist(playlist);
+		pause_media->play();
+
+
 		disconnect(&my_pause_qtimer, &QTimer::timeout, this, &GameHandeler::MyUnpause);
 		my_pause_qtimer.stop();
 

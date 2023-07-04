@@ -23,9 +23,11 @@
 #include <QDateTime>
 #include <QApplication>
 #include "filehandeling.h"
-
-
+#include <QSound>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 #include <QTimer>
+
 extern Player *MainPlayer;
 class GameHandeler:public QObject {
 	Q_OBJECT
@@ -51,8 +53,8 @@ private:
 	int CardVectorToArray(QVector<Card *> cards, int array[2][14]);
 	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size, QGraphicsView *view, QGraphicsScene *scene);
 	Card *turn_card[4];
+	QMediaPlayer *pause_media;
 
-	void OthersPause(int who_paused);
 
 
 	SocketHandeling *client;

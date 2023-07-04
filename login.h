@@ -43,7 +43,7 @@ private slots:
 	void on_horizontalSlider_valueChanged(int value);
 
 private:
-	QMediaPlayer *media;
+
 	std::thread *th;
 	Ui::Login *ui;
 	ForgotMyPassword *forgot_password;

@@ -79,7 +79,13 @@
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/laugh.wav</file>
-        <file>sounds/UiBackSound.mp3</file>
         <file>sounds/card_push.wav</file>
+        <file>sounds/SkullKingStart.mp3</file>
+        <file>sounds/SkullKingEnd.mp3</file>
+        <file>sounds/SkullKingLoose.mp3</file>
+        <file>sounds/SkullKingWin.mp3</file>
+        <file>sounds/SkullKingPause.mp3</file>
+        <file>sounds/SkullKingUnpause.mp3</file>
+        <file>sounds/SkullKingStartMatch.wav</file>
     </qresource>
 </RCC>
