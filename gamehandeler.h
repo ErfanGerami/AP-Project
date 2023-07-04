@@ -54,7 +54,7 @@ private:
 	QVector<Card *> CardArrayToVectorOf(int array[2][14], int size, QGraphicsView *view, QGraphicsScene *scene);
 	Card *turn_card[4];
 	QMediaPlayer *pause_media;
-
+	bool is_swaping = false;
 
 
 	SocketHandeling *client;

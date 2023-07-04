@@ -254,34 +254,32 @@ void Logic::StartGame() {
 
 		QVector<QPair<char *, DataPacket *>> data_vector = server->read_data_as_server();
 
-		char *code2;
+
 		for ( int i = 0; i < number_of_players; i++ ) {
-			code2 = data_vector[i].first;
+
 
 			int prediction;
 
 			while ( true )
-				if ( Code::get_code(code2) == Code::fromClient_Sent_Predictions ) {
-					prediction = code2[3] - '0';//set this
+				if ( Code::get_code(data_vector[i].first) == Code::fromClient_Sent_Predictions ) {
+					prediction = data_vector[i].first[3] - '0';//set this
 					break;
 				}
 				else {
-					handle(code2, i);
+					handle(data_vector[i].first, i);
 					QVector<QPair<char *, DataPacket *>> new_data_vector = server->read_data_as_server(i);
 
-					//delete[] data_vector[i].first;
-					//delete data_vector[i].second;
+
+					if ( data_vector[i].first != nullptr ) delete[] data_vector[i].first;
+					if ( data_vector[i].second != nullptr ) delete data_vector[i].second;
 
 					data_vector[i] = new_data_vector[i];
 
-					//delete[] code2;
-
-					code2 = data_vector[i].first;
-
 					for ( auto i : new_data_vector ) {
-						//delete[] i.first;
-						//delete i.second;
+						if ( i.first != nullptr ) delete[] i.first;
+						if ( i.second != nullptr ) delete i.second;
 					}
+
 				}
 
 
@@ -291,8 +289,8 @@ void Logic::StartGame() {
 		}
 		//feeing data
 		for ( auto i : data_vector ) {
-			//delete[] i.first;
-			//delete i.second;
+			if ( i.first != nullptr ) delete[] i.first;
+			if ( i.second != nullptr ) delete i.second;
 		}
 		//
 
@@ -310,37 +308,33 @@ void Logic::StartGame() {
 				//Wait For the i-th player to move here and set the type and number(if it is role card set to -1)
 				QVector<QPair<char *, DataPacket *>> data_vector2 = server->read_data_as_server(turn);
 
-				char *code4;
-				code4 = data_vector2[turn].first;
+
 				while ( true )
-					if ( Code::get_code(code4) == Code::fromClient_Sent_PlayedCard ) {
+					if ( Code::get_code(data_vector2[turn].first) == Code::fromClient_Sent_PlayedCard ) {
 
-						type = code4[3] - '0';//set this
+						type = data_vector2[turn].first[3] - '0';//set this
 
-						number = (type <= 3) ? (code4[4] - '0') : (-1);//set this
+						number = (type <= 3) ? (data_vector2[turn].first[4] - '0') : (-1);//set this
 						break;
 					}
 					else {
-						handle(code4, turn);
+						handle(data_vector2[turn].first, turn);
 						QVector<QPair<char *, DataPacket *>> new_data_vector2 = server->read_data_as_server(turn);
-						//delete[] data_vector[turn].first;
-						//delete data_vector[turn].second;
+						if ( data_vector2[turn].first != nullptr ) delete[] data_vector2[turn].first;
+						if ( data_vector2[turn].second != nullptr ) delete data_vector2[turn].second;
 
 						data_vector2[turn] = new_data_vector2[turn];
 
-						//delete[] code4;
-
-						code4 = data_vector2[turn].first;
 
 						for ( auto i : new_data_vector2 ) {
-							//delete[] i.first;
-							//delete i.second;
+							if ( i.first != nullptr ) delete[] i.first;
+							if ( i.second != nullptr ) delete i.second;
 						}
 					}
 				//freeing data
 				for ( auto i : data_vector2 ) {
-					//delete[] i.first;
-					//delete i.second;
+					if ( i.first != nullptr ) delete[] i.first;
+					if ( i.second != nullptr ) delete i.second;
 				}
 				//-----------------
 				cards_on_deck.push_back(ServerCard(type, number));

@@ -69,9 +69,6 @@ void SignUp::on_start_clicked() {
 	emit show_parent();
 }
 
-//void SignUp::do_show_parent() {
-//	emit show_parent();
-//}
 
 void SignUp::closeEvent(QCloseEvent *event) {
 

@@ -113,15 +113,11 @@ void MainMenu::on_ip_connect_clicked() {
 }
 
 void MainMenu::on_join_server_clicked() {
-	//SocketHandeling *client = new SocketHandeling();
-	//SocketHandeling c = new SocketHandeling();
-	//c.client_run_fast_connect("asd");
-	//c.client_run_fast_connect("asd");
-	//c.client_run_fast_connect("asd");
+
 
 
 	try {
-		//client->get_udp_socket()->waitForReadyRead(250);
+
 
 		client->client_run_fast_connect(QString::fromStdString(MainPlayer->GetUserName()));
 
@@ -129,22 +125,19 @@ void MainMenu::on_join_server_clicked() {
 
 		wait_menu->show();
 		this->hide();
-		//GetServersInformation *m = new GetServersInformation(client, QString::fromStdString(MainPlayer->GetUserName()), this);
-		//m->show();
-		//wait_menu->show();
+
 
 	}
 	catch ( Errors err ) {
 		QMessageBox::critical(this, "error", err.what());
-		//delete client;
+
 	}
 
 }
 
 void MainMenu::server_joining_finished(bool is_connected) {
 	if ( is_connected ) {
-		//show next window
-		//wait_menu = new WaitMenu(client, this);
+
 
 		this->hide();
 

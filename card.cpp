@@ -150,21 +150,24 @@ void Card::SetUpButton() {
 
 
 void Card::PushCard() {
-	QParallelAnimationGroup *group = new QParallelAnimationGroup;
-	QPropertyAnimation *rotation_animation = new QPropertyAnimation(proxy, "rotation");
-	rotation_animation->setStartValue(0);
-	rotation_animation->setEndValue(rand() % 360);
-	rotation_animation->setDuration(200);
-	rotation_animation->start();
-	QPropertyAnimation *tranform_animation = new QPropertyAnimation(proxy, "geometry");
-	tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
-	tranform_animation->setEndValue(QRect(dest_x, dest_y, width, height));
-	tranform_animation->setDuration(200);
-	tranform_animation->start();
-	group->addAnimation(tranform_animation);
-	group->addAnimation(rotation_animation);
-	group->start();
-	QSound::play(":/sounds/sounds/card_push.wav");
+	if ( this != nullptr ) {
+
+		QParallelAnimationGroup *group = new QParallelAnimationGroup;
+		QPropertyAnimation *rotation_animation = new QPropertyAnimation(proxy, "rotation");
+		rotation_animation->setStartValue(0);
+		rotation_animation->setEndValue(rand() % 360);
+		rotation_animation->setDuration(200);
+		rotation_animation->start();
+		QPropertyAnimation *tranform_animation = new QPropertyAnimation(proxy, "geometry");
+		tranform_animation->setStartValue(QRect(button->x(), button->y(), width, height));
+		tranform_animation->setEndValue(QRect(dest_x, dest_y, width, height));
+		tranform_animation->setDuration(200);
+		tranform_animation->start();
+		group->addAnimation(tranform_animation);
+		group->addAnimation(rotation_animation);
+		group->start();
+		QSound::play(":/sounds/sounds/card_push.wav");
+	}
 
 }
 QPropertyAnimation *Card::PushTo(std::pair<int, int> pos) {

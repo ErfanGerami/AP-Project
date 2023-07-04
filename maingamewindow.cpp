@@ -57,7 +57,6 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 		me = 0;
 
 
-		//client->reading_data_socket();
 		client->get_tcp_socket()->readAll();
 
 
@@ -69,10 +68,6 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 
 
 
-		//t.start();
-
-		//logic_thread = std::thread { &Logic::StartGame, logic };
-		//logic->StartGame();
 		logic->start();
 
 	}
@@ -97,7 +92,17 @@ MainGameWindow::MainGameWindow(SocketHandeling *connection, QVector<QString> nam
 		ui->comboBox->addItem(name_vec[i % player_count]);
 	}
 
-	QSound::play(":/sounds/sounds/SkullKingStartMatch.wav");
+
+	QMediaPlayer *medi = new QMediaPlayer();
+	QMediaPlaylist *playlist = new QMediaPlaylist();
+
+	playlist->addMedia(QUrl("qrc:/sounds/sounds/SkullKingStartMatch.wav"));
+	playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+
+	medi->setPlaylist(playlist);
+	medi->setVolume(media->volume() + 10);
+	medi->play();
+
 
 }
 

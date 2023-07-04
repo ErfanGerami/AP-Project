@@ -15,7 +15,6 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include "forgotmypassword.h"
-#include "test.h"
 #include "mainmenu.h"
 #include "SocketHandeling.h"
 

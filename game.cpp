@@ -2,13 +2,6 @@
 
 
 
-//QString Game::Parse() {
-//	return winner + '/' + time;
-//
-//}
-
-
-
 Game::Game(const string &winner, const string &time, int rounds_won, int coins_achieved, int predicted_rounds, int score, int is_played)
 	: winner(winner), time(time), rounds_won(rounds_won), coins_achieved(coins_achieved), predicted_rounds(predicted_rounds)
 	, score(score), is_played(is_played) {}

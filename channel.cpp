@@ -40,27 +40,10 @@ QPair<char *, DataPacket *> channel::reading_data() {
 	DataPacket *data_packet = new DataPacket();
 	char *code = new char[6];
 
-	/*if ( QString::fromStdString(client_number).toInt() == 0 ) {
-		if ( zero == 0 ) { zero++; }
-		else if ( zero % 2 == 1 ) {
-			zero++;
-			code = Code::set_code('0', Code::fromClient_Sent_Predictions);
-			code[3] = '0';
-			return QPair<char *, DataPacket *>(code, data_packet);
-		}
-		else if ( zero % 2 == 0 ) {
-			zero++;
-			code = Code::set_code('0', Code::fromClient_Sent_PlayedCard);
-			code[3] = '1';
-			code[4] = '2';
-			return QPair<char *, DataPacket *>(code, data_packet);
-		}
-	}*/
-
 	//-----------
 	while ( true )
 		if ( client_name.size() == 0 || socket->bytesAvailable() || socket->waitForReadyRead(1000) ) {
-			qDebug() << "-*/-*/-/-*/read data from :" << QString::fromStdString(client_number) << " I'm not dead**/-*-*/*//*/-";
+
 			block = socket->read(220);
 
 			while ( block[0] == '&' )

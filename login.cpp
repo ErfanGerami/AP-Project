@@ -40,12 +40,6 @@ Login::Login(QWidget *parent)
 
 
 
-
-
-
-
-
-
 }
 
 
@@ -79,7 +73,7 @@ void Login::on_login_clicked() {
 	}
 	catch ( Errors err ) {
 		ui->statusbar->setStyleSheet("#statusbar{color:red;}");
-		//ui->statusbar->showMessage("user not found or access denied");
+
 		QMessageBox::critical(this, "ERROR", err.what());
 		QApplication::beep();
 

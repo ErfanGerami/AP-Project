@@ -33,8 +33,7 @@ SocketHandeling::SocketHandeling(QObject *parent) {
 
 	tcp_socket = new QTcpSocket();
 	tcp_server = new QTcpServer();
-	/*udp_socket = new QUdpSocket();
-	udp_socket->bind(QHostAddress::Any, 1500);*/
+
 	udp_socket = new QUdpSocket();
 
 
@@ -165,10 +164,10 @@ void SocketHandeling::client_thread_funtion() {
 
 			while ( true ) {
 				if ( data_vector_mutex.try_lock() ) {
-					qDebug() << "locked";
+
 					data_pair_vector.push_back(QPair<char *, DataPacket *>(code, data_packet));
 					data_vector_mutex.unlock();
-					qDebug() << "unlocked";
+
 					break;
 				}
 			}
@@ -278,8 +277,7 @@ QMap<QHostAddress, QPair<QString, QString>> SocketHandeling::get_servers() {
 		buffer.resize(udp_socket->pendingDatagramSize());
 		udp_socket->readDatagram(buffer.data(), buffer.size(), &ip, &port);
 		QByteArrayList list = buffer.split('&');
-		qDebug() << ip;
-		qDebug() << list[0];
+
 		server_map[ip] = qMakePair<QString, QString>(list[0], list[1]);
 		udp_socket->flush();
 	}
@@ -369,8 +367,7 @@ void SocketHandeling::server_run(QString server_name, QString username, int play
 
 
 
-	//udp_socket = new QUdpSocket();
-	//udp_socket->bind(QHostAddress::Any, 1500);
+
 	broadcast_ip_thread = std::thread { &SocketHandeling::broadcast_ip, this, server_name, username };//continously announce ip
 
 
@@ -405,7 +402,7 @@ void SocketHandeling::broadcast_ip(QString server_name, QString username) {
 		std::this_thread::sleep_for(milliseconds(400));
 
 	}
-	Q_ASSERT(false);
+	
 }
 
 void SocketHandeling::send_data(char *code, DataPacket *data, int client_number) {

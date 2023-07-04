@@ -179,7 +179,7 @@ void GameHandeler::GetOthersPushedCard(Card::CardType type, int number) {
 		//just pass
 
 
-		qDebug() << "this line is never executed";
+
 	}
 	else {
 
@@ -264,12 +264,12 @@ void GameHandeler::StartSet() {
 				pair = client->reading_data_socket();
 			}
 			else {
-				Q_ASSERT(false);
+
 			}
 		}
 	//freeing data
-	//delete[] pair.first;
-	//delete pair.second;
+	if ( pair.first != nullptr ) delete[] pair.first;
+	if ( pair.second != nullptr ) delete pair.second;
 	//--
 
 	if ( first_this_round == me ) {
@@ -294,7 +294,8 @@ void GameHandeler::StartSet() {
 }
 
 void GameHandeler::SwapCard(int player_index) {
-	if ( GetWhoseTurn() == me && !is_pause && players[me]->get_cards().size() != 0 ) {
+	if ( GetWhoseTurn() == me && !is_pause && players[me]->get_cards().size() != 0 && !is_swaping ) {
+		is_swaping = true;
 		//notify the targeted index player if he wants to swap
 		char *code = Code::set_code(me + '0', Code::Requested_SwapCard);
 		code[0] = me + '0';
@@ -325,13 +326,15 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 
 			pause_media->setPlaylist(playlist);
 			pause_media->play();
+
+
 			is_pause = true;
 			pause_btn->setStyleSheet("font-size:30px;background-color:red");
 		}
 
 	}
 	else if ( Code::get_code(code) == Code::Requested_SwapCard ) {
-
+		is_swaping = true;
 
 		int index_of_the_requested_player = code[0] - '0';
 
@@ -371,15 +374,19 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 			DataPacket dummy;
 			client->send_data(code, &dummy);
 		}
-
+		is_swaping = false;
 	}
 	else if ( Code::get_code(code) == Code::Accepted_SwapCard ) {
 		Card::CardType type = code[3] - '0';
 		int number = code[4] - '0';
 		SwitchCardShow(swap_candidate.first, swap_candidate.second, type, type);
+		is_swaping = false;
+
 	}
 	else if ( Code::get_code(code) == Code::Denied_SwapCard ) {
 		//denied lol
+		is_swaping = false;
+
 	}
 	else if ( Code::get_code(code) == Code::Sent_UnPause ) {
 		if ( !my_pause && is_pause ) {
@@ -389,11 +396,17 @@ void GameHandeler::handle(QPair<char *, DataPacket *>pair) {
 
 			pause_media->setPlaylist(playlist);
 			pause_media->play();
+
+
 			is_pause = false;
 			pause_btn->setStyleSheet("font-size:30px;");
 
 		}
 	}
+
+
+	if ( pair.first != nullptr ) delete[] pair.first;
+	if ( pair.second != nullptr ) delete pair.second;
 }
 
 void GameHandeler::Read() {
@@ -418,8 +431,6 @@ void GameHandeler::Read() {
 		else {
 			//check if the code is pause do this
 			handle(pair);
-			//delete[] pair.first;
-			//delete pair.second;
 
 			return;
 		}
@@ -447,8 +458,6 @@ void GameHandeler::Read() {
 		}
 		else {
 			handle(pair);
-			//delete[] pair.first;
-			//delete pair.second;
 
 			return;
 		}
@@ -488,8 +497,6 @@ void GameHandeler::Read() {
 		}
 		else {
 			handle(pair);
-			//delete[] pair.first;
-			//delete pair.second;
 
 			return;
 		}
@@ -559,11 +566,11 @@ void GameHandeler::GetMyCards() {
 	}
 	else {
 		//handle
-		Q_ASSERT(false);
+
 	}
 	//------------------------------
-	//delete[] pair.first;
-	//delete pair.second;
+	if ( pair.first != nullptr ) delete[] pair.first;
+	if ( pair.second != nullptr ) delete pair.second;
 
 	//wait for server to send data that wants the prediction
 	QPropertyAnimation *last_anim = Deal();
@@ -747,6 +754,8 @@ void GameHandeler::MyPause() {
 		pause_media->setPlaylist(playlist);
 		pause_media->play();
 
+
+
 		my_pause_count++;
 		is_pause = true;
 		my_pause = true;
@@ -782,6 +791,7 @@ void GameHandeler::MyUnpause() {
 
 		pause_media->setPlaylist(playlist);
 		pause_media->play();
+
 
 
 		disconnect(&my_pause_qtimer, &QTimer::timeout, this, &GameHandeler::MyUnpause);
