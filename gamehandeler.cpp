@@ -521,11 +521,13 @@ void GameHandeler::Read() {
 		if ( Game_Winner == me ) {
 			QSound::play(":/sounds/sounds/SkullKingWin.mp3");
 			MainPlayer->SettCoins(MainPlayer->GettCoins() + number_of_players * 50);
-			message = "Congrats you won.enjoy that it may not last.";
+			MainPlayer->SetGamesWon(MainPlayer->GetGamesWon() + 1);
+			message = "Congrats you've won.";
 		}
 		else {
 			QSound::play(":/sounds/sounds/SkullKingLoose.mp3");
-			message = "sorry youve lost.shame on you.really how bad a player can get?";
+			MainPlayer->SetGamesLoose(MainPlayer->GetGamesLoose() + 1);
+			message = "Sorry you've lost.";
 
 		}
 
@@ -534,7 +536,7 @@ void GameHandeler::Read() {
 			, 0, 0, 0, players[me]->GetPoints(), true));
 		MainPlayer->SetEarnedCoins(true);
 		FileHandeling::ChangePlayerEntirely(MainPlayer->GetUserName().c_str(), MainPlayer);
-		QMessageBox::information(parent, "winning stat", message);
+		QMessageBox::information(parent, "Game Stat", message);
 		emit show_main_menu();
 
 	}
