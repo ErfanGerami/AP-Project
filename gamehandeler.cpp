@@ -191,13 +191,13 @@ void GameHandeler::GetOthersPushedCard(Card::CardType type, int number) {
 		cards_on_deck.push_back(card);
 		PlaceArrow();
 		if ( GetWhoseTurn() == me ) {
+            this->pause_btn->setEnabled(true);
 			start_point = QDateTime::currentDateTime();
 			QObject::connect(&timer, &QTimer::timeout, this, &GameHandeler::PushCard);
 			timer.start(time_for_pushing_card);
 			//20seconds to push
 
-		}
-
+        }
 
 
 	}
@@ -274,6 +274,9 @@ void GameHandeler::StartSet() {
 
 
 	PlaceArrow();
+    if(GetWhoseTurn()!=me){
+        this->pause_btn->setEnabled(false);
+    }
 	QPropertyAnimation *anim = TellTheFirst(first_this_round);
 
 	connect(anim, &QPropertyAnimation::finished, [this] () {_sleep(1000); GetMyCards();
@@ -617,6 +620,7 @@ void GameHandeler::PlaceArrow() {
 void GameHandeler::PushCard() {
 
 	if ( GetWhoseTurn() == me && !is_pause ) {
+        this->pause_btn->setEnabled(false);
 		QObject::disconnect(&timer, &QTimer::timeout, this, &GameHandeler::PushCard);
 		timer.stop();
 
